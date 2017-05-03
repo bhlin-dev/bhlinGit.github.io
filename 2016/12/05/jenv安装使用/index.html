@@ -74,7 +74,7 @@
 <link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="随笔," />
+  <meta name="keywords" content="工具," />
 
 
 
@@ -90,17 +90,17 @@
 
 
 
-<meta name="description" content="简介Homebrew是MacOs下著名的包管理器，为软件包提供了非常方便的安装方式。Homebrew是根据ruby脚本来定义安装配置。Homebrew中文装置http://brew.sh/index_zh-cn.html">
-<meta name="keywords" content="随笔">
+<meta name="description" content="jenv介绍jenv相当于rbenv,但对于Java环境。它允许轻松地切换几个JDK环境,并配置每个项目使用哪一个版本的JDK，修改起来相当的方便快捷。(jenv、pyenv、rbenv类似)">
+<meta name="keywords" content="工具">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Homebrew安装与使用">
-<meta property="og:url" content="http://yoursite.com/2016/11/26/Homebrew安装使用/index.html">
+<meta property="og:title" content="jenv安装使用">
+<meta property="og:url" content="http://yoursite.com/2016/12/05/jenv安装使用/index.html">
 <meta property="og:site_name" content="啖火">
-<meta property="og:description" content="简介Homebrew是MacOs下著名的包管理器，为软件包提供了非常方便的安装方式。Homebrew是根据ruby脚本来定义安装配置。Homebrew中文装置http://brew.sh/index_zh-cn.html">
-<meta property="og:updated_time" content="2016-12-06T05:34:19.000Z">
+<meta property="og:description" content="jenv介绍jenv相当于rbenv,但对于Java环境。它允许轻松地切换几个JDK环境,并配置每个项目使用哪一个版本的JDK，修改起来相当的方便快捷。(jenv、pyenv、rbenv类似)">
+<meta property="og:updated_time" content="2016-12-06T05:30:28.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Homebrew安装与使用">
-<meta name="twitter:description" content="简介Homebrew是MacOs下著名的包管理器，为软件包提供了非常方便的安装方式。Homebrew是根据ruby脚本来定义安装配置。Homebrew中文装置http://brew.sh/index_zh-cn.html">
+<meta name="twitter:title" content="jenv安装使用">
+<meta name="twitter:description" content="jenv介绍jenv相当于rbenv,但对于Java环境。它允许轻松地切换几个JDK环境,并配置每个项目使用哪一个版本的JDK，修改起来相当的方便快捷。(jenv、pyenv、rbenv类似)">
 
 
 
@@ -128,13 +128,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2016/11/26/Homebrew安装使用/"/>
+  <link rel="canonical" href="http://yoursite.com/2016/12/05/jenv安装使用/"/>
 
 
 
 
 
-  <title>Homebrew安装与使用 | 啖火</title>
+  <title>jenv安装使用 | 啖火</title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -263,7 +263,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/11/26/Homebrew安装使用/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/12/05/jenv安装使用/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="啖火">
@@ -284,7 +284,7 @@
             
             
               
-                Homebrew安装与使用
+                jenv安装使用
               
             
           </h1>
@@ -299,8 +299,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-11-26T10:43:37+08:00">
-                2016-11-26
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-12-05T15:51:46+08:00">
+                2016-12-05
               </time>
             
 
@@ -334,23 +334,16 @@
       
 
       
-        <p>简介<br><a href="http://brew.sh/index_zh-cn.html" target="_blank" rel="external">Homebrew</a>是MacOs下著名的包管理器，为软件包提供了非常方便的安装方式。Homebrew是根据ruby脚本来定义安装配置。<br>Homebrew中文装置<a href="http://brew.sh/index_zh-cn.html" target="_blank" rel="external">http://brew.sh/index_zh-cn.html</a></p>
+        <h2 id="jenv介绍"><a href="#jenv介绍" class="headerlink" title="jenv介绍"></a>jenv介绍</h2><p>jenv相当于rbenv,但对于Java环境。它允许轻松地切换几个JDK环境,并配置每个项目使用哪一个版本的JDK，修改起来相当的方便快捷。(jenv、pyenv、rbenv类似)</p>
 <a id="more"></a>
-<p>##安装<br>安装<a href="http://brew.sh/index_zh-cn.html" target="_blank" rel="external">Homebrew</a>是非常简单的只需要打开命令行将下面这句话复制到命令行中运行。Homebrew 将本机的/usr/local/ 目录初始化为Git的工作树，并将目录所有者变更为当前用户，也就是你当前所操作的用户，所以以后的操作都不再需要sudo，这是安全的。后面安装的软件包放到/usr/local/Cellar/目录里面<br><code>/usr/bin/ruby -e &quot;$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)&quot;</code></p>
-<p>##删除<br>删除和安装一样方便也是将下面的命令复制到命令行运行即可<br><code>ruby -e &quot;$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/uninstall)&quot;</code></p>
-<p>##使用</p>
-<ul>
-<li>查找软件包<br>  <code>brew search wget</code></li>
-<li>安装软件包<br>  <code>brew install wget</code></li>
-<li>查询已安装的软件包<br>  <code>brew list</code></li>
-<li>删除软件包<br><code>brew remove wget</code></li>
-<li>查看软件包信息<br><code>brew info wget</code></li>
-<li>列出软件包的依赖关系<br><code>brew deps wget</code></li>
-<li>列出过时的软件包<br><code>brew outdated</code></li>
-<li>更新brew<br><code>brew update</code></li>
-<li>查看哪些软件需要更新<br><code>brew outdated</code></li>
-<li>更新过时的软件包（全部或指定）<br><code>brew upgrade</code></li>
-</ul>
+<h5 id="基本使用"><a href="#基本使用" class="headerlink" title="基本使用"></a>基本使用</h5><p>首先通过Homebrew安装jenv：<code>brew install jenv</code><br>如果安装失败并发现找不到directory, 可以自己建立文件夹<br><figure class="highlight plain"><figcaption><span>~/.jenv</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">cd ~/.jenv/</div><div class="line">mkdir versions</div></pre></td></tr></table></figure></p>
+<p>安装成功后需要进行配置才可以让jenv起作用。<br>使用bash的情况<br><figure class="highlight plain"><figcaption><span>echo 'export PATH="$HOME/.jenv/bin:$PATH"' >> ~/.bash_profile</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ echo &apos;eval &quot;$(jenv init -)&quot;&apos; &gt;&gt; ~/.bash_profile</div></pre></td></tr></table></figure></p>
+<p>完成以上步骤，jenv就已经安装的差不多了，现在我们来看下当前jenv来管理的是哪个jdk的版本，输入以下命令查看当前jenv管理的所有jdk版本和当前的正在管理的jdk版本：<br><figure class="highlight plain"><figcaption><span>jenv versions</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">* system (set by /Users/bxpeng/.jenv/version)</div><div class="line">``` </div><div class="line">你会发现只有一个system 并且前面有个`*`，这个`*`就是代表当前的jdk版本。jenv默认找到了系统默认的java。</div><div class="line">和pyenv不同的是，jenv并不能安装任何版本的jdk，需要我们手动下载安装jdk，然后再通过jenv来进行管理。</div><div class="line"></div><div class="line">安装[jdk6](https://support.apple.com/kb/DL1572?locale=zh_CN) 可以通过appstore进行下载安装，下载地址’https://support.apple.com/kb/DL1572?locale=zh_CN‘. jdk7可以在[oracle](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html)官网进行下载。 安装路径都在`/Library/Java/JavaVirtualMachines/`下可以看到。</div><div class="line"></div><div class="line">使用`jenv add`命令来讲jdk加入到jenv中进行管理。</div><div class="line">```jenv add /Library/Java/JavaVirtualMachines/1.6.0.jdk/Contents/Home/</div></pre></td></tr></table></figure></p>
+<p>加入后再次查看jenv所管理的版本<br><figure class="highlight plain"><figcaption><span>jenv versions</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">* system (set by /Users/bxpeng/.jenv/version)</div><div class="line">  1.6</div><div class="line">  1.6.0.65</div><div class="line">  oracle64-1.6.0.65</div></pre></td></tr></table></figure></p>
+<p>其中1.6和1.6.0.65和oracle64-1.6.0.65是一样的，可以通过<code>jenv remove path</code> 来删除管理的版本<br><figure class="highlight plain"><figcaption><span>remove 1.6</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">jenv remove oracle64-1.6.0.65</div><div class="line">``` </div><div class="line"></div><div class="line">后面继续添加jdk1.7、1.8等版本按照以上步骤就可以了，添加完jdk1.7、1.8后查看jenv管理的所有版本：</div><div class="line">```$ jenv versions</div><div class="line">* system (set by /Users/bxpeng/.jenv/version)</div><div class="line">  1.6.0.65</div><div class="line">  1.7.0.71</div><div class="line">  1.8.0.25</div></pre></td></tr></table></figure></p>
+<p>然后通过<code>jenv global</code>设置默认的java 版本，也可以通过<code>jenv local</code>设置当前目录所使用的版本。<br>例如我们设置1.8.0.25为默认的jdk版本：<br><code>jenv global 1.8.0.25</code></p>
+<p>如果我们设置<code>/User/bhlin/demo</code>这个文件夹里面为1.6.0.65版本的话：<br><figure class="highlight plain"><figcaption><span>/User/bhlin/demo</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">jenv local 1.6.0.65</div></pre></td></tr></table></figure></p>
+<p>通过<code>jenv version</code>可以看到这个文件夹的jdk版本是1.6而不是1.8了</p>
 
       
     </div>
@@ -380,7 +373,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/随笔/" rel="tag"># 随笔</a>
+            <a href="/tags/工具/" rel="tag"># 工具</a>
           
         </div>
       
@@ -393,14 +386,18 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
+              <a href="/2016/11/26/Homebrew安装使用/" rel="next" title="Homebrew安装与使用">
+                <i class="fa fa-chevron-left"></i> Homebrew安装与使用
+              </a>
+            
           </div>
 
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2016/12/05/jenv安装使用/" rel="prev" title="jenv安装使用">
-                jenv安装使用 <i class="fa fa-chevron-right"></i>
+              <a href="/2016/12/06/pyenv搭建/" rel="prev" title="pyenv搭建">
+                pyenv搭建 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -448,8 +445,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel sidebar-panel-active">
+      <section class="site-overview sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="http://opbae2xuz.bkt.clouddn.com/images/bhlin/ピカチュウ.jpeg"
@@ -502,6 +508,22 @@
 
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#jenv介绍"><span class="nav-number">1.</span> <span class="nav-text">jenv介绍</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#基本使用"><span class="nav-number">1.0.0.1.</span> <span class="nav-text">基本使用</span></a></li></ol></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
