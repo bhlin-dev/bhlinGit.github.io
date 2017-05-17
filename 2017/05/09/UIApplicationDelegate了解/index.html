@@ -97,7 +97,7 @@
 <meta property="og:url" content="http://yoursite.com/2017/05/09/UIApplicationDelegate了解/index.html">
 <meta property="og:site_name" content="啖火">
 <meta property="og:description" content="简介UIApplicationDelegate是在APP应用程序生命周期内由UIApplication单例对象针对不同的事件调用不同的方法进行处理。UIApplication在应用开始负责初始化并显示UIWindow,并负责加载应用程序的第一个UIView到UIWIndow中。UIApplication另一个任务是帮助管理应用程序的声明周期，而UIApplication会通过UIApplicati">
-<meta property="og:updated_time" content="2017-05-17T08:52:21.000Z">
+<meta property="og:updated_time" content="2017-05-17T09:10:40.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="UIApplicationDelegate了解">
 <meta name="twitter:description" content="简介UIApplicationDelegate是在APP应用程序生命周期内由UIApplication单例对象针对不同的事件调用不同的方法进行处理。UIApplication在应用开始负责初始化并显示UIWindow,并负责加载应用程序的第一个UIView到UIWIndow中。UIApplication另一个任务是帮助管理应用程序的声明周期，而UIApplication会通过UIApplicati">
@@ -366,7 +366,7 @@
       
 
       
-        <h1 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h1><p>UIApplicationDelegate是在APP应用程序生命周期内由UIApplication单例对象针对不同的事件调用不同的方法进行处理。UIApplication在应用开始负责初始化并显示UIWindow,并负责加载应用程序的第一个UIView到UIWIndow中。UIApplication另一个任务是帮助管理应用程序的声明周期，而UIApplication会通过UIApplicationDelegate的实现类实现这些任务。UIApplication可以处理的时间包括应用程序的生命周期、系统事件。</p>
+        <h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>UIApplicationDelegate是在APP应用程序生命周期内由UIApplication单例对象针对不同的事件调用不同的方法进行处理。UIApplication在应用开始负责初始化并显示UIWindow,并负责加载应用程序的第一个UIView到UIWIndow中。UIApplication另一个任务是帮助管理应用程序的声明周期，而UIApplication会通过UIApplicationDelegate的实现类实现这些任务。UIApplication可以处理的时间包括应用程序的生命周期、系统事件。</p>
 <a id="more"></a>
 <h2 id="APP启动"><a href="#APP启动" class="headerlink" title="APP启动"></a>APP启动</h2><p>下面介绍app生命周期涉及到的方法。<br>当app开始运行前存在一个启动阶段，这个阶段包含两个系统方法：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">- (BOOL)application:(UIApplication *)application willFinishLaunchingWithOptions:(nullable NSDictionary *)launchOptions NS_AVAILABLE_IOS(6_0);</div><div class="line"> </div><div class="line">- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(nullable NSDictionary *)launchOptions;</div></pre></td></tr></table></figure>
@@ -571,7 +571,7 @@
             
             <div class="site-state-item site-state-categories">
               <a href="/categories/index.html">
-                <span class="site-state-item-count">1</span>
+                <span class="site-state-item-count">3</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -582,7 +582,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">4</span>
+                <span class="site-state-item-count">5</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -617,7 +617,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#简介"><span class="nav-number">1.</span> <span class="nav-text">简介</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#APP启动"><span class="nav-number">1.1.</span> <span class="nav-text">APP启动</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#简介"><span class="nav-number">1.</span> <span class="nav-text">简介</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#APP启动"><span class="nav-number">2.</span> <span class="nav-text">APP启动</span></a></li></ol></div>
             
 
           </div>

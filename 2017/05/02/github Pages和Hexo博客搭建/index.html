@@ -74,7 +74,7 @@
 <link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="工具," />
+  <meta name="keywords" content="记录,环境搭建," />
 
 
 
@@ -91,7 +91,7 @@
 
 
 <meta name="description" content="简介第一次搭建博客系统，网上搜查了好多资料，现在总结一下，如果以后需要重新安装可以翻看。">
-<meta name="keywords" content="工具">
+<meta name="keywords" content="记录,环境搭建">
 <meta property="og:type" content="article">
 <meta property="og:title" content="github pages + hexo博客搭建">
 <meta property="og:url" content="http://yoursite.com/2017/05/02/github Pages和Hexo博客搭建/index.html">
@@ -106,7 +106,7 @@
 <meta property="og:image" content="http://opbae2xuz.bkt.clouddn.com/images/bhlin/2017-05-03-07.png">
 <meta property="og:image" content="http://opbae2xuz.bkt.clouddn.com/images/bhlin/2017-05-03-08.png">
 <meta property="og:image" content="http://opbae2xuz.bkt.clouddn.com/images/bhlin/2017-05-03-10.png">
-<meta property="og:updated_time" content="2017-05-17T09:04:01.000Z">
+<meta property="og:updated_time" content="2017-05-17T09:12:59.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="github pages + hexo博客搭建">
 <meta name="twitter:description" content="简介第一次搭建博客系统，网上搜查了好多资料，现在总结一下，如果以后需要重新安装可以翻看。">
@@ -330,6 +330,28 @@
           </span>
 
           
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/记录/" itemprop="url" rel="index">
+                    <span itemprop="name">记录</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
 
           
             
@@ -355,39 +377,39 @@
 
       
         <h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>第一次搭建博客系统，网上搜查了好多资料，现在总结一下，如果以后需要重新安装可以翻看。<br><a id="more"></a></p>
-<h3 id="1、搭建github-pages工程"><a href="#1、搭建github-pages工程" class="headerlink" title="1、搭建github pages工程"></a>1、搭建github pages工程</h3><p><a href="https://pages.github.com/" target="_blank" rel="external">Github pages</a>是一个公共静态页面搭建托管服务，站点可以免费托管在<a href="https://github.com" target="_blank" rel="external">github</a>上，你可以选择使用<a href="https://pages.github.com/" target="_blank" rel="external">Github pages</a>默认提供的域名github.io或者自定义域名来发布站点。<br></p>
-<h4 id="1-1、创建一个仓库"><a href="#1-1、创建一个仓库" class="headerlink" title="1.1、创建一个仓库"></a>1.1、创建一个仓库</h4><p>在github上，创建一个新的仓库使，使用 <strong>用户名.github.io</strong>作为新仓库的名称，如果仓库的第一部分不匹配用户名，这个仓库不会生效。<br><img src="http://opbae2xuz.bkt.clouddn.com/images/bhlin/2017-05-03-01.png" alt=""><br><img src="http://opbae2xuz.bkt.clouddn.com/images/bhlin/2017-05-03-02.png" alt=""><br><img src="http://opbae2xuz.bkt.clouddn.com/images/bhlin/2017-05-03-03.png" alt=""></p>
-<h4 id="1-2、本地克隆仓库"><a href="#1-2、本地克隆仓库" class="headerlink" title="1.2、本地克隆仓库"></a>1.2、本地克隆仓库</h4><p>本地一定要安装git,使用创建好的仓库地址在本地克隆仓库。这里我使用命令行，首先在桌面克隆一份仓库代码，然后进入克隆的仓库文件夹中，创建一个index.html，里面只有一句hello word。然后将index.html推送到远程仓库。推送成功后直接访问 <strong><a href="http://用户名.github.io" target="_blank" rel="external">http://用户名.github.io</a></strong> 就可以访问了。</p>
+<h2 id="搭建github-pages工程"><a href="#搭建github-pages工程" class="headerlink" title="搭建github pages工程"></a>搭建github pages工程</h2><p><a href="https://pages.github.com/" target="_blank" rel="external">Github pages</a>是一个公共静态页面搭建托管服务，站点可以免费托管在<a href="https://github.com" target="_blank" rel="external">github</a>上，你可以选择使用<a href="https://pages.github.com/" target="_blank" rel="external">Github pages</a>默认提供的域名github.io或者自定义域名来发布站点。<br></p>
+<h3 id="创建一个仓库"><a href="#创建一个仓库" class="headerlink" title="创建一个仓库"></a>创建一个仓库</h3><p>在github上，创建一个新的仓库使，使用 <strong>用户名.github.io</strong>作为新仓库的名称，如果仓库的第一部分不匹配用户名，这个仓库不会生效。<br><img src="http://opbae2xuz.bkt.clouddn.com/images/bhlin/2017-05-03-01.png" alt=""><br><img src="http://opbae2xuz.bkt.clouddn.com/images/bhlin/2017-05-03-02.png" alt=""><br><img src="http://opbae2xuz.bkt.clouddn.com/images/bhlin/2017-05-03-03.png" alt=""></p>
+<h3 id="本地克隆仓库"><a href="#本地克隆仓库" class="headerlink" title="本地克隆仓库"></a>本地克隆仓库</h3><p>本地一定要安装git,使用创建好的仓库地址在本地克隆仓库。这里我使用命令行，首先在桌面克隆一份仓库代码，然后进入克隆的仓库文件夹中，创建一个index.html，里面只有一句hello word。然后将index.html推送到远程仓库。推送成功后直接访问 <strong><a href="http://用户名.github.io" target="_blank" rel="external">http://用户名.github.io</a></strong> 就可以访问了。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">$ cd /Users/bhlin/Desktop/</div><div class="line">$ git clone https://github.com/username/username.github.io</div><div class="line">$ cd /Users/bhlin/Desktop/username.github.io</div><div class="line">$ echo &quot;Hello World&quot; &gt; index.html</div><div class="line">$ git add --all</div><div class="line">$ git commit -m &quot;Initial commit&quot;</div><div class="line">$ git push -u origin master</div></pre></td></tr></table></figure>
-<h3 id="2、安装hexo环境"><a href="#2、安装hexo环境" class="headerlink" title="2、安装hexo环境"></a>2、安装hexo环境</h3><h4 id="2-1、安装Node-js"><a href="#2-1、安装Node-js" class="headerlink" title="2.1、安装Node.js"></a>2.1、安装Node.js</h4><p>可以通过Homebrew安装node.js</p>
+<h2 id="安装hexo环境"><a href="#安装hexo环境" class="headerlink" title="安装hexo环境"></a>安装hexo环境</h2><h3 id="安装Node-js"><a href="#安装Node-js" class="headerlink" title="安装Node.js"></a>安装Node.js</h3><p>可以通过Homebrew安装node.js</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">brew install node</div></pre></td></tr></table></figure>
-<h4 id="2-2、安装hexo"><a href="#2-2、安装hexo" class="headerlink" title="2.2、安装hexo"></a>2.2、安装hexo</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo npm install hexo-cli -g</div></pre></td></tr></table></figure>
+<h3 id="安装hexo"><a href="#安装hexo" class="headerlink" title="安装hexo"></a>安装hexo</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo npm install hexo-cli -g</div></pre></td></tr></table></figure>
 <p>安装完成后，通过查看版本号验证是否安装成功。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">hexo -v</div></pre></td></tr></table></figure>
-<h4 id="2-3、使用hexo"><a href="#2-3、使用hexo" class="headerlink" title="2.3、使用hexo"></a>2.3、使用hexo</h4><h5 id="2-3-1-创建hexo初始化文件夹"><a href="#2-3-1-创建hexo初始化文件夹" class="headerlink" title="2.3.1 创建hexo初始化文件夹"></a>2.3.1 创建hexo初始化文件夹</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"># 选择一个文件夹</div><div class="line">$ cd /User/bhlin/Desktop/hexo</div><div class="line"># 初始化hexo</div><div class="line">$ hexo init</div><div class="line"># 本地查看</div><div class="line">$ hexo server</div><div class="line"># 在浏览器中输入localhost:4000可以看到是否成功</div></pre></td></tr></table></figure>
-<h5 id="2-3-2-创建草稿内容"><a href="#2-3-2-创建草稿内容" class="headerlink" title="2.3.2 创建草稿内容"></a>2.3.2 创建草稿内容</h5><p>使用命令在草稿文件夹中创建草稿文章，使用命令 <code>hexo new draft &quot;file name&quot;</code> ,创建目录是当前初始化文件夹下的source/_drafts 目录下。</p>
-<h5 id="2-3-3-移动草稿内容到发布目录"><a href="#2-3-3-移动草稿内容到发布目录" class="headerlink" title="2.3.3 移动草稿内容到发布目录"></a>2.3.3 移动草稿内容到发布目录</h5><p>使用命令将草稿文件夹下的指定文章移动到发布文件夹下， <code>hexo publish &quot;file name&quot;</code> ,会将/source/_drafts/file name 移动到/source/_posts 目录下。</p>
-<h5 id="2-3-4-直接在发布目录下创建文章"><a href="#2-3-4-直接在发布目录下创建文章" class="headerlink" title="2.3.4 直接在发布目录下创建文章"></a>2.3.4 直接在发布目录下创建文章</h5><p>使用命令 <code>hexo new &quot;file name&quot;</code> 就可以直接将文章创建在/source/_posts目录下。</p>
-<h4 id="2-4、hexo目录结构"><a href="#2-4、hexo目录结构" class="headerlink" title="2.4、hexo目录结构"></a>2.4、hexo目录结构</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">.</div><div class="line">├── .deploy #需要部署的文件</div><div class="line">├── node_modules #Hexo插件</div><div class="line">├── public #生成的静态网页文件 （未生成）</div><div class="line">├── scaffolds #模板</div><div class="line">├── source #博客正文和其他源文件，404、favicon、CNAME 都应该放在这里</div><div class="line">| ├── _drafts #草稿 (未生成)</div><div class="line">| └── _posts #文章</div><div class="line">├── themes #主题</div><div class="line">├── _config.yml #全局配置文件</div><div class="line">└── package.json</div></pre></td></tr></table></figure>
-<h4 id="2-5、上传到github工程"><a href="#2-5、上传到github工程" class="headerlink" title="2.5、上传到github工程"></a>2.5、上传到github工程</h4><p>我们通过命令<code>hexo server</code>，在浏览器中输入localhost:4000可以看到我们本地生成的页面，如何将这些页面上传到github上面去呢？ 首先我们要将markdown文件生成静态的.html网页， 然后将这些网页上传到github上去，我们可以通过下面的命令生成静态网页</p>
+<h3 id="使用hexo"><a href="#使用hexo" class="headerlink" title="使用hexo"></a>使用hexo</h3><h4 id="创建hexo初始化文件夹"><a href="#创建hexo初始化文件夹" class="headerlink" title="创建hexo初始化文件夹"></a>创建hexo初始化文件夹</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"># 选择一个文件夹</div><div class="line">$ cd /User/bhlin/Desktop/hexo</div><div class="line"># 初始化hexo</div><div class="line">$ hexo init</div><div class="line"># 本地查看</div><div class="line">$ hexo server</div><div class="line"># 在浏览器中输入localhost:4000可以看到是否成功</div></pre></td></tr></table></figure>
+<h4 id="创建草稿内容"><a href="#创建草稿内容" class="headerlink" title="创建草稿内容"></a>创建草稿内容</h4><p>使用命令在草稿文件夹中创建草稿文章，使用命令 <code>hexo new draft &quot;file name&quot;</code> ,创建目录是当前初始化文件夹下的source/_drafts 目录下。</p>
+<h4 id="移动草稿内容到发布目录"><a href="#移动草稿内容到发布目录" class="headerlink" title="移动草稿内容到发布目录"></a>移动草稿内容到发布目录</h4><p>使用命令将草稿文件夹下的指定文章移动到发布文件夹下， <code>hexo publish &quot;file name&quot;</code> ,会将/source/_drafts/file name 移动到/source/_posts 目录下。</p>
+<h4 id="直接在发布目录下创建文章"><a href="#直接在发布目录下创建文章" class="headerlink" title="直接在发布目录下创建文章"></a>直接在发布目录下创建文章</h4><p>使用命令 <code>hexo new &quot;file name&quot;</code> 就可以直接将文章创建在/source/_posts目录下。</p>
+<h3 id="hexo目录结构"><a href="#hexo目录结构" class="headerlink" title="hexo目录结构"></a>hexo目录结构</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">.</div><div class="line">├── .deploy #需要部署的文件</div><div class="line">├── node_modules #Hexo插件</div><div class="line">├── public #生成的静态网页文件 （未生成）</div><div class="line">├── scaffolds #模板</div><div class="line">├── source #博客正文和其他源文件，404、favicon、CNAME 都应该放在这里</div><div class="line">| ├── _drafts #草稿 (未生成)</div><div class="line">| └── _posts #文章</div><div class="line">├── themes #主题</div><div class="line">├── _config.yml #全局配置文件</div><div class="line">└── package.json</div></pre></td></tr></table></figure>
+<h3 id="上传到github工程"><a href="#上传到github工程" class="headerlink" title="上传到github工程"></a>上传到github工程</h3><p>我们通过命令<code>hexo server</code>，在浏览器中输入localhost:4000可以看到我们本地生成的页面，如何将这些页面上传到github上面去呢？ 首先我们要将markdown文件生成静态的.html网页， 然后将这些网页上传到github上去，我们可以通过下面的命令生成静态网页</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"># g 是 generate的缩写，可以用g或者generate</div><div class="line">$ hexo g</div></pre></td></tr></table></figure>
 <p>然后我们发现我们的目录中，生成了public 文件夹，我们只要将public文件夹中的内容放我们的github本地仓库中，然后是用github命令，将这些内容推送到远程仓库中，就可以了。<br><img src="http://opbae2xuz.bkt.clouddn.com/images/bhlin/2017-05-03-04.png" alt=""></p>
-<h5 id="2-5-1、另外一种上传github工程"><a href="#2-5-1、另外一种上传github工程" class="headerlink" title="2.5.1、另外一种上传github工程"></a>2.5.1、另外一种上传github工程</h5><p>在发布之前修改根目录下的配置文件_config.yaml， 将github信息放在deploy中：</p>
+<h4 id="另外一种上传github工程"><a href="#另外一种上传github工程" class="headerlink" title="另外一种上传github工程"></a>另外一种上传github工程</h4><p>在发布之前修改根目录下的配置文件_config.yaml， 将github信息放在deploy中：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">deploy:</div><div class="line">  type: git</div><div class="line">  repo: https://github.com/bhlinGit/bhlinGit.github.io.git</div><div class="line">  branch: master</div></pre></td></tr></table></figure>
 <p>配置完成后我们使用hexo的deploy命令直接部署</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"># 或者我们可以缩写命令: hexo d</div><div class="line">$ hexo deploy</div></pre></td></tr></table></figure>
-<h4 id="2-6、hexo常用配置"><a href="#2-6、hexo常用配置" class="headerlink" title="2.6、hexo常用配置"></a>2.6、hexo常用配置</h4><p>在我们的博客目录下存在_config.yml的全局配置文件，这个是我们博客的全局配置文件，注意：在配置文件的冒号后面要留一个空格，否则假爱的时候会报语法错误。</p>
+<h3 id="hexo常用配置"><a href="#hexo常用配置" class="headerlink" title="hexo常用配置"></a>hexo常用配置</h3><p>在我们的博客目录下存在_config.yml的全局配置文件，这个是我们博客的全局配置文件，注意：在配置文件的冒号后面要留一个空格，否则假爱的时候会报语法错误。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"># Site</div><div class="line">title: 名称</div><div class="line">subtitle: </div><div class="line">description: 博客描述</div><div class="line">author: 作者名称</div><div class="line">language: 语言（zh-CN）</div><div class="line">timezone:</div></pre></td></tr></table></figure>
-<h5 id="2-6-1、两个-config-yml配置文件"><a href="#2-6-1、两个-config-yml配置文件" class="headerlink" title="2.6.1、两个_config.yml配置文件"></a>2.6.1、两个_config.yml配置文件</h5><p>我们在博客文件夹中至少发现两个_config.yml文件， 一个是在我们的博客文件夹根目录存在，这个是全局配置文件，另外在(theme/landscape)文件夹中也会发现这个文件，这个是主题内容的配置文件，不同主题存在不同的_config.yml配置文件，如果功能是有主题提供，那么这个配置就要在theme目录下的_config.yml配置</p>
-<h4 id="2-7、修改主题"><a href="#2-7、修改主题" class="headerlink" title="2.7、修改主题"></a>2.7、修改主题</h4><p>Hexo基本所有的主题安装流程都差不多，我现在用的主题是hexo-theme-next（<a href="https://github.com/iissnan/hexo-theme-next），安装它只有几步：" target="_blank" rel="external">https://github.com/iissnan/hexo-theme-next），安装它只有几步：</a><br>1.在博客根目录下执行如下命令</p>
+<h4 id="两个-config-yml配置文件"><a href="#两个-config-yml配置文件" class="headerlink" title="两个_config.yml配置文件"></a>两个_config.yml配置文件</h4><p>我们在博客文件夹中至少发现两个_config.yml文件， 一个是在我们的博客文件夹根目录存在，这个是全局配置文件，另外在(theme/landscape)文件夹中也会发现这个文件，这个是主题内容的配置文件，不同主题存在不同的_config.yml配置文件，如果功能是有主题提供，那么这个配置就要在theme目录下的_config.yml配置</p>
+<h3 id="修改主题"><a href="#修改主题" class="headerlink" title="修改主题"></a>修改主题</h3><p>Hexo基本所有的主题安装流程都差不多，我现在用的主题是hexo-theme-next（<a href="https://github.com/iissnan/hexo-theme-next），安装它只有几步：" target="_blank" rel="external">https://github.com/iissnan/hexo-theme-next），安装它只有几步：</a><br>1.在博客根目录下执行如下命令</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git clone https://github.com/iissnan/hexo-theme-next themes/next</div></pre></td></tr></table></figure>
 <p>2.修改根目录下的_config.yml，即可。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">theme: next</div></pre></td></tr></table></figure>
 <p>关于这个主题提供的更多功能，请移步：<a href="http://theme-next.iissnan.com/getting-started.html" target="_blank" rel="external">http://theme-next.iissnan.com/getting-started.html</a></p>
-<h4 id="3-1、七牛云的图床配置"><a href="#3-1、七牛云的图床配置" class="headerlink" title="3.1、七牛云的图床配置"></a>3.1、七牛云的图床配置</h4><ul>
+<h2 id="七牛云的图床配置"><a href="#七牛云的图床配置" class="headerlink" title="七牛云的图床配置"></a>七牛云的图床配置</h2><ul>
 <li>首页我们要有一个七牛云的账号</li>
 <li>登录七牛云，点击对象存储 然后新建存储空间，这里的存储空间名称就是你的bucket标识符，后面会用到，选择你想要存储的区域，然后确定创建<br><img src="http://opbae2xuz.bkt.clouddn.com/images/bhlin/2017-05-03-05.png" alt=""><br><img src="http://opbae2xuz.bkt.clouddn.com/images/bhlin/2017-05-03-06.png" alt=""></li>
-<li>点击内容空间，可以看到你外链默认域名， 这个默认域名+指定的前缀名+文件名，组成了一个完成的图片链接。选择上传文件，就可以将你图片的文件上传到七牛云上面，然后复制外链就可以了。<br><img src="http://opbae2xuz.bkt.clouddn.com/images/bhlin/2017-05-03-07.png" alt=""><h4 id="3-2、qshell的使用"><a href="#3-2、qshell的使用" class="headerlink" title="3.2、qshell的使用"></a>3.2、qshell的使用</h4>上面完全是根据七牛云的页面来进行操作，如果你上传的文件比较多，那么一个一个上传就显得很繁琐，这样我们就可以根据七牛云提供的qshell命令来进行批量上传。qrsync已经废弃了，建议使用qshell来上传。qshell下载地址<a href="http://devtools.qiniu.com/qshell-v2.0.6.zip" target="_blank" rel="external">http://devtools.qiniu.com/qshell-v2.0.6.zip</a>根据你电脑的平台选择不同的命令,例如我是mac osx64位的系统我选择的是qshell_darwin_amd64。<br><img src="http://opbae2xuz.bkt.clouddn.com/images/bhlin/2017-05-03-08.png" alt=""><br>将这个命令放到你的/usr/local/bin目录下，这样你就可以直接在命令行使用这个命令。并且我将qshell_darwin_amd64名字改成了qshell这样比较好记。后面可以参照七牛云的qshell使用手册来进行操作<a href="https://github.com/qiniu/qshell/wiki/qshell%E4%BD%BF%E7%94%A8%E6%89%8B%E5%86%8C" target="_blank" rel="external">https://github.com/qiniu/qshell/wiki/qshell%E4%BD%BF%E7%94%A8%E6%89%8B%E5%86%8C</a> 这里我只使用到了quplaod命令批量上传，首先我们要创建一个文件，最好是.json后缀的文件，例如我这里创建的是conf.json文件。<br><img src="http://opbae2xuz.bkt.clouddn.com/images/bhlin/2017-05-03-10.png" alt=""></li>
+<li>点击内容空间，可以看到你外链默认域名， 这个默认域名+指定的前缀名+文件名，组成了一个完成的图片链接。选择上传文件，就可以将你图片的文件上传到七牛云上面，然后复制外链就可以了。<br><img src="http://opbae2xuz.bkt.clouddn.com/images/bhlin/2017-05-03-07.png" alt=""><h3 id="qshell的使用"><a href="#qshell的使用" class="headerlink" title="qshell的使用"></a>qshell的使用</h3>上面完全是根据七牛云的页面来进行操作，如果你上传的文件比较多，那么一个一个上传就显得很繁琐，这样我们就可以根据七牛云提供的qshell命令来进行批量上传。qrsync已经废弃了，建议使用qshell来上传。qshell下载地址<a href="http://devtools.qiniu.com/qshell-v2.0.6.zip" target="_blank" rel="external">http://devtools.qiniu.com/qshell-v2.0.6.zip</a>根据你电脑的平台选择不同的命令,例如我是mac osx64位的系统我选择的是qshell_darwin_amd64。<br><img src="http://opbae2xuz.bkt.clouddn.com/images/bhlin/2017-05-03-08.png" alt=""><br>将这个命令放到你的/usr/local/bin目录下，这样你就可以直接在命令行使用这个命令。并且我将qshell_darwin_amd64名字改成了qshell这样比较好记。后面可以参照七牛云的qshell使用手册来进行操作<a href="https://github.com/qiniu/qshell/wiki/qshell%E4%BD%BF%E7%94%A8%E6%89%8B%E5%86%8C" target="_blank" rel="external">https://github.com/qiniu/qshell/wiki/qshell%E4%BD%BF%E7%94%A8%E6%89%8B%E5%86%8C</a> 这里我只使用到了quplaod命令批量上传，首先我们要创建一个文件，最好是.json后缀的文件，例如我这里创建的是conf.json文件。<br><img src="http://opbae2xuz.bkt.clouddn.com/images/bhlin/2017-05-03-10.png" alt=""></li>
 </ul>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">这里简要说明一下：src_dir：</div><div class="line">   &quot;src_dir&quot;            :   &quot;本地上传的目录&quot;,</div><div class="line">   &quot;access_key&quot;         :   &quot;access_key， 在七牛云的个人中心秘钥管理查看&quot;,</div><div class="line">   &quot;secret_key&quot;         :   &quot;secret_key， 在七牛云的个人中心秘钥管理查看&quot;,</div><div class="line">   &quot;bucket&quot;             :   &quot;这里是上面创建存储空间的bucket&quot;,</div><div class="line">   &quot;up_host&quot;            :   &quot;http://up-z2.qiniu.com 不同地区的上传地址不同&quot;,</div><div class="line">   &quot;zone&quot;               :   &quot;hn 不同地区不同&quot;,</div><div class="line">   &quot;key_prefix&quot;         :   &quot;images/bhlin/ 文件上传后外链默认域名+这里设置的内容+图表名称，组成一个完整的外链&quot;,</div><div class="line">   &quot;ignore_dir&quot;			:	false,</div><div class="line">   &quot;skip_suffixes&quot;      :   &quot;.DS_Store  忽略文件后缀&quot;</div></pre></td></tr></table></figure>
 <p>在conf.json中将这些文件配好了以后，通过下面的命令上传</p>
@@ -428,7 +450,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/工具/" rel="tag"># 工具</a>
+            <a href="/tags/记录/" rel="tag"># 记录</a>
+          
+            <a href="/tags/环境搭建/" rel="tag"># 环境搭建</a>
           
         </div>
       
@@ -536,7 +560,7 @@
             
             <div class="site-state-item site-state-categories">
               <a href="/categories/index.html">
-                <span class="site-state-item-count">1</span>
+                <span class="site-state-item-count">3</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -547,7 +571,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">4</span>
+                <span class="site-state-item-count">5</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -582,7 +606,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#简介"><span class="nav-number">1.</span> <span class="nav-text">简介</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1、搭建github-pages工程"><span class="nav-number">1.1.</span> <span class="nav-text">1、搭建github pages工程</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-1、创建一个仓库"><span class="nav-number">1.1.1.</span> <span class="nav-text">1.1、创建一个仓库</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-2、本地克隆仓库"><span class="nav-number">1.1.2.</span> <span class="nav-text">1.2、本地克隆仓库</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2、安装hexo环境"><span class="nav-number">1.2.</span> <span class="nav-text">2、安装hexo环境</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#2-1、安装Node-js"><span class="nav-number">1.2.1.</span> <span class="nav-text">2.1、安装Node.js</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-2、安装hexo"><span class="nav-number">1.2.2.</span> <span class="nav-text">2.2、安装hexo</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-3、使用hexo"><span class="nav-number">1.2.3.</span> <span class="nav-text">2.3、使用hexo</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#2-3-1-创建hexo初始化文件夹"><span class="nav-number">1.2.3.1.</span> <span class="nav-text">2.3.1 创建hexo初始化文件夹</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-3-2-创建草稿内容"><span class="nav-number">1.2.3.2.</span> <span class="nav-text">2.3.2 创建草稿内容</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-3-3-移动草稿内容到发布目录"><span class="nav-number">1.2.3.3.</span> <span class="nav-text">2.3.3 移动草稿内容到发布目录</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-3-4-直接在发布目录下创建文章"><span class="nav-number">1.2.3.4.</span> <span class="nav-text">2.3.4 直接在发布目录下创建文章</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-4、hexo目录结构"><span class="nav-number">1.2.4.</span> <span class="nav-text">2.4、hexo目录结构</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-5、上传到github工程"><span class="nav-number">1.2.5.</span> <span class="nav-text">2.5、上传到github工程</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#2-5-1、另外一种上传github工程"><span class="nav-number">1.2.5.1.</span> <span class="nav-text">2.5.1、另外一种上传github工程</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-6、hexo常用配置"><span class="nav-number">1.2.6.</span> <span class="nav-text">2.6、hexo常用配置</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#2-6-1、两个-config-yml配置文件"><span class="nav-number">1.2.6.1.</span> <span class="nav-text">2.6.1、两个_config.yml配置文件</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-7、修改主题"><span class="nav-number">1.2.7.</span> <span class="nav-text">2.7、修改主题</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-1、七牛云的图床配置"><span class="nav-number">1.2.8.</span> <span class="nav-text">3.1、七牛云的图床配置</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-2、qshell的使用"><span class="nav-number">1.2.9.</span> <span class="nav-text">3.2、qshell的使用</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考"><span class="nav-number">2.</span> <span class="nav-text">参考</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#简介"><span class="nav-number">1.</span> <span class="nav-text">简介</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#搭建github-pages工程"><span class="nav-number">2.</span> <span class="nav-text">搭建github pages工程</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#创建一个仓库"><span class="nav-number">2.1.</span> <span class="nav-text">创建一个仓库</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#本地克隆仓库"><span class="nav-number">2.2.</span> <span class="nav-text">本地克隆仓库</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#安装hexo环境"><span class="nav-number">3.</span> <span class="nav-text">安装hexo环境</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#安装Node-js"><span class="nav-number">3.1.</span> <span class="nav-text">安装Node.js</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#安装hexo"><span class="nav-number">3.2.</span> <span class="nav-text">安装hexo</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用hexo"><span class="nav-number">3.3.</span> <span class="nav-text">使用hexo</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#创建hexo初始化文件夹"><span class="nav-number">3.3.1.</span> <span class="nav-text">创建hexo初始化文件夹</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#创建草稿内容"><span class="nav-number">3.3.2.</span> <span class="nav-text">创建草稿内容</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#移动草稿内容到发布目录"><span class="nav-number">3.3.3.</span> <span class="nav-text">移动草稿内容到发布目录</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#直接在发布目录下创建文章"><span class="nav-number">3.3.4.</span> <span class="nav-text">直接在发布目录下创建文章</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#hexo目录结构"><span class="nav-number">3.4.</span> <span class="nav-text">hexo目录结构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#上传到github工程"><span class="nav-number">3.5.</span> <span class="nav-text">上传到github工程</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#另外一种上传github工程"><span class="nav-number">3.5.1.</span> <span class="nav-text">另外一种上传github工程</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#hexo常用配置"><span class="nav-number">3.6.</span> <span class="nav-text">hexo常用配置</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#两个-config-yml配置文件"><span class="nav-number">3.6.1.</span> <span class="nav-text">两个_config.yml配置文件</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#修改主题"><span class="nav-number">3.7.</span> <span class="nav-text">修改主题</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#七牛云的图床配置"><span class="nav-number">4.</span> <span class="nav-text">七牛云的图床配置</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#qshell的使用"><span class="nav-number">4.1.</span> <span class="nav-text">qshell的使用</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考"><span class="nav-number">5.</span> <span class="nav-text">参考</span></a></li></ol></div>
             
 
           </div>
