@@ -189,7 +189,7 @@ body {
   font-size: 14px;
   line-height: 2;
   color: #555;
-  background: #f5f7f9;
+  background: rgba(245,247,249,0);
 }
 @media (max-width: 767px) {
   body {
@@ -1357,7 +1357,7 @@ pre .javascript .function {
   font-size: 16px;
 }
 .posts-expand .post-meta {
-  margin: 3px 0 60px 0;
+  margin: 3px 0 20px 0;
   color: #999;
   font-family: 'Lato', "PingFang SC", "Microsoft YaHei", sans-serif;
   font-size: 12px;
@@ -1505,7 +1505,7 @@ pre .javascript .function {
 }
 .posts-expand .post-eof {
   display: block;
-  margin: 80px auto 60px;
+  margin: 40px auto 30px;
   width: 8%;
   height: 1px;
   background: #ccc;
@@ -1695,7 +1695,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #08afb8;
+  background: #46cf3e;
 }
 .links-of-blogroll {
   font-size: 13px;
@@ -2501,7 +2501,7 @@ pre .javascript .function {
   overflow: hidden;
   padding: 0;
   width: 240px;
-  background: #fff;
+  background: rgba(255,255,255,0.75);
   box-shadow: initial;
   border-radius: initial;
 }
@@ -2560,7 +2560,7 @@ pre .javascript .function {
   box-sizing: border-box;
   padding: 40px;
   width: 700px;
-  background: #fff;
+  background: rgba(255,255,255,0.5);
   min-height: 700px;
   box-shadow: initial;
   border-radius: initial;
@@ -2585,7 +2585,7 @@ pre .javascript .function {
   float: left;
   margin-top: 300px;
   width: 240px;
-  background: #f5f7f9;
+  background: rgba(245,247,249,0);
   box-shadow: none;
 }
 @media (min-width: 768px) and (max-width: 991px) {
@@ -2742,7 +2742,7 @@ pre .javascript .function {
   box-sizing: border-box;
   width: 240px;
   color: #555;
-  background: #fff;
+  background: rgba(255,255,255,0.5);
   box-shadow: initial;
   border-radius: initial;
 }
