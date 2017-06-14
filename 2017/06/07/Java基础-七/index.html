@@ -1,0 +1,833 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Java," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.1" />
+
+
+
+
+
+
+<meta name="description" content="Annotation(注解)Annotation能被用来为程序元素(类、方法、成员变量等)设置元数据。Annotation不影响程序代码的执行，无论增加、删除Annotation。如果希望程序中Annotation在运行时起一定的租用，只有通过某种配套的工具对Annotation中的信息进行访问和处理，访问和处理Annotation的工具统称APT(Annotation Processing To">
+<meta name="keywords" content="Java">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Java基础(七)">
+<meta property="og:url" content="http://yoursite.com/2017/06/07/Java基础-七/index.html">
+<meta property="og:site_name" content="啖火">
+<meta property="og:description" content="Annotation(注解)Annotation能被用来为程序元素(类、方法、成员变量等)设置元数据。Annotation不影响程序代码的执行，无论增加、删除Annotation。如果希望程序中Annotation在运行时起一定的租用，只有通过某种配套的工具对Annotation中的信息进行访问和处理，访问和处理Annotation的工具统称APT(Annotation Processing To">
+<meta property="og:updated_time" content="2017-06-07T08:18:28.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Java基础(七)">
+<meta name="twitter:description" content="Annotation(注解)Annotation能被用来为程序元素(类、方法、成员变量等)设置元数据。Annotation不影响程序代码的执行，无论增加、删除Annotation。如果希望程序中Annotation在运行时起一定的租用，只有通过某种配套的工具对Annotation中的信息进行访问和处理，访问和处理Annotation的工具统称APT(Annotation Processing To">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2017/06/07/Java基础-七/"/>
+
+
+
+
+
+  <title>Java基础(七) | 啖火</title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  <div style="display: none;">
+  	<script src="https://s19.cnzz.com/z_stat.php?id=1261967319&web_id=1261967319" language="JavaScript"></script>
+  </div>
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">啖火</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <h1 class="site-subtitle" itemprop="description"></h1>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/06/07/Java基础-七/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="啖火">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://opbae2xuz.bkt.clouddn.com/images/bhlin/ピカチュウ.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="啖火">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+            
+            
+              
+                Java基础(七)
+              
+            
+          </h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-06-07T13:06:27+08:00">
+                2017-06-07
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Java/" itemprop="url" rel="index">
+                    <span itemprop="name">Java</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a class="cloud-tie-join-count" href="/2017/06/07/Java基础-七/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count join-count" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="Annotation-注解"><a href="#Annotation-注解" class="headerlink" title="Annotation(注解)"></a>Annotation(注解)</h2><p>Annotation能被用来为程序元素(类、方法、成员变量等)设置元数据。Annotation不影响程序代码的执行，无论增加、删除Annotation。如果希望程序中Annotation在运行时起一定的租用，只有通过某种配套的工具对Annotation中的信息进行访问和处理，访问和处理Annotation的工具统称APT(Annotation Processing Tool)。<br>Java提供了5个基本的Annotation的用法——使用Annotation时要在其前面增加@符号，并把该Annotation当成一个修饰符使用。5个基本的Annotation如下：</p>
+<blockquote>
+<ol>
+<li>@Override</li>
+<li>@Deprecated</li>
+<li>@SuppressWarnings</li>
+<li>@safeVarargs: Java7新增</li>
+<li>@FunctionalInterface: Java8新增</li>
+</ol>
+</blockquote>
+<h3 id="Override注解的功能和用法"><a href="#Override注解的功能和用法" class="headerlink" title="@Override注解的功能和用法"></a>@Override注解的功能和用法</h3><p>@Override指定方法覆载的，强制子类必须覆盖父类的方法<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Fruit</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">info</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="comment">//....</span></div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Apple</span> <span class="keyword">extends</span> <span class="title">Fruit</span> </span>&#123;</div><div class="line">    <span class="comment">//使用Override指定下面方法必须重写父类方法</span></div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">info</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="comment">//....</span></div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h3 id="Deprecated注解功能和用法"><a href="#Deprecated注解功能和用法" class="headerlink" title="@Deprecated注解功能和用法"></a>@Deprecated注解功能和用法</h3><p>@Deprecated表示某个程序元素(类、方法等)已过时，当其他程序使用已过时的类、方法时，编译器将会给出警告。<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Fruit</span> </span>&#123;</div><div class="line">    <span class="meta">@Deprecated</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">info</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="comment">//....</span></div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"><span class="comment">//调用info()方法时会被编译器警告</span></div><div class="line"><span class="keyword">new</span> Fruit().info();</div></pre></td></tr></table></figure></p>
+<h3 id="SuppressWarnings注解的功能和用法"><a href="#SuppressWarnings注解的功能和用法" class="headerlink" title="@SuppressWarnings注解的功能和用法"></a>@SuppressWarnings注解的功能和用法</h3><p>@SuppressWarnings指示该注解修饰的程序元素(以及该程序元素中的所有子元素)取消显示指定的编译器警告。<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//关闭整个类里的编译器警告</span></div><div class="line"><span class="meta">@SuppressWarnings</span>（value=<span class="string">"unchecked"</span>）</div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SupperssWarningsTest</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</div><div class="line">        <span class="comment">//下面会发生编译器警告，但是上面注解修饰因此看不到编译器警告</span></div><div class="line">        List&lt;String&gt; myList = <span class="keyword">new</span> ArrayList();</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>下面代码可导致运行时异常，当把一个不带泛型的对象赋给一个带泛型的变量时，往往就会发生这种错误，Java把这种错误的原因称为”堆污染”。但有时候开发者不希望看到这个警告，则可以使用如下三种方式”抑制”这个警告。</p>
+<blockquote>
+<ol>
+<li>使用@SafeVarargs修饰引发警告的方法或构造器</li>
+<li>使用@SuppressWarnings修饰</li>
+<li>编译时使用-Xlint:varargs选项</li>
+</ol>
+</blockquote>
+<h3 id="FunctionalInterface注解的功能和用法"><a href="#FunctionalInterface注解的功能和用法" class="headerlink" title="@FunctionalInterface注解的功能和用法"></a>@FunctionalInterface注解的功能和用法</h3><p>Java8规定：如果接口中只有一个抽象方法，该接口就是函数式接口。@FunctionalInterface就是用来指定某个接口必须是函数式接口。如果使用@FunctionalInterface修饰的接口包含两个及以上会编译出错。</p>
+<h3 id="Retention注解的功能和用法"><a href="#Retention注解的功能和用法" class="headerlink" title="@Retention注解的功能和用法"></a>@Retention注解的功能和用法</h3><p>@Retention只能用于修饰Annotation定义，用于指定被修饰的Annotation可以保留多长时间。@Retention的value成员变量智只能是如下三个:</p>
+<blockquote>
+<ol>
+<li>RetentionPolicy.CLASS: 编译器把Annotation记录在class文件中。运行Java程序JVM不可获取Annotation信息。这是默认值</li>
+<li>RetentionPolicy.RUNTIME:  编译器把Annotation记录在class文件中。运行Java程序JVM可获取Annotation信息。</li>
+<li>RetentionPolicy.SOURCE: 编译器把Annotation只保留在源代码中。编译器直接丢弃这种Annotation。</li>
+</ol>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//定义下面Testable Annotation保留到运行时</span></div><div class="line"><span class="meta">@Retention</span>(value=RetentionPolicy.RUNTIME)</div><div class="line"><span class="keyword">public</span> <span class="meta">@interface</span> Testable&#123;&#125;</div></pre></td></tr></table></figure>
+<h3 id="Target注解的功能和用法"><a href="#Target注解的功能和用法" class="headerlink" title="@Target注解的功能和用法"></a>@Target注解的功能和用法</h3><p>@Target只能用于修饰Annotation定义,用于指定被修饰的Annotation能用于修饰哪些程序单元。该成员变量的值如下：</p>
+<blockquote>
+<ol>
+<li>ElementType.ANNOTATION_TYPE:该Annotation只能修饰Annotation</li>
+<li>ElementType.CONSTRUCTOR:该Annotation只能修饰构造器</li>
+<li>ElementType.FIELD:该Annotation只能修饰成员变量</li>
+<li>ElementType.LOCAL_VARIABLE:该Annotation只能修饰局部变量</li>
+<li>ElementType.METHOD:该Annotation只能修饰方法定义</li>
+<li>ElementType.PACKAGE:该Annotation只能修饰包定义</li>
+<li>ElementType.PARAMETER:该Annotation只能修饰参数</li>
+<li>ElementType.TYPE:该Annotation只能修饰类、接口或枚举定义</li>
+<li>ElementType.PARAMETER:该Annotation只能修饰参数</li>
+</ol>
+</blockquote>
+<h3 id="Documented注解的功能和用法"><a href="#Documented注解的功能和用法" class="headerlink" title="@Documented注解的功能和用法"></a>@Documented注解的功能和用法</h3><p>@Documented用于指定该元Annotation修饰的Annotation类将被javadoc工具类提取成文档，如果定义Annotation类使用了@Documented修饰，则所有使用该Annotation修饰的程序元素的API文档都会包含该Annotation说明</p>
+<h3 id="Inherited注解的功能和用法"><a href="#Inherited注解的功能和用法" class="headerlink" title="@Inherited注解的功能和用法"></a>@Inherited注解的功能和用法</h3><p>@Inherited用于指定该元Annotation修饰的Annotation类将具有继承性——如果某个类使用@Xxx注解修饰，则其子类将自动被@Xxx修饰。</p>
+<h3 id="自定义注解"><a href="#自定义注解" class="headerlink" title="自定义注解"></a>自定义注解</h3><p>定义新的Annotation类型使用@interface关键字<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//定义一个简单的Annotation类型</span></div><div class="line"><span class="keyword">public</span> <span class="meta">@interface</span> Test &#123;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">//可以在程序任何地方使用</span></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Myclass</span> </span>&#123;</div><div class="line">    <span class="meta">@Test</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">info</span><span class="params">()</span> </span>&#123;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>Annotation还可以带成员变量，Annotation成员变量在Annotation定义中以无形参的方法形式声明，其方法名和返回值定义了该成员变量的名字和类型。<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="meta">@interface</span> Test &#123;</div><div class="line">    <span class="function">String <span class="title">name</span><span class="params">()</span></span>;</div><div class="line">    <span class="comment">//设置默认值</span></div><div class="line">    <span class="function"><span class="keyword">int</span> <span class="title">age</span><span class="params">()</span> <span class="keyword">default</span> 32</span>;</div><div class="line">    </div><div class="line">&#125;</div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Myclass</span> </span>&#123;</div><div class="line">    <span class="meta">@Test</span>(name=<span class="string">"a"</span>, age=<span class="number">18</span>)</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">info</span><span class="params">()</span> </span>&#123;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>根据Annotation是否可以包含成员变量可以把Annotation分成两类：标记Annotation(没有定义成员变量的Annotation)，元数据Annotation(包含成员变量的Annotation)</p>
+<h3 id="提取注解信息"><a href="#提取注解信息" class="headerlink" title="提取注解信息"></a>提取注解信息</h3><p>使用Annotation修饰了类、方法、成员变量等成员后，这些Annotation自己不生效，必须有开发者提供相应的工具来提取并处理Annotation信息。<br>Java5在java.lang.reflect包下新增了AnnotatedElement接口，该接口可以接受注解的程序元素。该接口主要有如下几个实现类：</p>
+<blockquote>
+<ol>
+<li>Class: 类定义</li>
+<li>Constructor: 构造器定义</li>
+<li>Field:类的成员变量定义</li>
+<li>Method:类的方法定义</li>
+<li>Package:类的包定义</li>
+</ol>
+</blockquote>
+<p>java.lnag.reflect包下提供了一些实现反射功能的工具类。只有当Annotation使用了运行时可见的修饰，JVM才会在装载*.class文件时读取保存在class文件中的Annotation。<br>AnnotationElement接口是所有程序元素的负借口，所以程序通过反射获取某个类的AnnotationElement对象之后，程序就可以滴啊用该方法的如下几个方法来访问Annotation信息；</p>
+<blockquote>
+<ol>
+<li><a extends="" annotation=""> A getAnnotation(Class<a> annotationClass): 返回程序元素上存在的、指定类型的注解，不存在返回null</a></a></li>
+<li><a extends="" annotation=""> A getDeclaredAnnotation(Class<a> annotationClass): Java8新增方法，该方法尝试获取直接修饰该程序元素、指定类型的Annotation。</a></a></li>
+<li>Annotation[] getAnnotations(): 返回程序元素上存在的所有注解</li>
+<li>Annotation[] getDeclaredAnnotations():返回直接修饰该元素的所有Annotation</li>
+<li>boolean isAnnotationPresent(Class&lt;? extends Annotation&gt; annotationClass): 判断该程序元素上是否存在指定类型的注解</li>
+<li><a extends="" annotation=""> A[] getAnnotationByType(Class<a> annotationClass):该方法与getAnnotation类似，Java8增加了重复注解功能，使用该方法修饰该程序元素、指定类型的多个Annotation</a></a></li>
+<li><a extends="" annotation=""> A[] getDeclaredAnnotationByType(Class<a> annotationClass):该方法与getDeclaredAnnotation类似，Java8增加了重复注解功能，使用该方法修饰该程序元素、指定类型的多个Annotation</a></a></li>
+</ol>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//获取Test类的info方法的所有注解</span></div><div class="line">Annotation[] aArray = Class.forName(<span class="string">"Test"</span>).getMethod(<span class="string">"info"</span>).getAnnotations();</div><div class="line"><span class="comment">//遍历注解</span></div><div class="line"><span class="keyword">for</span> (Annotation an : aArray) &#123;</div><div class="line">    <span class="keyword">if</span> (an <span class="keyword">instanceof</span> Test) &#123;</div><div class="line">        <span class="comment">//将an强制转换成Test</span></div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<!--### 重复注解
+
+### Type Annotation
+-->
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Java/" rel="tag"># Java</a>
+          
+        </div>
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/06/06/Java基础-六/" rel="next" title="Java基础(六)">
+                <i class="fa fa-chevron-left"></i> Java基础(六)
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/06/07/Java基础-八/" rel="prev" title="Java基础(八)">
+                Java基础(八) <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div id="cloud-tie-wrapper" class="cloud-tie-wrapper"></div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="http://opbae2xuz.bkt.clouddn.com/images/bhlin/ピカチュウ.jpeg"
+               alt="啖火" />
+          <p class="site-author-name" itemprop="name">啖火</p>
+           
+              <p class="site-description motion-element" itemprop="description"></p>
+           
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">16</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">5</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">7</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Annotation-注解"><span class="nav-number">1.</span> <span class="nav-text">Annotation(注解)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Override注解的功能和用法"><span class="nav-number">1.1.</span> <span class="nav-text">@Override注解的功能和用法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Deprecated注解功能和用法"><span class="nav-number">1.2.</span> <span class="nav-text">@Deprecated注解功能和用法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#SuppressWarnings注解的功能和用法"><span class="nav-number">1.3.</span> <span class="nav-text">@SuppressWarnings注解的功能和用法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#FunctionalInterface注解的功能和用法"><span class="nav-number">1.4.</span> <span class="nav-text">@FunctionalInterface注解的功能和用法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Retention注解的功能和用法"><span class="nav-number">1.5.</span> <span class="nav-text">@Retention注解的功能和用法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Target注解的功能和用法"><span class="nav-number">1.6.</span> <span class="nav-text">@Target注解的功能和用法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Documented注解的功能和用法"><span class="nav-number">1.7.</span> <span class="nav-text">@Documented注解的功能和用法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Inherited注解的功能和用法"><span class="nav-number">1.8.</span> <span class="nav-text">@Inherited注解的功能和用法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#自定义注解"><span class="nav-number">1.9.</span> <span class="nav-text">自定义注解</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#提取注解信息"><span class="nav-number">1.10.</span> <span class="nav-text">提取注解信息</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">啖火</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+  
+  <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.1"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.1"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+    
+    <script>
+      var cloudTieConfig = {
+        url: document.location.href, 
+        sourceId: "",
+        productKey: "caf96788347d4118a95af2385c2d6496",
+        target: "cloud-tie-wrapper"
+      };
+    </script>
+    <script src="https://img1.cache.netease.com/f2e/tie/yun/sdk/loader.js"></script>
+  
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

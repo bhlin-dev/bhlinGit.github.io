@@ -1,0 +1,1058 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Java," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.1" />
+
+
+
+
+
+
+<meta name="description" content="Java基础类库Oracle为Java提供了丰富的基础类库。Java提供了String、StringBuffer和StringBuilder来处理字符串，还提供了Date和Calendar来处理日期、时间,其中Date是一个已经过时的API，推荐使用Calendar来处理时间和日期。在JDK1.4后Java增加了对正则表达式的支持，新增Pattern和Matcher两个类，并让String类增加了">
+<meta name="keywords" content="Java">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Java基础(四)">
+<meta property="og:url" content="http://yoursite.com/2017/06/02/Java基础-四/index.html">
+<meta property="og:site_name" content="啖火">
+<meta property="og:description" content="Java基础类库Oracle为Java提供了丰富的基础类库。Java提供了String、StringBuffer和StringBuilder来处理字符串，还提供了Date和Calendar来处理日期、时间,其中Date是一个已经过时的API，推荐使用Calendar来处理时间和日期。在JDK1.4后Java增加了对正则表达式的支持，新增Pattern和Matcher两个类，并让String类增加了">
+<meta property="og:image" content="http://opbae2xuz.bkt.clouddn.com/images/bhlin/2017-06-05-01.png">
+<meta property="og:image" content="http://opbae2xuz.bkt.clouddn.com/images/bhlin/2017-06-05-02.png">
+<meta property="og:updated_time" content="2017-06-05T09:28:12.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Java基础(四)">
+<meta name="twitter:description" content="Java基础类库Oracle为Java提供了丰富的基础类库。Java提供了String、StringBuffer和StringBuilder来处理字符串，还提供了Date和Calendar来处理日期、时间,其中Date是一个已经过时的API，推荐使用Calendar来处理时间和日期。在JDK1.4后Java增加了对正则表达式的支持，新增Pattern和Matcher两个类，并让String类增加了">
+<meta name="twitter:image" content="http://opbae2xuz.bkt.clouddn.com/images/bhlin/2017-06-05-01.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2017/06/02/Java基础-四/"/>
+
+
+
+
+
+  <title>Java基础(四) | 啖火</title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  <div style="display: none;">
+  	<script src="https://s19.cnzz.com/z_stat.php?id=1261967319&web_id=1261967319" language="JavaScript"></script>
+  </div>
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">啖火</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <h1 class="site-subtitle" itemprop="description"></h1>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/06/02/Java基础-四/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="啖火">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://opbae2xuz.bkt.clouddn.com/images/bhlin/ピカチュウ.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="啖火">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+            
+            
+              
+                Java基础(四)
+              
+            
+          </h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-06-02T09:57:56+08:00">
+                2017-06-02
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Java/" itemprop="url" rel="index">
+                    <span itemprop="name">Java</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a class="cloud-tie-join-count" href="/2017/06/02/Java基础-四/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count join-count" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="Java基础类库"><a href="#Java基础类库" class="headerlink" title="Java基础类库"></a>Java基础类库</h2><p>Oracle为Java提供了丰富的基础类库。Java提供了String、StringBuffer和StringBuilder来处理字符串，还提供了Date和Calendar来处理日期、时间,其中Date是一个已经过时的API，推荐使用Calendar来处理时间和日期。在JDK1.4后Java增加了对正则表达式的支持，新增Pattern和Matcher两个类，并让String类增加了正则表达式的支持。Java提供了国际化支持，使用Local对象封装一个国家、语言环境，在使用ResourceBundle根据Local加载语言资源包。</p>
+<h3 id="Java程序的参数"><a href="#Java程序的参数" class="headerlink" title="Java程序的参数"></a>Java程序的参数</h3><p>Java程序的入口-main()方法<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;...&#125;</div></pre></td></tr></table></figure></p>
+<p>1、public修饰符: Java类有JVM调用，为了让JVM可以自由调用main方法，所以使用pulibc修饰符<br>2、static修饰符: JVM调用主方法时，不会创建该主类的对象。JVM直接通过改了调用主方法。<br>3、void返回值: 主方法被JVM调用，该方法返回值将返回给JVM没有任何意义。<br>4、main方法的形参: main()方法由JVM调用，args形参有JVM赋值，可以在运行程序前的时候为args添加参数。</p>
+<h3 id="程序运行过程中接收用户输入"><a href="#程序运行过程中接收用户输入" class="headerlink" title="程序运行过程中接收用户输入"></a>程序运行过程中接收用户输入</h3><p>Scanner可以获取用户的键盘输入，可以从文件、输入流、字符串中解析出基本类型值和字符串。Scanner提供了多个构造器，不同的构造器可以接受文件、输入流、字符串作为数据源。Scanner默认空白(空格、tab空白、回车)作为多个输入的分隔符。<br>Scanner主要提供了两个方法扫描输入:</p>
+<ul>
+<li>hasNetXxx():是否还有下一个输入项</li>
+<li>nextXxx(): 获取下一个输入项</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">Scanner sc = <span class="keyword">new</span> Scanner(System.in);</div><div class="line"><span class="comment">//只把回车作为分隔符</span></div><div class="line">sc.useDelimiter(<span class="string">"\n"</span>);</div><div class="line"><span class="keyword">while</span>(sc.hasNext()) &#123;</div><div class="line">    System.out.println(<span class="string">"键盘输入的内容:"</span> + sc.next());</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="System类相关用法"><a href="#System类相关用法" class="headerlink" title="System类相关用法"></a>System类相关用法</h3><p>System类代表当前Java程序的运行平台，不能创建System对象，可以调用一些类变量和类方法。System类可以访问环境变量、系统属性的方法，还提供了加载文件和动态链接库的方法。System类提供两个获取系统时间的方法:currentTimeMillis()和nanoTime() 返回值都是long类型，距离1970年1月1日的时间差。两者区别:前者是毫秒单位，后者是纳秒单位。System类的in、out和err分别代表标准输入、标准输出和错误输出流，并提供setIn()、setOut()、setErr()改变系统的标准输入输出和错误输出流。System类还提供了一个idengtiyHashCode(Object x)方法，获取x的hashCode值，当x类重写hashCode()方法，依旧可以获取到根据该对象地址计算的hashCode值。<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//获取所有的环境变量</span></div><div class="line">Map&lt;String, String&gt; env = System.getenv();</div><div class="line"><span class="comment">//获取所有的系统属性</span></div><div class="line">Properties props = System.getProperties();</div></pre></td></tr></table></figure></p>
+<blockquote>
+<p>System类提供通知垃圾回收的gc()方法和通知系统进行资源清理的runFinalization()方法。</p>
+</blockquote>
+<h3 id="Runtime类的相关用法"><a href="#Runtime类的相关用法" class="headerlink" title="Runtime类的相关用法"></a>Runtime类的相关用法</h3><p>Runtime类代表Java程序的运行时环境，每个Java程序都有一个与之对应的Runtime实例，应用程序不能创建Runtime实例，可以通过getRuntime()获取Rumtime对象。Runtime类可以访问JVM的相关信息，并且还可以直接单独启动一个进行运行操作系统的命令。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">Runtime rt = Runtime.getRuntime();</div><div class="line"><span class="comment">//处理器数量</span></div><div class="line">rt.availableProcessors();</div><div class="line"><span class="comment">//空闲内存数</span></div><div class="line">rt.freeMemory();</div><div class="line"><span class="comment">//总内存数</span></div><div class="line">rt.totalMemory();</div><div class="line"><span class="comment">//可用最大内存数</span></div><div class="line">rt.maxMemory();</div><div class="line"><span class="comment">//执行操作系统命令</span></div><div class="line">rt.exec(<span class="string">"notepad.exe"</span>);</div></pre></td></tr></table></figure>
+<blockquote>
+<p>Runtime类也提供通知垃圾回收的gc()方法和通知系统进行资源清理的runFinalization()方法。并提供load(Stirng filename)和loadLibrary(String libname)方法加载文件和动态链接库。</p>
+</blockquote>
+<h3 id="Object与Objects类"><a href="#Object与Objects类" class="headerlink" title="Object与Objects类"></a>Object与Objects类</h3><p>Object是所有类、数组的父类。当一个类没有使用extends显示指定父类，则该类默认继承Object父类。Object提供如下几个常用方法:<br>&emsp; 1. &nbsp;boolean equals(Object obj):判断对象与该对象是否相等。<br>&emsp; 2. &nbsp;protected void finalize(): 当系统没有引用变量引用该对象是，垃圾回收期调用此方法来清理该对象的资源。<br>&emsp; 3. &nbsp;Class&lt;?&gt; getClass():返回该对象的运行时类。<br>&emsp; 4. &nbsp;int hashCode(): 返回改对象的hashCode()值。Object类的hashCode()方法是根据改对象的地址计算。<br>&emsp; 5. &nbsp;String toString(): 返回该对象的字符串表示。</p>
+<p>除此之外还提供了wait()、notify()、notifyAll()方法，可以控制线程的暂停和运行。Java还提供了一个clone()方法，该方法被protected修饰，只能被子类重写或调用。自定义克隆步骤:<br>&emsp; 1. &nbsp;自定义类实现Cloneable接口；<br>&emsp; 2. &nbsp;自定义类实现clone()方法；<br>&emsp; 3. &nbsp;实现clone()方法是通过super.clone();调用Ojbect实现clone()方法得到该对象的副本;</p>
+<p>Objects工具类，提供了一些工具方法操作对象。这些方法大多是”空指针”安全的。</p>
+<h3 id="使用String、StringBuffer、StringBuilder类"><a href="#使用String、StringBuffer、StringBuilder类" class="headerlink" title="使用String、StringBuffer、StringBuilder类"></a>使用String、StringBuffer、StringBuilder类</h3><p>Java提供String、StringBuffer、StringBuilder封装字符串，并提供一系列方法操作字符串对象。<br>String类是不可变类。StringBuffer对象代表是可变的字符串。StringBuilder也代表字符串对象和StringBuffer基本相同，唯一不同的是StringBuffer是线程安全的，而StringBuilder没有实现线程安全功能。</p>
+<blockquote>
+<ol>
+<li>String():创建一个包含0个字符串序列的String对象;</li>
+<li>String(byte[] bytes, Charset charset):使用指定字符集将byte[]数组解码成一个新的字符串;</li>
+<li>String(byte[] bytes, int offset, int length, Charset charset):使用指定字符集将byte[]数组从offset开始、长度为length的子数组解码成一个新的字符串;</li>
+<li>String(byte[] bytes, String charsetName):使用指定字符集将byte[]数组解码成一个新的字符串;</li>
+<li>String(byte[] values, int offset, int count):将指定字符数组从offset开始、长度为length的字符元素连缀成字符串。</li>
+<li>String(String original):根据字符串常量创建一个String对象</li>
+<li>String(StringBuffer buffer):根据StringBuffer对象创建响应的String对象</li>
+<li>String(StringBuilder builder):根据StringBuilder对象创建响应的String对象</li>
+<li>char charAt(int index):获取字符串指定位置的字符</li>
+<li>int compareTo(String anotherString):比较两个字符串的大小</li>
+<li>String concat(String str): 将该String对象与str连接在一起。</li>
+<li>boolean contentEquals(StringBuffer sb):与sb进行比较，如果字符串相同返回true</li>
+<li>static String copyValueOf(char[] data): 将字符数组连缀成字符串</li>
+<li>boolean endsWith(String suffix): 该对象是否已suffix结尾</li>
+<li>booean equals(Object anObject): 该字符串已指定对象比较是否相同</li>
+<li>boolean equalsIgnoreCase(String str):与前一个方法相似，只是忽略大小写</li>
+<li>byte[] getBytes(): 将该String对象转换成byte数组</li>
+<li>void getChars(int srcBegin, int srcEnd, char[] dst, int dstBegin): 将字符串从srcBein开始到srcEnd结束的字符复制到dst字符数组中，其中dstBegin为目标字符数组的起始赋值位置。</li>
+<li>int indexOf(int ch):找出ch字符第一次出现的下标</li>
+<li>int indexOf(int ch, int fromIndex):找出ch字符在该字符串中从fromIndex开始第一次出现的下标</li>
+<li>int indexOf(String str):找出str字符串在该字符串第一次出现的下标</li>
+<li>int indexOf(String str, int fromIndex):找出str字符串在该字符串中从fromIndex开始第一次出现的下标</li>
+<li>int lastIndex(int ch):找出ch字符最后一次出现的下标</li>
+<li>int lastIndex(int ch, int fromIndex):找出ch字符在该字符串中从fromIndex开始最后一次出现的下标</li>
+<li>int lastIndex(String str):找出str字符串在该字符串最后一次出现的下标</li>
+<li>int lastIndex(String str, int fromIndex):找出str字符串在该字符串中从fromIndex开始最后一次出现的下标</li>
+<li>int length(): 返回当前字符串的长度</li>
+<li>String replace(char oldChar, char newChar): 将字符串中的第一个oldChar替换成newChar</li>
+<li>boolean startsWith(String prefix): 该String对象是否以prefix开始</li>
+<li>boolean startsWith(String prefix, int toffset): 该String对象从toffset位置算起是否已prefix开始</li>
+<li>String substring(int beginIndex):获取从beginIndex位置开始到结束的子字符串</li>
+<li>String substring(index beginIndex, int endIndex): 获取从beginIndex到endIndex位置的子字符串</li>
+<li>char[] toCharArray():将String对象转换成char数组</li>
+<li>String toLowerCase():将字符串转成小写</li>
+<li>String toUpperCase():将字符串转成大写</li>
+</ol>
+</blockquote>
+<h3 id="使用Math类进行数学计算"><a href="#使用Math类进行数学计算" class="headerlink" title="使用Math类进行数学计算"></a>使用Math类进行数学计算</h3><p>Java对于复杂的数学运算提供了Math工具类来完成这些运算。具体方法可查看API.</p>
+<h3 id="使用BigDecimal保存精确浮点数"><a href="#使用BigDecimal保存精确浮点数" class="headerlink" title="使用BigDecimal保存精确浮点数"></a>使用BigDecimal保存精确浮点数</h3><p>float、double两种基本浮点类型容易引起精度丢失。为了能精确表示，计算浮点数，Java提供BigDecimal类。BigDecimal提供了加、减、乘、除基本运算。不建议使用BigDecimal(double val)构造器，会产生一定的不可预知性。<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//0.05 + 0.01 = 0.0600000000000005</span></div><div class="line">System.out.println(<span class="string">"0.05 + 0.01 = "</span> + (<span class="number">0.05</span> + <span class="number">0.01</span>));</div><div class="line">BigDecimal f1 = <span class="keyword">new</span> BigDecimal(<span class="string">"0.05"</span>);</div><div class="line">BigDecimal f2 = <span class="keyword">new</span> BigDecimal(<span class="string">"0.01"</span>);</div><div class="line"><span class="comment">//0.05 + 0.01 = 0.06</span></div><div class="line">System.out.println(<span class="string">"0.05 + 0.01 = "</span> + f1.add(f2));</div></pre></td></tr></table></figure></p>
+<h3 id="使用Random类生成各种伪随机数"><a href="#使用Random类生成各种伪随机数" class="headerlink" title="使用Random类生成各种伪随机数"></a>使用Random类生成各种伪随机数</h3><p>Random类专门生成伪随机数,他有两个构造器一个构造器默认使用当前时间，另一个构造器显示传入一个long型的种子。如果种子相同，对于同样顺序的调用方法，会产生相同的数字序列。ThreadLocalRandom类是Java7新增的类，用于在并发环境下减少多线程资源竞争，保证线程安全性。<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">Random rand = <span class="keyword">new</span> Random();</div><div class="line">rand.nextBoolean();</div><div class="line">rand.nextDouble();</div><div class="line">rand.nextInt();</div></pre></td></tr></table></figure></p>
+<h3 id="Date、Calendar的用法及之间的联系"><a href="#Date、Calendar的用法及之间的联系" class="headerlink" title="Date、Calendar的用法及之间的联系"></a>Date、Calendar的用法及之间的联系</h3><p>Java提供了Date和Calendar用于处理日期、时间的类，包括创建日期、事件对象、获取系统当前日期、时间等操作。Date无法实现国际化。<br>Date类处理日期和时间，Date对象既包含日期也包含时间。Date提供6个构造器，其中4个已过期，剩下两个构造器分别是: </p>
+<ul>
+<li>Date(): 生成一个当前日期时间的Date对象。该构造器在底层调用System.currentTimeMillis()获得long整数作为日期参数。</li>
+<li>Date(long date):根据指定的long生成一个Date对象，参数表示创建的Date对象距离1970年的时间差，以毫秒作为计时单位。</li>
+</ul>
+<p>如果需要对日期、时间进行加减运算或获取指定时间的年月日时分秒信息，可使用Calendar工具类。<br>Calendar是一个抽象类，它用于表示日历。Java本身提供了一个GregorianCalendar类，代表公历。<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">Calendar calendar = Calendar.getInstance();</div><div class="line"><span class="comment">//从Calendar对象中获取Date对象</span></div><div class="line">Date date = calendar.getTime();</div><div class="line"></div><div class="line">Calendar calendar = Calendar.getInstance();</div><div class="line"><span class="comment">//从Calendar对象中设置Date</span></div><div class="line">calendar.setTime(date);</div></pre></td></tr></table></figure></p>
+<p>Calendar类提供了大量访问、修改日期时间的方法，常用方法如下:</p>
+<ul>
+<li>void add(int field, int amount): 根据日历规则，为给定日历字段添加或减去指定的时间量</li>
+<li>int get(int field): 返回指定日历字段的值</li>
+<li>int getActualMaximum(int field): 返回指定日历字段可能拥有最大值</li>
+<li>int getActualMinimum(int field): 返回指定日历字段可能拥有最小值</li>
+<li>void roll(int field, int amount): 与add()方法类似，区别不会向上一个字段进位</li>
+<li>void set(int field, int value): 将给定日历字段设置为定制</li>
+<li>void set(int year, int month, int date): 设置Calendar对象的年、月、日</li>
+<li>void set(int year, int month, int date, int hourOfDay, int minute, int second): 设置Calendar对象的年、月、日、时、分、秒</li>
+</ul>
+<h3 id="通过String类使用正则表达式"><a href="#通过String类使用正则表达式" class="headerlink" title="通过String类使用正则表达式"></a>通过String类使用正则表达式</h3><p>正则表达式是一个强大的字符串处理工具，可以对字符串进行查找、提取、分割、替换等操作。Stirng类提供如下几个特殊方法：</p>
+<ul>
+<li>boolean matches(String regex): 判断字符串是否匹配指定的正则表达式</li>
+<li>String replaceAll(String regex, String replacement): 将匹配regex的子串替换成replacement</li>
+<li>String replaceFirst(String regex, String replacement): 将字符串第一个匹配regex的子串替换成replacement</li>
+<li>String[] split(String regex): 以regex作为分隔符，分割成多个子串</li>
+</ul>
+<p>使用正则表达式：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">Pattern p = Pattern.compile(<span class="string">"a*b"</span>);</div><div class="line">Matcher m = p.matcher(<span class="string">"aaaaaab"</span>);</div><div class="line"><span class="keyword">boolean</span> b = m.matches();</div></pre></td></tr></table></figure></p>
+<p>Matcher类提供如下常用的方法：</p>
+<ul>
+<li>find(): 返回目标字符串中是否包含与Pattern匹配的字符串</li>
+<li>group(): 返回上一次与Pattern匹配的子串</li>
+<li>start(): 返回上一次与Pattern匹配的子串在目标字符串的开始位置</li>
+<li>end(): 返回上一次与Pattern匹配的子串在目标字符串的结束位置+1</li>
+<li>lookingAt(): 返回目标字符串前面部分与Pattern是否匹配</li>
+<li>matches(): 返回整个目标字符串与Pattern是否匹配</li>
+<li>reseet():将现有的Matcher对象应用于一个新的字符序列。</li>
+</ul>
+<h3 id="使用NumberFormat格式化数字"><a href="#使用NumberFormat格式化数字" class="headerlink" title="使用NumberFormat格式化数字"></a>使用NumberFormat格式化数字</h3><p>NumberFormat是Format抽象类的子类，可以实现数值的格式化。可以将数值与字符串互相转化。NumberFormat是抽象类可以通过如下几个类方法获取NumberFormat对象：</p>
+<ul>
+<li>getCurrencyInstance(): 返回默认Locale的货币格式器，也可以传入指定的Locale</li>
+<li>getIntegerInstance(): 返回默认Locale整数格式器，也可以传入指定的Locale</li>
+<li>getNumberInstance(): 返回默认Locale数值格式器，也可以传入指定的Locale</li>
+<li>getPercentInstance(): 返回默认Locale百分数格式器，也可以传入指定的Locale</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">NumberFormat format = NumberFormat.getNumberInstance(Locale.CHINA);</div><div class="line">format.format(<span class="number">12345.45</span>);</div></pre></td></tr></table></figure>
+<h3 id="使用DateFormat、SimpleDateFormat格式化日期"><a href="#使用DateFormat、SimpleDateFormat格式化日期" class="headerlink" title="使用DateFormat、SimpleDateFormat格式化日期"></a>使用DateFormat、SimpleDateFormat格式化日期</h3><p>DateFormat是Format抽象类的子类，可以实现日期的格式化。可以将日期与字符串互相转化。DateFormat是抽象类可以通过如下几个类方法获取DateFormat对象：</p>
+<ul>
+<li>getDateInstance(): 返回一个日期格式器，格式化后字符串只有日期，没有时间，可传参指定日期样式和Locale</li>
+<li>getTimeInstance():返回一个时间格式器，格式化后只有时间没有日期，可传参指定时间样式和Locale</li>
+<li>getDateTimeInstance(): 返回一个日期、时间格式器，格式化后既有日期也有时间，可传参指定日期样式、时间样式和Locale</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//指定日期样式、时间样式参数，是DateFormat的4个静态常量：FULL、LONG、MEDIUM、SHORT</span></div><div class="line">DateFormat format = DateFormat.getDateInstance(FULL);</div><div class="line">Date date = <span class="keyword">new</span> Date();</div><div class="line">format.format(date);</div></pre></td></tr></table></figure>
+<p>DateFormat的parse()方法可以把字符串转成Date,但字符串必须符合特定的格式，为了更好的格式化日期、解析日期字符串Java提供了SimpleDateFormat类。<br>SimpleDateFormat是DateFormat子类。<br><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">Date d = new Date();</div><div class="line">SimpleDateFormat sdfl = new SimpleDateFormat("Gyyyy年中第D天");</div><div class="line">String dateStr = sdfl.format(d);</div><div class="line"></div><div class="line">String str = "14###三月##21";</div><div class="line">SimpleDateFormat sdf2 = new SimpleDateFormat(y###MM##dd);</div><div class="line">sdf2.parse(str);</div></pre></td></tr></table></figure></p>
+<h2 id="Java集合"><a href="#Java集合" class="headerlink" title="Java集合"></a>Java集合</h2><p>Java集合可以存储数量不等的对象，并可以实现常用的数据结构，如栈、队列等。除此之外，Java的集合还可以保存有映射关系的关联数组。Java集合大致分为Set、List、Queue和Map四种体系，Set代表无序不可重复、List代表有序重复；而Map代表有映射关系的集合；Java5增加Queue体系的集合，代表队列集合。对于Set、List、Queue和Map四种集合，最常用的实现类分别是：HashSet、TreeSet、ArrayList、ArrayDeque、LinkedList和HashMap、TreeMap等实现类；<br>集合和数组不一样，数组元素既可以保存基本类型的值也可以是对象，但长度固定下来不可变化。而集合只能保存对象，长度可以变化。<br>Java集合主要有两个接口派生而来:Collection和Map，Collection和Map是Java集合框架的根接口。<br>下面展示Colleciton和Map的接口、子接口及其实现类的继承树：<br><img src="http://opbae2xuz.bkt.clouddn.com/images/bhlin/2017-06-05-01.png" alt=""><br><img src="http://opbae2xuz.bkt.clouddn.com/images/bhlin/2017-06-05-02.png" alt=""></p>
+<p>Collection接口是List、Set和Queue接口的父接口。Collection接口定义了如下操作集合元素的方法：</p>
+<ul>
+<li>boolean add(Object o):像集合中添加一个元素，添加成功返回true</li>
+<li>boolean addAll(Collection c):把集合c中的元素添加到指定集合中</li>
+<li>void clear(): 清除集合中的所有元素</li>
+<li>boolean contains(Object o):该对象是否包含指定元素</li>
+<li>boolean containsAll(Collection c):返回集合对象是否包含集合c中所有元素</li>
+<li>boolean isEmpty():集合是否为空</li>
+<li>Iterator iterator():返回Iterator对象，用于遍历集合元素</li>
+<li>boolean remove(Object o):删除集合中指定元素o,如果集合包含多个元素o，只删除第一个</li>
+<li>boolean removeAll(Collection c): 在集合中删除集合c中所有元素</li>
+<li>boolean retainAll(Collection c): 在集合中删除集合c不包含的元素</li>
+<li>int size():返回集合元素个数</li>
+<li>Object[] toArray(): 把集合转化成一个数组</li>
+</ul>
+<h3 id="使用Lambda表达式遍历集合"><a href="#使用Lambda表达式遍历集合" class="headerlink" title="使用Lambda表达式遍历集合"></a>使用Lambda表达式遍历集合</h3><p>Java8为Iterable接口新增forEach(Consumer action)默认方法，该方法参数是一个函数式接口，而Iterable接口是Collection接口的父接口，因此可以直接调用。 使用forEach遍历集合时，程序集合元素传给Consumer的accept(T t)方法。<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">Collection books = <span class="keyword">new</span> HashSeet();</div><div class="line">books.add(<span class="string">"轻量级Java EE企业应用实战"</span>);</div><div class="line">books.add(<span class="string">"疯狂Java讲义"</span>);</div><div class="line">books.add(<span class="string">"疯狂Android讲义"</span>);</div><div class="line">books.forEach(obj -&gt; System.out.println(<span class="string">"迭代集合元素:"</span> + obj));</div></pre></td></tr></table></figure></p>
+<h3 id="使用Predicate操作集合"><a href="#使用Predicate操作集合" class="headerlink" title="使用Predicate操作集合"></a>使用Predicate操作集合</h3><p>Java8新增Predicate来操作集合，Java8为Collection新增一个removeIf(Predicate filter)方法，该方法会批量删除filter条件的所有元素。该方法需要一个Predicate(谓词)作为参数，Predicate是一个函数式接口，因此可以使用Lambda表达式作为参数.<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//移除所有字符串长度小于10的</span></div><div class="line">books.removeIf(ele -&gt; ((String)ele).length() &lt; <span class="number">10</span>);</div></pre></td></tr></table></figure></p>
+<h3 id="使用Iterator和foreach循环遍历Collection集合"><a href="#使用Iterator和foreach循环遍历Collection集合" class="headerlink" title="使用Iterator和foreach循环遍历Collection集合"></a>使用Iterator和foreach循环遍历Collection集合</h3><p>Iteraotr接口是Java集合框架的主要成员，Iterator主要用于遍历Collection集合中的元素，Iterator也被称为迭代器。</p>
+<ul>
+<li>boolean hasNext():如果迭代集合元素没有遍历完，返回true</li>
+<li>Object next(): 返回集合里下一个元素</li>
+<li>void remove():删除集合里上一次next方法返回的元素</li>
+<li>void forEachRemaining(Consumer action): Java8添加新方法，可以使用Lambda遍历集合</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">Iterator it = books.iterator();</div><div class="line"><span class="keyword">while</span>(it.hasNext() &#123;</div><div class="line">    String book = it.next();</div><div class="line">    <span class="keyword">if</span> (book.equals(<span class="string">"疯狂Java讲义"</span>)) &#123;</div><div class="line">        <span class="comment">//从集合中删除上一次next()方法返回的元素</span></div><div class="line">        it.remove();</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">//使用Lambda表达式遍历Iterator</span></div><div class="line">it.forEachRemaining(obj -&gt; System.out.println(<span class="string">"迭代集合元素："</span> + obj));</div><div class="line"></div><div class="line"><span class="comment">//使用foreach循环遍历集合</span></div><div class="line"><span class="keyword">for</span> (Object obj : books) &#123;</div><div class="line">    String book = (String)obj;</div><div class="line">    <span class="keyword">if</span> (book.equals(<span class="string">"疯狂Java讲义"</span>)) &#123;</div><div class="line">        <span class="comment">//下面代码会引发ConcurrentModificationException，不建议在循环中使用集合本身删除元素</span></div><div class="line">        books.remove(book);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="对集合使用Stream进行流式编程"><a href="#对集合使用Stream进行流式编程" class="headerlink" title="对集合使用Stream进行流式编程"></a>对集合使用Stream进行流式编程</h3><p>Java8新增Stream、IntStream、LongStream、DoubleStream等流式API,Stream是一个通用流式接口，IntStream、LongStream、DoubleStream则代表元素为int, long, double的流。<br>使用步骤:</p>
+<ul>
+<li>使用Stream或XxxStream的builder()类方法创建对应的builder;</li>
+<li>重复调用Builder的add()方法添加元素</li>
+<li>调用Builder的build()方法获得对应的Stream</li>
+<li>调用Stream的聚集方法</li>
+</ul>
+<p>例如如下程序：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">IntStream is = IntStream.builder()</div><div class="line">        .add(<span class="number">20</span>)</div><div class="line">        .add(<span class="number">13</span>)</div><div class="line">        .add(-<span class="number">2</span>)</div><div class="line">        .add(<span class="number">18</span>).build();</div><div class="line"><span class="comment">//下面调用聚集方法每次只能执行一行</span></div><div class="line">is.max().getAsInt();</div><div class="line">is.min().getAsInt();</div><div class="line">is.sum();</div><div class="line">....</div><div class="line"><span class="comment">//中间方法</span></div><div class="line">IntStream newIs = is.map(ele-&gt;ele * <span class="number">2</span> + <span class="number">1</span>);</div></pre></td></tr></table></figure></p>
+<p>Stream提供大量方法进行聚集操作，这些方法既可以是”中间的”，也可以是”末端的”。</p>
+<ul>
+<li>中间方法: 中间操作允许流保持打开状态，并允许直接调用后续方法。上面map()方法就是中间方法。中间方法返回值是另外一个流</li>
+<li>末端方法: 末端方法是对流的最终操作。当使用末端方法后，该流就会”消耗”且不可再用.</li>
+<li>有状态的方法: 这种方法会给流添加一些新的属性，比如元素的唯一性、元素的最大数量等</li>
+<li>短路方法: 短路方法可以尽早结束对流的操作，不必检查所有的元素。</li>
+</ul>
+<h3 id="EnumSet的用法"><a href="#EnumSet的用法" class="headerlink" title="EnumSet的用法"></a>EnumSet的用法</h3><p>EnumSet是一个转为枚举类设计的集合类，EnumSet所有的元素必须是指定的枚举类型的枚举值。EnumSet的集合元素是有序的。EnumSet不允许添加null元素。</p>
+<h3 id="HashSet、LinkedHashSet用法"><a href="#HashSet、LinkedHashSet用法" class="headerlink" title="HashSet、LinkedHashSet用法"></a>HashSet、LinkedHashSet用法</h3><p>HashSet按照Hash算法存储集合，具有很好的存取和查找性能。HashSet具有以下特点:</p>
+<ul>
+<li>不能保证元素的排列顺序，书序可能与添加顺序不同，顺序也可能发生变化</li>
+<li>HashSet不是同步的，如果多个线程同时访问一个HashSet,假设有两个或两个以上线程同时修改集合是，则必须通过代码保证其同步</li>
+<li>集合元素值可以是nul</li>
+</ul>
+<p>HashSet集合存入一个元素时，会调用HashCode()方法得到该对象的hashCode值，然后根据hashCode决定该对象的存储位置。如果两个元素通过equals()方法比较返回true,但他们的hashCode()返回值不相等，HashSet将会把他们存放在不同的位置上，也可以说是添加成功。<br>也就是说HashSet集合判断两个元素相等的标准是两个对象通过equals()方法比较相等，并且两个对象的hashCode()方法返回值也相等。</p>
+<blockquote>
+<p>注意：如果需要将某个类的对象保存到HashSet集合中，重写这个类的equals()和hashCode()方法时，应尽量保证，equals()返回true时，他们的hashCode()也相等</p>
+</blockquote>
+<p>LinkedHashSet类是HashSet的子类，LinkedHashSet集合也是根据hashCode值决定元素的存储位置，但它同时维护添加顺序，性能略低于HashSet,但在迭代访问Set的全部元素将有很好的性能，他是以链表来维护内部顺序。</p>
+<h3 id="TreeSet的用法"><a href="#TreeSet的用法" class="headerlink" title="TreeSet的用法"></a>TreeSet的用法</h3><p>TreeSet是SortedSet接口的实现类，TreeSet确保集合元素处于排序状态。TreeSet并不是根据插入顺序排序，而是根据元素的实际值大小排序。 与HashSet相比，TreeSet还提供了几个额外的方法:</p>
+<ul>
+<li>Comparator comparator(): 如果TreeSet采用定制排序，则返回定制排序的Comparator,如果采用自然排序，则返回null</li>
+<li>Object first(): 返回集合中第一个元素</li>
+<li>Object last(): 返回集合中最后一个元素</li>
+<li>Object lower(Object e): 返回集合中小于指定元素的所有元素</li>
+<li>Object higher(Object e): 返回集合中大于指定元素的所有元素</li>
+<li>SortedSet subSet(Object fromElement, Object toElement): 返回此Set的子集合，范围是fromElement到toElement</li>
+<li>SortedSet headSet(Object toElement):返回此Set的子集合，由小于toElement的元素组成</li>
+<li>SortedSet tailSet(Object fromElement):返回此Set的子集合，由大于fromElement的元素组成</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">TreeSet nums = <span class="keyword">new</span> TreeSet();</div><div class="line">nums.add(<span class="number">5</span>);</div><div class="line">nums.add(<span class="number">2</span>);</div><div class="line">nums.add(<span class="number">10</span>);</div><div class="line">nums.add(-<span class="number">9</span>);</div><div class="line">nums.frist();<span class="comment">//-9</span></div><div class="line">nums.last();<span class="comment">//10</span></div><div class="line">nums.headSet(<span class="number">5</span>)<span class="comment">//[-9, 2]</span></div></pre></td></tr></table></figure>
+<p>1、自然排序:TreeSet会调用元素的compareTo(Object obj)方法比较元素之间的大小，然后将集合元素按照升序排列， 这就是自然排序。Java提供了Comparable接口，该接口定义了compareTo(Object obj)方法。<code>obj1.compareTo(obj2)</code> 该方法返回0则两个对象相等，返回正整数obj1大于obj2，返回负整数则obj1小于obj2。Java的一些常用类已经实现Comparable接口,如 BigDecimal、Character、Boolean、String、Date、Time等。<font color="red">如果把一个对象添加到TreeSet时，该对象必须实现Comparable接口，否则会抛出异常,并且尽量添加同一种类型的对象</font><br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">TreeSet ts = <span class="keyword">new</span> TreeSet();</div><div class="line"><span class="comment">//Err类没有实现Comparable接口，在添加第二个对象进行比较时抛出异常。</span></div><div class="line">ts.add(<span class="keyword">new</span> Err());</div><div class="line">ts.add(<span class="keyword">new</span> Err());</div><div class="line"></div><div class="line">TreeSet ts2 = <span class="keyword">new</span> TreeSet();</div><div class="line"><span class="comment">//添加不同类型的对象，当添加Date到TreeSet时，调用CompareTo方法，抛出异常</span></div><div class="line">ts2.add(<span class="keyword">new</span> String(<span class="string">"abc"</span>));</div><div class="line">ts2.add(<span class="keyword">new</span> Date());</div></pre></td></tr></table></figure></p>
+<p>2、定制排序:可以通过Comparator接口，该接口包含一个int compare(T o1, T 02)方法，由于Comparator是一个函数式接口，可以使用Lambda表达式来代替。<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">TreeSet ts = <span class="keyword">new</span> TreeSet((o1, o2) -&gt; &#123;</div><div class="line">    <span class="keyword">return</span> o1 &gt; o2 ? -<span class="number">1</span> : o1 &lt; o2 ? <span class="number">1</span> : <span class="number">0</span>;</div><div class="line">&#125;);</div></pre></td></tr></table></figure></p>
+<h3 id="List集合的常规用法"><a href="#List集合的常规用法" class="headerlink" title="List集合的常规用法"></a>List集合的常规用法</h3><p>List集合作为Collection的子接口，可以使用Collection的全部方法。List集合增加了一写根据索引来操作集合的方法：</p>
+<ul>
+<li>void add(int index, Object element): 将元素插入到List集合index处</li>
+<li>boolean addAll(int index, Collection c):将集合c所有元素插入到List集合index处</li>
+<li>Object get(int index):返回集合index索引的元素</li>
+<li>int indexOf(Object o):返回元素o的索引</li>
+<li>int lastIndexOf(Ojbect o):返回对象o在List集合中最后一次出现的索引</li>
+<li>Object remove(int index): 移除索引为index的元素</li>
+<li>Object set(int index, object element):将index索引处的元素替换成element对象，返回被替换的元素</li>
+<li>List subList(int fromIndex, int toIndex):返回从fromIndex(包含)到toIndex(不包含)处所有集合元素组成的子元素</li>
+<li>void replaceAll(UnaryOperator operator):根据operator指定的计算规则重新设置List集合的所有元素</li>
+<li>void sort(Comparator c):根据Comparator参数对List集合的元素进行排序</li>
+</ul>
+<p>与Set只提供Iterator()方法不同，List还额外提供listIterator()方法，该方法返回ListIterator对象，ListIterator继承Iterator接口，提供了专门操作List的方法，新增了如下方法：</p>
+<ul>
+<li>boolean hasPrevious():返回该迭代器关联的集合是否还有上一个元素</li>
+<li>Object previous():返回该迭代器的上一个元素</li>
+<li>void add(Object o):指定位置添加一个元素</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">List bookList = <span class="keyword">new</span> ArrayList();</div><div class="line">bookList.add(<span class="string">"疯狂Java讲义"</span>);</div><div class="line">bookList.add(<span class="string">"疯狂iOS讲义"</span>);</div><div class="line">bookList.add(<span class="string">"轻量级JavaEE企业应用实战"</span>);</div><div class="line">ListIterator lit = bookList.listIterator();</div><div class="line"><span class="keyword">while</span>(lit.hasNext()) &#123;</div><div class="line">    System.out.println(lit.next());</div><div class="line">&#125;</div><div class="line"><span class="comment">// ------反向迭代----------</span></div><div class="line"><span class="keyword">while</span>(lit.hasPrevious()) &#123;</div><div class="line">    System.out.println(lit.previous());</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="ArrayList和Vector"><a href="#ArrayList和Vector" class="headerlink" title="ArrayList和Vector"></a>ArrayList和Vector</h3><p>ArrayList和Vector都是基于数组实现的List类。封装了一个动态的、允许再分配的Object[]数组。ArrayList和Vector用法基本相同，ArrayList是线程不安全的。多个线程访问同一个ArrayList集合，如果有超过一个线程修改，则要手动保证集合的同步性；</p>
+<h3 id="Queue接口与Deque接口"><a href="#Queue接口与Deque接口" class="headerlink" title="Queue接口与Deque接口"></a>Queue接口与Deque接口</h3><p>Queue用于模拟队列数据结构，队列指”先进先出”。Queue接口有一个PriorityQueue实现类。 Queue接口提供了如下方法：</p>
+<ul>
+<li>void add(Object e):将指定元素加入队列尾部</li>
+<li>Object element():获取队列头部元素，但不删除该元素</li>
+<li>boolean offer(Object e): 将指定元素加入队列尾部。当使用有容量限制的队列，此方法通常比add方法更好</li>
+<li>Object peek():获取队列头部元素，但不删除该元素，如果队列为空，返回null</li>
+<li>Object poll():获取队列头部元素，并删除该元素，如果队列为空，返回null</li>
+<li>Object remove():获取队列头部元素，并删除该元素</li>
+</ul>
+<p>Deque接口是Queue接口的子接口，Deque代表一个”双端队列”，双端队列可以同时从两端添加、删除元素。Deque接口提供一个典型实现类：ArrayDeque</p>
+<ul>
+<li>void addFirst(Object e):指定元素插入双端队列开头</li>
+<li>void addLast(Object e):指定元素插入双端队列末尾</li>
+<li>Iterator descendingIterator():返回双端队列的迭代器，该迭代器以逆向顺序迭代</li>
+<li>Object getFirst():获取但不删除第一个元素</li>
+<li>Object getLast():获取但不删除最后一个元素</li>
+<li>boolean offerFirst(Object e):将指定元素插入开头</li>
+<li>boolean offerLast(Object e):将指定元素插入末尾</li>
+<li>Object peekFirst():获取不删除第一个元素，队列为空返回null</li>
+<li>Object peekLast():获取不删除最后一个元素，队列为空返回null</li>
+<li>Object pollFirst():获取并删除第一个元素，队列为空返回null</li>
+<li>Object pollLast():获取并删除最后一个元素，队列为空返回null</li>
+<li>Object pop():pop出栈顶元素</li>
+<li>Object push(Object e):讲一个元素push进双端队列的栈顶</li>
+<li>Object removeFirst():获取并删除第一个元素</li>
+<li>Object removeFirstOccurrence(Object o): 删除双端队列第一次出现的元素o</li>
+<li>Object removeLast():获取并删除最后一个元素</li>
+<li>Object removeLastOccurrence(Object o): 删除双端队列最后一次出现的元素o</li>
+</ul>
+<h3 id="PriorityQueue的用法"><a href="#PriorityQueue的用法" class="headerlink" title="PriorityQueue的用法"></a>PriorityQueue的用法</h3><p>PriorityQueue是一个比较标准的队列实现类，PriorityQueue队列的顺序不是加入顺序，是排序后的顺序。<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">PriorityQueue pq = <span class="keyword">new</span> PriorityQueue();</div><div class="line">pq.offer(<span class="number">6</span>);</div><div class="line">pq.offer(-<span class="number">3</span>);</div><div class="line">pq.offer(<span class="number">20</span>;</div><div class="line">pq.offer(<span class="number">18</span>);</div><div class="line">System.out.println(pq);<span class="comment">//[-3, 6, 18, 20]</span></div></pre></td></tr></table></figure></p>
+<h3 id="ArrayDeque的用法"><a href="#ArrayDeque的用法" class="headerlink" title="ArrayDeque的用法"></a>ArrayDeque的用法</h3><p>ArrayDeque既可以作为栈使用，也可以作为队列使用。<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//当做栈使用</span></div><div class="line">ArrayDeque stack = <span class="keyword">new</span> ArrayDeque();</div><div class="line">stack.push(<span class="string">"疯狂Java讲义"</span>);</div><div class="line">stack.push(<span class="string">"疯狂Android讲义"</span>);</div><div class="line">stack.push(<span class="string">"疯狂iOS讲义"</span>);</div><div class="line">stack.pop();</div><div class="line"><span class="comment">//当做队列使用</span></div><div class="line">ArrayDeque stack2 = <span class="keyword">new</span> ArrayDeque();</div><div class="line">stack2.offer(<span class="string">"疯狂Java讲义"</span>);</div><div class="line">stack2.offer(<span class="string">"疯狂Android讲义"</span>);</div><div class="line">stack2.offer(<span class="string">"疯狂iOS讲义"</span>);</div><div class="line">stack2.poll();</div></pre></td></tr></table></figure></p>
+<h3 id="LinkedList集合的用法"><a href="#LinkedList集合的用法" class="headerlink" title="LinkedList集合的用法"></a>LinkedList集合的用法</h3><p>LinkedList类是List的实现类，并且还实现了Deque接口，由此可见LinkedList是一个功能强大的集合类。LinkedList内部是以链表的形式保存集合元素，随机访问性能比ArrayList、ArrayDeque差，但在插入删除性能比较出色。</p>
+<h3 id="Map的概念和常规用法"><a href="#Map的概念和常规用法" class="headerlink" title="Map的概念和常规用法"></a>Map的概念和常规用法</h3><p>Map用于保存具有映射关系的数据，Map集合保存两组值，一组key和一组value,key和value可以是任何引用类型数据，Map的key不允许重复。从Map中获取元素则需要通过该元素的key索引获取，因此Map有时也被称为字典。Map接口中常用的方法：</p>
+<ul>
+<li>void clear():删除Map对象所有元素</li>
+<li>boolean containsKey(Object key):查询Map中是否包含指定的key</li>
+<li>boolean containsValue(Object value):查询Map中是否包含指定的value</li>
+<li>Set entrySet(): 返回Map中包含Key-value对所组成的Set集合，每个集合都是Map.Entry对象</li>
+<li>Object get(Object key):根据key获取到value</li>
+<li>boolean isEmpty():Map是否为空</li>
+<li>Set keySet():Map中所有key组成的Set集合</li>
+<li>Object put(Object key, Object value):添加指定的key-value,如果存在与key相等的key-value 则会覆盖</li>
+<li>void putAll(Map m):将指定Map中的key-value对覆盖原来的key-value中。</li>
+<li>Object remove(Object key):删除指定key所对应的key-value,并返回value</li>
+<li>boolean remove(Object key, Object value): Java8新增方法，删除指定key、value</li>
+<li>int size():返回Map里Key-value的个数</li>
+<li>Collection values():返回Map里所有value组成的Collection;</li>
+</ul>
+<p>Map接口提供大量实现类，如HashMap和Hashtable等、HashMap的子类LinkedhashMap,还有SortedMap子接口及其该实现类TreeMap,以及WeakHashMap、IdentityHashMap等</p>
+<h3 id="HashMap和Hashtable"><a href="#HashMap和Hashtable" class="headerlink" title="HashMap和Hashtable"></a>HashMap和Hashtable</h3><p>HashMap和Hashtable的关系类似于ArrayList和Vector的关系，Hashtable是一个古老的Map实现类。Hashtable是一个线程安全的Map实现，但HashMap是线程不安全的实现。Hashtable不允许null作为key或者value,但是HashMap可以。<br>和HashSet集合一样都不能保证key-value所在的顺序。</p>
+<h3 id="LinkedHashMap"><a href="#LinkedHashMap" class="headerlink" title="LinkedHashMap"></a>LinkedHashMap</h3><p>LinkedHashMap是HashMap的子类，LinkedHashMap也使用双向链表维护key-value的书序</p>
+<h3 id="SortedMap接口和TreeMap的用法"><a href="#SortedMap接口和TreeMap的用法" class="headerlink" title="SortedMap接口和TreeMap的用法"></a>SortedMap接口和TreeMap的用法</h3><p>SortedMap是Map的子接口，TreeMap是SortedMap的实现类。TreeMap存储key-value时，需要根据key对节点进行排序。TreeMap也有两种排序方式:</p>
+<ul>
+<li>自然排序：TreeMap的key必须实现Comparable接口，而且所有的key应该是同一个类的对象</li>
+<li>定制排序：创建TreeMap是传入一个Comparator对象，该对象负责对TreeMap的所有key进行排序。</li>
+</ul>
+<h3 id="Properties类读写属性文件"><a href="#Properties类读写属性文件" class="headerlink" title="Properties类读写属性文件"></a>Properties类读写属性文件</h3><p>Properties类是Hahstable的子类，该对象操作属性文件特别方便。可以把属性文件中”属性名=属性值”加载到Map对象中。由于属性文件的属性名和属性值只能是字符串，所以Properties的key、value都是String类型。该类提供了如下三个方法修噶Properties的key、value值:</p>
+<ul>
+<li>String getProperty(String key):获取Properties指定属性名对应的属性值</li>
+<li>String getProperty(String key, String defaultValue):与上面相似，如果不存在指定key的时候返回默认value</li>
+<li>Object setProperty(String key, String value):设置属性值</li>
+<li>void load（InputStream inStream）:从属性文件加载key-value</li>
+<li>void store(OutputStream out, String comments):将Properties中的key-value输出到指定的属性文件中。</li>
+</ul>
+<h3 id="几种特殊的Map实现类"><a href="#几种特殊的Map实现类" class="headerlink" title="几种特殊的Map实现类"></a>几种特殊的Map实现类</h3><p>WeakHashMap与hashMap用法相似。区别在于HashMap的可以保留了对象的强引用，意味着HahsMap对象不销毁，所引用的key就不会被垃圾回收；WeakHashMap的可以只保留了实际对象的弱引用，意味着WeakHashMap对象的key没有被其他强引用的话可能会被垃圾回收；</p>
+<p>IdentityhashMap实现类的机制与hashMap基本相似，区别在于：IdentityhashMap只有key1==key2，IdentityhashMap才认为这两个key相等；HashMap而言，只要key1和key2通过equals()比较返回true且他们的hashCOde相等即可。</p>
+<p>EnumMap是一个与枚举类一起使用的Map实现类。EnumMap的所有key必须是单个枚举类的枚举值</p>
+<h3 id="Collections工具类的用法"><a href="#Collections工具类的用法" class="headerlink" title="Collections工具类的用法"></a>Collections工具类的用法</h3><p>Collections提供了如下常用的类方法对List集合中元素进行排序：</p>
+<ul>
+<li>void reverse(List list):对集合进行反转</li>
+<li>void shuffle(List list):对集合进行随机排序</li>
+<li>void sort(List list): 对集合进行自然顺序进行升序排序</li>
+<li>void sort(List list, Comparator c): 根据Comparator产生的顺序进行排序</li>
+<li>void swap(List list, int i, int j): 指定集合索引i和j的元素互换</li>
+<li>void rotate(List list, int distance): 当distance为正数时，将list集合的后distance个元素”整体”移到前面，当distance为负数时，将list集合的前distance个元素”整体”移到后面，该方法不修改集合的长度</li>
+</ul>
+<p>Collections提供了如下常用的类方法用于查找、替换集合元素：</p>
+<ul>
+<li>int binarySearch(List list, Object key):使用二分法搜索指定List集合，获得指定对象在List中的位置</li>
+<li>Object max(Collection coll):根据元素的自然顺序，返回集合中的最大元素</li>
+<li>Object max(Collection coll, Comparator com):根据Comparator指定顺序，返回集合最大元素</li>
+<li>Object min(Collection coll):根据元素的自然顺序，返回集合中的最小元素</li>
+<li>Object min(Collection coll, Comparator com):根据Comparator指定顺序，返回集合最小元素</li>
+<li>void fill(List list, Object obj):使用指定obj元素替换List集合所有的元素</li>
+<li>int frequency(Collection c, Object o):返回指定集合中指定元素出现的次数</li>
+<li>int indexOfSubList(List source, List target): 返回子list对象在父List对象中第一次出现的索引，如果没有返回-1</li>
+<li>int lastOfSubList(List source, List target): 返回子list对象在父List对象中最后一次出现的索引，如果没有返回-1</li>
+<li>boolean replaceAll(List list, Object oldVal, Objet newVal):将list中所有oldVal替换成newVal</li>
+</ul>
+<p>Collections类中提供了多synchronizedXxx()方法，该方法可以指定集合包装成线程同步的集合，从而解决多线程并发访问集合时线程安全的问题。</p>
+<p>Collections提供如下三个类方法返回一个不可变的集合</p>
+<ul>
+<li>emptyXxx():返回一个空的、不可变集合对象</li>
+<li>singletonXxx():返回一个只包含指定对象的不可变得集合对象</li>
+<li>unmodifiableXxx():返回指定集合对象不可变视图</li>
+</ul>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Java/" rel="tag"># Java</a>
+          
+        </div>
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/06/01/Java基础-三/" rel="next" title="Java基础(三)">
+                <i class="fa fa-chevron-left"></i> Java基础(三)
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/06/05/Java基础-五/" rel="prev" title="Java基础(五)">
+                Java基础(五) <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div id="cloud-tie-wrapper" class="cloud-tie-wrapper"></div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="http://opbae2xuz.bkt.clouddn.com/images/bhlin/ピカチュウ.jpeg"
+               alt="啖火" />
+          <p class="site-author-name" itemprop="name">啖火</p>
+           
+              <p class="site-description motion-element" itemprop="description"></p>
+           
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">16</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">5</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">7</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Java基础类库"><span class="nav-number">1.</span> <span class="nav-text">Java基础类库</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Java程序的参数"><span class="nav-number">1.1.</span> <span class="nav-text">Java程序的参数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#程序运行过程中接收用户输入"><span class="nav-number">1.2.</span> <span class="nav-text">程序运行过程中接收用户输入</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#System类相关用法"><span class="nav-number">1.3.</span> <span class="nav-text">System类相关用法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Runtime类的相关用法"><span class="nav-number">1.4.</span> <span class="nav-text">Runtime类的相关用法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Object与Objects类"><span class="nav-number">1.5.</span> <span class="nav-text">Object与Objects类</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用String、StringBuffer、StringBuilder类"><span class="nav-number">1.6.</span> <span class="nav-text">使用String、StringBuffer、StringBuilder类</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用Math类进行数学计算"><span class="nav-number">1.7.</span> <span class="nav-text">使用Math类进行数学计算</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用BigDecimal保存精确浮点数"><span class="nav-number">1.8.</span> <span class="nav-text">使用BigDecimal保存精确浮点数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用Random类生成各种伪随机数"><span class="nav-number">1.9.</span> <span class="nav-text">使用Random类生成各种伪随机数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Date、Calendar的用法及之间的联系"><span class="nav-number">1.10.</span> <span class="nav-text">Date、Calendar的用法及之间的联系</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#通过String类使用正则表达式"><span class="nav-number">1.11.</span> <span class="nav-text">通过String类使用正则表达式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用NumberFormat格式化数字"><span class="nav-number">1.12.</span> <span class="nav-text">使用NumberFormat格式化数字</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用DateFormat、SimpleDateFormat格式化日期"><span class="nav-number">1.13.</span> <span class="nav-text">使用DateFormat、SimpleDateFormat格式化日期</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Java集合"><span class="nav-number">2.</span> <span class="nav-text">Java集合</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#使用Lambda表达式遍历集合"><span class="nav-number">2.1.</span> <span class="nav-text">使用Lambda表达式遍历集合</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用Predicate操作集合"><span class="nav-number">2.2.</span> <span class="nav-text">使用Predicate操作集合</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用Iterator和foreach循环遍历Collection集合"><span class="nav-number">2.3.</span> <span class="nav-text">使用Iterator和foreach循环遍历Collection集合</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#对集合使用Stream进行流式编程"><span class="nav-number">2.4.</span> <span class="nav-text">对集合使用Stream进行流式编程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#EnumSet的用法"><span class="nav-number">2.5.</span> <span class="nav-text">EnumSet的用法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#HashSet、LinkedHashSet用法"><span class="nav-number">2.6.</span> <span class="nav-text">HashSet、LinkedHashSet用法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#TreeSet的用法"><span class="nav-number">2.7.</span> <span class="nav-text">TreeSet的用法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#List集合的常规用法"><span class="nav-number">2.8.</span> <span class="nav-text">List集合的常规用法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ArrayList和Vector"><span class="nav-number">2.9.</span> <span class="nav-text">ArrayList和Vector</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Queue接口与Deque接口"><span class="nav-number">2.10.</span> <span class="nav-text">Queue接口与Deque接口</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#PriorityQueue的用法"><span class="nav-number">2.11.</span> <span class="nav-text">PriorityQueue的用法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ArrayDeque的用法"><span class="nav-number">2.12.</span> <span class="nav-text">ArrayDeque的用法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#LinkedList集合的用法"><span class="nav-number">2.13.</span> <span class="nav-text">LinkedList集合的用法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Map的概念和常规用法"><span class="nav-number">2.14.</span> <span class="nav-text">Map的概念和常规用法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#HashMap和Hashtable"><span class="nav-number">2.15.</span> <span class="nav-text">HashMap和Hashtable</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#LinkedHashMap"><span class="nav-number">2.16.</span> <span class="nav-text">LinkedHashMap</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#SortedMap接口和TreeMap的用法"><span class="nav-number">2.17.</span> <span class="nav-text">SortedMap接口和TreeMap的用法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Properties类读写属性文件"><span class="nav-number">2.18.</span> <span class="nav-text">Properties类读写属性文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#几种特殊的Map实现类"><span class="nav-number">2.19.</span> <span class="nav-text">几种特殊的Map实现类</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Collections工具类的用法"><span class="nav-number">2.20.</span> <span class="nav-text">Collections工具类的用法</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">啖火</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+  
+  <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.1"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.1"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+    
+    <script>
+      var cloudTieConfig = {
+        url: document.location.href, 
+        sourceId: "",
+        productKey: "caf96788347d4118a95af2385c2d6496",
+        target: "cloud-tie-wrapper"
+      };
+    </script>
+    <script src="https://img1.cache.netease.com/f2e/tie/yun/sdk/loader.js"></script>
+  
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

@@ -1,0 +1,842 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Java," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.1" />
+
+
+
+
+
+
+<meta name="description" content="Java为8个基本类型提供了对应的包装类，可以把8个基本类型包装成对象使用，JDK1.5后提供了自动装箱和自动拆箱功能，允许基本类型值可以直接赋给包装类的引用变量，也允许把包装类直接赋给基本类型变量。Java提供了final关键字修饰变量、方法和类，不允许为final变量重新赋值，子类不允许覆盖父类的final方法，final类不能派生子类。abstract和interface关键字分别用于定义抽">
+<meta name="keywords" content="Java">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Java基础(三)">
+<meta property="og:url" content="http://yoursite.com/2017/06/01/Java基础-三/index.html">
+<meta property="og:site_name" content="啖火">
+<meta property="og:description" content="Java为8个基本类型提供了对应的包装类，可以把8个基本类型包装成对象使用，JDK1.5后提供了自动装箱和自动拆箱功能，允许基本类型值可以直接赋给包装类的引用变量，也允许把包装类直接赋给基本类型变量。Java提供了final关键字修饰变量、方法和类，不允许为final变量重新赋值，子类不允许覆盖父类的final方法，final类不能派生子类。abstract和interface关键字分别用于定义抽">
+<meta property="og:image" content="http://opbae2xuz.bkt.clouddn.com/images/bhlin/2017-06-01-17.png">
+<meta property="og:image" content="http://opbae2xuz.bkt.clouddn.com/images/bhlin/2017-06-01-18.png">
+<meta property="og:image" content="http://opbae2xuz.bkt.clouddn.com/images/bhlin/2017-06-01-19.png">
+<meta property="og:updated_time" content="2017-06-01T12:12:10.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Java基础(三)">
+<meta name="twitter:description" content="Java为8个基本类型提供了对应的包装类，可以把8个基本类型包装成对象使用，JDK1.5后提供了自动装箱和自动拆箱功能，允许基本类型值可以直接赋给包装类的引用变量，也允许把包装类直接赋给基本类型变量。Java提供了final关键字修饰变量、方法和类，不允许为final变量重新赋值，子类不允许覆盖父类的final方法，final类不能派生子类。abstract和interface关键字分别用于定义抽">
+<meta name="twitter:image" content="http://opbae2xuz.bkt.clouddn.com/images/bhlin/2017-06-01-17.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2017/06/01/Java基础-三/"/>
+
+
+
+
+
+  <title>Java基础(三) | 啖火</title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  <div style="display: none;">
+  	<script src="https://s19.cnzz.com/z_stat.php?id=1261967319&web_id=1261967319" language="JavaScript"></script>
+  </div>
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">啖火</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <h1 class="site-subtitle" itemprop="description"></h1>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/06/01/Java基础-三/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="啖火">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://opbae2xuz.bkt.clouddn.com/images/bhlin/ピカチュウ.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="啖火">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+            
+            
+              
+                Java基础(三)
+              
+            
+          </h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-06-01T12:42:41+08:00">
+                2017-06-01
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Java/" itemprop="url" rel="index">
+                    <span itemprop="name">Java</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a class="cloud-tie-join-count" href="/2017/06/01/Java基础-三/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count join-count" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>Java为8个基本类型提供了对应的包装类，可以把8个基本类型包装成对象使用，JDK1.5后提供了自动装箱和自动拆箱功能，允许基本类型值可以直接赋给包装类的引用变量，也允许把包装类直接赋给基本类型变量。<br>Java提供了final关键字修饰变量、方法和类，不允许为final变量重新赋值，子类不允许覆盖父类的final方法，final类不能派生子类。<br>abstract和interface关键字分别用于定义抽象类和接口,抽象类和接口都是从子类中抽象出来的共同特征。抽象类主要作为多个类的模板，接口则定义多个类遵守的规范。<br>enum关键字用于创建枚举类，枚举类不能创建对象，美军类的对象在定义了类时已经固定下来。</p>
+<h3 id="包装类及其用法"><a href="#包装类及其用法" class="headerlink" title="包装类及其用法"></a>包装类及其用法</h3><p>Java中8种基本数据类型不支持面向对象的编程机制也不具备”对象”的特性:没有成员变量、方法可以调用。为了解决8种基本数据类型不能当成Object类型变量使用，Java提供了包装类。<img src="http://opbae2xuz.bkt.clouddn.com/images/bhlin/2017-06-01-17.png" alt=""><br>在JDK1.5之后Java提供了自动装箱和自动拆箱功能。所谓装箱和拆箱就是可以把一个基本数据类型直接赋值给包装类型，包装类型可以直接赋值给基本数据类型。<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//将一个基本数据类型自动装箱赋值给包装类型</span></div><div class="line">Integer inObj = <span class="number">5</span>;</div><div class="line">Object boolOjb = <span class="keyword">true</span>;</div><div class="line"><span class="comment">//将一个包装类型自动拆箱赋值给基本数据类型</span></div><div class="line"><span class="keyword">int</span> it = inOjb;</div><div class="line"><span class="keyword">boolean</span> b = (Boolean)boolOjb;</div></pre></td></tr></table></figure></p>
+<p>除此之外，包装类型还可以将基本类型变量与字符串进行转换。把字符串转换成基本类型的值有两种：<br>1、利用包装类型提供<em>parseXxx(String s)</em>静态方法<br>2、利用包装类提供构造器<em>Xxx(String s)</em><br>String类型提供多个重载valueOf()方法，用于将基本数据类型转换成字符串。<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">String intStr = <span class="string">"123"</span>;</div><div class="line"><span class="comment">//通过包装类静态方法将字符串转换成基本数据变量</span></div><div class="line"><span class="keyword">int</span> it1 = Integer.parseInt(intStr);</div><div class="line"><span class="comment">//通过包装类构造方法将字符串转换成基本数据变量</span></div><div class="line"><span class="keyword">int</span> it2 = <span class="keyword">new</span> Integer(intStr);</div><div class="line"><span class="comment">//通过String的valueOf静态方法，将基本数据类型转换成String类型</span></div><div class="line">String strValue = String.valueOf(it2);</div></pre></td></tr></table></figure></p>
+<p>包装类型进行比较：如果一方不是包装类型那么比较的是两方的值。如果两方都是包装类型比较的是指针，但是如果比较Integer类型小于128的可以进行比较，因为Java将128以下进行缓存。Java7为所有包装类提供了静态的<em>compare(xxx val1, xxx val2)</em>方法。<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">Boolean.compare(<span class="keyword">true</span>, <span class="keyword">false</span>);<span class="comment">//1</span></div><div class="line">Boolean.compare(<span class="keyword">true</span>, <span class="keyword">true</span>);<span class="comment">//0</span></div><div class="line">Boolean.compare(<span class="keyword">false</span>, <span class="keyword">true</span>);<span class="comment">//-1</span></div></pre></td></tr></table></figure></p>
+<h3 id="toString方法的用法"><a href="#toString方法的用法" class="headerlink" title="toString方法的用法"></a>toString方法的用法</h3><p>toString()是Object类的一个实例方法，所有的Java类都是Object的子类，因此所有类都具有toString()方法。<br>toString()是一个“自我描述的方法”,直接打印该对象，系统输出”类名+@+hashCode”值。用户可以重写toString()方法。<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">Person p = <span class="keyword">new</span> Person();</div><div class="line"><span class="comment">//打印toString返回的信息，默认返回"类名+@+hashCode"</span></div><div class="line">System.out.print(p);</div></pre></td></tr></table></figure></p>
+<h3 id="和equals方法"><a href="#和equals方法" class="headerlink" title="==和equals方法"></a>==和equals方法</h3><p>Java程序测试两个变量是否相等有两种方式:==和equals()方法。基本数据类型的两个变量值通过==判断。如果是引用变量，当两个变量指向同一个指针的时候==返回true,==不可用于比较类型上没有父子关系的对象。<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">int</span> i1 = <span class="number">65</span>;</div><div class="line"><span class="keyword">int</span> i2 = <span class="number">65</span>;</div><div class="line">i1 == i2; <span class="comment">//true</span></div><div class="line">String s1 = <span class="keyword">new</span> String(<span class="string">"hello"</span>);</div><div class="line">String s2 = <span class="keyword">new</span> String(<span class="string">"hello"</span>);</div><div class="line">String s3 = s1;</div><div class="line">s1 == s2;<span class="comment">//false</span></div><div class="line">s1 == s3;<span class="comment">//true</span></div><div class="line">s1 == i1;<span class="comment">//编译错误</span></div></pre></td></tr></table></figure></p>
+<p>equals()方法是判断两个对象的值相等，但是这个值相等的标准是自定义的；<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Person</span> </span>&#123;</div><div class="line">    <span class="comment">//重写equals()方法</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">equals</span><span class="params">(Object obj)</span> </span>&#123;</div><div class="line">        <span class="keyword">if</span>(<span class="keyword">this</span> == obj) &#123;</div><div class="line">            <span class="keyword">return</span> <span class="keyword">true</span>;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">if</span>(obj != <span class="keyword">null</span> &amp;&amp; obj.getClass() == Person.class) &#123;</div><div class="line">            Person p = (Person)obj;</div><div class="line">            <span class="keyword">if</span> (<span class="keyword">this</span>.getIdStr().equals(p.getIdStr())) &#123;</div><div class="line">                <span class="keyword">return</span> <span class="keyword">true</span>;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> <span class="keyword">false</span>;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h3 id="static关键字"><a href="#static关键字" class="headerlink" title="static关键字"></a>static关键字</h3><p>static关键字修饰的成员是类成员包括类变量、类方法、静态初始化块、内部类。static不能修饰构造器。static修饰的类成员数据整个类，不属于单个实例。<br>当系统第一次准备该类时，系统会为类成员分配内存空间，类成员开始生效，知道该类被卸载，该类的类成员才会被垃圾回收器回收。</p>
+<h3 id="单例类"><a href="#单例类" class="headerlink" title="单例类"></a>单例类</h3><p>如果一个类始终只能创建一个实例，则这个类被称为单例类。在一些特殊情况下，不允许自由创建类对象，应把该类的构造器使用private修饰。<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Singleton</span> </span>&#123;</div><div class="line">    <span class="keyword">private</span> <span class="keyword">static</span> Singleton instance;</div><div class="line">    <span class="function"><span class="keyword">private</span> <span class="title">Singleton</span><span class="params">()</span> </span>&#123;&#125;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Singleton <span class="title">getInstance</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">if</span> (instance == <span class="keyword">null</span>) &#123;</div><div class="line">            instance = newSingleton();</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> instance;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h3 id="final修饰符"><a href="#final修饰符" class="headerlink" title="final修饰符"></a>final修饰符</h3><p>final修饰可用于修饰类、变量和方法，表示他修饰的类、方法和变量不可改变。final修饰的变量不可被改变，一旦获得初始值，该final变量的值就不能被重新赋值。final修饰的方法不可被重写，如果父类不希望子类重写某个方法，则可以使用fianl修饰该方法。final修饰的类不可以有子类。</p>
+<h3 id="abstract关键字的用法"><a href="#abstract关键字的用法" class="headerlink" title="abstract关键字的用法"></a>abstract关键字的用法</h3><p>抽象方法和抽象类必须使用abstract修饰。 有抽象方法的类一定是抽象类，抽象类不一定有抽象方法。</p>
+<ul>
+<li>抽象类和抽象方法必须用abstract修饰，抽象方法没有方法体。</li>
+<li>抽象类不能被实例化</li>
+<li>抽象类可以包含成员变量、方法(普通方法和抽象方法)、构造器、初始化块、内部类。</li>
+<li>含有抽象方法的类只能被定义成抽象类。</li>
+</ul>
+<p>抽象类不能创建实例，只能当做父类继承。抽象类是从多个具体类中抽象出来的父类，具有更高层次的抽象。</p>
+<h3 id="接口"><a href="#接口" class="headerlink" title="接口"></a>接口</h3><p>接口可以看做是一种更加特殊的”抽象类”。接口不能包含普通方法，接口中所有的方法都是抽象方法。Java8允许接口中定义默认方法，默认方法可以提供方法实现。定义接口不使用class关键字，使用interface关键字。接口支持多继承。<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">[修饰符] <span class="class"><span class="keyword">interface</span> 接口名 <span class="keyword">extends</span> 父接口1, 父接口2... </span>&#123;</div><div class="line">    <span class="comment">//零个到多个常量定义...</span></div><div class="line">    <span class="keyword">int</span> MAX_SIZE = <span class="number">50</span>; <span class="comment">//系统会为成员变量默认添加 public static final</span></div><div class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> MAX_SIZE = <span class="number">50</span>;</div><div class="line">    <span class="comment">//零个到多个抽象方法定义...</span></div><div class="line">    <span class="function"><span class="keyword">void</span> <span class="title">out</span><span class="params">()</span></span>; <span class="comment">//系统会为成员变量默认添加 public abstract</span></div><div class="line">    <span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keyword">void</span> out;</div><div class="line">    <span class="comment">//零个到多个内部类、接口、枚举定义...     //系统默认添加public static</span></div><div class="line">    <span class="comment">//零个到多个默认方法或类方法定义...</span></div><div class="line">    <span class="function"><span class="keyword">default</span> <span class="keyword">void</span> <span class="title">print</span><span class="params">(String... msgs)</span> </span>&#123;</div><div class="line">        <span class="keyword">for</span> (String msg: msgs) &#123;</div><div class="line">            System.out.println(msg);</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    <span class="comment">//类方法</span></div><div class="line">    <span class="function"><span class="keyword">static</span> String <span class="title">staticTest</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">return</span> <span class="string">"接口里的类方法"</span>;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<blockquote>
+<p>接口定义的是一种规范，因此接口不能包含构造器和初始化块。接口可以包含成员变量(只能是静态常亮)、方法(只能是抽象实例方法、类方法、默认方法)、内部类定义；<br>一个类可以实现一个或多个接口，使用implements关键字。该类必须完全实现接口定义的抽象方法<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">[修饰符] <span class="class"><span class="keyword">class</span> 类名 <span class="keyword">extends</span> 父类 <span class="keyword">implements</span> 接口1, 接口2...</span>&#123;</div><div class="line">    <span class="comment">//类体部分</span></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+</blockquote>
+<h3 id="接口和抽象类"><a href="#接口和抽象类" class="headerlink" title="接口和抽象类"></a>接口和抽象类</h3><p>接口和抽象很像，都具有如下特征:</p>
+<ul>
+<li>接口和抽象类都不能被实例化，他们都位于继承书的顶端，用于被其他实现和继承.</li>
+<li>接口和抽象类都可以包含抽象方法，实现接口或继承抽象类都必须实现这写抽象方法。<br>接口和抽象的区别：</li>
+<li>接口不能为普通方法提供实现</li>
+<li>接口不能定义静态方法</li>
+<li>接口只能定义静态常亮，不能定义普通成员变量</li>
+<li>接口不包含构造器</li>
+<li>就扣不包含初始化块</li>
+<li>一个类最多能有一个直接父类，但一个类可以有多个接口实现</li>
+</ul>
+<h3 id="内部类"><a href="#内部类" class="headerlink" title="内部类"></a>内部类</h3><p>把一个类放在另一个类的内部定义，这个定义在其他类内部的类称为内部类，包含内部类的类称为外部类。内部类主要有如下作用:</p>
+<ul>
+<li>内部类提供更好的封装，可以把内部类隐藏在外部类之内，不允许同一个包中的其他类访问该类。</li>
+<li>内部类成员可以直接访问外部类的私有数据，但外部类不能访问内部类的实现细节</li>
+<li>匿名内部类适用于创建那些仅需要使用一次。</li>
+<li>内部类比外部类可以多使用三个修饰符:private、protected、static</li>
+<li>非静态内部类不能拥有静态成员</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">OuterClass</span> </span>&#123;</div><div class="line">    <span class="class"><span class="keyword">class</span> <span class="title">A</span></span>&#123;&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>如果使用static修饰一个内部类，则这个内部类属于外部类本身，而不属于外部类的某个对象，成这个内部类为静态内部类。</p>
+<ol>
+<li>在外部类使用内部类: 与正常使用普通类没有太大区别，通过new调用内部类的构造器创建实例</li>
+<li>在外部类以外使用非静态内部类: 看内部类的修饰符外部类是否可以访问，private只有外部类可以使用。<code>OutClass.InnerClass varName = new OutClass().new InnerClass()</code></li>
+<li>在外部类以外使用静态内部类:因为静态内部类是外部类类相关的，因此创建静态内部类对象无须创建外部类对象。在外部类以外的地方创建内部类实例的语法<code>OutClass.InnerClass varName = new OutClass.InnerClass</code><br>局部内部类:如果把一个内部类放到方法里定义，则这个内部类是局部内部类。局部内部类只有在该方法有效。<br>匿名内部类: 匿名内部类必须继承一个父类或实现一个接口。 匿名内部类不能是抽象类，匿名内部类不能定义构造器。<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">new</span> 实现接口() | 父类构造器(实参列表) &#123;</div><div class="line">    <span class="comment">//匿名内部类的类体部分</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<h3 id="Lambda表达式与函数式接口"><a href="#Lambda表达式与函数式接口" class="headerlink" title="Lambda表达式与函数式接口"></a>Lambda表达式与函数式接口</h3><p>Lambda表达式是Java8的重要更新。Lambda表达式支持将代码块作为方法参数，Lambda表达式允许使用更简洁的代码创建只有一个抽象方法的接口的实例。Lambda表达式的类型称为”目标类型”，Lambda表达式的目标类型必须是”函数式接口”, 函数式接口代表只包含一个抽象方法的接口，可以包含多个默认方法、类方法，但只能包含一个抽象方法。</p>
+<h4 id="Lamdba入门"><a href="#Lamdba入门" class="headerlink" title="Lamdba入门"></a>Lamdba入门</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//使用匿名内部类的例子</span></div><div class="line">ProcessArray pa = <span class="keyword">new</span> ProcessArray();</div><div class="line">pa.process(target, <span class="keyword">new</span> Command()&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">process</span><span class="params">(<span class="keyword">int</span>[] target)</span> </span>&#123;</div><div class="line">        <span class="keyword">int</span> sum = <span class="number">0</span>;</div><div class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> tmp : target) &#123;</div><div class="line">            sum += tmp;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;);</div><div class="line"></div><div class="line"><span class="comment">//使用Lambda表达式可简化创建匿名内部类</span></div><div class="line">ProcessArray pa = <span class="keyword">new</span> ProcessArray();</div><div class="line">pa.process(target, (<span class="keyword">int</span>[] target)-&gt;&#123;</div><div class="line">    <span class="keyword">int</span> sum = <span class="number">0</span>;</div><div class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> tmp : target) &#123;</div><div class="line">            sum += tmp;</div><div class="line">        &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<p>Lambda表达式主要作用就是代理匿名内部类的繁琐语法，由三部分组成。</p>
+<ul>
+<li>形参列表。形参列表允许省略形参类型。如果形参列表只有一个参数，甚至括号也可以省略</li>
+<li>箭头 (-&gt;)</li>
+<li>代码块</li>
+</ul>
+<p>下面程序示范Lambda表达式的几种简化写法:<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">interface</span> <span class="title">Eatable</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">void</span> <span class="title">taste</span><span class="params">()</span></span>;</div><div class="line">&#125;</div><div class="line"><span class="class"><span class="keyword">interface</span> <span class="title">Flyable</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">void</span> <span class="title">fly</span><span class="params">(String weather)</span></span>;</div><div class="line">&#125;</div><div class="line"><span class="class"><span class="keyword">interface</span> <span class="title">Addable</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">int</span> <span class="title">add</span><span class="params">(<span class="keyword">int</span> a, <span class="keyword">int</span> b)</span></span>;</div><div class="line">&#125;</div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">LamdbaQs</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">eat</span><span class="params">(Eatable e)</span> </span>&#123;</div><div class="line">        System.out.println(e);</div><div class="line">        e.taste();</div><div class="line">    &#125;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">drive</span><span class="params">(Flyable f)</span> </span>&#123;</div><div class="line">        System.out.println(<span class="string">"我正在驾驶:"</span> + f);</div><div class="line">        f.fly(<span class="string">"[碧空如洗的晴日]"</span>);</div><div class="line">    &#125;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">test</span><span class="params">(Addable add)</span> </span>&#123;</div><div class="line">        System.out.println(<span class="string">"5与3的和为:"</span> + add.add(<span class="number">5</span>, <span class="number">3</span>));</div><div class="line">    &#125;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</div><div class="line">        LamdbaQs mainT = <span class="keyword">new</span> LamdbaQs();</div><div class="line">        mainT.eat(()-&gt; System.out.println(<span class="string">"苹果的味道不错"</span>));</div><div class="line">        mainT.drive(weather-&gt;&#123;</div><div class="line">            System.out.println(<span class="string">"今天的天气是:"</span> + weather);</div><div class="line">            System.out.println(<span class="string">"直升机飞行平稳"</span>);</div><div class="line">        &#125;);</div><div class="line">        mainT.test((da , b)-&gt;da + b);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h4 id="Lambda方法引用与构造器引用"><a href="#Lambda方法引用与构造器引用" class="headerlink" title="Lambda方法引用与构造器引用"></a>Lambda方法引用与构造器引用</h4><p>方法引用和构造器引用可以让Lambda表达式的代码块更加简洁。Lambda表达式如下图所示:<br><img src="http://opbae2xuz.bkt.clouddn.com/images/bhlin/2017-06-01-18.png" alt=""><br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line"><span class="meta">@FuncationalInterface</span></div><div class="line"><span class="class"><span class="keyword">interface</span> <span class="title">Converter</span> </span>&#123;</div><div class="line">    <span class="function">Integer <span class="title">convert</span><span class="params">(String from)</span></span>;</div><div class="line">&#125;</div><div class="line"><span class="comment">//引用类方法</span></div><div class="line">Converter converter1 = from -&gt; Integer.valueOf(from);</div><div class="line">Converter Converter2 = Integer::valueOf;</div><div class="line"><span class="comment">//引用特定对象的实例方法</span></div><div class="line">Converter converter3 = from -&gt; <span class="string">"fkit.org"</span>.indexOf(from)</div><div class="line">Converter converter4 = <span class="string">"fkit.org"</span>::indexOf;</div><div class="line"><span class="comment">//引用某类对象的实例方法</span></div><div class="line"><span class="meta">@FuncationalInterface</span></div><div class="line"><span class="class"><span class="keyword">interface</span> <span class="title">MyTest</span> </span>&#123;</div><div class="line">    <span class="function">String <span class="title">test</span><span class="params">(String a, <span class="keyword">int</span> b, <span class="keyword">int</span> c)</span></span>;</div><div class="line">&#125;</div><div class="line">MyTest mt = (a, b, c) -&gt; a.substring(b, c);</div><div class="line">MyTest mt = String::substring;</div><div class="line"><span class="comment">//引用构造器</span></div><div class="line"><span class="meta">@FuncationalInterface</span></div><div class="line"><span class="class"><span class="keyword">interface</span> <span class="title">YourTest</span> </span>&#123;</div><div class="line">    <span class="function">JFrame <span class="title">win</span><span class="params">(String title)</span></span>;</div><div class="line">&#125;</div><div class="line">YourTest yt = (String a) -&gt; <span class="keyword">new</span> JFrame(a);</div><div class="line">YourTest yt = JFrmae::<span class="keyword">new</span>;</div></pre></td></tr></table></figure></p>
+<h3 id="枚举类"><a href="#枚举类" class="headerlink" title="枚举类"></a>枚举类</h3><p>Java5新增enum关键字，用来定义枚举类。枚举类是一种特殊的类，他一样可以有成员变量、方法，可以实现一个或多个接口，也可以定义自己的构造器。枚举类与普通类的区别:</p>
+<ul>
+<li>枚举类可以实现一个或多个接口，使用enum定义枚举类默认继承java.lang.Enum类,而不是Ojbect类，因此枚举不能显示继承其他父类。</li>
+<li>使用enum定义、费抽象的枚举类默认会使用final修饰，不能派生子类</li>
+<li>枚举类的构造器只能使用private访问控制符</li>
+<li>枚举类的所有实例必须在枚举类第一行显示列出，否则这个枚举类永远都不能产生实例</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="keyword">enum</span> SeasonEnum &#123;</div><div class="line">    <span class="comment">//在第一行列出2个枚举实例</span></div><div class="line">    MALE(<span class="string">"男"</span>),FEMALE(<span class="string">"女"</span>)；</div><div class="line">    <span class="comment">//定义一个public修饰的实例变量</span></div><div class="line">    <span class="keyword">private</span> String name;</div><div class="line">    <span class="function"><span class="keyword">private</span> <span class="title">Gender</span><span class="params">(String name)</span> </span>&#123;</div><div class="line">        <span class="keyword">this</span>.name = name;</div><div class="line">    &#125;</div><div class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getName</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">return</span> <span class="keyword">this</span>.name;</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="垃圾回收和对象的finalize方法"><a href="#垃圾回收和对象的finalize方法" class="headerlink" title="垃圾回收和对象的finalize方法"></a>垃圾回收和对象的finalize方法</h3><p>垃圾回收机制具有如下特征:</p>
+<ul>
+<li>垃圾回收机制只负责回收内存中的对象，不回收任何物理资源</li>
+<li>程序无法精准控制垃圾回收的运行，垃圾回收会在合适的时候进行。当对象永久性的是去引用后，系统就会在合适的时候回收他所占的内存.</li>
+<li>在垃圾回收机制任何对象之前，总会先调用它的finalize()方法，该方法可能会使该对象复活，从而导致垃圾回收机制取消回收。<br>垃圾回收机制在内存中的状态：</li>
+<li>可达状态：当一个对象创建后，有一个以上的引用变量引用它，则这个对象在程序中处于可达状态</li>
+<li>可恢复状态: 如果程序中某个对象没有变量引用，它就进入可恢复状态。这种状态下，系统的垃圾回收机制准备回收该对象暂用的内存，在回收之前系统会调用所有可恢复状态的finalize()方法进行资源清理。如果系统在finalize()方法是重新让一个引用变量引用该对象，该对象再次变为可达状态</li>
+<li>不可达撞他：对象无人引用，并且系统已经调用finalize()方法，该对象永久性是去引用。</li>
+</ul>
+<p>强制系统进行垃圾回收-这种强制只是通知系统进行垃圾回收，单系统是否进行垃圾回收依然不确定。垃圾回收有两种方式:</p>
+<ul>
+<li>调用Systen.gc();</li>
+<li>调用Runtime.getRuntime().gc();</li>
+</ul>
+<h3 id="修饰符的使用范围"><a href="#修饰符的使用范围" class="headerlink" title="修饰符的使用范围"></a>修饰符的使用范围</h3><p><img src="http://opbae2xuz.bkt.clouddn.com/images/bhlin/2017-06-01-19.png" alt=""></p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Java/" rel="tag"># Java</a>
+          
+        </div>
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/05/26/Java基础-二/" rel="next" title="Java基础(二)">
+                <i class="fa fa-chevron-left"></i> Java基础(二)
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/06/02/Java基础-四/" rel="prev" title="Java基础(四)">
+                Java基础(四) <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div id="cloud-tie-wrapper" class="cloud-tie-wrapper"></div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="http://opbae2xuz.bkt.clouddn.com/images/bhlin/ピカチュウ.jpeg"
+               alt="啖火" />
+          <p class="site-author-name" itemprop="name">啖火</p>
+           
+              <p class="site-description motion-element" itemprop="description"></p>
+           
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">16</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">5</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">7</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#包装类及其用法"><span class="nav-number">1.</span> <span class="nav-text">包装类及其用法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#toString方法的用法"><span class="nav-number">2.</span> <span class="nav-text">toString方法的用法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#和equals方法"><span class="nav-number">3.</span> <span class="nav-text">==和equals方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#static关键字"><span class="nav-number">4.</span> <span class="nav-text">static关键字</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#单例类"><span class="nav-number">5.</span> <span class="nav-text">单例类</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#final修饰符"><span class="nav-number">6.</span> <span class="nav-text">final修饰符</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#abstract关键字的用法"><span class="nav-number">7.</span> <span class="nav-text">abstract关键字的用法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#接口"><span class="nav-number">8.</span> <span class="nav-text">接口</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#接口和抽象类"><span class="nav-number">9.</span> <span class="nav-text">接口和抽象类</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#内部类"><span class="nav-number">10.</span> <span class="nav-text">内部类</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Lambda表达式与函数式接口"><span class="nav-number">11.</span> <span class="nav-text">Lambda表达式与函数式接口</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Lamdba入门"><span class="nav-number">11.1.</span> <span class="nav-text">Lamdba入门</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Lambda方法引用与构造器引用"><span class="nav-number">11.2.</span> <span class="nav-text">Lambda方法引用与构造器引用</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#枚举类"><span class="nav-number">12.</span> <span class="nav-text">枚举类</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#垃圾回收和对象的finalize方法"><span class="nav-number">13.</span> <span class="nav-text">垃圾回收和对象的finalize方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#修饰符的使用范围"><span class="nav-number">14.</span> <span class="nav-text">修饰符的使用范围</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">啖火</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+  
+  <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.1"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.1"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+    
+    <script>
+      var cloudTieConfig = {
+        url: document.location.href, 
+        sourceId: "",
+        productKey: "caf96788347d4118a95af2385c2d6496",
+        target: "cloud-tie-wrapper"
+      };
+    </script>
+    <script src="https://img1.cache.netease.com/f2e/tie/yun/sdk/loader.js"></script>
+  
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

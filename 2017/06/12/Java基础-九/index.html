@@ -1,0 +1,907 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Java," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.1" />
+
+
+
+
+
+
+<meta name="description" content="网络编程通过Java网络通信的支持，Java程序可以方便的访问互联网上的HTTP服务、FTP服务等，并可以直接获取互联网的远程资源，还可以像远程资源发送GET、POST请求。 使用InetAddress包装IP地址Java提供了InetAddress类代表IP地址，InetAddress有两个子类:Inet4Address、Inet6Address分别代表IPv4和IPv6。InetAddress">
+<meta name="keywords" content="Java">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Java基础(九)">
+<meta property="og:url" content="http://yoursite.com/2017/06/12/Java基础-九/index.html">
+<meta property="og:site_name" content="啖火">
+<meta property="og:description" content="网络编程通过Java网络通信的支持，Java程序可以方便的访问互联网上的HTTP服务、FTP服务等，并可以直接获取互联网的远程资源，还可以像远程资源发送GET、POST请求。 使用InetAddress包装IP地址Java提供了InetAddress类代表IP地址，InetAddress有两个子类:Inet4Address、Inet6Address分别代表IPv4和IPv6。InetAddress">
+<meta property="og:updated_time" content="2017-06-13T12:46:43.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Java基础(九)">
+<meta name="twitter:description" content="网络编程通过Java网络通信的支持，Java程序可以方便的访问互联网上的HTTP服务、FTP服务等，并可以直接获取互联网的远程资源，还可以像远程资源发送GET、POST请求。 使用InetAddress包装IP地址Java提供了InetAddress类代表IP地址，InetAddress有两个子类:Inet4Address、Inet6Address分别代表IPv4和IPv6。InetAddress">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2017/06/12/Java基础-九/"/>
+
+
+
+
+
+  <title>Java基础(九) | 啖火</title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  <div style="display: none;">
+  	<script src="https://s19.cnzz.com/z_stat.php?id=1261967319&web_id=1261967319" language="JavaScript"></script>
+  </div>
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">啖火</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <h1 class="site-subtitle" itemprop="description"></h1>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/06/12/Java基础-九/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="啖火">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://opbae2xuz.bkt.clouddn.com/images/bhlin/ピカチュウ.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="啖火">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+            
+            
+              
+                Java基础(九)
+              
+            
+          </h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-06-12T16:34:18+08:00">
+                2017-06-12
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Java/" itemprop="url" rel="index">
+                    <span itemprop="name">Java</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a class="cloud-tie-join-count" href="/2017/06/12/Java基础-九/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count join-count" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="网络编程"><a href="#网络编程" class="headerlink" title="网络编程"></a>网络编程</h2><p>通过Java网络通信的支持，Java程序可以方便的访问互联网上的HTTP服务、FTP服务等，并可以直接获取互联网的远程资源，还可以像远程资源发送GET、POST请求。</p>
+<h3 id="使用InetAddress包装IP地址"><a href="#使用InetAddress包装IP地址" class="headerlink" title="使用InetAddress包装IP地址"></a>使用InetAddress包装IP地址</h3><p>Java提供了InetAddress类代表IP地址，InetAddress有两个子类:Inet4Address、Inet6Address分别代表IPv4和IPv6。<br>InetAddress没有提供构造器，提供了两个静态方法获取InetAddress实例:</p>
+<blockquote>
+<ol>
+<li>getByName(String host): 根据主机获取对应的InetAddress对象;</li>
+<li>getByAddress(byte[] addr): 根据原始IP地址获取对应的InetAddress对象;</li>
+</ol>
+</blockquote>
+<p>InetAddress提供如下三个方法获取InetAddress实例对应的IP地址和主机名:</p>
+<blockquote>
+<ol>
+<li>String getCanonicalHostName(): 获取此IP地址的全限定域名;</li>
+<li>String getHostAddress(): 返回该InetAddress实例对应的IP对应的IP字符串;</li>
+<li>String getHostName(): 获取IP地址的主机名;</li>
+</ol>
+</blockquote>
+<p>InetAddress还提供getLocalHost()方法获取本机IP地址对应的InetAddress实例;还提供一个用于测试是否可以到达该地址方法:isReachable();<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">InetAddressTest</span> </span>&#123;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> Exception</span>&#123;</div><div class="line">        <span class="comment">//根据主机名获取对应的InetAddress实例</span></div><div class="line">        InetAddress ip = InetAddress.getByName(<span class="string">"www.baidu.com"</span>);</div><div class="line">        <span class="comment">//判断是否能到达</span></div><div class="line">        System.out.println(<span class="string">"百度是否可达:"</span> + ip.isReachable(<span class="number">2000</span>));</div><div class="line">        <span class="comment">//获取改InetAddress实例的ip</span></div><div class="line">        System.out.println(<span class="string">"百度的IP:"</span> + ip.getHostAddress());</div><div class="line">        <span class="comment">//根据原始IP地址获取对应的InetAddress实例</span></div><div class="line">        InetAddress local = InetAddress.getByAddress(<span class="keyword">new</span> <span class="keyword">byte</span>[]&#123;<span class="number">127</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">1</span>&#125;);</div><div class="line">        System.out.println(<span class="string">"本机是否可达: "</span> + local.isReachable(<span class="number">2000</span>));</div><div class="line">        <span class="comment">//获取实例对应的全限定域名</span></div><div class="line">        System.out.println(local.getCanonicalHostName());</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h3 id="使用URLEncoder和URLDecoder工具类"><a href="#使用URLEncoder和URLDecoder工具类" class="headerlink" title="使用URLEncoder和URLDecoder工具类"></a>使用URLEncoder和URLDecoder工具类</h3><p>URLEncoder类包含一个decode(String s, String enc)静态方法，用于将application/x-www-from-urlencoded MIME字符串转换成普通字符串；URLDecoder类包含一个encode(String s, String enc)静态方法，用于将普通字符串转换成application/x-www-from-urlencoded MIME字符串。通俗来讲就是将浏览器地址栏中中文乱码互相转换。<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">URLDecoderTest</span> </span>&#123;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> Exception </span>&#123;</div><div class="line">        String keyWord = URLDecoder.decode(<span class="string">"%e5%93%88%e5%93%88%e5%b0%8f%e9%80%97%e6%af%94"</span>, <span class="string">"utf-8"</span>);</div><div class="line">        System.out.println(keyWord);</div><div class="line">        String urlStr = URLEncoder.encode(<span class="string">"哈哈哈"</span>, <span class="string">"utf-8"</span>);</div><div class="line">        System.out.println(urlStr);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h3 id="使用URLConnection访问远程资源"><a href="#使用URLConnection访问远程资源" class="headerlink" title="使用URLConnection访问远程资源"></a>使用URLConnection访问远程资源</h3><p>URL类用于创建URL对象，URL是有协议名、主机、端口和资源组成，即下面格式:</p>
+<blockquote>
+<p>protocol://host:port/resourceName</p>
+</blockquote>
+<p>URL可以调用如下方法访问URL对应的资源:</p>
+<blockquote>
+<ol>
+<li>String getFile(): 获取URL资源名</li>
+<li>String getHost(): 获取URL主机名</li>
+<li>String getPath(): 获取URL路径部分</li>
+<li>int getPort(): 获取URL端口号</li>
+<li>String getProtocol(): 获取URL协议名称</li>
+<li>String getQuery(): 获取URL查询字符串部分</li>
+<li>URLConnection openConnection():  返回一个URLConnection对象，它代表URL所引用远程对象的连接</li>
+<li>InputStream openStream(): 打开与此URL的连接，并返回一个用于读取该URL资源的InputStream</li>
+</ol>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div><div class="line">107</div><div class="line">108</div><div class="line">109</div><div class="line">110</div><div class="line">111</div><div class="line">112</div><div class="line">113</div><div class="line">114</div><div class="line">115</div><div class="line">116</div><div class="line">117</div><div class="line">118</div><div class="line">119</div><div class="line">120</div><div class="line">121</div><div class="line">122</div><div class="line">123</div><div class="line">124</div><div class="line">125</div><div class="line">126</div><div class="line">127</div><div class="line">128</div><div class="line">129</div><div class="line">130</div><div class="line">131</div><div class="line">132</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">DownUtil</span> </span>&#123;</div><div class="line">    <span class="comment">//下载资源路径</span></div><div class="line">    <span class="keyword">private</span> String path;</div><div class="line">    <span class="comment">//下载文件保存位置</span></div><div class="line">    <span class="keyword">private</span> String targetFile;</div><div class="line">    <span class="comment">//线程个数</span></div><div class="line">    <span class="keyword">private</span> <span class="keyword">int</span> threadNum;</div><div class="line">    <span class="comment">//下载的线程对象数组</span></div><div class="line">    <span class="keyword">private</span> DownThread[] threads;</div><div class="line">    <span class="comment">//文件大小</span></div><div class="line">    <span class="keyword">private</span> <span class="keyword">int</span> fileSize;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="title">DownUtil</span><span class="params">(String path, String targetFile, <span class="keyword">int</span> threadNum)</span> </span>&#123;</div><div class="line">        <span class="keyword">this</span>.path = path;</div><div class="line">        <span class="keyword">this</span>.targetFile = targetFile;</div><div class="line">        <span class="keyword">this</span>.threadNum = threadNum;</div><div class="line">        <span class="comment">//初始化threads数组</span></div><div class="line">        <span class="keyword">this</span>.threads = <span class="keyword">new</span> DownThread[threadNum];</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">download</span><span class="params">()</span> <span class="keyword">throws</span> Exception </span>&#123;</div><div class="line">        URL url = <span class="keyword">new</span> URL(path);</div><div class="line">        HttpURLConnection conn = (HttpURLConnection) url.openConnection();</div><div class="line">        conn.setConnectTimeout(<span class="number">5</span> * <span class="number">1000</span>);</div><div class="line">        conn.setRequestMethod(<span class="string">"GET"</span>);</div><div class="line">        conn.setRequestProperty(<span class="string">"Accept"</span>, <span class="string">"image/gif, image/jpeg, image/pjpeg, image/pjpeg,"</span> +</div><div class="line">                <span class="string">"application/x-shockwave-flash, application/xmal+xml,"</span> +</div><div class="line">                <span class="string">"application/vnd.ms-xpsdocument, application/x-ms-xbap,"</span> +</div><div class="line">                <span class="string">"application/x-ms-application, application/vnd.ms-excel,"</span> +</div><div class="line">                <span class="string">"application/vnd.ms-powerpoint, application/msword, */*"</span>);</div><div class="line">        conn.setRequestProperty(<span class="string">"Accept-Language"</span>, <span class="string">"zh-CN"</span>);</div><div class="line">        conn.setRequestProperty(<span class="string">"Charset"</span>, <span class="string">"UTF-8"</span>);</div><div class="line">        conn.setRequestProperty(<span class="string">"Connection"</span>, <span class="string">"Keep-Alive"</span>);</div><div class="line">        <span class="comment">//得到文件大小</span></div><div class="line">        fileSize = conn.getContentLength();</div><div class="line">        conn.disconnect();</div><div class="line">        <span class="keyword">int</span> currentPartSize = fileSize / threadNum + <span class="number">1</span>;</div><div class="line">        RandomAccessFile file = <span class="keyword">new</span> RandomAccessFile(targetFile, <span class="string">"rw"</span>);</div><div class="line">        <span class="comment">//设置本地文件大小</span></div><div class="line">        file.setLength(fileSize);</div><div class="line">        <span class="comment">//关闭文件</span></div><div class="line">        file.close();</div><div class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; threadNum; i++) &#123;</div><div class="line">            <span class="comment">//计算每个线程下载的位置</span></div><div class="line">            <span class="keyword">int</span> startPos = i * currentPartSize;</div><div class="line">            RandomAccessFile currentPart = <span class="keyword">new</span> RandomAccessFile(targetFile, <span class="string">"rw"</span>);</div><div class="line">            <span class="comment">//定位该线程现在的位置</span></div><div class="line">            currentPart.seek(startPos);</div><div class="line">            <span class="comment">//创建下载线程</span></div><div class="line">            threads[i] = <span class="keyword">new</span> DownThread(startPos, currentPartSize, currentPart);</div><div class="line">            threads[i].start();</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    <span class="comment">//获取下载的完成百分比</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">double</span> <span class="title">getCompleteRate</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">int</span> sumSize = <span class="number">0</span>;</div><div class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; threadNum; i++) &#123;</div><div class="line">            sumSize += threads[i].length;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> sumSize * <span class="number">1.0</span> / fileSize;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">private</span> <span class="class"><span class="keyword">class</span> <span class="title">DownThread</span> <span class="keyword">extends</span> <span class="title">Thread</span> </span>&#123;</div><div class="line">        <span class="comment">//当前线程的下载位置</span></div><div class="line">        <span class="keyword">private</span> <span class="keyword">int</span> startPos;</div><div class="line">        <span class="comment">//当前线程负责下载的文件大小</span></div><div class="line">        <span class="keyword">private</span> <span class="keyword">int</span> currentPartSzie;</div><div class="line">        <span class="comment">//当前线程需要下载的文件快</span></div><div class="line">        <span class="keyword">private</span> RandomAccessFile currentPart;</div><div class="line">        <span class="comment">//定义线程已下载的字节数</span></div><div class="line">        <span class="keyword">public</span> <span class="keyword">int</span> length;</div><div class="line"></div><div class="line">        <span class="function"><span class="keyword">public</span> <span class="title">DownThread</span><span class="params">(<span class="keyword">int</span> startPos, <span class="keyword">int</span> currentPartSzie, RandomAccessFile currentPart)</span> </span>&#123;</div><div class="line">            <span class="keyword">this</span>.startPos = startPos;</div><div class="line">            <span class="keyword">this</span>.currentPart = currentPart;</div><div class="line">            <span class="keyword">this</span>.currentPartSzie = currentPartSzie;</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        <span class="meta">@Override</span></div><div class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</div><div class="line">            <span class="keyword">try</span> &#123;</div><div class="line">                URL url = <span class="keyword">new</span> URL(path);</div><div class="line">                HttpURLConnection conn = (HttpURLConnection) url.openConnection();</div><div class="line">                conn.setConnectTimeout(<span class="number">5</span> * <span class="number">1000</span>);</div><div class="line">                conn.setRequestProperty(<span class="string">"Accept"</span>, <span class="string">"image/gif, image/jpeg, image/pjpeg, image/pjpeg,"</span> +</div><div class="line">                        <span class="string">"application/x-shockwave-flash, application/xmal+xml,"</span> +</div><div class="line">                        <span class="string">"application/vnd.ms-xpsdocument, application/x-ms-xbap,"</span> +</div><div class="line">                        <span class="string">"application/x-ms-application, application/vnd.ms-excel,"</span> +</div><div class="line">                        <span class="string">"application/vnd.ms-powerpoint, application/msword, */*"</span>);</div><div class="line">                conn.setRequestProperty(<span class="string">"Accept-Language"</span>, <span class="string">"zh-CN"</span>);</div><div class="line">                conn.setRequestProperty(<span class="string">"Charset"</span>, <span class="string">"UTF-8"</span>);</div><div class="line">                InputStream inStream = url.openStream();</div><div class="line">                <span class="comment">//跳过startPos个字节,表明该线程只下载自己负责的那部分</span></div><div class="line">                inStream.skip(<span class="keyword">this</span>.startPos);</div><div class="line">                <span class="keyword">byte</span>[] buffer = <span class="keyword">new</span> <span class="keyword">byte</span>[<span class="number">1024</span>];</div><div class="line">                <span class="keyword">int</span> hasRead = <span class="number">0</span>;</div><div class="line">                <span class="keyword">while</span> (length &lt; currentPartSzie &amp;&amp; (hasRead = inStream.read(buffer)) != -<span class="number">1</span>) &#123;</div><div class="line">                    currentPart.write(buffer, <span class="number">0</span>, hasRead);</div><div class="line">                    length += hasRead;</div><div class="line">                &#125;</div><div class="line">                currentPart.close();</div><div class="line">                inStream.close();</div><div class="line">            &#125; <span class="keyword">catch</span> (MalformedURLException e) &#123;</div><div class="line">                e.printStackTrace();</div><div class="line">            &#125; <span class="keyword">catch</span> (IOException e) &#123;</div><div class="line">                e.printStackTrace();</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line"></div><div class="line">    &#125;</div><div class="line"></div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] age)</span> <span class="keyword">throws</span> Exception </span>&#123;</div><div class="line">        String path = <span class="string">"https://timgsa.baidu"</span> +</div><div class="line">                <span class="string">".com/timg?image&amp;quality=80&amp;size=b9999_10000&amp;sec=1497329776318&amp;di=a95d10efa28b7010991b7de6d892c43a&amp;imgtype=0&amp;src=http%3A%2F%2Fandroid-wallpapers.25pp.com%2Ffs01%2F2014%2F09%2F30%2F0_3675c5ca51a2f5fec8f756217ea66dd6_900x675.jpg"</span>;</div><div class="line">        DownUtil downUtil = <span class="keyword">new</span> DownUtil(path, <span class="string">"ios-bhlin.jpg"</span>, <span class="number">4</span>);</div><div class="line"></div><div class="line">        downUtil.download();</div><div class="line"></div><div class="line">        <span class="keyword">new</span> Thread(()-&gt;&#123;</div><div class="line">            <span class="keyword">while</span> (downUtil.getCompleteRate() &lt; <span class="number">1</span>) &#123;</div><div class="line">                System.out.println(<span class="string">"已完成: "</span> + downUtil.getCompleteRate());</div><div class="line">                <span class="keyword">try</span> &#123;</div><div class="line">                    Thread.sleep(<span class="number">100</span>);</div><div class="line">                &#125; <span class="keyword">catch</span> (InterruptedException e) &#123;</div><div class="line">                    e.printStackTrace();</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">        &#125;).start();</div><div class="line">    &#125;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="TCP协议基础"><a href="#TCP协议基础" class="headerlink" title="TCP协议基础"></a>TCP协议基础</h3><p>TCP协议被称作是一种端对端的协议。当一台计算机需要与另一台计算机连接是，TCP协议会让它们建立连接：用于发送和接受数据的虚拟链路。在真正的读写操作之前，server与client之间必须建立一个连接，当读写操作完成后，双方不再需要这个连接 时它们可以释放这个连接，连接的建立是需要三次握手的，而释放则需要4次握手，所以说每个连接的建立都是需要资源消耗和时间消耗的；</p>
+<h3 id="使用ServerSocket和Socket"><a href="#使用ServerSocket和Socket" class="headerlink" title="使用ServerSocket和Socket"></a>使用ServerSocket和Socket</h3><p>Java中能接受其他通信实体请求的类是ServerSocket,ServerSocket对象用于监听来自客户端Socket的连接，如果没有连接，他将一直处于等待状态。ServerSocket包含一个监听来自客户端连接请求的方法:</p>
+<blockquote>
+<ol>
+<li>Socket accept(): 如果接收到客户端的Socket连接请求，该方法返回一个与客户端Socket对应的Socket;否则该方法会一直处于阻塞线程的状态</li>
+<li>ServerSocket(int port): 用指定端口port创建ServerSocket，该端口值0~65535</li>
+<li>ServerSocket(int port, int backlog): 增加一个用来改变连接队列长度的参数backlog</li>
+<li>ServerSocket(int port, int backlog, InetAddress localAddr): 在机器存在多个IP的情况下，语序通过localAddr参数指定将ServerSocket绑定到指定的IP地址</li>
+</ol>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">ServerSocket ss= <span class="keyword">new</span> ServerSocket(<span class="number">30000</span>);</div><div class="line"><span class="keyword">while</span>(<span class="keyword">true</span>) &#123;</div><div class="line">    Socket s = ss.accept();</div><div class="line">    <span class="comment">//下面就可以使用Socket进行通信了</span></div><div class="line">    ...</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>客户端通常使用Socket的构造器指定服务器:</p>
+<blockquote>
+<ol>
+<li>Socket(InetAddress/String remoteAddress, int port): 连接到指定远程主机、端口,该构造器没有指定本地地址和本地端口，默认使用本地主机的IP和系统动态分配的端口</li>
+<li>Socket(InetAddress/String remoteAddress, int port, InetAddress localAddr, int localPort): 连接到指定远程主机、端口，并指定本地ip和本地端口</li>
+</ol>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">Socket s = <span class="keyword">new</span> Socket(<span class="string">"127.0.0.1"</span>, <span class="number">30000</span>);</div><div class="line"><span class="comment">//上面代码就会连接到指定的服务器，让服务端的accept()方法向下执行</span></div><div class="line"></div><div class="line"><span class="comment">//下面就可以使用Socket进行通信了</span></div></pre></td></tr></table></figure>
+<p>Socket提供了两个方法获取输入流和输出流</p>
+<blockquote>
+<ol>
+<li>InputStream getInputStream(): 返回该Socket对象对应的输入流，让程序通过输入流从Socket中取数据</li>
+<li>OutputStream getOutputStream(): 返回该Socket对象对应的输出流，让程序通过输出流从Socket中输出数据</li>
+</ol>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Server</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> Exception </span>&#123;</div><div class="line">        ServerSocket ss = <span class="keyword">new</span> ServerSocket(<span class="number">30000</span>);</div><div class="line">        <span class="keyword">while</span> (<span class="keyword">true</span>) &#123;</div><div class="line">            Socket s = ss.accept();</div><div class="line">            PrintStream ps = <span class="keyword">new</span> PrintStream(s.getOutputStream());</div><div class="line">            ps.println(<span class="string">"你好,你收到了服务器的推送消息"</span>);</div><div class="line">            ps.close();</div><div class="line">            s.close();</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Client</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> Exception </span>&#123;</div><div class="line">        Socket s = <span class="keyword">new</span> Socket(<span class="string">"127.0.0.1"</span>, <span class="number">30000</span>);</div><div class="line">        BufferedReader br = <span class="keyword">new</span> BufferedReader(<span class="keyword">new</span> InputStreamReader(s.getInputStream()));</div><div class="line">        String line = br.readLine();</div><div class="line">        System.out.println(<span class="string">"来自服务器的数据: "</span> + line);</div><div class="line">        br.close();</div><div class="line">        s.close();</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="使用NIO实现非阻塞式网络通信"><a href="#使用NIO实现非阻塞式网络通信" class="headerlink" title="使用NIO实现非阻塞式网络通信"></a>使用NIO实现非阻塞式网络通信</h3><p>Java的NIO为非阻塞式Socket通信提供了如下几个特殊类:</p>
+<blockquote>
+<ol>
+<li>Selector: 它是SelectableChannel对象的多路复用器，所有采用非阻塞方式进行通信的Cannel都应该注册Selector对象。通过通过调用此类的<font color="red">open()</font>静态方法创建Selector实例，该方法使用系统默认的Selector来返回新的Selector</li>
+</ol>
+</blockquote>
+<p>Selector可以同时监控多个SelectableChannel的IO状况，是非阻塞IO的核心。一个Selector实例有三个SelectionKey集合:</p>
+<blockquote>
+<ol>
+<li>所有的SelectionKey的集合: 注册在该Selector上的Channel，调用keys()方法返回</li>
+<li>被选择的SelectionKey的集合: 所有可以通过select()方法获取的、需要进行IO处理的Channel，调用selectedKeys()返回</li>
+<li>被取消的SelectionKey集合: 代表所有被取消注册关系的Channel,在下次执行select()方法时，这个Channel对应的SelectionKey会被彻底删除，程序无须直接方法该集合</li>
+</ol>
+</blockquote>
+<p>除此之外Selector还提供一系列和select()相关的方法:</p>
+<blockquote>
+<ol>
+<li>int select(): 监控所有注册的Channel，当它们中间需要进行IO处理时，该方法返回，并将对应的SelectionKey加入被选择的SelectionKey集合中，返回这些Channel的数量；</li>
+<li>int select(long timeout): 可以设置超时时间的select()操作；</li>
+<li>int selectNow(): 执行一个立即返回select()操作，相对于无参的select()方法而言，该方法不会阻塞线程</li>
+<li>Selector wakeup(): 使一个还未返回的select()方法立刻返回</li>
+<li>SelectableChannel: 可以支持非阻塞IO操作的Channel对象，它可被注册到Selector上，这种注册关系有SelectionKey实例表示。Selector对象提供了一个select()方法，该方法允许应用程序同事监控多个IO Channel</li>
+</ol>
+</blockquote>
+<p>可调用SelectableChannel的register()方法将其注册到指定的Selector上，当该Selector上的SelectableChannel需要处理IOc操作，可以调用Selector实例的select()方法获取他们数量，通过selectedKeys()获取需要处理IO的SelectableChannel集<br>SelectableChannel支持阻塞和非阻塞两种模式：</p>
+<blockquote>
+<ol>
+<li>SelectableChannel configureBlocking(boolean block): 是否采用阻塞模式</li>
+<li>boolean isBlocking(): 返回该Channel是否是阻塞模式</li>
+</ol>
+</blockquote>
+<p>不同的SelectableChanne支持的操作不一样，例如ServerSocketChannel代表一个ServerSocket，它只支持OP_ACCEPT操作。<br>除此之外，SelectableChannel还提供了如下几个方法来获取它的注册状态:</p>
+<blockquote>
+<ol>
+<li>boolean isRegistered(): 返回该Channel是否已注册在一个或多个Selector上</li>
+<li>SelectionKey keyFor(Selector sel): 返回Channel和sel之间注册关系</li>
+<li>SelectionKey: 该对象代表SelectableChannel和Selector之间的注册关系</li>
+<li>ServerSocketChannel: 支持非阻塞操作，只支持OP_ACCEOT操作,相当于java.net.serverSocket类<br>5、SocketChannel: 支持非阻塞操作，支持OP_CONNECT、OP_READ、OP_WRITE操作，相当于java.net.Socket类</li>
+</ol>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">NServer</span> </span>&#123;</div><div class="line">    <span class="comment">//用于检测所有Channel状态的Selector</span></div><div class="line">    <span class="keyword">private</span> Selector selector = <span class="keyword">null</span>;</div><div class="line">    <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> PORT = <span class="number">30000</span>;</div><div class="line">    <span class="keyword">private</span> Charset charset = Charset.forName(<span class="string">"UTF-8"</span>);</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span>  <span class="keyword">void</span> <span class="title">init</span><span class="params">()</span> <span class="keyword">throws</span> Exception </span>&#123;</div><div class="line">        selector = Selector.open();</div><div class="line">        <span class="comment">//用open方法打开一个未绑定的serverSocketChannel实例</span></div><div class="line">        ServerSocketChannel server = ServerSocketChannel.open();</div><div class="line">        InetSocketAddress isa = <span class="keyword">new</span> InetSocketAddress(<span class="string">"127.0.0.1"</span>, PORT);</div><div class="line">        <span class="comment">//将改ServerSocketChannel绑定指定IP地址</span></div><div class="line">        server.bind(isa);</div><div class="line">        <span class="comment">//设置ServerSocket以非阻塞方式工作</span></div><div class="line">        server.configureBlocking(<span class="keyword">false</span>);</div><div class="line">        <span class="comment">//将server注册到指定的Selector对象</span></div><div class="line">        server.register(selector, SelectionKey.OP_ACCEPT);</div><div class="line"></div><div class="line">        <span class="keyword">while</span> (selector.select() &gt; <span class="number">0</span>) &#123;</div><div class="line">            <span class="comment">//依次处理selector上每个已选择的SelectionKey</span></div><div class="line">            <span class="keyword">for</span> (SelectionKey sk : selector.selectedKeys()) &#123;</div><div class="line">                <span class="comment">//从已选择的key中删除正在处理的sk</span></div><div class="line">                selector.selectedKeys().remove(sk);</div><div class="line">                <span class="comment">//sk对应的Channel包含客户端的连接请求</span></div><div class="line">                <span class="keyword">if</span> (sk.isAcceptable()) &#123;</div><div class="line">                    <span class="comment">//调用accept方法接受连接,产生服务端的SocketChannel</span></div><div class="line">                    SocketChannel sc = server.accept();</div><div class="line">                    <span class="comment">//设置非阻塞模式</span></div><div class="line">                    sc.configureBlocking(<span class="keyword">false</span>);</div><div class="line">                    <span class="comment">//将sc注册到selector上</span></div><div class="line">                    sc.register(selector, SelectionKey.OP_READ);</div><div class="line">                    <span class="comment">//将sk对应的Channel设置成准备接受其他请求</span></div><div class="line">                    sk.interestOps(SelectionKey.OP_ACCEPT);</div><div class="line">                &#125;</div><div class="line">                <span class="comment">//sk对应的Channel有数据需要读取</span></div><div class="line">                <span class="keyword">if</span> (sk.isReadable()) &#123;</div><div class="line">                    <span class="comment">//获取SelectionKey对应的Channel,该Channel中有可读的数据</span></div><div class="line">                    SocketChannel sc = (SocketChannel) sk.channel();</div><div class="line">                    <span class="comment">//定义准备执行读取数据的ByteBuffer</span></div><div class="line">                    ByteBuffer buff = ByteBuffer.allocate(<span class="number">1024</span>);</div><div class="line">                    String content = <span class="string">""</span>;</div><div class="line">                    <span class="comment">//开始读取数据</span></div><div class="line">                    <span class="keyword">try</span> &#123;</div><div class="line">                        <span class="keyword">while</span> (sc.read(buff) &gt; <span class="number">0</span>) &#123;</div><div class="line">                            buff.flip();</div><div class="line">                            content += charset.decode(buff);</div><div class="line">                        &#125;</div><div class="line">                        System.out.println(<span class="string">"读取的数据: "</span> + content);</div><div class="line">                        <span class="comment">//将sk对应的Channel设置成准备下一次读取</span></div><div class="line">                        sk.interestOps(SelectionKey.OP_READ);</div><div class="line">                    &#125;<span class="keyword">catch</span> (Exception e) &#123;</div><div class="line">                        <span class="comment">//如果捕获到了sk对应的Channel出现的异常,即表明该Channel对应的Client出现了问题,所以从Selector中取消sk的注册</span></div><div class="line">                        sk.cancel();</div><div class="line">                        <span class="keyword">if</span> (sk.channel() != <span class="keyword">null</span>) &#123;</div><div class="line">                            sk.channel().close();</div><div class="line">                        &#125;</div><div class="line">                    &#125;</div><div class="line">                    <span class="keyword">if</span> (content.length() &gt; <span class="number">0</span>) &#123;</div><div class="line">                        <span class="keyword">for</span> (SelectionKey key : selector.keys()) &#123;</div><div class="line">                            Channel targetChannel = key.channel();</div><div class="line">                            <span class="keyword">if</span> (targetChannel <span class="keyword">instanceof</span>  SocketChannel) &#123;</div><div class="line">                                SocketChannel dest = (SocketChannel) targetChannel;</div><div class="line">                                dest.write(charset.encode(content));</div><div class="line">                            &#125;</div><div class="line"></div><div class="line">                        &#125;</div><div class="line">                    &#125;</div><div class="line">                &#125;</div><div class="line"></div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        System.out.println(<span class="string">"--------server while下面--------------"</span>);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> Exception </span>&#123;</div><div class="line">        <span class="keyword">new</span> NServer().init();</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">NClient</span> </span>&#123;</div><div class="line">    <span class="comment">//用于检测所有Channel状态的Selector</span></div><div class="line">    <span class="keyword">private</span> Selector selector = <span class="keyword">null</span>;</div><div class="line">    <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> PORT = <span class="number">30000</span>;</div><div class="line">    <span class="keyword">private</span> Charset charset = Charset.forName(<span class="string">"UTF-8"</span>);</div><div class="line">    <span class="keyword">private</span> SocketChannel sc = <span class="keyword">null</span>;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">init</span><span class="params">()</span> <span class="keyword">throws</span> Exception </span>&#123;</div><div class="line">        selector = Selector.open();</div><div class="line">        InetSocketAddress isa = <span class="keyword">new</span> InetSocketAddress(<span class="string">"127.0.0.1"</span>, PORT);</div><div class="line">        <span class="comment">//调用open静态方法创建连接到指定主机的SocketChannel</span></div><div class="line">        sc = SocketChannel.open(isa);</div><div class="line">        <span class="comment">//设置sc以非阻塞方式工作</span></div><div class="line">        sc.configureBlocking(<span class="keyword">false</span>);</div><div class="line">        <span class="comment">//将SocketChannel对象注册到指定的Selector</span></div><div class="line">        sc.register(selector, SelectionKey.OP_READ);</div><div class="line">        <span class="comment">//启动读取服务端数据的线程</span></div><div class="line">        <span class="keyword">new</span> ClientThread().start();</div><div class="line">        <span class="comment">//获取键盘输入流</span></div><div class="line">        Scanner scan = <span class="keyword">new</span> Scanner(System.in);</div><div class="line">        <span class="keyword">while</span> (scan.hasNextLine()) &#123;</div><div class="line">            String line = scan.nextLine();</div><div class="line">            sc.write(charset.encode(line));</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">private</span> <span class="class"><span class="keyword">class</span> <span class="title">ClientThread</span> <span class="keyword">extends</span> <span class="title">Thread</span> </span>&#123;</div><div class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</div><div class="line">            <span class="keyword">try</span> &#123;</div><div class="line">                <span class="keyword">while</span> (selector.select() &gt; <span class="number">0</span>) &#123;</div><div class="line">                    <span class="keyword">for</span> (SelectionKey sk : selector.selectedKeys()) &#123;</div><div class="line">                        selector.selectedKeys().remove(sk);</div><div class="line">                        <span class="keyword">if</span> (sk.isReadable()) &#123;</div><div class="line">                            SocketChannel sc = (SocketChannel) sk.channel();</div><div class="line">                            ByteBuffer buff = ByteBuffer.allocate(<span class="number">1024</span>);</div><div class="line">                            String content = <span class="string">""</span>;</div><div class="line">                            <span class="keyword">while</span> (sc.read(buff) &gt; <span class="number">0</span>) &#123;</div><div class="line">                                sc.read(buff);</div><div class="line">                                buff.flip();</div><div class="line">                                content += charset.decode(buff);</div><div class="line">                            &#125;</div><div class="line">                            System.out.println(<span class="string">"聊天信息:"</span> + content);</div><div class="line">                            sk.interestOps(SelectionKey.OP_READ);</div><div class="line">                        &#125;</div><div class="line">                    &#125;</div><div class="line">                &#125;</div><div class="line">            &#125;<span class="keyword">catch</span> (Exception e) &#123;</div><div class="line">                e.printStackTrace();</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> Exception </span>&#123;</div><div class="line">        <span class="keyword">new</span> NClient().init();</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<!--### 使用AIO实现异步网络通信-->
+<h3 id="UDP协议基础"><a href="#UDP协议基础" class="headerlink" title="UDP协议基础"></a>UDP协议基础</h3><p>UDP协议是一种不可靠的网络协议，它在通信两端各自建立一个Socket，这两个Socket只是发送、接受数据报的对象。Java提供了DatagramSocket对象作为基于UDP协议的Socket,使用DatagramPacket代表DatagramSocket发送、接受数据报；</p>
+<h3 id="使用DatagramSocket发送-接受数据报-DatagramPacket"><a href="#使用DatagramSocket发送-接受数据报-DatagramPacket" class="headerlink" title="使用DatagramSocket发送/接受数据报(DatagramPacket)"></a>使用DatagramSocket发送/接受数据报(DatagramPacket)</h3><p>Java使用DatagramSocket代表UDP协议的Socket,DatagramSocket不维护状态不能产生IO流，唯一作用就是接受和发送数据报，Java使用DatagramPacket来代表数据报，DatagramSocket接受和发送的数据都是通过DatagramPacket对象完成的；<br>DatagramSocket的构造器:</p>
+<blockquote>
+<ol>
+<li>DatagramSocket(): 创建一个DatagramSocket实例，并将该对象绑定本机默认ip，本机随机端口</li>
+<li>DatagramSocket(int port): 创建一个DatagramSocket实例，绑定本机默认ip，指定端口</li>
+<li>DatagramSocket(int port, InetAddress laddr): 创建一个DatagramSocket实例，绑定指定ip、端口</li>
+</ol>
+</blockquote>
+<p>通过如下方法来接收和发送数据:</p>
+<blockquote>
+<ol>
+<li>receive(DatagramPacket p): 从该DatagramSocket中接收数据报</li>
+<li>send(DatagramPacket p): 以该DatagramSocket对象向外发送数据报</li>
+</ol>
+</blockquote>
+<p>DatagramPacket的构造器:</p>
+<blockquote>
+<ol>
+<li>DatagramPacket(byte[] buf, int length): 以一个空数组来创建DatagramPacket对象，该对象的作用是接收DatagramSocket中的数据；</li>
+<li>DatagramPacket(byte[] buf, int length, InetAddress addr, int port): 以一个包含数据的数组来创建DatagramPacket对象，创建该DatagramPacket对象指定IP和端口——这就决定了该数据报的目的地</li>
+<li>DatagramPacket(byte[] buf, int offset, int length): 以一个空数组来创建DatagramPacket对象，并指定接收到的数据放入buf数组中时从offset开始，最多放length个字节</li>
+<li>DatagramPacket(byte[] buf, int offset, int length, InetAddress addr, int port): 创建一个用于发送的DataPacket对象，指定发送buf数组中从offset开始，总共length个字节;</li>
+</ol>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//接受数据用上面的1、3创建接受对象</span></div><div class="line"><span class="comment">//创建一个接受数据的DatagramPacket对象</span></div><div class="line">DatagramPacket packet = <span class="keyword">new</span> DatagramPacket(buf, <span class="number">256</span>);</div><div class="line"><span class="comment">//接受数据报</span></div><div class="line">socket.receive(packet);</div><div class="line"></div><div class="line"></div><div class="line"><span class="comment">//发送数据报用上面2、4创建发送对象</span></div><div class="line"><span class="comment">//创建一个发送数据报的DatagramPacket对象</span></div><div class="line">DatagramPacket packet = <span class="keyword">new</span> DatagramPacket(buf, length,address, port);</div><div class="line"><span class="comment">//发送数据报</span></div><div class="line">socket.send(packet);</div></pre></td></tr></table></figure>
+<!--### 使用MulticastSocket实现多点广播-->
+<h3 id="通过Proxy使用代理服务器"><a href="#通过Proxy使用代理服务器" class="headerlink" title="通过Proxy使用代理服务器"></a>通过Proxy使用代理服务器</h3><p>Java5开始提供Proxy和ProxySelector两个类，Proxy代表一个代理服务器，可以在URLConnection连接时指定Proxy，创建Socket连接时也可以指定Proxy;<br>Proxy有一个构造器:Proxy(Proxy.Type type, SocketAddress sa),用于创建Proxy对象，sa参数指定代理服务器的地址，type代表代理服务器的类型，类型有如下三种:</p>
+<blockquote>
+<ol>
+<li>Proxy.Type.DIRECT: 表示直接连接，不使用代理</li>
+<li>Proxy.Type.HTTP: 表示支持高级代理协议，如HTTP或FTP</li>
+<li>Proxy.TYpe.SOCKS: 表示SOCKS(V4或V5)代理</li>
+</ol>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ProxyTest</span> </span>&#123;</div><div class="line"></div><div class="line">    <span class="keyword">final</span> String PROXY_ADDR = <span class="string">"129.82.12.188"</span>;</div><div class="line">    <span class="keyword">final</span> <span class="keyword">int</span> PROXY_PORT = <span class="number">3124</span>;</div><div class="line"></div><div class="line">    String urlStr = <span class="string">"http://www.crazyit.org"</span>;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">init</span><span class="params">()</span> <span class="keyword">throws</span> Exception</span>&#123;</div><div class="line">        URL url = <span class="keyword">new</span> URL(urlStr);</div><div class="line">        Proxy proxy = <span class="keyword">new</span> Proxy(Proxy.Type.HTTP, <span class="keyword">new</span> InetSocketAddress(PROXY_ADDR, PROXY_PORT));</div><div class="line"></div><div class="line">        URLConnection conn = url.openConnection(proxy);</div><div class="line"></div><div class="line">        conn.setConnectTimeout(<span class="number">3000</span>);</div><div class="line"></div><div class="line">        Scanner scan = <span class="keyword">new</span> Scanner(conn.getInputStream());</div><div class="line">        PrintStream ps = <span class="keyword">new</span> PrintStream(<span class="string">"index.html"</span>);</div><div class="line">        <span class="keyword">while</span> (scan.hasNextLine()) &#123;</div><div class="line">            String line = scan.nextLine();</div><div class="line">            System.out.println(line);</div><div class="line">            ps.println(line);</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> Exception </span>&#123;</div><div class="line">        <span class="keyword">new</span> ProxyTest().init();</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="通过ProxySelector使用代理服务器"><a href="#通过ProxySelector使用代理服务器" class="headerlink" title="通过ProxySelector使用代理服务器"></a>通过ProxySelector使用代理服务器</h3><p>Java5开始提供Proxy和ProxySelector两个类，ProxySelector代表一个代理选择器，他提供了对代理服务器更加灵活地控制，可以分别对HTTP、HTTPS、FTP、SOCKS等进行分别设置，还可以设置不需要通过代理服务器的主机和地址;<br>使用Proxy对象每次都要显示指定代理服务器，比较麻烦。如果希望每次打开总是具有默认的代理服务器，则要借助于ProxySelector来实现。<br>ProxySelector代表一个代理选择器，它是一个抽象类，程序无法创建他的实例，可以考虑继承ProxySelector来实现自己的代理选择器。创建一个继承ProxySelector的类，并让该类实现如下两个抽象方法:</p>
+<blockquote>
+<ol>
+<li>List<proxy> select(URI uri): 根据业务需要返回搭理服务器列表，如果该方法返回的集合中只包含一个Proxy，该Proxy将会作为默认的代理服务器；</proxy></li>
+<li>connectFailed(URI uri, SocketAddress sa, IOException ioe): 连接代理服务器失败时回调该方法;</li>
+</ol>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ProxySelectorTest</span> </span>&#123;</div><div class="line"></div><div class="line">    <span class="keyword">final</span> String PROXY_ADDR = <span class="string">"139.82.12.188"</span>;</div><div class="line">    <span class="keyword">final</span> <span class="keyword">int</span> PROXY_PORT = <span class="number">3124</span>;</div><div class="line">    String urlStr = <span class="string">"http://www.crazyit.org"</span>;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">init</span><span class="params">()</span> <span class="keyword">throws</span> Exception </span>&#123;</div><div class="line">        ProxySelector.setDefault(<span class="keyword">new</span> ProxySelector() &#123;</div><div class="line">            <span class="meta">@Override</span></div><div class="line">            <span class="function"><span class="keyword">public</span> List&lt;Proxy&gt; <span class="title">select</span><span class="params">(URI uri)</span> </span>&#123;</div><div class="line">                List&lt;Proxy&gt; result = <span class="keyword">new</span> ArrayList&lt;Proxy&gt;();</div><div class="line">                result.add(<span class="keyword">new</span> Proxy(Proxy.Type.HTTP, <span class="keyword">new</span> InetSocketAddress(PROXY_ADDR, PROXY_PORT)));</div><div class="line">                <span class="keyword">return</span> result;</div><div class="line">            &#125;</div><div class="line"></div><div class="line">            <span class="meta">@Override</span></div><div class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">connectFailed</span><span class="params">(URI uri, SocketAddress sa, IOException ioe)</span> </span>&#123;</div><div class="line">                System.out.println(<span class="string">"无法连接到指定代理服务器"</span>);</div><div class="line">            &#125;</div><div class="line">        &#125;);        </div><div class="line">        URL url = <span class="keyword">new</span> URL(urlStr);</div><div class="line">        URLConnection conn = url.openConnection();</div><div class="line">        <span class="comment">//....</span></div><div class="line">    &#125;   </div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>上面打开连接没有指定代理服务器，但是实际上还是使用了代理服务器。除此之外，Java为ProxySelector提供了一个实现类，sun.net.spi.DefaultProxySelector(这是一个未公开的API,应尽量避免使用该API)</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Java/" rel="tag"># Java</a>
+          
+        </div>
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/06/07/Java基础-八/" rel="next" title="Java基础(八)">
+                <i class="fa fa-chevron-left"></i> Java基础(八)
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/06/14/Java基础-十/" rel="prev" title="Java基础(十)">
+                Java基础(十) <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div id="cloud-tie-wrapper" class="cloud-tie-wrapper"></div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="http://opbae2xuz.bkt.clouddn.com/images/bhlin/ピカチュウ.jpeg"
+               alt="啖火" />
+          <p class="site-author-name" itemprop="name">啖火</p>
+           
+              <p class="site-description motion-element" itemprop="description"></p>
+           
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">16</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">5</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">7</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#网络编程"><span class="nav-number">1.</span> <span class="nav-text">网络编程</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#使用InetAddress包装IP地址"><span class="nav-number">1.1.</span> <span class="nav-text">使用InetAddress包装IP地址</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用URLEncoder和URLDecoder工具类"><span class="nav-number">1.2.</span> <span class="nav-text">使用URLEncoder和URLDecoder工具类</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用URLConnection访问远程资源"><span class="nav-number">1.3.</span> <span class="nav-text">使用URLConnection访问远程资源</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#TCP协议基础"><span class="nav-number">1.4.</span> <span class="nav-text">TCP协议基础</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用ServerSocket和Socket"><span class="nav-number">1.5.</span> <span class="nav-text">使用ServerSocket和Socket</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用NIO实现非阻塞式网络通信"><span class="nav-number">1.6.</span> <span class="nav-text">使用NIO实现非阻塞式网络通信</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#UDP协议基础"><span class="nav-number">1.7.</span> <span class="nav-text">UDP协议基础</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用DatagramSocket发送-接受数据报-DatagramPacket"><span class="nav-number">1.8.</span> <span class="nav-text">使用DatagramSocket发送/接受数据报(DatagramPacket)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#通过Proxy使用代理服务器"><span class="nav-number">1.9.</span> <span class="nav-text">通过Proxy使用代理服务器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#通过ProxySelector使用代理服务器"><span class="nav-number">1.10.</span> <span class="nav-text">通过ProxySelector使用代理服务器</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">啖火</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+  
+  <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.1"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.1"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+    
+    <script>
+      var cloudTieConfig = {
+        url: document.location.href, 
+        sourceId: "",
+        productKey: "caf96788347d4118a95af2385c2d6496",
+        target: "cloud-tie-wrapper"
+      };
+    </script>
+    <script src="https://img1.cache.netease.com/f2e/tie/yun/sdk/loader.js"></script>
+  
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

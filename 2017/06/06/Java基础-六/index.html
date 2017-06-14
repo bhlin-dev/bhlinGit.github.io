@@ -1,0 +1,865 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Java," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.1" />
+
+
+
+
+
+
+<meta name="description" content="MySQL数据库与JDBC编程通过JDBC，Java程序可以方便操作各种主流数据库。程序使用JDBC API以统一的方式来连接不同的数据库，然后通过Statement对象来执行标准的SQL语句，获得SQL语句访问数据库的结果。因此掌握标准的SQL语句是学习JDBC的基础。  因为数据库系统太多了并且各数据库内部特性不同，所以Sun就定制了一组标准API,他们只是接口，没有提供实现类——这些实现类有">
+<meta name="keywords" content="Java">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Java基础(六)">
+<meta property="og:url" content="http://yoursite.com/2017/06/06/Java基础-六/index.html">
+<meta property="og:site_name" content="啖火">
+<meta property="og:description" content="MySQL数据库与JDBC编程通过JDBC，Java程序可以方便操作各种主流数据库。程序使用JDBC API以统一的方式来连接不同的数据库，然后通过Statement对象来执行标准的SQL语句，获得SQL语句访问数据库的结果。因此掌握标准的SQL语句是学习JDBC的基础。  因为数据库系统太多了并且各数据库内部特性不同，所以Sun就定制了一组标准API,他们只是接口，没有提供实现类——这些实现类有">
+<meta property="og:image" content="http://opbae2xuz.bkt.clouddn.com/images/bhlin/2017-06-07-03.png">
+<meta property="og:updated_time" content="2017-06-07T03:23:31.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Java基础(六)">
+<meta name="twitter:description" content="MySQL数据库与JDBC编程通过JDBC，Java程序可以方便操作各种主流数据库。程序使用JDBC API以统一的方式来连接不同的数据库，然后通过Statement对象来执行标准的SQL语句，获得SQL语句访问数据库的结果。因此掌握标准的SQL语句是学习JDBC的基础。  因为数据库系统太多了并且各数据库内部特性不同，所以Sun就定制了一组标准API,他们只是接口，没有提供实现类——这些实现类有">
+<meta name="twitter:image" content="http://opbae2xuz.bkt.clouddn.com/images/bhlin/2017-06-07-03.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2017/06/06/Java基础-六/"/>
+
+
+
+
+
+  <title>Java基础(六) | 啖火</title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  <div style="display: none;">
+  	<script src="https://s19.cnzz.com/z_stat.php?id=1261967319&web_id=1261967319" language="JavaScript"></script>
+  </div>
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">啖火</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <h1 class="site-subtitle" itemprop="description"></h1>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/06/06/Java基础-六/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="啖火">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://opbae2xuz.bkt.clouddn.com/images/bhlin/ピカチュウ.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="啖火">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+            
+            
+              
+                Java基础(六)
+              
+            
+          </h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-06-06T14:42:14+08:00">
+                2017-06-06
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Java/" itemprop="url" rel="index">
+                    <span itemprop="name">Java</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a class="cloud-tie-join-count" href="/2017/06/06/Java基础-六/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count join-count" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="MySQL数据库与JDBC编程"><a href="#MySQL数据库与JDBC编程" class="headerlink" title="MySQL数据库与JDBC编程"></a>MySQL数据库与JDBC编程</h2><p>通过JDBC，Java程序可以方便操作各种主流数据库。程序使用JDBC API以统一的方式来连接不同的数据库，然后通过Statement对象来执行标准的SQL语句，获得SQL语句访问数据库的结果。因此掌握标准的SQL语句是学习JDBC的基础。</p>
+<blockquote>
+<p>因为数据库系统太多了并且各数据库内部特性不同，所以Sun就定制了一组标准API,他们只是接口，没有提供实现类——这些实现类有数据库厂商提供实现，这些实现类就是驱动程序。</p>
+</blockquote>
+<p>Sun提供的JDBC可以完成以下三个基本工作:</p>
+<blockquote>
+<ol>
+<li>建立与数据库的连接</li>
+<li>执行SQL语句</li>
+<li>获得SQL语句的执行结果</li>
+</ol>
+</blockquote>
+<h3 id="JDBC数据库编程步骤"><a href="#JDBC数据库编程步骤" class="headerlink" title="JDBC数据库编程步骤"></a>JDBC数据库编程步骤</h3><p>JDBC常用的API:</p>
+<blockquote>
+<ol>
+<li><p>DriverManager: 用户管理JDBC驱动的服务类。主要功能获取Connection对象。该类包含方法如下:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//该方法获得url对应的数据库连接</span></div><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Connection <span class="title">getConnection</span><span class="params">(String url,</span></span></div><div class="line">        java.util.Properties info) <span class="keyword">throws</span> SQLException;</div></pre></td></tr></table></figure>
+</li>
+<li><p>Connection:代表数据库连接对象，每个Connection代表一个物理连接会话。该方法常用方法如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//返回一个Statement对象</span></div><div class="line"><span class="function">Statement <span class="title">createStatement</span><span class="params">()</span> <span class="keyword">throws</span> SQLException</span>;</div><div class="line"><span class="comment">//返回预编译的Statement对象，即将SQL语句提交到数据库进行预编译</span></div><div class="line"><span class="function">PreparedStatement <span class="title">prepareStatement</span><span class="params">(String sql)</span></span></div><div class="line">        <span class="keyword">throws</span> SQLException;</div><div class="line"><span class="comment">//返回CallableStatement对象，该对象用于调用存储过程</span></div><div class="line"><span class="function">CallableStatement <span class="title">prepareCall</span><span class="params">(String sql)</span> <span class="keyword">throws</span> SQLException</span>;</div><div class="line"><span class="comment">//上面都是用于执行sql语句返回的Statment对象，CallableStatement、PreparedStatement是Statment的子类</span></div><div class="line"></div><div class="line"><span class="comment">//控制事务的几个方法</span></div><div class="line"><span class="comment">//创建一个保存点</span></div><div class="line"><span class="function">Savepoint <span class="title">setSavepoint</span><span class="params">()</span> <span class="keyword">throws</span> SQLException</span>;</div><div class="line"><span class="comment">//指定名字创建保存点</span></div><div class="line"><span class="function">Savepoint <span class="title">setSavepoint</span><span class="params">(String name)</span> <span class="keyword">throws</span> SQLException</span>;</div><div class="line"><span class="comment">//设置事务的隔离级别</span></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">setTransactionIsolation</span><span class="params">(<span class="keyword">int</span> level)</span> <span class="keyword">throws</span> SQLException</span>;</div><div class="line"><span class="comment">//事务回滚</span></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">rollback</span><span class="params">()</span></span>;</div><div class="line"><span class="comment">//事务回滚到指定保存点</span></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">rollback</span><span class="params">(Savepoint savepoint)</span> <span class="keyword">throws</span> SQLException</span>;</div><div class="line"><span class="comment">//关闭自动提交，打开事务</span></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">setAutoCommit</span><span class="params">(<span class="keyword">boolean</span> autoCommit)</span> <span class="keyword">throws</span> SQLException</span>;</div><div class="line"><span class="comment">//提交事务</span></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">commit</span><span class="params">()</span> <span class="keyword">throws</span> SQLException</span>;</div></pre></td></tr></table></figure>
+</li>
+<li><p>Statement:用于执行SQL语句的工具接口。该对象可执行DDL、DCL、SQL查询。常用方法如下</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//执行查询语句，并返回对应的ResultSet对象</span></div><div class="line"><span class="function">ResultSet <span class="title">executeQuery</span><span class="params">(String sql)</span> <span class="keyword">throws</span> SQLException</span>;</div><div class="line"><span class="comment">//用于执行DML,并返回受影响的行数；该方法也可执行DDL，执行DDL返回0</span></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">executeUpdate</span><span class="params">(String sql)</span> <span class="keyword">throws</span> SQLException</span>;</div><div class="line"><span class="comment">//执行任何sql语句，如果第一个结果是ResultSet返回true,如果第一个结果是受影响的行数或者没有任何结果返回false</span></div><div class="line"><span class="function"><span class="keyword">boolean</span> <span class="title">execute</span><span class="params">(String sql)</span> <span class="keyword">throws</span> SQLException</span>;</div></pre></td></tr></table></figure>
+</li>
+<li><p>PreparedStatement:预编译的Statement对象，PreparedStatement是Statment子接口，它允许数据库预编译sql语句，以后每次只改变sql命令的参数，避免数据库每次都需要编译sql语句，因此性能更好。他比Statement多了如下方法：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">setXxx</span><span class="params">(<span class="keyword">int</span> paramentIndex, Xxx value)</span>:根据传入的类型不同，调用不同的方法</span></div></pre></td></tr></table></figure>
+</li>
+<li><p>ResultSet:结果集对象。该对象包含访问查询结果的方法，ResultSet可以通过列索引或列名获得列数据。它包含如下方法来移动记录指针</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//释放ResultSet对象</span></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">close</span><span class="params">()</span></span>;</div><div class="line"><span class="comment">//将结果集的指针移动到第row行，如果row是负数，则移动到倒数第row行。</span></div><div class="line"><span class="function"><span class="keyword">boolean</span> <span class="title">absolute</span><span class="params">( <span class="keyword">int</span> row )</span> <span class="keyword">throws</span> SQLException</span>;</div><div class="line"><span class="comment">//将记录指针定位到第一行之前，也就是初始状态</span></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">beforeFirst</span><span class="params">()</span> <span class="keyword">throws</span> SQLException</span>;</div><div class="line"><span class="comment">//将指针定位到第一行</span></div><div class="line"><span class="function"><span class="keyword">boolean</span> <span class="title">first</span><span class="params">()</span> <span class="keyword">throws</span> SQLException</span>;</div><div class="line"><span class="comment">//将记录指针定位到上一行</span></div><div class="line"><span class="function"><span class="keyword">boolean</span> <span class="title">previous</span><span class="params">()</span> <span class="keyword">throws</span> SQLException</span>;</div><div class="line"><span class="comment">//将记录指针定位到下一行</span></div><div class="line"><span class="function"><span class="keyword">boolean</span> <span class="title">next</span><span class="params">()</span> <span class="keyword">throws</span> SQLException</span>;</div><div class="line"><span class="comment">//将记录指针定位到最后一行</span></div><div class="line"><span class="function"><span class="keyword">boolean</span> <span class="title">last</span><span class="params">()</span> <span class="keyword">throws</span> SQLException</span>;</div><div class="line"><span class="comment">//将记录指针定位到最后一行之后</span></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">afterLast</span><span class="params">()</span> <span class="keyword">throws</span> SQLException</span>;</div></pre></td></tr></table></figure>
+</li>
+</ol>
+</blockquote>
+<p>JDBC的编程步骤大致如下：</p>
+<blockquote>
+<ol>
+<li>加载驱动。通常使用Class类的forName()静态方法加载驱动</li>
+<li>通过Drivermanager获取数据连接Connection对象</li>
+<li>通过Connection对象创建Statement对象</li>
+<li>使用Statement执行SQL语句</li>
+<li>操作结果集</li>
+<li>回收数据库资源，包括关闭ResultSet、Statement和Connection等资源</li>
+</ol>
+</blockquote>
+<p>使用execute()方法执行sql语句，该结果只返回boolean值，如果返回了ResultSet对象。那么怎么得到ResultSet对象？</p>
+<blockquote>
+<ol>
+<li>getResultSet():获取Sstatement执行查询语句返回的ResultSet对象</li>
+<li>getUpdateCount(): 获取Sstatement执行DML语句所影响的记录行数</li>
+</ol>
+</blockquote>
+<h3 id="使用PreparedStatement执行SQL语句"><a href="#使用PreparedStatement执行SQL语句" class="headerlink" title="使用PreparedStatement执行SQL语句"></a>使用PreparedStatement执行SQL语句</h3><p>PreparedStatement可以使用占位符(?)。使用PreparedStatement比使用Statement多了如下三个好处:</p>
+<blockquote>
+<ol>
+<li>PreparedStatement预编译SQL语句，性能更好</li>
+<li>PreparedStatement无须”拼接”SQL语句</li>
+<li>PreparedStatement可以避免SQL注入，安全性更好</li>
+</ol>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">PreparedStatementTest</span> </span>&#123;</div><div class="line">    <span class="keyword">private</span> String driver;</div><div class="line">    <span class="keyword">private</span> String url;</div><div class="line">    <span class="keyword">private</span> String user;</div><div class="line">    <span class="keyword">private</span> String pass;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">initParam</span><span class="params">(String paramFile)</span><span class="keyword">throws</span>  Exception </span>&#123;</div><div class="line">        Properties props = <span class="keyword">new</span> Properties();</div><div class="line">        props.load(<span class="keyword">new</span> FileInputStream(paramFile));</div><div class="line">        driver = props.getProperty(<span class="string">"driver"</span>);</div><div class="line">        url = props.getProperty(<span class="string">"url"</span>);</div><div class="line">        user = props.getProperty(<span class="string">"user"</span>);</div><div class="line">        pass = props.getProperty(<span class="string">"pass"</span>);</div><div class="line">        <span class="comment">//加载驱动</span></div><div class="line">        Class.forName(driver);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">insertUsePrepare</span><span class="params">()</span><span class="keyword">throws</span> Exception </span>&#123;</div><div class="line">        <span class="keyword">try</span> (</div><div class="line">                <span class="comment">//获取数据库链接</span></div><div class="line">                Connection conn = DriverManager.getConnection(url, user, pass);</div><div class="line">                <span class="comment">//使用Connection创建PreparedStatement对象</span></div><div class="line">                PreparedStatement pstmt = conn.prepareStatement(<span class="string">"insert into student_table values(null, ?, 1)"</span>)</div><div class="line">            )</div><div class="line">        &#123;</div><div class="line">            <span class="comment">//循环出入100条记录</span></div><div class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">100</span>; i++) &#123;</div><div class="line">                pstmt.setString(<span class="number">1</span>, <span class="string">"姓名"</span> + i);</div><div class="line">                pstmt.executeUpdate();</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="使用CallableStatement调用存储过程"><a href="#使用CallableStatement调用存储过程" class="headerlink" title="使用CallableStatement调用存储过程"></a>使用CallableStatement调用存储过程</h3><p>下面是SQL语句在MySQL数据库创建的简单的存储过程，其中参数sum用out修饰，是返回数据<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">delimiter <span class="comment">//</span></div><div class="line"><span class="function">create procedure <span class="title">add_pro</span><span class="params">(a <span class="keyword">int</span>, b <span class="keyword">int</span>, out sum <span class="keyword">int</span>)</span></span></div><div class="line">begin</div><div class="line">set sum = a + b;</div><div class="line">end; </div><div class="line"><span class="comment">//</span></div></pre></td></tr></table></figure></p>
+<p>调用存储过程使用CallableStatement对象，通过Connection的prepareCall()方法创建CallableStatement对象，创建对象需传入调用存储过程的SQL语句，其格式:{call 过程名(?,?,?…)}<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">PreparedStatementTest</span> </span>&#123;</div><div class="line"></div><div class="line">    <span class="keyword">private</span> String driver;</div><div class="line">    <span class="keyword">private</span> String url;</div><div class="line">    <span class="keyword">private</span> String user;</div><div class="line">    <span class="keyword">private</span> String pass;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">initParam</span><span class="params">(String paramFile)</span><span class="keyword">throws</span>  Exception </span>&#123;</div><div class="line">        Properties props = <span class="keyword">new</span> Properties();</div><div class="line">        props.load(<span class="keyword">new</span> FileInputStream(paramFile));</div><div class="line">        driver = props.getProperty(<span class="string">"driver"</span>);</div><div class="line">        url = props.getProperty(<span class="string">"url"</span>);</div><div class="line">        user = props.getProperty(<span class="string">"user"</span>);</div><div class="line">        pass = props.getProperty(<span class="string">"pass"</span>);</div><div class="line"></div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">callProcedure</span><span class="params">()</span><span class="keyword">throws</span> Exception </span>&#123;</div><div class="line">        <span class="comment">//加载驱动</span></div><div class="line">        Class.forName(driver);</div><div class="line">        <span class="keyword">try</span> (</div><div class="line">                <span class="comment">//获取数据库链接</span></div><div class="line">                Connection conn = DriverManager.getConnection(url, user, pass);</div><div class="line">                <span class="comment">//获取输出参宿,使用Connection创建PreparedStatement对象</span></div><div class="line">                CallableStatement cstmt = conn.prepareCall(<span class="string">"&#123;call add_pro(?,?,?)&#125;"</span>)</div><div class="line">            )</div><div class="line">        &#123;</div><div class="line">            cstmt.setInt(<span class="number">1</span>, <span class="number">4</span>);</div><div class="line">            cstmt.setInt(<span class="number">2</span>, <span class="number">5</span>);</div><div class="line">            <span class="comment">//注册CallableStatement的第三个参数是int类型</span></div><div class="line">            cstmt.registerOutParameter(<span class="number">3</span>, Types.INTEGER);</div><div class="line">            <span class="comment">//执行存储过程</span></div><div class="line">            cstmt.execute();</div><div class="line">            <span class="comment">//获取输出参数</span></div><div class="line">            cstmt.getInt(<span class="number">3</span>);</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h3 id="使用ResultSetMetaData分析结果集元数据"><a href="#使用ResultSetMetaData分析结果集元数据" class="headerlink" title="使用ResultSetMetaData分析结果集元数据"></a>使用ResultSetMetaData分析结果集元数据</h3><p>ResultSet封装sql查询的结果，通过记录指针取出内容。JDBC还允许ResultSet更新记录，提供ResultSetMetaData获取ResultSet对象的相关信息。<br>在JDK1.4以前，默认打开的结果集是不可滚动的，必须在创建Statement或PreparedStatement传入额外参数，在Java5.0以后默认打开的ResultSet就是可滚动的。但是默认打开的ResultSet是不可更新的，如要要创建可更新的需要出入参数。</p>
+<blockquote>
+<ol>
+<li><p>resultSetType: 控制ResultSet类型，该参数可以取如下三个值：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//控制记录指针只能往前移动,JDK1.4以前的默认值</span></div><div class="line">ResultSet.TYPE_FORWARD_ONLY</div><div class="line"><span class="comment">//控制记录指针可以自由移动，但底层的改变不会影响ResultSet的内容</span></div><div class="line">ResultSet.TYPE_SCROLL_INSENSITIVE</div><div class="line"><span class="comment">//控制记录指针可以自由移动，而且底层的改变会影响ResultSet的内容</span></div><div class="line">ResultSet.TYPE_SCROLL_SENSITIVE</div></pre></td></tr></table></figure>
+</li>
+<li><p>resultSetConcurrency:控制ResultSet的并发类型，该参数可以接收如下两个值</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//ResultSet是只读的并发模式</span></div><div class="line">ResultSet.CONCUR_READ_ONLY</div><div class="line"><span class="comment">//ResultSet是可更新的并发模式</span></div><div class="line">ResultSet.CONCUR_UPDATABLE</div><div class="line">``` </div><div class="line">&gt; <span class="number">3</span>. 可更新结果集必须满足如下两个条件: 所有数据来自一个表，选出的数据必须包含主键</div><div class="line"></div><div class="line">```<span class="function">java</span></div><div class="line"><span class="title">try</span> <span class="params">(</span></div><div class="line">                //获取数据库链接</div><div class="line">                Connection conn = DriverManager.getConnection(url, user, pass);</div><div class="line">                PreparedStatement pstms = conn.prepareCall(sql, ResultSet.TYPE_SCROLL_INSENSITIVE,</div><div class="line">                        ResultSet.CONCUR_UPDATABLE);</div><div class="line">                ResultSet rs = pstms.executeQuery()</div><div class="line">            )</div><div class="line">        &#123;</div><div class="line">            rs.last();</div><div class="line">            <span class="comment">//修改记录指针指向的记录</span></div><div class="line">            rs.updateString(<span class="number">2</span>, <span class="string">"ddddd"</span>);</div><div class="line">            <span class="comment">//提交修改</span></div><div class="line">            rs.updateRow();</div><div class="line">        &#125;</div></pre></td></tr></table></figure>
+</li>
+</ol>
+</blockquote>
+<p>通过ResultSet包含的getMetaData()方法获取ResultSetMetaData对象。该对象提供大量方法描述ResultSet信息。常用方法如下：</p>
+<blockquote>
+<ol>
+<li>int getColumnCount(): 返回ResultSt的列数量</li>
+<li>String getColumnName(int column):返回指定索引的列明</li>
+<li>int getColumnType(int column):返回指定索引的列类型<h3 id="理解并掌握RowSet、RowSetFactory"><a href="#理解并掌握RowSet、RowSetFactory" class="headerlink" title="理解并掌握RowSet、RowSetFactory"></a>理解并掌握RowSet、RowSetFactory</h3>RowSet接口继承ResultSet接口，RowSet接口下包含JdbcRowSet、CacheRowSet、FilteredRowSet、JoinRowSet和WebRowSet常用子接口。除JdbcRowSet需要保持与数据库进行长连接之外，其他 都是离线的RowSet。RowSet默认是可滚动的、可更新、可序列化的。<br><img src="http://opbae2xuz.bkt.clouddn.com/images/bhlin/2017-06-07-03.png" alt=""><br>RowSetFactory提供如下方法创建RowSet实例:</li>
+<li>public CachedRowSet createCachedRowSet() throws SQLException; 创建一个默认的CachedRowSet</li>
+<li>public FilteredRowSet createFilteredRowSet() throws SQLException;创建一个默认的FilteredRowSet</li>
+<li>public  JdbcRowSet createJdbcRowSet() throws SQLException;创建一个默认的JdbcRowSet</li>
+<li>public  JoinRowSet createJoinRowSet() throws SQLException;创建一个默认的JoinRowSet</li>
+<li>public  WebRowSet createWebRowSet() throws SQLException;创建一个默认的WebRowSet<h3 id="离线RowSet"><a href="#离线RowSet" class="headerlink" title="离线RowSet"></a>离线RowSet</h3>离线RowSet会直接将底层数据读入内存中，封装成RowSet对象。CachedRowSet是所有离线RowSet的父接口。<!--### 使用RowSet控制分页-->
+</li>
+</ol>
+</blockquote>
+<h3 id="事务的基础知识"><a href="#事务的基础知识" class="headerlink" title="事务的基础知识"></a>事务的基础知识</h3><p>事务具有4个特性：原子性、一致性、隔离性、持续性；</p>
+<blockquote>
+<ol>
+<li>原子性：事务是应用中最小的执行单位，就如原子是自然界最小颗粒，具有不可再分的特性</li>
+<li>一致性：事务执行结果，必须是数据库从一个一致状态，变到另一个一致性状态。</li>
+<li>隔离性：各个事务的执行互不干扰，任何一个事务的内部操作对其他并发的事务都是隔离的</li>
+<li>持续性：持续性也称为持久性，指事务一旦提交，对数据所做的任何改变都要记录到永久存储器<br>事务提交的方式有两种：显示提交(commit)和自动提交(执行DDL或DCL或程序正常退出)<br>事务回滚的方式有两种：显示回滚(rollback)和自动回滚(系统错误或强制退出)<h3 id="JDBC编程中的事务控制"><a href="#JDBC编程中的事务控制" class="headerlink" title="JDBC编程中的事务控制"></a>JDBC编程中的事务控制</h3>JDBC连接提供事务支持，Connection默认打开自动提交，即关闭事务，每执行一条sql语句，就会立即提交，无法回滚。<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//关闭自动提交开启事务</span></div><div class="line">conn.setAuttoCommit(<span class="keyword">false</span>);</div><div class="line"></div><div class="line"><span class="comment">//提交事务</span></div><div class="line">conn.commit();</div><div class="line"></div><div class="line"><span class="comment">//事务回滚</span></div><div class="line">conn.rollback();</div></pre></td></tr></table></figure>
+</li>
+</ol>
+</blockquote>
+<!--### 使用DatabaseMetaData分析数据库元数据-->
+<h3 id="数据库连接池"><a href="#数据库连接池" class="headerlink" title="数据库连接池"></a>数据库连接池</h3><p>数据库连接的建立和关闭是及其耗费系统资源的操作，每次操作打开一个物理连接，使用完毕关闭连接造成系统性能低下。<br>数据连接池的解决方案：当程序启动时，创建足够的数据库连接，并将这些连接组成一个连接池。每次应用程序请求数据库，无须重新打开连接，而是从连接池取已有的使用。使用完后不关闭数据库连接，直接归还给数据库连接池，大大提高运行效率。<br>数据库常用的参数如下</p>
+<blockquote>
+<ol>
+<li>数据库的初始连接数</li>
+<li>连接池的最大连接数</li>
+<li>连接池的最小连接数</li>
+<li>连接池每次增加的容量</li>
+</ol>
+</blockquote>
+<p>数据库连接池有DBCP何C3P0等开源的连接池实现。</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Java/" rel="tag"># Java</a>
+          
+        </div>
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/06/05/Java基础-五/" rel="next" title="Java基础(五)">
+                <i class="fa fa-chevron-left"></i> Java基础(五)
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/06/07/Java基础-七/" rel="prev" title="Java基础(七)">
+                Java基础(七) <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div id="cloud-tie-wrapper" class="cloud-tie-wrapper"></div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="http://opbae2xuz.bkt.clouddn.com/images/bhlin/ピカチュウ.jpeg"
+               alt="啖火" />
+          <p class="site-author-name" itemprop="name">啖火</p>
+           
+              <p class="site-description motion-element" itemprop="description"></p>
+           
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">16</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">5</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">7</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#MySQL数据库与JDBC编程"><span class="nav-number">1.</span> <span class="nav-text">MySQL数据库与JDBC编程</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#JDBC数据库编程步骤"><span class="nav-number">1.1.</span> <span class="nav-text">JDBC数据库编程步骤</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用PreparedStatement执行SQL语句"><span class="nav-number">1.2.</span> <span class="nav-text">使用PreparedStatement执行SQL语句</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用CallableStatement调用存储过程"><span class="nav-number">1.3.</span> <span class="nav-text">使用CallableStatement调用存储过程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用ResultSetMetaData分析结果集元数据"><span class="nav-number">1.4.</span> <span class="nav-text">使用ResultSetMetaData分析结果集元数据</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#理解并掌握RowSet、RowSetFactory"><span class="nav-number">1.5.</span> <span class="nav-text">理解并掌握RowSet、RowSetFactory</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#离线RowSet"><span class="nav-number">1.6.</span> <span class="nav-text">离线RowSet</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#事务的基础知识"><span class="nav-number">1.7.</span> <span class="nav-text">事务的基础知识</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#JDBC编程中的事务控制"><span class="nav-number">1.8.</span> <span class="nav-text">JDBC编程中的事务控制</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#数据库连接池"><span class="nav-number">1.9.</span> <span class="nav-text">数据库连接池</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">啖火</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+  
+  <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.1"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.1"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+    
+    <script>
+      var cloudTieConfig = {
+        url: document.location.href, 
+        sourceId: "",
+        productKey: "caf96788347d4118a95af2385c2d6496",
+        target: "cloud-tie-wrapper"
+      };
+    </script>
+    <script src="https://img1.cache.netease.com/f2e/tie/yun/sdk/loader.js"></script>
+  
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

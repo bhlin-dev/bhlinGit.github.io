@@ -1,0 +1,933 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Java," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.1" />
+
+
+
+
+
+
+<meta name="description" content="Java概述Java语言是一门纯粹的面向对象的语言，它吸收了C++语言的优点，摒弃了C++里难易理解的多继承、指针等概念，因此Java具有功能强大和简单易用的两个特征。Java主要分成了Java SE、Java ME、Java EE三个版本。&amp;emsp; 1. Java SE:整个Java技术的核心和基础，是ME和EE的编程的基础。&amp;emsp; 2. Java ME:主要用于控制移动设备和信息家">
+<meta name="keywords" content="Java">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Java基础(一)">
+<meta property="og:url" content="http://yoursite.com/2017/05/25/Java基础-一/index.html">
+<meta property="og:site_name" content="啖火">
+<meta property="og:description" content="Java概述Java语言是一门纯粹的面向对象的语言，它吸收了C++语言的优点，摒弃了C++里难易理解的多继承、指针等概念，因此Java具有功能强大和简单易用的两个特征。Java主要分成了Java SE、Java ME、Java EE三个版本。&amp;emsp; 1. Java SE:整个Java技术的核心和基础，是ME和EE的编程的基础。&amp;emsp; 2. Java ME:主要用于控制移动设备和信息家">
+<meta property="og:image" content="http://opbae2xuz.bkt.clouddn.com/images/bhlin/2017-06-01-01.png">
+<meta property="og:image" content="http://opbae2xuz.bkt.clouddn.com/images/bhlin/2017-06-01-02.png">
+<meta property="og:image" content="http://opbae2xuz.bkt.clouddn.com/images/bhlin/2017-06-01-03.png">
+<meta property="og:image" content="http://opbae2xuz.bkt.clouddn.com/images/bhlin/2017-06-01-05.png">
+<meta property="og:image" content="http://opbae2xuz.bkt.clouddn.com/images/bhlin/2017-06-01-06.png">
+<meta property="og:image" content="http://opbae2xuz.bkt.clouddn.com/images/bhlin/2017-06-01-07.png">
+<meta property="og:image" content="http://opbae2xuz.bkt.clouddn.com/images/bhlin/2017-06-01-08.png">
+<meta property="og:image" content="http://opbae2xuz.bkt.clouddn.com/images/bhlin/2017-06-01-09.png">
+<meta property="og:image" content="http://opbae2xuz.bkt.clouddn.com/images/bhlin/2017-06-01-10.png">
+<meta property="og:image" content="http://opbae2xuz.bkt.clouddn.com/images/bhlin/2017-06-01-11.png">
+<meta property="og:image" content="http://opbae2xuz.bkt.clouddn.com/images/bhlin/2017-06-01-12.png">
+<meta property="og:image" content="http://opbae2xuz.bkt.clouddn.com/images/bhlin/2017-06-01-13.png">
+<meta property="og:updated_time" content="2017-06-01T03:31:05.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Java基础(一)">
+<meta name="twitter:description" content="Java概述Java语言是一门纯粹的面向对象的语言，它吸收了C++语言的优点，摒弃了C++里难易理解的多继承、指针等概念，因此Java具有功能强大和简单易用的两个特征。Java主要分成了Java SE、Java ME、Java EE三个版本。&amp;emsp; 1. Java SE:整个Java技术的核心和基础，是ME和EE的编程的基础。&amp;emsp; 2. Java ME:主要用于控制移动设备和信息家">
+<meta name="twitter:image" content="http://opbae2xuz.bkt.clouddn.com/images/bhlin/2017-06-01-01.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2017/05/25/Java基础-一/"/>
+
+
+
+
+
+  <title>Java基础(一) | 啖火</title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  <div style="display: none;">
+  	<script src="https://s19.cnzz.com/z_stat.php?id=1261967319&web_id=1261967319" language="JavaScript"></script>
+  </div>
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">啖火</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <h1 class="site-subtitle" itemprop="description"></h1>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/05/25/Java基础-一/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="啖火">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://opbae2xuz.bkt.clouddn.com/images/bhlin/ピカチュウ.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="啖火">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+            
+            
+              
+                Java基础(一)
+              
+            
+          </h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-05-25T19:33:52+08:00">
+                2017-05-25
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Java/" itemprop="url" rel="index">
+                    <span itemprop="name">Java</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a class="cloud-tie-join-count" href="/2017/05/25/Java基础-一/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count join-count" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <a id="more"></a>
+<h2 id="Java概述"><a href="#Java概述" class="headerlink" title="Java概述"></a>Java概述</h2><p>Java语言是一门纯粹的面向对象的语言，它吸收了C++语言的优点，摒弃了C++里难易理解的多继承、指针等概念，因此Java具有功能强大和简单易用的两个特征。Java主要分成了Java SE、Java ME、Java EE三个版本。<br>&emsp; 1. Java SE:整个Java技术的核心和基础，是ME和EE的编程的基础。<br>&emsp; 2. Java ME:主要用于控制移动设备和信息家电等有限存储的设备。<br>&emsp; 3. Java EE:Java技术中最广泛的部分，Java EE提供了企业应用开发相关的完整解决方案。</p>
+<p>计算机高级语言程序按执行方式可分为编译型和解释型两种。Java语言比较特殊，可以认为他既是编译型语言，也是解释型语言。Java程序需要先编译成字节码文件，然后再由JVM解释执行。<br>Java的垃圾回收机制的优点：<br>&emsp; 1. 垃圾回收机制可以很好的提高编程的效率。在没有垃圾回收机制时，可能要花许多时间解决一个难懂的存储器问题。<br>&emsp; 2. 垃圾回收机制保护程序的完整性，垃圾回收是Java语言安全策略的一个重要部分。<br>垃圾回收机制的缺点:<br>&emsp; 3. 垃圾回收的开销影响程序的性能。</p>
+<h2 id="Java数据类型和运算符"><a href="#Java数据类型和运算符" class="headerlink" title="Java数据类型和运算符"></a>Java数据类型和运算符</h2><p>Java是一门强类型语言，所有的变量必须先声明后使用，指定类型的变量只能接受类型与之匹配的值。强类型语言可以在编译过程中发现源码错误，从而提高程序的健壮性。</p>
+<h3 id="标识符和关键字"><a href="#标识符和关键字" class="headerlink" title="标识符和关键字"></a>标识符和关键字</h3><p>标识符就是程序中为变量、类、方法命名的符号名称。Java的标识符必须以字母、下划线、美元符开头。Java语言是区分大小写，因此标识符abc与ABC是不同的。<br>使用标识符要遵守如下规则。</p>
+<ul>
+<li>标识符由字母、数字、下划线(_)、美元符($)组成，其中数字不能打头;</li>
+<li>标识符不能是Java关键字或保留字，但可以包含关键字和保留字;</li>
+<li>标识符不能包含空格;</li>
+<li>标识符只能包含美元符($),但不能包含@、#等其他特殊字符;</li>
+</ul>
+<p>Java关键字列表如下:<br><img src="http://opbae2xuz.bkt.clouddn.com/images/bhlin/2017-06-01-01.png" alt=""></p>
+<h3 id="Java的数据类型"><a href="#Java的数据类型" class="headerlink" title="Java的数据类型"></a>Java的数据类型</h3><p>Java的数据类型分为两类: 基本数据类型和引用数据类型。</p>
+<ul>
+<li>基本数据类型：数值类型、boolean类型和char类型。数值类型又包括整数类型和浮点类型。整数类型包含:byte、short、int、long。浮点类型包含:float和double。</li>
+<li>引用数据类型：类、接口和数组类型，还有一种特殊的null类型。所谓的引用数据类型是对一个对象的引用,对象包括实例和数组两种。实际上，引用类型变量就是一个指针，只是Java中不在使用指针这个说法.</li>
+</ul>
+<h4 id="基本数据类型"><a href="#基本数据类型" class="headerlink" title="基本数据类型"></a>基本数据类型</h4><p>基本数据类型包含数值类型和boolean类型。<br><img src="http://opbae2xuz.bkt.clouddn.com/images/bhlin/2017-06-01-02.png" alt=""></p>
+<ul>
+<li>byte: -2^7 ~ 2^7 -1 在内存中占8位</li>
+<li>short: -2^15 ~ 2^15 -1 在内存中占16位</li>
+<li>int: -2^31 ~ 2^31 -1 在内存中占32位</li>
+<li>long: -2^63 ~ 2^63 -1 在内存中占64位</li>
+<li>float: 声明float类型需要在小数末尾加上F或f,在内存中占32位</li>
+<li>double: 小数默认double类型，在内存中占64位</li>
+<li>char:使用Unicode字符集，使用’’单引号的一个字符，在内存中占16位</li>
+<li>bool:只有true和false两个值, Java规范没有强制指定boolean占用的内存空间，但由于大部分计算机分配的最小内存单元是字节(8位),因此大部分时候实际上占用8位</li>
+</ul>
+<h4 id="基本数据类型转换"><a href="#基本数据类型转换" class="headerlink" title="基本数据类型转换"></a>基本数据类型转换</h4><p>基本数据类型转换有两种转换方式:自动类型转换和强制类型转换。</p>
+<ol>
+<li><p>自动数据类型转换是指范围小的数据类型想大的数据类型可以进行自动类型转换。可以看下图: <img src="http://opbae2xuz.bkt.clouddn.com/images/bhlin/2017-06-01-03.png" alt=""></p>
+ <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">int</span> iValue = <span class="number">233</span>;</div><div class="line"><span class="keyword">long</span> lValue = iValue;</div></pre></td></tr></table></figure>
+</li>
+<li><p>强制类型转换是指将大的数据类型转换成小的数据类型，例如long-&gt;int， 需要再其前面加上 括号和强制转换的类型</p>
+ <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">int</span> iValue = <span class="number">233</span>;</div><div class="line"><span class="keyword">byte</span> bValue = (<span class="keyword">byte</span>)iValue;</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<h3 id="运算符"><a href="#运算符" class="headerlink" title="运算符"></a>运算符</h3><p>Java的运算符可分为如下几种：</p>
+<ul>
+<li>算数运算符: +、-、*、/、%、++、–</li>
+<li>比较运算符: &gt;、&gt;=、&lt;、&lt;=、==、!=</li>
+<li>逻辑运算符: &amp;&amp;、&amp;、||、|、!、\^</li>
+<li>位运算符: &amp;、|、~、\^ 、&lt;&lt;、&gt;&gt;、&gt;&gt;&gt; </li>
+<li>赋值运算符: =</li>
+<li>扩展赋值运算符: +=、-=、*=、/=、%=、&amp;=、|=、\^=、&lt;&lt;=、&gt;&gt;=、&gt;&gt;&gt;=</li>
+<li>三目运算符: ? : </li>
+</ul>
+<p>运算符的优先级:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">运算符说明</th>
+<th style="text-align:center">Java运算符</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">单目运算符</td>
+<td style="text-align:center">++ — ~ !</td>
+</tr>
+<tr>
+<td style="text-align:center">强制类型转换运算符</td>
+<td style="text-align:center">(type)</td>
+</tr>
+<tr>
+<td style="text-align:center">乘/除/求余</td>
+<td style="text-align:center">* / %</td>
+</tr>
+<tr>
+<td style="text-align:center">加/减</td>
+<td style="text-align:center">+ -</td>
+</tr>
+<tr>
+<td style="text-align:center">移位运算符</td>
+<td style="text-align:center">&lt;&lt; &gt;&gt; &gt;&gt;&gt;</td>
+</tr>
+<tr>
+<td style="text-align:center">关系运算符</td>
+<td style="text-align:center">&lt; &lt;= &gt;= &gt; instanceof</td>
+</tr>
+<tr>
+<td style="text-align:center">等价运算符</td>
+<td style="text-align:center">== !=</td>
+</tr>
+<tr>
+<td style="text-align:center">按位与</td>
+<td style="text-align:center">&amp;</td>
+</tr>
+<tr>
+<td style="text-align:center">按位异或</td>
+<td style="text-align:center">^</td>
+</tr>
+<tr>
+<td style="text-align:center">按位或</td>
+<td style="text-align:center">&#124;</td>
+</tr>
+<tr>
+<td style="text-align:center">条件与</td>
+<td style="text-align:center">&amp;&amp;</td>
+</tr>
+<tr>
+<td style="text-align:center">条件或</td>
+<td style="text-align:center">&#124;&#124;</td>
+</tr>
+<tr>
+<td style="text-align:center">三目运算符</td>
+<td style="text-align:center">?:</td>
+</tr>
+<tr>
+<td style="text-align:center">赋值</td>
+<td style="text-align:center">= += -= *= /= &amp;= &#124;= ^= %= &lt;&lt;= &gt;&gt;= &gt;&gt;&gt;=</td>
+</tr>
+</tbody>
+</table>
+<h2 id="流程控制"><a href="#流程控制" class="headerlink" title="流程控制"></a>流程控制</h2><p> 无论哪种编程语言，都会提供两种基本的流程控制结构：分支结构和循环结构。分支结构用于实现根据条件选择性的执行某段代码，循环结构则用于实现根据循环条件重复执行某段代码。Java提供了if和switch两种分支结构，并提供了while、do while、for三种循环语句，在jdk5后还提供了foreach循环。并且Java还提供了break和continue来控制程序的循环结构。</p>
+<h3 id="分支结构"><a href="#分支结构" class="headerlink" title="分支结构"></a>分支结构</h3><p>1、if条件语句: 使用boolean值或条件来进行分支的控制。if语句有三种形式。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//第一种形式</span></div><div class="line"><span class="keyword">if</span> (<span class="keyword">boolean</span>) &#123;</div><div class="line">    <span class="comment">//statement...</span></div><div class="line">&#125;</div><div class="line"><span class="comment">//第二种形式</span></div><div class="line"><span class="keyword">if</span> (<span class="keyword">boolean</span>)&#123;</div><div class="line">    <span class="comment">//statement...</span></div><div class="line">&#125;<span class="keyword">else</span> &#123;</div><div class="line">    <span class="comment">//statement...</span></div><div class="line">&#125;</div><div class="line"><span class="comment">//第三种形式</span></div><div class="line"><span class="keyword">if</span> (<span class="keyword">boolean</span>)&#123;</div><div class="line">    <span class="comment">//statement...</span></div><div class="line">&#125;<span class="keyword">else</span> <span class="keyword">if</span> (<span class="keyword">boolean</span>)&#123;</div><div class="line">    <span class="comment">//statement...</span></div><div class="line">&#125;<span class="keyword">else</span> &#123;</div><div class="line">    <span class="comment">//statement...</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>2、switch语句由一个控制表达式和多个case标签组成。switch控制表达式的数据类型可以为byte、short、char、int四种整数类型和枚举类型，还有java.lang.String类型(从java7才开始允许)，不能是boolean类型。switch语句的格式如下:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">switch</span> (expression)</div><div class="line">&#123;</div><div class="line">    <span class="keyword">case</span> condition1:</div><div class="line">    &#123;</div><div class="line">        <span class="comment">//statment...</span></div><div class="line">        <span class="keyword">break</span>;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">case</span> condition2:</div><div class="line">    &#123;</div><div class="line">        <span class="comment">//statment...</span></div><div class="line">        <span class="keyword">break</span>;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">default</span>: </div><div class="line">    &#123;</div><div class="line">        <span class="comment">//statment...</span></div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="循环结构"><a href="#循环结构" class="headerlink" title="循环结构"></a>循环结构</h3><p>1、while循环执行每次先进行判断在循环。 while循环语法格式如下:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">while</span> (expression) &#123;</div><div class="line">    <span class="comment">//statment...</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>2、do while循环，先执行在判断， do while循环语法格式如下:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">do</span> &#123;</div><div class="line">    <span class="comment">//statment...</span></div><div class="line">&#125; <span class="keyword">while</span>(expression)</div></pre></td></tr></table></figure>
+<p>3、for循环的基本语法格式如下:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">for</span> ([init_statemnt]; [test_expression]; [iteration_statement]) &#123;</div><div class="line">    <span class="comment">//statment...</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>4、foreach循环: 遍历数组和集合</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">for</span> (type variableName : array | collection) &#123;</div><div class="line">    <span class="comment">//statement....</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>Java语言没有提供goto语句来控制程序的跳转，为了弥补不足，Java提供了continue和break来控制循环。初次之外，return可以结束整个方法，当然也结束了循环。 </p>
+<ul>
+<li>continue: 跳过当前循环，进入下次循环;</li>
+<li>break: 结束当前循环;</li>
+</ul>
+<h3 id="数组类型"><a href="#数组类型" class="headerlink" title="数组类型"></a>数组类型</h3><p>数组是编程语言中常见的一种数据结构，可用于存储多个数据。Java的数组要求所有的数组元素具有相同的数据类型。因此，在一个数组中，数组元素的类型是唯一的，<font color="red">即一个数组只能存储一种数据类型的数据，</font>不能存储多种数据类型的数据。</p>
+<blockquote>
+<p>因为Java语言是面向对象的语言，而类与类之间可以支持继承关系，这样可能产生的一个数组里可以存放多种数据类型的假象。也就是父类型的数组可以存放不同子类型的内容。</p>
+</blockquote>
+<p>一旦数组初始化完成，数组在内存中所占的空间被固定下来，<font color="red">因此数组的长度将不可改变的。</font>即使把某个数组元素的数据清空，所占的空间依旧被保留，数组的长度不变。<br>Java数组既可以存储基本数据类型的数据，也可以存储引用类型的数据。只要所有数组元素具有相同的类型即可。</p>
+<h4 id="使用数组"><a href="#使用数组" class="headerlink" title="使用数组"></a>使用数组</h4><p>Java语言支持两种个是定义数组，推荐第一种:<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">type[] arrayName;</div><div class="line">type arrayName[];</div></pre></td></tr></table></figure></p>
+<p>1、静态初始化：在初始化的时候赋值</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">int</span>[] arrayName;</div><div class="line">arrayName = <span class="keyword">new</span> <span class="keyword">int</span>[]&#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>&#125;;</div><div class="line"><span class="comment">//可以简化为</span></div><div class="line">type[] arrayName = &#123;element1, element1, element1, element1, ...&#125;;</div></pre></td></tr></table></figure>
+<p>2、动态初始化：初始化的时候定义数组的长度，后面赋值</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">type[] array;</div><div class="line">array = <span class="keyword">new</span> type[length];</div></pre></td></tr></table></figure>
+<p>动态初始化时，只需要指定数组的长度，即为每个数组元素指定内存空间，系统为这些数组元素分配初始值。</p>
+<ul>
+<li>数组元素的类型是基本类型的整数类型，默认值0;</li>
+<li>数组元素的类型是基本类型的浮点类型，默认值0.0;</li>
+<li>数组元素的类型是基本类型的字符类型，默认值’\u0000’;</li>
+<li>数组元素的类型是基本类型的布尔类型，默认值false;</li>
+<li>数组元素的类型是引用类型，默认值null;</li>
+</ul>
+<p>数组最常用的用法就是访问数组元素，包括对数组元素进行赋值和取值。所有数组都提供了<font color="red">length</font>属性，通过这个属性可以获取到数组的长度。<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">System.out.print(arrayName[<span class="number">0</span>]);</div><div class="line">arrayName[<span class="number">0</span>] = <span class="string">"ABC"</span>;</div></pre></td></tr></table></figure></p>
+<h4 id="深入数组"><a href="#深入数组" class="headerlink" title="深入数组"></a>深入数组</h4><p>数组是一种引用数据类型，数组引用变量只是一个引用，数组元素和数组变量在内存里是分开存放的。</p>
+<blockquote>
+<p>当一个方法执时，每个方法都会建立自己的内存栈(栈区)，在这个方法内定义的变量将会逐个放入这块栈内存里，随着方法的执行结束，这个方法的内存栈也将自然销毁。因此，所有在方法中定义的局部变量都是放在栈内存中的；在程序中创建一个对象时，这个对象将被保存在运行时数据区中，以便反复利用(因为对象的创建成本较大)，这个运行时数据区就是堆内存。堆内存中的对象不会随着方法的结束而销毁，局部方法结束后，这个对象还可能被另一个引用变量所引用(在方法的参数传递是很常见)，则这个对象依然不会被销毁。只有当一个对象没有任何引用变量引用他时，系统的垃圾回收器才会在合适的时候回收它。</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">int</span>[] a = &#123;<span class="number">5</span>, <span class="number">7</span>, <span class="number">20</span>&#125;;</div><div class="line"><span class="keyword">int</span>[] b = <span class="keyword">new</span> <span class="keyword">int</span>[<span class="number">4</span>];</div><div class="line">b = a;</div></pre></td></tr></table></figure>
+<p>当a、b进行静态初始化的时候开辟了4块内存区，栈内存中有两个引用变量，堆内存中存储a和b引用所指向的数组本身。<br><img src="http://opbae2xuz.bkt.clouddn.com/images/bhlin/2017-06-01-05.png" alt=""><br>当把a赋值给b的时候，a和b都只指向了a原本指向的数组，b引用的数组无人引用，变成了垃圾，等待垃圾回收期将它回收。<br><img src="http://opbae2xuz.bkt.clouddn.com/images/bhlin/2017-06-01-06.png" alt=""></p>
+<p>下面再看采用动态初始化，数组在内存空间的变化<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">int</span>[] iArr;</div><div class="line">iArr = <span class="keyword">new</span> <span class="keyword">int</span>[<span class="number">5</span>];</div><div class="line"><span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i&lt; a.length; i++) &#123;</div><div class="line">    iArr[i] = i + <span class="number">10</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>执行第一行代码，定义一个int数组变量这个时候内存中的变化如示意图，栈内存中定义了一个空引用(空引用没有指向任何有效的内存)<br><img src="http://opbae2xuz.bkt.clouddn.com/images/bhlin/2017-06-01-07.png" alt=""><br>当iArr = new int[5];动态初始化的时候，系统将负责为改数组分配内存空间，将分配默认值0。并且栈内存中的引用指向这个数组<br><img src="http://opbae2xuz.bkt.clouddn.com/images/bhlin/2017-06-01-08.png" alt=""><br>下面遍历循环赋值，将数组中的元素值修改<br><img src="http://opbae2xuz.bkt.clouddn.com/images/bhlin/2017-06-01-09.png" alt=""></p>
+<p>下面引用数据类型的数组在内存空间的变化<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">Person[] students;</div><div class="line">students = <span class="keyword">new</span> Person[<span class="number">2</span>];</div><div class="line"></div><div class="line">Person zhang = <span class="keyword">new</span> Person();</div><div class="line">zhang.age = <span class="number">15</span>;</div><div class="line">zhang.height = <span class="number">158</span>;</div><div class="line"></div><div class="line">Person lee = <span class="keyword">new</span> Person();</div><div class="line">lee.age = <span class="number">16</span>;</div><div class="line">lee.height = <span class="number">161</span>;</div><div class="line"></div><div class="line">students[<span class="number">0</span>] = zhang;</div><div class="line">students[<span class="number">1</span>] = lee;</div></pre></td></tr></table></figure></p>
+<p>执行Person[] students;这时将在栈内存中定义一个引用变量，也就是一个指针，指针并未指向任何有效的内存区。<br><img src="http://opbae2xuz.bkt.clouddn.com/images/bhlin/2017-06-01-10.png" alt=""><br>执行students = new Person[2];这时将在堆内存中分配内存空间，并且分配默认值 null。并将指针指向这块内存区域。<br><img src="http://opbae2xuz.bkt.clouddn.com/images/bhlin/2017-06-01-11.png" alt=""><br>紧接着创建两个Person对象，在栈内存中分配两块内存区域存储指针，然后在堆内存中创建两块区域存储Person实例，并且指针指向对应的Person实例。<br><img src="http://opbae2xuz.bkt.clouddn.com/images/bhlin/2017-06-01-12.png" alt=""><br>下面将Person实例赋值到数组中，这是数组中的元素指向对应的Person实例，无论修改zhang变量所指向的Person实例还是修改students[0]所指向的Person实例，所修改的是同一个内存区，所以必然互相影响。<br><img src="http://opbae2xuz.bkt.clouddn.com/images/bhlin/2017-06-01-13.png" alt=""></p>
+<h4 id="工具类：Arrays"><a href="#工具类：Arrays" class="headerlink" title="工具类：Arrays"></a>工具类：Arrays</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//使用二分法查询key元素在a数组中的索引；不包含返回负数。使用该方法要求数组按照升序排序才能得到正确结构</span></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">binarySearch</span><span class="params">(type[] a, type key)</span></span>;</div><div class="line"></div><div class="line"><span class="comment">//使用二分法查询key元素在a数组中fromIndex到toIndex索引的索引；不包含返回负数。使用该方法要求数组按照升序排序才能得到正确结构</span></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">binarySearch</span><span class="params">(type[] a, <span class="keyword">int</span> fromIndex, <span class="keyword">int</span> toIndex, type key)</span></span>;</div><div class="line"><span class="comment">//把original数组复制成一个新的数组，其中length是新数组的长度。如果length小于original数组的长度 则 新数据就是原数组前面的length个元素，如果大于original数组的长度，则新数组前面元素与原数组元素一样，后面为默认值。</span></div><div class="line">type[] copyOf(type[] original, <span class="keyword">int</span> length);</div><div class="line"><span class="comment">//与上面相似，但只能复制原数组from到to索引的元素</span></div><div class="line">type[] copyOf(type[] original, <span class="keyword">int</span> from, <span class="keyword">int</span> to);</div><div class="line"><span class="comment">//如果a与b长度相同，并且数组元素也意义相同，则返回true</span></div><div class="line"><span class="function"><span class="keyword">boolean</span> <span class="title">equals</span><span class="params">(type[] a, type[] b)</span></span>;</div><div class="line"><span class="comment">//该方法将a数组中所有元素都赋值为val</span></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">fill</span><span class="params">(type[] a, type val)</span></span></div><div class="line"><span class="comment">//该方法将a数组中下标从fromIndex到toIndex下标都赋值为val</span></div><div class="line"><span class="keyword">void</span> <span class="title">fill</span><span class="params">(type[] a, <span class="keyword">int</span> fromIndex, <span class="keyword">int</span> toIndex, type val)</span></div><div class="line"><span class="comment">//对该方法a数组进行排序</span></div><div class="line"><span class="keyword">void</span> <span class="title">sort</span><span class="params">(typep[] a)</span>;</div><div class="line"><span class="comment">//对该方法a数组fromIndex到toIndex下标内进行排序</span></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">sort</span><span class="params">(typep[] a, <span class="keyword">int</span> fromIndex, <span class="keyword">int</span> toIndex)</span></span>;</div><div class="line"><span class="comment">//将数组转换成字符串，以英文逗号(,)和空格隔开</span></div><div class="line"><span class="function">String <span class="title">toString</span><span class="params">(type[] a)</span></span>;</div></pre></td></tr></table></figure>
+<p>问题记录：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//Java使用的Char是Unicode还是Ascll编码？</span></div><div class="line">Unicode</div><div class="line"><span class="comment">//Java的char是否可以保存一个汉字？</span></div><div class="line">可以</div></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Java/" rel="tag"># Java</a>
+          
+        </div>
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/05/09/UIApplicationDelegate了解/" rel="next" title="UIApplicationDelegate详解">
+                <i class="fa fa-chevron-left"></i> UIApplicationDelegate详解
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/05/26/Java基础-二/" rel="prev" title="Java基础(二)">
+                Java基础(二) <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div id="cloud-tie-wrapper" class="cloud-tie-wrapper"></div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="http://opbae2xuz.bkt.clouddn.com/images/bhlin/ピカチュウ.jpeg"
+               alt="啖火" />
+          <p class="site-author-name" itemprop="name">啖火</p>
+           
+              <p class="site-description motion-element" itemprop="description"></p>
+           
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">16</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">5</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">7</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Java概述"><span class="nav-number">1.</span> <span class="nav-text">Java概述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Java数据类型和运算符"><span class="nav-number">2.</span> <span class="nav-text">Java数据类型和运算符</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#标识符和关键字"><span class="nav-number">2.1.</span> <span class="nav-text">标识符和关键字</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Java的数据类型"><span class="nav-number">2.2.</span> <span class="nav-text">Java的数据类型</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#基本数据类型"><span class="nav-number">2.2.1.</span> <span class="nav-text">基本数据类型</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#基本数据类型转换"><span class="nav-number">2.2.2.</span> <span class="nav-text">基本数据类型转换</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#运算符"><span class="nav-number">2.3.</span> <span class="nav-text">运算符</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#流程控制"><span class="nav-number">3.</span> <span class="nav-text">流程控制</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#分支结构"><span class="nav-number">3.1.</span> <span class="nav-text">分支结构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#循环结构"><span class="nav-number">3.2.</span> <span class="nav-text">循环结构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#数组类型"><span class="nav-number">3.3.</span> <span class="nav-text">数组类型</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#使用数组"><span class="nav-number">3.3.1.</span> <span class="nav-text">使用数组</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#深入数组"><span class="nav-number">3.3.2.</span> <span class="nav-text">深入数组</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#工具类：Arrays"><span class="nav-number">3.3.3.</span> <span class="nav-text">工具类：Arrays</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">啖火</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+  
+  <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.1"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.1"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+    
+    <script>
+      var cloudTieConfig = {
+        url: document.location.href, 
+        sourceId: "",
+        productKey: "caf96788347d4118a95af2385c2d6496",
+        target: "cloud-tie-wrapper"
+      };
+    </script>
+    <script src="https://img1.cache.netease.com/f2e/tie/yun/sdk/loader.js"></script>
+  
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

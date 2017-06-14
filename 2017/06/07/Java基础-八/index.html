@@ -1,0 +1,1271 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Java," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.1" />
+
+
+
+
+
+
+<meta name="description" content="输入/输出IO(输入/输出)是比较乏味的事情，因为看不到明显的运行效果，但输入/输出是所有程序都必须使用的部分——输入机制，允许程序去读外部数据(存储设备)、用户输入数据；输出机制,允许程序记录运行状态，将程序数据输出到存储设备中。Java的IO通过java.io包下的类和接口支持，java.io包括输入、输出两种IO流，每种输入、输出流又可分为字节流和字符流。Java7在java.nio及其子包">
+<meta name="keywords" content="Java">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Java基础(八)">
+<meta property="og:url" content="http://yoursite.com/2017/06/07/Java基础-八/index.html">
+<meta property="og:site_name" content="啖火">
+<meta property="og:description" content="输入/输出IO(输入/输出)是比较乏味的事情，因为看不到明显的运行效果，但输入/输出是所有程序都必须使用的部分——输入机制，允许程序去读外部数据(存储设备)、用户输入数据；输出机制,允许程序记录运行状态，将程序数据输出到存储设备中。Java的IO通过java.io包下的类和接口支持，java.io包括输入、输出两种IO流，每种输入、输出流又可分为字节流和字符流。Java7在java.nio及其子包">
+<meta property="og:image" content="http://opbae2xuz.bkt.clouddn.com/images/bhlin/2017-06-12-01.png">
+<meta property="og:image" content="http://opbae2xuz.bkt.clouddn.com/images/bhlin/2017-06-12-02.png">
+<meta property="og:updated_time" content="2017-06-12T08:07:08.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Java基础(八)">
+<meta name="twitter:description" content="输入/输出IO(输入/输出)是比较乏味的事情，因为看不到明显的运行效果，但输入/输出是所有程序都必须使用的部分——输入机制，允许程序去读外部数据(存储设备)、用户输入数据；输出机制,允许程序记录运行状态，将程序数据输出到存储设备中。Java的IO通过java.io包下的类和接口支持，java.io包括输入、输出两种IO流，每种输入、输出流又可分为字节流和字符流。Java7在java.nio及其子包">
+<meta name="twitter:image" content="http://opbae2xuz.bkt.clouddn.com/images/bhlin/2017-06-12-01.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2017/06/07/Java基础-八/"/>
+
+
+
+
+
+  <title>Java基础(八) | 啖火</title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  <div style="display: none;">
+  	<script src="https://s19.cnzz.com/z_stat.php?id=1261967319&web_id=1261967319" language="JavaScript"></script>
+  </div>
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">啖火</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <h1 class="site-subtitle" itemprop="description"></h1>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/06/07/Java基础-八/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="啖火">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://opbae2xuz.bkt.clouddn.com/images/bhlin/ピカチュウ.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="啖火">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+            
+            
+              
+                Java基础(八)
+              
+            
+          </h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-06-07T16:25:20+08:00">
+                2017-06-07
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Java/" itemprop="url" rel="index">
+                    <span itemprop="name">Java</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a class="cloud-tie-join-count" href="/2017/06/07/Java基础-八/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count join-count" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="输入-输出"><a href="#输入-输出" class="headerlink" title="输入/输出"></a>输入/输出</h2><p>IO(输入/输出)是比较乏味的事情，因为看不到明显的运行效果，但输入/输出是所有程序都必须使用的部分——输入机制，允许程序去读外部数据(存储设备)、用户输入数据；输出机制,允许程序记录运行状态，将程序数据输出到存储设备中。<br>Java的IO通过java.io包下的类和接口支持，java.io包括输入、输出两种IO流，每种输入、输出流又可分为字节流和字符流。Java7在java.nio及其子包下同一系列全新的API，这些API对原有新IO的升级，因此也被称为NIO2,更高效的进行输入、输出操作。</p>
+<h3 id="使用File类访问本地文件系统"><a href="#使用File类访问本地文件系统" class="headerlink" title="使用File类访问本地文件系统"></a>使用File类访问本地文件系统</h3><p>File类是java.io包下进行操作文件和目录。File能新建、删除、重命名和目录，FIle不能访问文件内容。如果要访问文件内容则需要使用输入/输出流。<br>File类可以通过文件路径创建File实例，文件路径可以是绝对路径也可以是相对路径。File类提供了很多方法操作文件和目录，下面列出一些常用方法：</p>
+<blockquote>
+<ol>
+<li>String getName():返回File对象所表示的文件名或路径名</li>
+<li>String getPath(): 返回File对象对应的路径名</li>
+<li>File getAbsoluteFile(): 返回File对象的绝对路径</li>
+<li>String getAbsolutePath():返回File对象所对应的绝对路径</li>
+<li>String getParent(): 返回File对象所对应目录的父目录名</li>
+<li>boolean renameTo(File newName): 重命名此File对象所对应的文件或目录</li>
+</ol>
+</blockquote>
+<p>文件检测相关的方法</p>
+<blockquote>
+<ol>
+<li>boolean exists(): 判断文件或目录是否存在</li>
+<li>boolean canWrite(): 判断文件和目录是否可写</li>
+<li>boolean canRead(): 判断文件和目录是否可读</li>
+<li>boolean isFile(): 判断是否是文件</li>
+<li>boolean isDiretory(): 判断是否是目录</li>
+<li>boolean isAbsolute(): 判断是否是绝对路径</li>
+</ol>
+</blockquote>
+<p>获取常规文件信息</p>
+<blockquote>
+<ol>
+<li>long lastModified(): 返回文件的最后修改时间</li>
+<li>long length(): 返回文件内容的长度</li>
+</ol>
+</blockquote>
+<p>文件操作相关的方法</p>
+<blockquote>
+<ol>
+<li>boolean createNewFile(): 当文件不存在时创建文件</li>
+<li>boolean delete(): 删除文件或路径</li>
+<li>static File createTempFile(String prefix, String suffix): 在默认临时文件目录创建一个临时空文件，使用给定前缀、系统生成的随机数和给定后缀作为文件名</li>
+<li>static File createTempFile(String prefix, String suffix, File directory):在directory目录创建一个临时空文件，使用给定前缀、系统生成的随机数和给定后缀作为文件名</li>
+<li>void deleteOnExit(): 注册一个删除钩子，当Java虚拟机退出时，删除File对象所对应的文件和目录 </li>
+</ol>
+</blockquote>
+<p>目录操作相关方法</p>
+<blockquote>
+<ol>
+<li>boolean mkdir(): 创建目录</li>
+<li>String[] list(): 返回子文件名和路径名</li>
+<li>File[] listFiles(): 返回所有子文件和路径</li>
+<li>static File[] listRoots(): 返回系统所有的根路径</li>
+</ol>
+</blockquote>
+<h3 id="使用文件过滤器"><a href="#使用文件过滤器" class="headerlink" title="使用文件过滤器"></a>使用文件过滤器</h3><p>File类的list()方法可以接受FilenameFilter参数，该参数可以过滤出只有符合条件的文件。<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">File file = <span class="keyword">new</span> File(<span class="string">"."</span>);</div><div class="line"><span class="comment">//筛选出文件名以.java结尾或者是路径的</span></div><div class="line">String [] nameList = file.list((dir, name) -&gt; name.endsWith(<span class="string">".java"</span>) || <span class="keyword">new</span> File(name).isDirectory());</div><div class="line">System.out.println(nameList);</div></pre></td></tr></table></figure></p>
+<h3 id="理解IO流的模型和处理方式"><a href="#理解IO流的模型和处理方式" class="headerlink" title="理解IO流的模型和处理方式"></a>理解IO流的模型和处理方式</h3><p>Java的IO流是实现输入/输出的基础，在Java中把不同的输入/输出源的抽象表述为”流”。流(stream)是从起源(source)到接受(sink)的有序数据。<br>按照不同的分类方式，可以将流分为不同的类型。</p>
+<blockquote>
+<ol>
+<li>输入和输出流: 输入流只能从中读取数据，不能写入数据; 输出流只能写入数据，不能读取数据</li>
+<li>字节流和字符流: 字节流操作的数据单元是8位字节，字符流操作的数据单元是16为的字符</li>
+<li>节点流和处理流: 从/向一个特定的IO设备读/写数据的流称为节点流也称低级流;处理流则用于对于一个已经存在的流进行连接或者封装，通过封装后的流来实现数据读/写功能。</li>
+</ol>
+</blockquote>
+<p>Java的IO流共涉及40多个类,这些类都是从如下4个抽象基类派生的:</p>
+<blockquote>
+<ol>
+<li>InputStream/Reader: 所有输入流的基类，前者是字节流，后者是字符流</li>
+<li>OutputStream/Writer: 所有输出流的基类，前者是字节流，后者是字符流</li>
+</ol>
+</blockquote>
+<p>InputStream和Reader是所有输入流的抽象基类，它们的方法是所有输入流都可使用的方法:<br>在InputStream里包含如下三个方法：</p>
+<blockquote>
+<ol>
+<li>int read(): 从输入流中读取单个字节，返回读取的字节数据(字节数据可直接转换int类型)</li>
+<li>int read(byte[] b):从输入流中最多读取b.length个字节数据，并将其存储在字节数组中，返回实际读取的字节数</li>
+<li>int read(byte[] b, int off, int len):从输入流中最多读取len个字节数据，放在字节数组中，并不是从数组起点开始，而是从off位置开始</li>
+</ol>
+</blockquote>
+<p>在Reader里包含如下三个方法：</p>
+<blockquote>
+<ol>
+<li>int read(): 从输入流中读取单个字符</li>
+<li>int read(char[] cbuf):从输入流中最多读取cbuf.length个字符数据，并将其放在cbuf字符数组中,返回字符数</li>
+<li>int read(char[] b, int off, int len):从输入流中最多读取len个字符数据，放在字符数组中，并不是从数组起点开始，而是从off位置开始，返回字符数<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//创建字节输入流</span></div><div class="line">FileInputStream fis = <span class="keyword">new</span> FileInputStream(<span class="string">"FileInputStreamTest.java"</span>);</div><div class="line"><span class="keyword">byte</span>[] bbuf = <span class="keyword">new</span> <span class="keyword">byte</span>[<span class="number">1024</span>];</div><div class="line"><span class="keyword">int</span> hasRead = <span class="number">0</span>;</div><div class="line"><span class="keyword">while</span> ((hasRead = fis.read(bbuf)) &gt; <span class="number">0</span>) &#123;</div><div class="line">    System.out.println(<span class="keyword">new</span> String bbuf, <span class="number">0</span>, hasRead);</div><div class="line">&#125;</div><div class="line">fis.close();</div></pre></td></tr></table></figure>
+</li>
+</ol>
+</blockquote>
+<p>OutputStream和Writer是所有输出流的抽象基类，它们的方法是所有输出流都可使用的方法:<br>在OutputStream里包含如下三个方法：</p>
+<blockquote>
+<ol>
+<li>void write(int c): 将指定字节/字符输出到输出流中， 其中c既可以为字符也可以为字节</li>
+<li>void write(byte[]/char[] b):将字节数组/字符数据输出到自定输出流中</li>
+<li>void write(byte[]/char[] b, int off, int len):将字节数组/字符数据从off位置开始，长度为len输出到指定输出流中</li>
+</ol>
+</blockquote>
+<p>在Writer里包含如下三个方法：</p>
+<blockquote>
+<ol>
+<li>void write(Sring str): 将str字符串里包含的字符输出到指定输出流中</li>
+<li>void write(String, int off, int len):将str字符串从off位置开始，len长度输出到指定输出流中</li>
+</ol>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">FileInputStream fis = <span class="keyword">new</span> FileInputStream(<span class="string">"FileInputStreamTest.java"</span>);</div><div class="line">FileOutputStream fos = <span class="keyword">new</span> FileOutputStream(<span class="string">"newFile.txt"</span>);</div><div class="line"><span class="keyword">byte</span>[] bbuf = <span class="keyword">new</span> <span class="keyword">byte</span>[<span class="number">32</span>];</div><div class="line"><span class="keyword">int</span> hasRead = <span class="number">0</span>;</div><div class="line"><span class="keyword">while</span>((hasRead = fis.read(bbuf)) &gt; <span class="number">0</span>) &#123;</div><div class="line">    fos.write(bbuf, <span class="number">0</span>, hasRead);</div><div class="line">&#125;</div><div class="line"></div><div class="line">fis.close();</div><div class="line">fos.close();</div></pre></td></tr></table></figure>
+<p>Java的输入/输出流体系提供了进40个类，这些类看上去没有规律，如果将其按功能进行分类，则不难发现其是非常规律的。</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">分类</th>
+<th style="text-align:left">字节输入流</th>
+<th style="text-align:left">字节输出流</th>
+<th style="text-align:left">字符输入流</th>
+<th style="text-align:left">字符输出流</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">抽象基类</td>
+<td style="text-align:left">InputStream</td>
+<td style="text-align:left">OutputStream</td>
+<td style="text-align:left">Read</td>
+<td style="text-align:left">Writer</td>
+</tr>
+<tr>
+<td style="text-align:left">访问文件</td>
+<td style="text-align:left">FileInputStream</td>
+<td style="text-align:left">FileOutputStream</td>
+<td style="text-align:left">FileRead</td>
+<td style="text-align:left">FileWriter</td>
+</tr>
+<tr>
+<td style="text-align:left">访问数组</td>
+<td style="text-align:left">ByteArrayInput<br>Stream</td>
+<td style="text-align:left">ByteArrayOutput<br>Stream</td>
+<td style="text-align:left">CharArrayRead</td>
+<td style="text-align:left">CharArrayWriter</td>
+</tr>
+<tr>
+<td style="text-align:left">访问管道</td>
+<td style="text-align:left">PipedInputStream</td>
+<td style="text-align:left">PipedOutputStr<br>eam</td>
+<td style="text-align:left">PipedRead</td>
+<td style="text-align:left">PipedWriter</td>
+</tr>
+<tr>
+<td style="text-align:left">访问字符串</td>
+<td style="text-align:left">-</td>
+<td style="text-align:left">-</td>
+<td style="text-align:left">StringRead</td>
+<td style="text-align:left">StringWriter</td>
+</tr>
+<tr>
+<td style="text-align:left">缓冲流</td>
+<td style="text-align:left">BufferedInputStr<br>eam</td>
+<td style="text-align:left">BufferedOutputS<br>tream</td>
+<td style="text-align:left">BufferedRead</td>
+<td style="text-align:left">BufferedWriter</td>
+</tr>
+<tr>
+<td style="text-align:left">转换流</td>
+<td style="text-align:left"></td>
+<td style="text-align:left"></td>
+<td style="text-align:left">InputStreamRead</td>
+<td style="text-align:left">OutputWriter</td>
+</tr>
+<tr>
+<td style="text-align:left">对象流</td>
+<td style="text-align:left">ObjectInputStream</td>
+<td style="text-align:left">ObjectOutputStr<br>eam</td>
+<td style="text-align:left"></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">抽象基类</td>
+<td style="text-align:left">FilterInputStream</td>
+<td style="text-align:left">FilterOutputStream</td>
+<td style="text-align:left">FilterRead</td>
+<td style="text-align:left">FilterWriter</td>
+</tr>
+<tr>
+<td style="text-align:left">打印流</td>
+<td style="text-align:left"></td>
+<td style="text-align:left">PrintStream</td>
+<td style="text-align:left"></td>
+<td style="text-align:left">PrintWriter</td>
+</tr>
+<tr>
+<td style="text-align:left">推回输入流</td>
+<td style="text-align:left">PushbackInputSt<br>ream</td>
+<td style="text-align:left"></td>
+<td style="text-align:left">PushbackRead</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">特殊流</td>
+<td style="text-align:left">DataInputStream</td>
+<td style="text-align:left">DataOutputStream</td>
+<td style="text-align:left">-</td>
+<td style="text-align:left">-</td>
+</tr>
+</tbody>
+</table>
+<h3 id="使用转换流将字节流转换成字符流"><a href="#使用转换流将字节流转换成字符流" class="headerlink" title="使用转换流将字节流转换成字符流"></a>使用转换流将字节流转换成字符流</h3><p>转换流用于将字节流转换成字符流，其中InputStreamRead将字节输入流转换成字符输入流，OutputStreamWriter将字节输出流转换成字符输出流。<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">try</span>(</div><div class="line">    <span class="comment">//将System.in对象转换成Reader对象</span></div><div class="line">    InputStreamRead reader = <span class="keyword">new</span> InputStreamRead(System.in);</div><div class="line">    BufferedReader br = <span class="keyword">new</span> BufferedReader(reader);</div><div class="line">    )</div><div class="line">&#123;</div><div class="line">    String line = <span class="keyword">null</span>;</div><div class="line">    <span class="keyword">while</span> ((line = br.readLine()) != <span class="keyword">null</span>) &#123;</div><div class="line">        <span class="keyword">if</span> (line.equals(<span class="string">"exit"</span>)) &#123;</div><div class="line">            System.exit(<span class="number">1</span>);</div><div class="line">        &#125;</div><div class="line">        System.out.println(<span class="string">"输入内容为："</span> +  line);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<!--### 推回流的功能和用法-->
+<!--### 重定向标准输入、输出-->
+<!--### 访问其他进程的输入、输出-->
+<h3 id="RandomAccessFile的功能和用法"><a href="#RandomAccessFile的功能和用法" class="headerlink" title="RandomAccessFile的功能和用法"></a>RandomAccessFile的功能和用法</h3><p>RandomAccessFile是Java输入/输出流功能最丰富的文件内容访问类。他既可以读取文件内容，也可以向文件输出数据。与普通的输入/输出流不同的是RandomAccessFile支持”随机访问”的方式，程序可以直接跳转到文件任意地方来读写数据。RandomAccessFile可以向已存在的文件后追加内容。<br>RandomAccessFile虽然方法多，但是只能读写文件不能读写其他IO节点。<br>RandomAccessFile对象也包含一个记录指针，用于表示当前读写的位置。新创建一个RandomAccessFile对象，文件记录指针位于文件头，当读写n个字节，文件记录指针向后移动n个字节，该指针可以自由移动。RandomAccessFile包含两个方法操作文件记录指针</p>
+<blockquote>
+<ol>
+<li>long getFilePointer():返回文件记录指针的位置</li>
+<li>void seek(lng pos): 将文件记录指针定位到pos位置</li>
+</ol>
+</blockquote>
+<p>RandomAccessFile对象有个model参数，指定访问模式：</p>
+<blockquote>
+<ol>
+<li>“r”: 只读方式打开文件，写入将抛出异常</li>
+<li>“rw”: 以读、写方式打开文件，如果不存在，则创建文件</li>
+<li>“rws”: 以读、写方法打开文件，相当于”rw”模式，还要求对文件的内容或元数据的每个更新都同步到底层存储设备</li>
+<li>“rwd”:以读、写方法打开文件，相当于”rw”模式，还要求对文件的内容的每个更新都同步到底层存储设备</li>
+</ol>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">try</span>(</div><div class="line">    RandomAccessFile raf = <span class="keyword">new</span> RandomAccessFile(<span class="string">"RandomAccessFileTest.java"</span>, <span class="string">"r"</span>)</div><div class="line">    )</div><div class="line">&#123;</div><div class="line">    System.out.println(<span class="string">"记录指针初始位置"</span> + raf.getFilepointer());</div><div class="line">    raf.seek(<span class="number">300</span>);</div><div class="line">    <span class="keyword">byte</span>[] bbuf = <span class="keyword">new</span> <span class="keyword">byte</span>[<span class="number">1024</span>];</div><div class="line">    <span class="keyword">int</span> hasRead = <span class="number">0</span>;</div><div class="line">    <span class="keyword">while</span> ((hasRead = raf.read(bbuf)) &gt; <span class="number">0</span>) &#123;</div><div class="line">        System.out.println(<span class="keyword">new</span> String(bbuf, <span class="number">0</span>, hasRead));</div><div class="line">    &#125;</div><div class="line">&#125;<span class="keyword">catch</span> (IOException ex) &#123;</div><div class="line">    ex.printStackTrace();</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="对象序列化机制和作用"><a href="#对象序列化机制和作用" class="headerlink" title="对象序列化机制和作用"></a>对象序列化机制和作用</h3><p>序列化机制允许将实现序列化的Java对象准换成字节序列，这些字节序列可以保存在磁盘上，或者通过网络传输，以备以后重新恢复成原来的而对象。序列化机制使得对象脱离程序而独立存在。<br>对象的序列化指将一个Java对象写入IO流中，与此对象的是，对象的反序列话则指从IO流中恢复该Java对象。<br>为了让某个类可序列化，该类必须支持如下两个接口之一：</p>
+<blockquote>
+<ol>
+<li>Serializable : Java很多类已经实现该接口，该接口是一个标记接口</li>
+<li>Externalizable</li>
+</ol>
+</blockquote>
+<h3 id="通过实现Serializable接口实现序列化"><a href="#通过实现Serializable接口实现序列化" class="headerlink" title="通过实现Serializable接口实现序列化"></a>通过实现Serializable接口实现序列化</h3><p>如果要序列化对象中包含可饮用类型，那么这个引用类型必须是可序列化得，否则拥有该类型成员变量的类也是不可序列化的。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//序列化对象</span></div><div class="line"><span class="comment">//创建一个ObjectOutputStream输出流</span></div><div class="line">ObjectOutputStrem oos = <span class="keyword">new</span> ObjectOutputStream(<span class="keyword">new</span> FileOutputStream(<span class="string">"object.txt"</span>));</div><div class="line"><span class="comment">//将一个Person对象输出到输出流中</span></div><div class="line">oos.writeObject(person);</div><div class="line"></div><div class="line"><span class="comment">//反序列化对象</span></div><div class="line">ObjectInputStream ois = <span class="keyword">new</span> ObjectInputStream(<span class="keyword">new</span> FileInputStream(<span class="string">"object.txt"</span>));</div><div class="line">Person p = (Person)ois.readObject();</div></pre></td></tr></table></figure>
+<h3 id="实现定制的序列化"><a href="#实现定制的序列化" class="headerlink" title="实现定制的序列化"></a>实现定制的序列化</h3><p>在某些场景下某个类中的某个实例变量不要序列化则需要在修饰符后添加transient修饰;<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">private</span> <span class="keyword">transient</span> <span class="keyword">int</span> age;</div></pre></td></tr></table></figure></p>
+<p>使用transient关键字修饰虽然简单、方便，但被transient修饰的变量完全隔离在序列化机制之外，这样导致在发序列化恢复Java对象是无法取得该实例的变量。Java还提供了自定义序列化机制，通过这种序列化机制可让程序控制如何序列化各实例变量。在序列化和反序列化过程中需要特殊处理类应提供如下特殊方法，这些特殊方法用以实现自定义序列化：</p>
+<blockquote>
+<ol>
+<li>private void writeObject(java.io.ObjectOutputStream out) throw IOException; 负责写入特定类的实例状态，一边响应的readObject()方法可以恢复，通过重写该方法，程序员可以完全获得对序列化机制的控制，可以自主决定哪些实例变量需要序列化</li>
+<li>private void readObject(java.io.ObjectInputStream in)throws IOException, ClassNotFoundException; 负责从流中读取并回复对象实例变量，通过重写该方法，程序员可以完全获的对反序列话机制的控制，可以自主决定需要反序列化哪些实例变量</li>
+<li>private void readObjectNoData()throws ObjectStreamException; 当序列化流不完整时，可以用来正确的初始化反序列化对象</li>
+</ol>
+</blockquote>
+<p>writeObject()方法存储实例变量的顺序应该和readObject()方法中恢复实例变量的顺序一致，否则将不能正确恢复该Java对象。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Person</span> <span class="keyword">implements</span> <span class="title">java</span>.<span class="title">io</span>.<span class="title">Serializable</span> </span>&#123;</div><div class="line"></div><div class="line">    <span class="keyword">private</span> String name;</div><div class="line">    <span class="keyword">private</span> <span class="keyword">int</span> age;</div><div class="line">    </div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Person</span><span class="params">(String name, <span class="keyword">int</span> age)</span> </span>&#123;</div><div class="line">        System.out.println(<span class="string">"有参数构造器"</span>);</div><div class="line">    &#125;</div><div class="line">    <span class="comment">//省略name与age的setter和getter方法</span></div><div class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">writeObject</span><span class="params">(java.io.ObjectOutputStream out)</span> </span></div><div class="line">        <span class="keyword">throws</span> IOExcetpion &#123;</div><div class="line">        将name实例变量值反转后写入二进制流</div><div class="line">        out.writeObject(<span class="keyword">new</span> StringBuffer(name).reverse());</div><div class="line">        out.writeInt(age);</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">readObject</span><span class="params">(java.io.ObjectInputStream in)</span> </span></div><div class="line">        <span class="keyword">throws</span> IOException, ClassNotFoundException &#123;</div><div class="line">        </div><div class="line">        <span class="keyword">this</span>.name = ((StringBuffer)in.readObject()).reverse().toString();        </div><div class="line">        <span class="keyword">this</span>.age = in.readInt();</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<!--### 通过实现Externalizable接口实现序列化-->
+<h3 id="序列化版本"><a href="#序列化版本" class="headerlink" title="序列化版本"></a>序列化版本</h3><p>反序列化Java对象必须提供该对象class文件，随着项目的升级，系统的class文件也会升级，Java如何保证两个class文件的兼容性？<br>Java序列化机制润徐为序列化类提供一个private static final的serialVersionUID值，该类变量的值用于表示Java类的序列化版本。分配serialVersionUID类变量的值非常简单：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Test</span> </span>&#123;</div><div class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">long</span> serialVersionUID = <span class="number">512L</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="Java新IO的概念和作用"><a href="#Java新IO的概念和作用" class="headerlink" title="Java新IO的概念和作用"></a>Java新IO的概念和作用</h3><p>前面所讲的输入/输出流都是阻塞式的输入/输出。传统的输入/输出流都是通过字节的移动来处理，效率不高。在JDK1.4，Java提供了额一系列改进的输入/输出处理的新功能，这些功能被称为NIO(New IO)。<br>NIO采用内存映射文件的方式处理输入/输出，新IO将文件或文件的一段映射到内存中。Channel(通道)和Buffer(缓冲)是新IO的两个核心对象。<br>Channel是对传统的输入/输出的模拟，在NIO中所有的数据都是通过通道来传输;Channel与传统的InputStream、OutputStream的最大区别它提供了一个map()方法，通过map()方法直接将”一块数据”映射到内存中。如果说传统的IO是面向流的处理，则NIO是面向块的处理。<br>Buffer可以理解成是一个容器，本质是一个数组，Channel读取写入都要通过Buffer进行，Channel也可以直接将文件的某块数据映射成Buffer。<br>除此之外，NIO还提供用于将Unicode字符串映射成字节序列及逆映射操作的Charset类，也提供了支持非阻塞式的输入/输出Selector类。</p>
+<h3 id="使用Buffer和Channel完成输入、输出"><a href="#使用Buffer和Channel完成输入、输出" class="headerlink" title="使用Buffer和Channel完成输入、输出"></a>使用Buffer和Channel完成输入、输出</h3><p>Buffer是一个抽象类，最常用的子类是ByteBuffer，还包括其他基本数据类型的Buffer类：CharBuffer、ShortBuffer、IntBuffer、LongBuffer、FloatBuffer、DoubleBuffer。他们可以在底层字节数组上进行get、set操作。这些Buffer类没有提供构造器，通过如下方法得到Buffer对象。</p>
+<blockquote>
+<p>static XxxBuffer allocate(int capacity):创建一个容量capacity的XxxBuffer对象。</p>
+</blockquote>
+<p>Buffer中有三个重要概念：容量(capacity)、界限(limit)和位置(position)</p>
+<blockquote>
+<ol>
+<li>容量(capacity):表示该Buffer的最大数据容量。不可为负值，创建后不可改变</li>
+<li>界限(limit): 第一个不应该被读出或写入缓冲区位置索引，就是说，limit后的数据既不可读也不可写</li>
+<li>位置(position): 用于致命下一个可以被读出或写入缓冲区的位置索引(类似IO流中的记录指针)<br><img src="http://opbae2xuz.bkt.clouddn.com/images/bhlin/2017-06-12-01.png" alt=""></li>
+</ol>
+</blockquote>
+<p>Buffer的主要作用就是装入数据，初始化的时候position为0，limit为capacity,通过put()方法放入数据，position相应后移。装载数据结束，调用filip()方法，将limit设置为position所在的位置为输出做准备；当输出结束后，调用clear()方法，clear不清空数据，仅仅将position为0，limit为capacity,为再次装入数据准备;<br>Buffer包含的常用方法:</p>
+<blockquote>
+<ol>
+<li>int capacity(): 返回Buffer的capactiy的大小</li>
+<li>boolean hasRemaining(): 判断当前位置(position)和界限(limit)之间是否还有元素可提供</li>
+<li>int limit():返回界面(limit)的位置</li>
+<li>Buffer limit(int newLt): 从新设置界限(limit)的值，并返回一个具有新的limit的缓冲区对象</li>
+<li>Buffer mark():设置mark的位置，他只能在0和位置(position)之间做mark</li>
+<li>int position(): 返回position()值</li>
+<li>Buffer position(int newPs): 设置Buffer的position,并返回position修改后的Buffer对象</li>
+<li>Buffer reset(): 将position转到mark所在的位置</li>
+<li>Buffer rewind():将position设置成0，取消设置的mark</li>
+</ol>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line">CharBuffer buff = CharBuffer.allocate(<span class="number">8</span>);</div><div class="line">System.out.println(buff.capacity()); <span class="comment">//8</span></div><div class="line">System.out.println(buff.limit());    <span class="comment">//8</span></div><div class="line">System.out.println(buff.position()); <span class="comment">//0</span></div><div class="line"></div><div class="line">buff.put(<span class="string">'a'</span>);</div><div class="line">buff.put(<span class="string">'b'</span>);</div><div class="line">buff.put(<span class="string">'c'</span>);</div><div class="line">System.out.println(buff.position()); <span class="comment">//3</span></div><div class="line">buff.flip();</div><div class="line">System.out.println(buff.limit()); <span class="comment">//3</span></div><div class="line">System.out.println(buff.position()); <span class="comment">//0</span></div><div class="line"></div><div class="line"><span class="comment">//取出元素</span></div><div class="line">System.out.println(buff.get());<span class="comment">//get使position+1</span></div><div class="line">System.out.println(buff.position()); <span class="comment">// 0</span></div><div class="line">buff.clear();</div><div class="line">System.out.println(buff.capacity()); <span class="comment">//8</span></div><div class="line">System.out.println(buff.limit()); <span class="comment">//8</span></div><div class="line">System.out.println(buff.position()); <span class="comment">//0</span></div><div class="line">System.out.println(buff.get(<span class="number">2</span>)); <span class="comment">//缓冲区的内容并没有被清除</span></div><div class="line">System.out.println(buff.position()); <span class="comment">// 0</span></div></pre></td></tr></table></figure>
+<p>Channel类似传统的流对象，与传统的流对象有两个主要区别</p>
+<blockquote>
+<ol>
+<li>Channel可以直接将文件部分或全部直接映射成Buffer</li>
+<li>程序不能直接访问Channel中的数据，只能通过Buffer进行交互</li>
+</ol>
+</blockquote>
+<p>Java为Channel接口提供了DatagramChannel、FileChannel、Pipe.SinkChannel、PipSourceChannel、SelectableChannel、ServerSocketChannel、SocketChannel等实现类。所有的Channel不应该通过构造器创建，而是通过传统节点InputStream/OutpuStream的getChannel()方法获得，不同节点流获得的Channel不一样。Channel最常用的map()、read()和write();map()方法第一个参数执行映射时的模式分别有只读、读写等</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">File f = <span class="keyword">new</span> File(<span class="string">"src/Main.java"</span>);</div><div class="line">System.out.println(f.getAbsolutePath());</div><div class="line"><span class="keyword">try</span> (</div><div class="line">    FileChannel inChannel = <span class="keyword">new</span> FileInputStream(f).getChannel();</div><div class="line">    FileChannel outChannel = <span class="keyword">new</span> FileOutputStream(<span class="string">"a.txt"</span>).getChannel()</div><div class="line">)</div><div class="line">&#123;</div><div class="line">    MappedByteBuffer buffer = inChannel.map(FileChannel.MapMode.READ_ONLY, <span class="number">0</span>, f.length());</div><div class="line">    outChannel.write(buffer);</div><div class="line">    buffer.clear();</div><div class="line">    Charset charset = Charset.forName(<span class="string">"utf-8"</span>);</div><div class="line">    CharsetDecoder decoder = charset.newDecoder();</div><div class="line">    CharBuffer charBuffer = decoder.decode(buffer);</div><div class="line">    System.out.println(charBuffer);</div><div class="line">&#125; <span class="keyword">catch</span> (FileNotFoundException e) &#123;</div><div class="line">    e.printStackTrace();</div><div class="line">&#125; <span class="keyword">catch</span> (IOException e) &#123;</div><div class="line">    e.printStackTrace();</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="Charset的功能和用法"><a href="#Charset的功能和用法" class="headerlink" title="Charset的功能和用法"></a>Charset的功能和用法</h3><p>Charset类处理字节序列和字符系列之间的转换关系，该类包含了用于创建解码器和编码器的方法，还提供了Carset所支持字符集的方法，Charset类是不可变的<br>Carset了提供了一个availableCharsets()静态方法获取当前JDK所支持所有的字符集。<br>Charset类提供将ByteBuffer转换成CharBuffer的功能</p>
+<blockquote>
+<ol>
+<li>CharBuffer decode(ByteBuffer bb): 将ByteBuffer中的字节序列转换成字符序列</li>
+<li>ByteBuffer encode(CharBuffer cb): 将CharBuffer中字符序列转换成字节序列</li>
+<li>ByteBuffer encode(String str):将字符序列转换成字节序列的便捷方法</li>
+</ol>
+</blockquote>
+<h3 id="FileLock的功能和用法"><a href="#FileLock的功能和用法" class="headerlink" title="FileLock的功能和用法"></a>FileLock的功能和用法</h3><p>如果多个运行程序需要并发修改同一个文件，使用文件锁可以有效的阻止多个进行并发修改同一个文件。文件锁控制文件的全部或部分字节的访问。在NIO中，Java提供了FileLock来支持文件锁定功能，在FileChannel中提供的lock()/tryLock()方法可以获得文件锁FileLock对象，从而锁定文件。lock()和tryLock()方法的区别: lock()试图锁定文件，如果无法得到文件锁，程序一直阻塞。而tryLock()尝试锁定文件，它将直接返回而不阻塞。如故宫FileChannel只想锁住文件的部分内容而不是全部内容，则可以使用如下lock()或tryLock()方法：</p>
+<blockquote>
+<ol>
+<li>lock(long position, long size, boolean shared):对文件从position开始，长度size的内容加锁，阻塞式</li>
+<li>tryLock(long position, long size, boolean shared):对文件从position开始，长度size的内容加锁，非阻塞式</li>
+</ol>
+</blockquote>
+<!--### NIO.2的文件IO和文件系统-->
+<!--### 通过NIO.2监控文件变化-->
+<!--### 通过NIO.2访问、修改文件属性-->
+<h2 id="多线程"><a href="#多线程" class="headerlink" title="多线程"></a>多线程</h2><p>几乎所有的操作系统都支持进程的概念，所有运行中的任务通常对应一个进程。进程是处于运行过程中的程序，并具有一定的独立功能，进程是系统进行资源分配和调度的一个独立单元。线程被称作轻量级进程，是进程的执行单元，就像进程在操作系统中的地位一样。线程在程序中是独立的、并发的执行流。 当进程被初始化后，主线程就被创建。<br>线程是进程的组成部分，一个进程可以拥有多个线程，一个线程必须有父进程。线程可以拥有自己的堆栈、程序计数器和局部变量，但不拥有系统资源，它与父进程的其他线程共享该进程的全部资源。<br>线程可以与其他线程共享父进程的共享变量及部分环境，相互之间可以协同来完成进程的任务<br>线程是独立运行的，它并不知道进程中是否还有其他线程的存在。线程的执行是抢占式的，也就是说，当前运行的线程在任何时候都可能被挂起，以便另一个线程可以运行。<br>一个线程可以创建和撤销另一个线程，同一个进程中的多个线程之间可以并发。<br>简而言之，一个程序运行后至少有一个进程，一个进程可以包含多个线程，但至少包含一个线程。</p>
+<p>多线程编程具有如下几个优点：</p>
+<blockquote>
+<ol>
+<li>进程之间不能共享内存，但线程之间共享内存非常容易</li>
+<li>系统创建进程时需要为该进程重新分配系统资源，但创建线程则代价小得多，因此使用多线程来实现多任务比并发多进程的效率高</li>
+<li>Java语言内置了多线程功能支持，而不是单纯地作为地城操作系统的调度方式，从而简化了Java的多线程编程。</li>
+</ol>
+</blockquote>
+<h3 id="两种创建线程的方式"><a href="#两种创建线程的方式" class="headerlink" title="两种创建线程的方式"></a>两种创建线程的方式</h3><p>Java使用Thread类代表线程，所有的线程对象都必须是Thread类或者其子类的实例。<br>继承Thread类创建线程类:</p>
+<blockquote>
+<ol>
+<li>定义Thread类的子类，并重写该类的run()方法，该run()方法的方法体就代表了线程需要完成的任务。run()方法称为线程执行体</li>
+<li>创建Thread子类的实例</li>
+<li>调用线程对象的start()方法启动</li>
+</ol>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">FirstThread</span> <span class="keyword">extends</span> <span class="title">Thread</span> </span>&#123;</div><div class="line"></div><div class="line">    <span class="keyword">private</span> <span class="keyword">int</span> i;</div><div class="line"></div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">for</span> ( ; i &lt; <span class="number">100</span>; i++) &#123;</div><div class="line">        <span class="comment">//getName()返回当前线程的名字</span></div><div class="line">            System.out.println(getName() + <span class="string">" "</span> + i);</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</div><div class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">100</span>; i++) &#123;</div><div class="line">            System.out.println(Thread.currentThread().getName() + <span class="string">" "</span> + i);</div><div class="line"></div><div class="line">            <span class="keyword">if</span> (i == <span class="number">20</span>) &#123;</div><div class="line">                <span class="keyword">new</span> FirstThread().start();</div><div class="line">                <span class="keyword">new</span> FirstThread().start();</div><div class="line">            &#125;</div><div class="line"></div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>实现Runnable接口创建线程类</p>
+<blockquote>
+<ol>
+<li>定义Runnable接口的实现类，并重写该接口的run()方法，该run()方法的方法体同样是该线程的线程执行体</li>
+<li>创建Runnable实现类的实例，并以此实例作为Thread的target来创建Thread对象，该Thread对象才是真正的线程对象</li>
+</ol>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SecondThread</span> <span class="keyword">implements</span> <span class="title">Runnable</span> </span>&#123;</div><div class="line">    <span class="keyword">private</span> <span class="keyword">int</span> i;</div><div class="line"></div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">for</span> ( ; i &lt; <span class="number">100</span>; i++) &#123;</div><div class="line">            System.out.println(Thread.currentThread().getName() + <span class="string">" "</span> + i);</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</div><div class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">100</span>; i++) &#123;</div><div class="line">            System.out.println(Thread.currentThread().getName() + <span class="string">" "</span> + i);</div><div class="line">            <span class="keyword">if</span> (i == <span class="number">20</span>) &#123;</div><div class="line">                SecondThread st = <span class="keyword">new</span> SecondThread();</div><div class="line">                <span class="keyword">new</span> Thread(st, <span class="string">"新线程1"</span>).start();</div><div class="line">                <span class="keyword">new</span> Thread(st, <span class="string">"新线程2"</span>).start();</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>使用Callable和Future创建线程:<br>Java5开始,提供了Callable接口，Callable接口提供call()方法作为线程执行提，但call()比run()方法功能更强大。一、call()方法可以有返回值; 二、call()方法可以声明抛出异常; 如何使用Callable接口呢？ Java5提供了Future接口来代表Callable接口里call()方法的返回值，并为Future接口提供一个FutureTask实现类，该实现类实现Future接口和Runnable接口，可以作为Thread类的target。<br>在Future接口里定义了如下几个公共方法控制它关联的Callable任务：</p>
+<blockquote>
+<ol>
+<li>boolean cancel(boolean mayInterruptIfRunning):视图取消该Future里关联的Callable任务</li>
+<li>V get(): 返回Callable任务里call()方法的返回值。调用该方法将阻塞程序，必须等到子线程结束后才会得到返回值</li>
+<li>V get(long timeout, TimeUnit unit):返回Callable任务里call()方法的返回值。该方法最多让程序阻塞timeout和unit指定的时间，如果指定时间内没有返回值，将抛出TimeoutException异常</li>
+<li>boolean isCancelled(): 如果Callable任务正常完成前被取消，返回true</li>
+<li>boolean isDone(): 如果Callable任务已完成，则返回true</li>
+</ol>
+</blockquote>
+<p>创建并启动有返回值的线程的步骤如下</p>
+<blockquote>
+<ol>
+<li>创阿金Callable接口的实现类，并实现call()方法，该call()方法作为线程执行体，且call()方法有返回值，在创建Callble实现类的实例。Java8可以直接使用Lambda表示式创建Callable对象 </li>
+<li>使用FutureTask类包装Callable对象，该FutureTask对象封装了该Callable对象的call()方法的返回值</li>
+<li>使用FutureTask对象作为Thread对象的target创建并启动新线程</li>
+<li>调用FutureTask对象的get()方法获得子线程执行结束后的返回值</li>
+</ol>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ThirdThread</span> </span>&#123;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</div><div class="line"></div><div class="line">        ThirdThread rt = <span class="keyword">new</span> ThirdThread();</div><div class="line">        FutureTask&lt;Integer&gt; task = <span class="keyword">new</span> FutureTask&lt;Integer&gt;((Callable&lt;Integer&gt;)() -&gt; &#123;</div><div class="line">            <span class="keyword">int</span> i = <span class="number">0</span>;</div><div class="line">            <span class="keyword">for</span> ( ; i &lt; <span class="number">100</span>; i++) &#123;</div><div class="line">                System.out.println(Thread.currentThread().getName() + <span class="string">"的循环变量i的值"</span> + i);</div><div class="line">            &#125;</div><div class="line">            <span class="keyword">return</span> i;</div><div class="line">        &#125;);</div><div class="line"></div><div class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">100</span>; i++) &#123;</div><div class="line">            System.out.println(Thread.currentThread().getName() + <span class="string">"的循环变量i的值"</span> + i);</div><div class="line">            <span class="keyword">if</span> (i == <span class="number">20</span>) &#123;</div><div class="line">                <span class="keyword">new</span> Thread(task, <span class="string">"有返回值的线程"</span>).start();</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">try</span> &#123;</div><div class="line">            System.out.println(<span class="string">"子线程的返回值:"</span> + task.get());</div><div class="line">        &#125; <span class="keyword">catch</span> (Exception e) &#123;</div><div class="line">            e.printStackTrace();</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>采用继承Thread类的方式创建多线程的优缺点:</p>
+<blockquote>
+<ol>
+<li>缺点: 继承了Thread类，无法继承其他父类</li>
+<li>优点: 编写简单，如果访问当前线程直接使用this即可</li>
+</ol>
+</blockquote>
+<p>采用实现Runnable、Callable接口的方式创建多线程的优缺点:</p>
+<blockquote>
+<ol>
+<li>优点: 线程只实现了接口，还可以继承其他类</li>
+<li>优点: 多线程可以共享同一个target对象，所以非常适合多个相同线程来处理同一份资源的</li>
+<li>缺点: 编程稍稍复杂，如果需要访问当前线程则必须Thread.currentThread()方法</li>
+</ol>
+</blockquote>
+<!--### 线程的run()方法和start()方法的区别与联系-->
+<h3 id="线程的生命周期"><a href="#线程的生命周期" class="headerlink" title="线程的生命周期"></a>线程的生命周期</h3><p>线程的声明周期：新建(New)、就绪(Runnable)、运行(Running)、阻塞(Blocked)、死亡(Dead)5中状态。</p>
+<blockquote>
+<ol>
+<li>新建: 当程序使用new关键字创建线程后，该线程处于新建状态</li>
+<li>就绪: 当线程对象调用start()方法后，该线程处于就绪状态，处于这个状态的线程并没有运行，只是表示该线程可以运行了。何时运行? 取决JVM里线程调度器的调度</li>
+<li>运行: 处于就绪状态的线程获得了CPU,开始执行run()方法的线程执行体，则线程处于运行状态。</li>
+<li>阻塞: 当运行状态的线程发生了变化，会进入阻塞状态。 当阻塞状态解除后，进入就绪状态</li>
+<li>死亡: 当线程执行完毕或者抛出未捕获的异常，或者调用该线程的stop()方法结束线程，就进入死亡状态</li>
+</ol>
+</blockquote>
+<p>当发生如下情况，线程将会进入阻塞状态</p>
+<blockquote>
+<ol>
+<li>线程调用sleep()方法，主动放弃所占有的处理器资源</li>
+<li>线程调用了一个阻塞时IO方法，在该方法返回之前，该线程被阻塞</li>
+<li>线程试图获得一个同步监视器，但该监视器正被其他线程持有。</li>
+<li>线程正在等待某个通知</li>
+<li>程序调用了线程的suspend()方法将该线程挂起。这个方法容易导致死锁。</li>
+</ol>
+</blockquote>
+<p><img src="http://opbae2xuz.bkt.clouddn.com/images/bhlin/2017-06-12-02.png" alt=""></p>
+<h3 id="控制线程的常用方法"><a href="#控制线程的常用方法" class="headerlink" title="控制线程的常用方法"></a>控制线程的常用方法</h3><p>join线程: Thread提供让一个线程等待另一个线程完成的方法——join()方法。当程序执行流中调用其他线程的join()方法，调用线程将被阻塞，知道join()方法加入的join线程执行完毕。join()方法有如下三种重载形式:</p>
+<blockquote>
+<ol>
+<li>join(): 等待join的线程执行完成</li>
+<li>join(long millis):等待join的线程最大时间是millis毫秒</li>
+<li>join(long millis, int nanos): 等待join的线程时间最长为millis毫秒加nanos毫微秒</li>
+</ol>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">JoinThread</span> <span class="keyword">extends</span> <span class="title">Thread</span> </span>&#123;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="title">JoinThread</span><span class="params">(String name)</span> </span>&#123;</div><div class="line">        <span class="keyword">super</span>(name);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">100</span>; i++) &#123;</div><div class="line">            System.out.println(getName() + <span class="string">" "</span> + i);</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span><span class="keyword">throws</span> Exception </span>&#123;</div><div class="line">        <span class="keyword">new</span> JoinThread(<span class="string">"新线程"</span>).start();</div><div class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">100</span>; i++) &#123;</div><div class="line">            <span class="keyword">if</span> (i == <span class="number">20</span>) &#123;</div><div class="line">                JoinThread jt = <span class="keyword">new</span> JoinThread(<span class="string">"被Join的线程"</span>);</div><div class="line">                jt.start();</div><div class="line">                <span class="comment">//必须等待jt执行结束才会向下执行</span></div><div class="line">                jt.join();</div><div class="line">            &#125;</div><div class="line">            System.out.println(Thread.currentThread().getName() + <span class="string">" "</span> + i);</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>后台线程:有一种线程，他是在后台运行，他的任务是为其他的线程提供服务; JVM的垃圾回收线程就是典型的后台线程。后台线程有个特征: 所有前台线程都死亡，后台线程会自动死亡;调用Thread对象的setDaemon(true)方法可将指定线程设置成后台线程。通过isDaemon()方法用于判断指定线程是否是后台线程。<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">DaemonThread</span> <span class="keyword">extends</span> <span class="title">Thread</span> </span>&#123;</div><div class="line"></div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">100</span>; i++) &#123;</div><div class="line">            System.out.println(getName() + <span class="string">" "</span> + i);</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span><span class="keyword">throws</span> Exception </span>&#123;</div><div class="line">        DaemonThread t = <span class="keyword">new</span> DaemonThread();</div><div class="line">        <span class="comment">//将此线程设置为后台线程</span></div><div class="line">        t.setDaemon(<span class="keyword">true</span>);</div><div class="line">        t.start();</div><div class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">100</span>; i++) &#123;</div><div class="line">            System.out.println(Thread.currentThread().getName() + <span class="string">" "</span> + i);</div><div class="line">        &#125;</div><div class="line">        <span class="comment">//前台线程(main线程)结束</span></div><div class="line">        <span class="comment">//后台线程也随之结束</span></div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>线程睡眠:如果要线程暂停一段时间并进入阻塞状态，则可以调用静态方法sleep()方法实现。sleep()方法有两种重载形式:</p>
+<blockquote>
+<ol>
+<li>static void sleep(long millis): 让当前执行的线程暂停millis毫秒，并进入阻塞状态</li>
+<li>static void sleep(long millis, int nanos):让当前执行的线程暂停millis毫秒加nanos毫微秒，并进入阻塞状态</li>
+</ol>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span><span class="keyword">throws</span> Exception </span>&#123;</div><div class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">100</span>; i++) &#123;</div><div class="line">        System.out.println(<span class="string">"当前时间: "</span> + <span class="keyword">new</span> Date());</div><div class="line">        <span class="comment">//当前线程暂停1s</span></div><div class="line">        Thread.sleep(<span class="number">1000</span>);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>线程让步: yield()与sleep()方法相似，但是yield()方法可以让 当前线程暂停一下，不会进入阻塞状态，转而进入就绪状态。当某个线程调用yield()方法让出CPU,只有优先级比它高的或者同等级的才会获得执行机会。</p>
+<p>改变线程优先级: 每个线程都有一定的优先级，优先级高的获得比较多的执行机会。每个线程的优先级默认与创建他的父线程的优先级相同。Thread类提供了setPriority(int new Priority)、getPriority()方法来设置获取指定线程的优先级，范围是1~10;也可以使用静态常量设置:</p>
+<blockquote>
+<ol>
+<li>MAX_PRIORITY: 其值是10</li>
+<li>MIN_PRIORITY: 其值是1</li>
+<li>NORM_PRIORITY: 其值是5</li>
+</ol>
+</blockquote>
+<h3 id="线程同步的概念和必要性"><a href="#线程同步的概念和必要性" class="headerlink" title="线程同步的概念和必要性"></a>线程同步的概念和必要性</h3><p>当多个线程访问同一个数据时，容易出现线程安全问题。为了解决这个问题，Java的多线程支持引入了同步监视器来解决这个问题。</p>
+<h3 id="使用synchronized控制线程同步"><a href="#使用synchronized控制线程同步" class="headerlink" title="使用synchronized控制线程同步"></a>使用synchronized控制线程同步</h3><p>使用synchronized同步代码块的语法的语法格式如下:<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">draw</span><span class="params">(<span class="keyword">double</span> drawAmount)</span> </span>&#123;</div><div class="line">    <span class="keyword">synchronized</span>(obj) &#123;</div><div class="line">        <span class="comment">//...</span></div><div class="line">        <span class="comment">//此处的代码就是同步代码块</span></div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">&gt; 任何时刻只能有一个线程可以获得对同步监视器的锁定，当同步代码块执行完后，该线程会释放对该同步监视器的锁定。</div></pre></td></tr></table></figure></p>
+<p>与同步代码块对应的还有同步方法，同步方法使用synchronized关键字来修饰某个方法，则该方法称为同步方法。通过使用同步方法可以非常方便的实现线程安全的类，线程安全的类具有如下特征:</p>
+<blockquote>
+<ol>
+<li>该类的对象可以被多个线程安全访问</li>
+<li>每个线程调用对象的任一方法之后都将得到正确结果</li>
+<li>每个线程调用该对象的任意方法之后，该对象状态依然保持合理状态</li>
+</ol>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//这个就是同步方法</span></div><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">synchronized</span> <span class="keyword">void</span> <span class="title">draw</span><span class="params">(<span class="keyword">double</span> drawAmount)</span> </span>&#123;</div><div class="line">    <span class="comment">//....</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>上面的方法使用了synchronized关键字修饰，把该方法变成同步方法，该同步方法的同步监视器视是this,因此任意时刻只能有一个线程进入draw方法进行操作。</p>
+<p>任何线程进入同步代码块、同步方法之前，必须先获得对同步监视的锁定，何时释放对同步监视器的锁定呢？ 程序无法显示释放对同步监视器的锁定，线程会在如下几种情况释放对同步监视器的锁定:</p>
+<blockquote>
+<ol>
+<li>当前线程的同步方法、同步代码块执行结束</li>
+<li>当前线程在同步方法、同步代码块遇到break、return终止执行</li>
+<li>当前线程在同步代码块、同步方法出现了未处理的Erro或Exception,导致了该代码块、该方法异常结束</li>
+<li>当前线程执行同步方法或代码块时，程序执行了同步监视器对象wait()方法，则当前线程暂停。并释放同步监视器</li>
+<li>线程执行同步方法、代码块时，程序调用了Thread.sleep()/Thread.yield()方法来暂停当前线程的执行，当前线程不会释放同步监视器</li>
+<li>线程执行同步代码块时，其他线程调用了该线程的suspend()方法将该线程挂起，该线程不会释放同步监视器。</li>
+</ol>
+</blockquote>
+<h3 id="使用Lock对象控制线程同步"><a href="#使用Lock对象控制线程同步" class="headerlink" title="使用Lock对象控制线程同步"></a>使用Lock对象控制线程同步</h3><p>Java5开始，Java提供了一种功能更强大的线程同步机制——通过显示定义同步锁来实现同步，同步锁有Lock对象充当。Lock、ReadWriteLock(读写锁)是Java5提供的两个根接口，并未Lock提供了ReentrantLock(可重入锁)实现类，为ReadWriteLock提供了ReentrantReadWriteLock实现类。<br>在实现线程安全的控制中，比较常用的是ReentrantLock(可重入锁).使用Lock对象可以显示的加锁、释放锁。通常使用ReentrantLock的代码格式如下：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">X</span> </span>&#123;</div><div class="line">    <span class="comment">//定义锁对象</span></div><div class="line">    <span class="keyword">private</span> <span class="keyword">final</span> ReentrantLock lock = <span class="keyword">new</span> ReentrantLock();</div><div class="line">    <span class="comment">//定义需要保证线程安全的方法</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">m</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="comment">//加锁</span></div><div class="line">        lock.lock();</div><div class="line">        <span class="keyword">try</span>&#123;</div><div class="line">            <span class="comment">//需要保证线程安全的代码</span></div><div class="line">        &#125;<span class="keyword">finally</span> &#123;</div><div class="line">            <span class="comment">//使用finally块来保证释放锁</span></div><div class="line">            lock.unlock();</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>ReentrantLock锁具有可重入性，也就是说，一个线程可以对已被加锁的ReentrantLock锁再次加锁，ReentrantLock对象会维持一个计数器来追踪lock()方法的嵌套使用。线程每次调用lock()加锁后，必须显示调用unlock()来释放锁</p>
+<h3 id="使用Object提供的方法实现线程通信"><a href="#使用Object提供的方法实现线程通信" class="headerlink" title="使用Object提供的方法实现线程通信"></a>使用Object提供的方法实现线程通信</h3><p>当线程在系统内运行时，线程的调度具有一定的透明性，程序通常无法准去控制线程的轮换执行，但Java也提供了一些机制来保证线程协调运行。为了实现这种功能，Object类提供了wait()、notify()、notifyAll()三个方法,但这三个方法必须有同步监视器对象来调用:同步方法或者同步代码块。</p>
+<blockquote>
+<ol>
+<li>wait(): 导致当前线程等待，知道其他线程调用同步监视器的notify()活notifyAll()方法来唤醒该线程。该wait(): 方法有三种形式——无时间参数、带毫秒参数、带毫秒和毫微妙参数</li>
+<li>notify():唤醒再次同步监视器上等待的单个线程，如果所有线程都在同步监视器上等待，则会选择唤醒其中一个线程。选择是任意性的。</li>
+<li>notifyAll(): 唤醒在此同步监视器上等待的所有线程。</li>
+</ol>
+</blockquote>
+<h3 id="使用Condition-条件变量-实现线程通信"><a href="#使用Condition-条件变量-实现线程通信" class="headerlink" title="使用Condition(条件变量)实现线程通信"></a>使用Condition(条件变量)实现线程通信</h3><p>如果程序没有使用synchronized关键字保证同步，就无法使用wait()、notify()、notifyAll()方法。当使用Lock对象保证同步，Java提供Condition类保持协调，Condition可以让那些已经得到Lock对象却无法继续执行的线程使用Lock对象，COndition对象也可以唤醒其他处于等待的线程。<br>Condition类提供了如下三个方法:</p>
+<blockquote>
+<ol>
+<li>await(): 类似隐式同步监视器的wait()方法，导致当前线程等待，知道其他线程调用该Condition的signal或者signalAll方法</li>
+<li>signal():唤醒在此Lock对象上等待的单个线程。果所有线程都在等待，则会选择唤醒其中一个线程。选择是任意性的。</li>
+<li>signalAll():唤醒在此等待的所有线程。</li>
+</ol>
+</blockquote>
+<p>Java使用ThreadGroup来表示线程组，可以对一批线程进行分类管理，Java程序允许直接对线程组进行控制。默认情况下，子线程和创建他的父线程处于同一个线程组内。<br>一旦某个线程加入指定的线程组之后，该线程一直属于该线程组，直到线程死亡，线程中途不能改变它所属的线程组。<br>Thread类提供了如下构造器设置新创建的线程属于哪个线程组:</p>
+<blockquote>
+<ol>
+<li>Thread(ThreadGroup group, Runnable target)</li>
+<li>Thread(ThreadGroup group, Runnable target, String name):以target的run()方法作为线程执行体创建新县城，该线程属于group线程组，线程名name</li>
+<li>Threag(ThreadGroup group, String name): 创建新线程，线程名name，属于group线程组</li>
+</ol>
+</blockquote>
+<p>ThreadGroup类提供了两个简单的构造器创建实例</p>
+<blockquote>
+<ol>
+<li>ThreadGroup(String name):以指定线程组名字创建</li>
+<li>ThreadGroup(ThreadGroup parent, String name): 以指定名字、指定父类创建一个新线程组</li>
+</ol>
+</blockquote>
+<p>ThreadGroup类提供了如下几个常用方法:</p>
+<blockquote>
+<ol>
+<li>int activeCount(): 返回线程组中活动线程数目 </li>
+<li>interrupt(): 中断此线程中所有线层</li>
+<li>isDaemon():判断线程组中是否是后台线程组</li>
+<li>setDaemon(boolean daemon): 把该线程组设置成后台线程组</li>
+<li>setMaxPriority(int pri): 设置线程组的最高优先级</li>
+</ol>
+</blockquote>
+<h3 id="线程池的功能和用法"><a href="#线程池的功能和用法" class="headerlink" title="线程池的功能和用法"></a>线程池的功能和用法</h3><p>系统启动一个新线程的成本较高，当程序中需要创建大量生存期短暂的线程时，应该考虑使用线程池；与数据库连接池类似，线程池在系统启动时创建大量空闲的线程，程序将一个Runnable对象或Callable对象传给线程池，线程池会启动一个线程执行run()或者call()方法，执行结束后，线程不会死亡，返回线程池称为空闲状态，等待执行下一个Runnable对象的run()或call()方法；</p>
+<p>Java5以前，开发者必须手动实现自己的线程池；Java5开始，Java内建支持线程池，Java5新增了一个Executors工厂类产生线程池，该工厂类包含如下几个静态工厂方法创建线程池:</p>
+<blockquote>
+<ol>
+<li>newCachedThreadPool(): 创建一个具有缓存功能的线程池，系统根据需要创建线程，这些线程将会被缓存在线程池中</li>
+<li>newFixedThreadPool(int nThreads): 创建一个可重用的、具有固定线程数的线程池</li>
+<li>newSingleThreadExecutor():创建一个只有单线程的线程池，相当于newFixedThreadPool(1)</li>
+<li>newScheduledThreadPool(int corePolSize):创建具有指定线程数(corePolSize)的线程池，他可以在指定延迟后执行线程任务。</li>
+<li>newSingleThreadScheduleExecutor(): 创建只有一个线程的线程池，他可以在指定延迟后执行线程任务。</li>
+<li>ExecutorService newWorkStealingPool(int parallelism):创建持有足够的线程的线程池来支持给定的并行级别，该方法还会使用多个队列减少竞争</li>
+<li>ExecutorService newWorkStealingPool():该方法是前一个的简化版本</li>
+</ol>
+</blockquote>
+<p>上面7个方法前三个返回一个ExecutorService对象，该对象代表一个线程池；中间两个方法返回一个ScheduledExecutorService线程池，它是ExecutorService的子类，它可以指定延迟后执行线程任务。最后两个则是Java8新增的，这两个方法可充分利用多CPU并的能力。这两个方法生成work stealing池，都相当于后台线程池，如果所有的前台线程都死亡，work stealing池中的线程会自动死亡。<br>ExecutorService提供了如下三个方法:</p>
+<blockquote>
+<ol>
+<li>Future&lt;?&gt; submit(Runnable task):讲一个Runnable对象提交给指定的线程池。其中Future对象代表Runnable任务的返回值。可以调用Future的isDone()、isCancelled()方法来获得Runnable对象的执行状态</li>
+<li><t>Future<t> submit(Runnable task, T reslut): 将一个Runnable对象交给线程池，result显示指定线程执行结束返回值</t></t></li>
+<li><t>Future<t> submit(Callable<t> task): 将一个Callable对象提交给线程池，Future是Callable的返回值</t></t></t></li>
+</ol>
+</blockquote>
+<p>ScheduleExecutorService代表可在指定延迟后或周期性执行线程任务的线程池，它提供了如下4个方法:</p>
+<blockquote>
+<ol>
+<li>ScheduleFuture<v> schedule(Callable<v> callable, long delay, TimeUnit unit):指定callable任务将在delay延迟后执行</v></v></li>
+<li>ScheduleFuture<v> schedule(Runnable command, long delay, TimeUnit unit): 指定command任务将在delay延迟后执行</v></li>
+<li>ScheduleFuture&lt;?&gt; scheduleAtFixedRate(Runnable command, long initialDelay, long period, TimeUnit unit): 指定command任务将在delay延迟后执行，而且以设定频率重复执行</li>
+<li>ScheduleFuture&lt;?&gt; scheduleWithFixedDelay(Runnable command, long initialDelay, long delay, TimeUnit unit):创建并执行一个给定初始延迟后首次启用的定期操作，随后在每一次执行终止和下一次执行开始之前都存在给定延迟。如果任务遇到异常，就会取消后续执行；否在，只能通过程序来显示取消或终止该任务</li>
+</ol>
+</blockquote>
+<!--### Java8增强的ForkJoinPool-->
+<h3 id="ThreadLocal类的功能和用法"><a href="#ThreadLocal类的功能和用法" class="headerlink" title="ThreadLocal类的功能和用法"></a>ThreadLocal类的功能和用法</h3><p>ThreadLocal代表一个线程局部变量，通过把数据放在ThreadLocal中就可以让每个线程创建一个该变量的副本，从而避免线程安全问题。ThreadLocal类用法非常简单，他只提供了如下三个public方法：</p>
+<blockquote>
+<ol>
+<li>T get(): 返回此线程局部变量中当前线程副本中的值</li>
+<li>void remove(): 删除此线程局部变量中当前线程的值</li>
+<li>void set(T value): 设置此线程局部变量中当前线程副本中的值</li>
+</ol>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Account</span> </span>&#123;</div><div class="line">    <span class="comment">/** 顶一个ThreadLocal类型的变量,该变量将是一个线程局部变量,每个线程都会保留该变量的一个副本 */</span></div><div class="line">    <span class="keyword">private</span> ThreadLocal&lt;String&gt; name = <span class="keyword">new</span> ThreadLocal&lt;&gt;();</div><div class="line">    <span class="comment">//定义一个初始化name成员变量的构造器</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Account</span><span class="params">(String str)</span> </span>&#123;</div><div class="line">        <span class="keyword">this</span>.name.set(str);</div><div class="line">        <span class="comment">//下面代码用于访问当前线程的name副本的值</span></div><div class="line">        System.out.println(<span class="keyword">this</span>.name.get());</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getName</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">return</span> name.get();</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setName</span><span class="params">(String name)</span> </span>&#123;</div><div class="line">        <span class="keyword">this</span>.name.set(name);</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyTest</span> <span class="keyword">extends</span> <span class="title">Thread</span> </span>&#123;</div><div class="line">    <span class="comment">//定义一个Account类型的成员变量</span></div><div class="line">    <span class="keyword">private</span> Account account;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="title">MyTest</span><span class="params">(Account account, String name)</span> </span>&#123;</div><div class="line">        <span class="keyword">super</span>(name);</div><div class="line"></div><div class="line">        <span class="keyword">this</span>.account = account;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">10</span> ; i++) &#123;</div><div class="line">            <span class="keyword">if</span> (i == <span class="number">6</span>) &#123;</div><div class="line">                account.setName(getName());</div><div class="line">            &#125;</div><div class="line">            System.out.println(account.getName() + <span class="string">"账户的i值: "</span> + i);</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ThreadLocalTest</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</div><div class="line">        Account at = <span class="keyword">new</span> Account(<span class="string">"初始名"</span>);</div><div class="line">        <span class="keyword">new</span> MyTest(at, <span class="string">"线程甲"</span>).start();</div><div class="line">        <span class="keyword">new</span> MyTest(at, <span class="string">"线程乙"</span>).start();</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<!--### 使用线程安全的集合类-->
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Java/" rel="tag"># Java</a>
+          
+        </div>
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/06/07/Java基础-七/" rel="next" title="Java基础(七)">
+                <i class="fa fa-chevron-left"></i> Java基础(七)
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/06/12/Java基础-九/" rel="prev" title="Java基础(九)">
+                Java基础(九) <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div id="cloud-tie-wrapper" class="cloud-tie-wrapper"></div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="http://opbae2xuz.bkt.clouddn.com/images/bhlin/ピカチュウ.jpeg"
+               alt="啖火" />
+          <p class="site-author-name" itemprop="name">啖火</p>
+           
+              <p class="site-description motion-element" itemprop="description"></p>
+           
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">16</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">5</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">7</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#输入-输出"><span class="nav-number">1.</span> <span class="nav-text">输入/输出</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#使用File类访问本地文件系统"><span class="nav-number">1.1.</span> <span class="nav-text">使用File类访问本地文件系统</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用文件过滤器"><span class="nav-number">1.2.</span> <span class="nav-text">使用文件过滤器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#理解IO流的模型和处理方式"><span class="nav-number">1.3.</span> <span class="nav-text">理解IO流的模型和处理方式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用转换流将字节流转换成字符流"><span class="nav-number">1.4.</span> <span class="nav-text">使用转换流将字节流转换成字符流</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#RandomAccessFile的功能和用法"><span class="nav-number">1.5.</span> <span class="nav-text">RandomAccessFile的功能和用法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#对象序列化机制和作用"><span class="nav-number">1.6.</span> <span class="nav-text">对象序列化机制和作用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#通过实现Serializable接口实现序列化"><span class="nav-number">1.7.</span> <span class="nav-text">通过实现Serializable接口实现序列化</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#实现定制的序列化"><span class="nav-number">1.8.</span> <span class="nav-text">实现定制的序列化</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#序列化版本"><span class="nav-number">1.9.</span> <span class="nav-text">序列化版本</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Java新IO的概念和作用"><span class="nav-number">1.10.</span> <span class="nav-text">Java新IO的概念和作用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用Buffer和Channel完成输入、输出"><span class="nav-number">1.11.</span> <span class="nav-text">使用Buffer和Channel完成输入、输出</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Charset的功能和用法"><span class="nav-number">1.12.</span> <span class="nav-text">Charset的功能和用法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#FileLock的功能和用法"><span class="nav-number">1.13.</span> <span class="nav-text">FileLock的功能和用法</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#多线程"><span class="nav-number">2.</span> <span class="nav-text">多线程</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#两种创建线程的方式"><span class="nav-number">2.1.</span> <span class="nav-text">两种创建线程的方式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#线程的生命周期"><span class="nav-number">2.2.</span> <span class="nav-text">线程的生命周期</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#控制线程的常用方法"><span class="nav-number">2.3.</span> <span class="nav-text">控制线程的常用方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#线程同步的概念和必要性"><span class="nav-number">2.4.</span> <span class="nav-text">线程同步的概念和必要性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用synchronized控制线程同步"><span class="nav-number">2.5.</span> <span class="nav-text">使用synchronized控制线程同步</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用Lock对象控制线程同步"><span class="nav-number">2.6.</span> <span class="nav-text">使用Lock对象控制线程同步</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用Object提供的方法实现线程通信"><span class="nav-number">2.7.</span> <span class="nav-text">使用Object提供的方法实现线程通信</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用Condition-条件变量-实现线程通信"><span class="nav-number">2.8.</span> <span class="nav-text">使用Condition(条件变量)实现线程通信</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#线程池的功能和用法"><span class="nav-number">2.9.</span> <span class="nav-text">线程池的功能和用法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ThreadLocal类的功能和用法"><span class="nav-number">2.10.</span> <span class="nav-text">ThreadLocal类的功能和用法</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">啖火</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+  
+  <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.1"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.1"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+    
+    <script>
+      var cloudTieConfig = {
+        url: document.location.href, 
+        sourceId: "",
+        productKey: "caf96788347d4118a95af2385c2d6496",
+        target: "cloud-tie-wrapper"
+      };
+    </script>
+    <script src="https://img1.cache.netease.com/f2e/tie/yun/sdk/loader.js"></script>
+  
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

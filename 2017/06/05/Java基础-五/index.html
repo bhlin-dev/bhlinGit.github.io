@@ -1,0 +1,833 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Java," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.1" />
+
+
+
+
+
+
+<meta name="description" content="泛型入门在没有泛型之前，Java集合把所有的元素当做Object类型处理，再次取出对象，该对象的类型就变成Object类型(运行时没变)。进行类型转换容易出现异常，并且在编译时不检查类型。在Java5以后，Java引入了”参数化类型”概念，允许在创建集合的时候指定集合元素的类型，也就是泛型。 12345678910111213List strList = new ArrayList();strLi">
+<meta name="keywords" content="Java">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Java基础(五)">
+<meta property="og:url" content="http://yoursite.com/2017/06/05/Java基础-五/index.html">
+<meta property="og:site_name" content="啖火">
+<meta property="og:description" content="泛型入门在没有泛型之前，Java集合把所有的元素当做Object类型处理，再次取出对象，该对象的类型就变成Object类型(运行时没变)。进行类型转换容易出现异常，并且在编译时不检查类型。在Java5以后，Java引入了”参数化类型”概念，允许在创建集合的时候指定集合元素的类型，也就是泛型。 12345678910111213List strList = new ArrayList();strLi">
+<meta property="og:image" content="http://opbae2xuz.bkt.clouddn.com/images/bhlin/2017-06-06-01.png">
+<meta property="og:updated_time" content="2017-06-06T06:37:20.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Java基础(五)">
+<meta name="twitter:description" content="泛型入门在没有泛型之前，Java集合把所有的元素当做Object类型处理，再次取出对象，该对象的类型就变成Object类型(运行时没变)。进行类型转换容易出现异常，并且在编译时不检查类型。在Java5以后，Java引入了”参数化类型”概念，允许在创建集合的时候指定集合元素的类型，也就是泛型。 12345678910111213List strList = new ArrayList();strLi">
+<meta name="twitter:image" content="http://opbae2xuz.bkt.clouddn.com/images/bhlin/2017-06-06-01.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2017/06/05/Java基础-五/"/>
+
+
+
+
+
+  <title>Java基础(五) | 啖火</title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  <div style="display: none;">
+  	<script src="https://s19.cnzz.com/z_stat.php?id=1261967319&web_id=1261967319" language="JavaScript"></script>
+  </div>
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">啖火</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <h1 class="site-subtitle" itemprop="description"></h1>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/06/05/Java基础-五/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="啖火">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://opbae2xuz.bkt.clouddn.com/images/bhlin/ピカチュウ.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="啖火">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+            
+            
+              
+                Java基础(五)
+              
+            
+          </h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-06-05T18:11:32+08:00">
+                2017-06-05
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Java/" itemprop="url" rel="index">
+                    <span itemprop="name">Java</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a class="cloud-tie-join-count" href="/2017/06/05/Java基础-五/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count join-count" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="泛型入门"><a href="#泛型入门" class="headerlink" title="泛型入门"></a>泛型入门</h2><p>在没有泛型之前，Java集合把所有的元素当做Object类型处理，再次取出对象，该对象的类型就变成Object类型(运行时没变)。进行类型转换容易出现异常，并且在编译时不检查类型。在Java5以后，Java引入了”参数化类型”概念，允许在创建集合的时候指定集合元素的类型，也就是泛型。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">List strList = <span class="keyword">new</span> ArrayList();</div><div class="line">strList.add(<span class="string">"疯狂Java讲义"</span>);</div><div class="line">strList.add(<span class="string">"疯狂iOS讲义"</span>);</div><div class="line">strList.add(<span class="number">5</span>);</div><div class="line"><span class="comment">//当str为5时，就会导致发生异常</span></div><div class="line">strList.forEach(str -&gt; System.out.println(((String)str).length()));</div><div class="line"></div><div class="line"><span class="comment">//泛型</span></div><div class="line">List&lt;String&gt; strList = <span class="keyword">new</span> ArrayList&lt;String&gt;();</div><div class="line">strList.add(<span class="string">"疯狂Java讲义"</span>);</div><div class="line">strList.add(<span class="string">"疯狂iOS讲义"</span>);</div><div class="line">strList.add(<span class="number">5</span>);<span class="comment">//在此时引起编译错误</span></div><div class="line">strList.forEach(str -&gt; System.out.println(((String)str).length()));</div></pre></td></tr></table></figure>
+<p>Java7开始，Java允许在构造器后不需要带完整的泛型信息，只要给出尖括号(&lt;&gt;)即可，Java可以推断出尖括号里面是什么泛型信息。<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">List&lt;String&gt; strList = <span class="keyword">new</span> ArrayList&lt;&gt;();</div></pre></td></tr></table></figure></p>
+<h3 id="编译时类型检查的重要性"><a href="#编译时类型检查的重要性" class="headerlink" title="编译时类型检查的重要性"></a>编译时类型检查的重要性</h3><h3 id="使用泛型实现编译时进行类型检查"><a href="#使用泛型实现编译时进行类型检查" class="headerlink" title="使用泛型实现编译时进行类型检查"></a>使用泛型实现编译时进行类型检查</h3><h3 id="定义泛型接口、泛型类"><a href="#定义泛型接口、泛型类" class="headerlink" title="定义泛型接口、泛型类"></a>定义泛型接口、泛型类</h3><p>允许在定义接口、类时声明类型形参，类型形参在整个接口、类体内可当成类型使用，几乎所有课使用普通类型的地方都可以使用这种类型形参。下面是Java5改写后的List接口、Interator接口、Map接口的代码片段:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//定义接口时指定一个类型形参,该形参名为E</span></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">List</span>&lt;<span class="title">E</span>&gt; </span></div><div class="line">&#123;</div><div class="line">    <span class="comment">//在该接口里，E可作为类型使用</span></div><div class="line">    <span class="function"><span class="keyword">void</span> <span class="title">add</span><span class="params">(E x)</span></span>;</div><div class="line">    <span class="function">Interator&lt;E&gt; <span class="title">iterator</span><span class="params">()</span></span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">Interator</span>&lt;<span class="title">E</span>&gt; </span></div><div class="line">&#123;</div><div class="line">    <span class="comment">//在该接口里，E可作为类型使用</span></div><div class="line">    <span class="function">E <span class="title">next</span><span class="params">()</span></span>;</div><div class="line">    <span class="function"><span class="keyword">boolean</span> <span class="title">hasNext</span><span class="params">()</span></span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">Map</span>&lt;<span class="title">K</span>, <span class="title">V</span>&gt; </span></div><div class="line">&#123;</div><div class="line">    <span class="comment">//在该接口里，E可作为类型使用</span></div><div class="line">    <span class="function">Set&lt;K&gt; <span class="title">keySet</span><span class="params">()</span></span>;</div><div class="line">    <span class="function">V <span class="title">put</span><span class="params">(K key, V value)</span></span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><strong>从泛型类派生子类</strong><br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Apple</span>&lt;<span class="title">T</span>&gt;</span>&#123;</div><div class="line">    <span class="comment">//...</span></div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">//继承带有泛型声明的接口、父类时，不能包含类型参数</span></div><div class="line"><span class="keyword">public</span> classA extends Apple&lt;T&gt; <span class="comment">// 编译失败</span></div><div class="line"><span class="comment">//但是可以传入一个实际的参数 </span></div><div class="line"><span class="keyword">public</span> classA extends Apple&lt;String&gt;<span class="comment">//正确的</span></div><div class="line"><span class="comment">//或者也可以什么都不传，系统会把T当做Object类型处理，但是Java编译器可能发出警告，如果希望看到警告提示更详细，可以通过javac命令增加-Xlint:unchecked选项来实现</span></div><div class="line"><span class="keyword">public</span> ClassA extends Apple</div></pre></td></tr></table></figure></p>
+<h3 id="适用类型通配符"><a href="#适用类型通配符" class="headerlink" title="适用类型通配符"></a>适用类型通配符</h3><p>假设定义一个方法，方法里有一个集合，但集合元素的类型不确定，这是可以使用类型通配符，类型通配符是一个问号(?),类型通配符可以匹配任何类型<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">test</span><span class="params">(List&lt;Object&gt; c)</span> </span>&#123;</div><div class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; c.size(); i++) &#123;</div><div class="line">        System.out.println(c.get(i));</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">List&lt;String&gt; strList= <span class="keyword">new</span> ArrayList&lt;&gt;();</div><div class="line">test(strList);<span class="comment">//此时会发生编译错误，java.util.List&lt;java.lang.String&gt;并不是java.util.List&lt;java.lang.Object&gt;的子类</span></div><div class="line"></div><div class="line"><span class="comment">//使用类型通配符修改如下</span></div><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">test</span><span class="params">(List&lt;?&gt; c)</span> </span>&#123;</div><div class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; c.size(); i++) &#123;</div><div class="line">        System.out.println(c.get(i));</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">List&lt;String&gt; strList= <span class="keyword">new</span> ArrayList&lt;&gt;();</div><div class="line">test(strList);</div></pre></td></tr></table></figure></p>
+<h3 id="设定类型通配符的上限"><a href="#设定类型通配符的上限" class="headerlink" title="设定类型通配符的上限"></a>设定类型通配符的上限</h3><p>假设程序不希望这个List&lt;?&gt;是所有List泛型的父类，只希望它代表某一类泛型List的父类，可以写成&lt;? extends Class&gt;,其中(?)代表一个未知类型， 但是这个未知类型一定是Class的子类，因此可以把这个Class称为这个通配符的上线</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">test</span><span class="params">(List&lt;? extends Object&gt; c)</span> </span>&#123;</div><div class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; c.size(); i++) &#123;</div><div class="line">        System.out.println(c.get(i));</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">List&lt;String&gt; strList= <span class="keyword">new</span> ArrayList&lt;&gt;();</div><div class="line">test(strList);</div></pre></td></tr></table></figure>
+<h3 id="设定类型形参的上限"><a href="#设定类型形参的上限" class="headerlink" title="设定类型形参的上限"></a>设定类型形参的上限</h3><p>Java泛型不仅允许使用通配符形参设定上线，也可以在定义类型形参设定上线<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Apple</span>&lt;<span class="title">T</span> <span class="keyword">extends</span> <span class="title">Number</span>&gt; </span>&#123;...&#125;</div><div class="line"></div><div class="line">Apple&lt;Integer&gt; ai = <span class="keyword">new</span> Apple&lt;&gt;();</div><div class="line">Apple&lt;Double&gt; ad = <span class="keyword">new</span> Apple&lt;&gt;();</div><div class="line"><span class="comment">//由于String不是Number的子类，所以会引发编译错误</span></div><div class="line">Apple&lt;String&gt; as = <span class="keyword">new</span> Apple&lt;&gt;();</div></pre></td></tr></table></figure></p>
+<!--### 在方法签名中定义类型形参-->
+<h3 id="设定类型通配符的下限"><a href="#设定类型通配符的下限" class="headerlink" title="设定类型通配符的下限"></a>设定类型通配符的下限</h3><p>Java允许设定通配符的下限:&lt;? super Type&gt;,这个通配符表示它必须是Type本身或者Type的父类。<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="keyword">void</span> &lt;T&gt; <span class="function">T <span class="title">copy</span><span class="params">(Collection&lt;? <span class="keyword">super</span> T&gt; dest, Collection&lt;T&gt; src)</span> </span>&#123;</div><div class="line">    T last = <span class="keyword">null</span>;</div><div class="line">    <span class="keyword">for</span> (T ele : src) &#123;</div><div class="line">        last = ele;</div><div class="line">        dest.add(ele);</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> last;</div><div class="line">&#125;</div><div class="line"></div><div class="line">List&lt;Number&gt; ln = <span class="keyword">new</span> ArrayList&lt;&gt;();</div><div class="line">List&lt;Integer&gt; li = <span class="keyword">new</span> ArrayList&lt;&gt;();</div><div class="line">li.add(<span class="number">5</span>);</div><div class="line">Integer last = copy(ln, li);</div></pre></td></tr></table></figure></p>
+<h3 id="泛型方法与方法重载"><a href="#泛型方法与方法重载" class="headerlink" title="泛型方法与方法重载"></a>泛型方法与方法重载</h3><p>假设有一个方法将Object数组的所有类型添加到一个Collection集合中。<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">fromArrayToCollection</span><span class="params">(Object[] a, Collection&lt;Object&gt; c)</span> </span>&#123;</div><div class="line">    <span class="keyword">for</span> (Object o : a) &#123;</div><div class="line">        c.add(o);</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">String[] strArr = &#123;<span class="string">"a"</span>, <span class="string">"b"</span>&#125;;</div><div class="line">List&lt;String&gt; strList = <span class="keyword">new</span> ArrayList&lt;&gt;();</div><div class="line"><span class="comment">//下面会报编译失败，因为java.util.List&lt;java.lang.String&gt;并不是java.util.List&lt;java.lang.Object&gt;的子类</span></div><div class="line">fromArrayToCollection(strArr, strList);</div><div class="line"></div><div class="line"><span class="comment">//如果将Colection&lt;Object&gt;改为Colection&lt;?&gt;是否可行？</span></div><div class="line"><span class="comment">//答：不可以，因为Java不允许把对象放进一个未知类型的集合</span></div></pre></td></tr></table></figure></p>
+<p>为了解决这个问题，可以使用Java5提供的泛型方法,泛型方法格式如下：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">[修饰符] &lt;T, S&gt; 返回值类型 方法名(形参列表)&#123;</div><div class="line">    <span class="comment">//方法体</span></div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">//将上面方法修改为泛型方法</span></div><div class="line"><span class="keyword">public</span> &lt;T&gt; <span class="function"><span class="keyword">void</span> <span class="title">fromArrayToCollection</span><span class="params">(T[] a, Collection&lt;T&gt; c)</span> </span>&#123;</div><div class="line">    <span class="keyword">for</span> (T o : a) &#123;</div><div class="line">        c.add(o);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>正如泛型方法在方法签名中声明类型形参，java也允许构造器签名中声明类型形参，这样就产生了泛型构造器。就可以根据参数类型”推断”类型形参的类型;<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Foo</span> </span></div><div class="line">&#123;</div><div class="line">    <span class="keyword">public</span> &lt;T&gt; Foo(T t)</div><div class="line">    &#123;</div><div class="line">        System.out.println(t);</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">//泛型T参数为String</span></div><div class="line"><span class="keyword">new</span> Foo(<span class="string">"dddddd"</span>);</div><div class="line"><span class="comment">//泛型T参数为Integer</span></div><div class="line"><span class="keyword">new</span> Foo(<span class="number">200</span>);</div><div class="line"><span class="comment">//显示指定泛型类型</span></div><div class="line"><span class="keyword">new</span> &lt;String&gt; Foo(<span class="string">"ddddd"</span>);</div><div class="line"><span class="comment">//下面代码出错</span></div><div class="line"><span class="keyword">new</span> &lt;String&gt; Foo(<span class="number">200</span>);</div></pre></td></tr></table></figure></p>
+<!--### Java8改进的类型推断-->
+<h3 id="擦除与转换"><a href="#擦除与转换" class="headerlink" title="擦除与转换"></a>擦除与转换</h3><p>当一个List<string>类型被转换成List类型，则改List对集合元素的类型检查变成了类型参数的上限(即Object)<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Apple</span>&lt;<span class="title">T</span> <span class="keyword">extends</span> <span class="title">Number</span>&gt;</span></div><div class="line">&#123;</div><div class="line">    T size;</div><div class="line">    </div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setSize</span> <span class="params">(T size)</span> </span></div><div class="line">    &#123;</div><div class="line">        <span class="keyword">this</span>.size = size;</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    <span class="function"><span class="keyword">public</span> T <span class="title">getSize</span><span class="params">()</span> </span></div><div class="line">    &#123;</div><div class="line">        <span class="keyword">return</span> <span class="keyword">this</span>.size;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">Apple&lt;Integer&gt; a = <span class="keyword">new</span> Apple&lt;&gt;();</div><div class="line">Integer as = a.getSize();</div><div class="line"><span class="comment">//把a对象赋给Apple变量，丢失尖括号的类型信息</span></div><div class="line">Apple b = a;</div><div class="line"><span class="comment">//b只知道Size的类型是Number</span></div><div class="line">Number size1 = b.getSize();</div><div class="line"><span class="comment">//下面引起编译错误</span></div><div class="line">Integer size2 = b.getSize();</div></pre></td></tr></table></figure></string></p>
+<p>从逻辑上将，List<string>是List的子类，如果直接把List对象赋给List<string>应该会引起编译错误，实际上不会。对于泛型而言，可以直接把一个List对象赋给另一个list<string>对象，编译器仅仅提示”未经检查的转换”警告.但对list变量实际上引用的是List<integer>集合，所以试图把集合中的元素当成String类型取出时，将引发运行时异常<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">List&lt;integer&gt; li = <span class="keyword">new</span> ArrayList&lt;&gt;();</div><div class="line">li.add(<span class="number">6</span>);</div><div class="line">List list = li;</div><div class="line"><span class="comment">//引发"未经检查的转换"警告，运行时正常</span></div><div class="line">List&lt;String&gt; ls = list;</div><div class="line"><span class="comment">//访问ls里的元素，引发运行时异常</span></div><div class="line">ls.get(<span class="number">0</span>);</div></pre></td></tr></table></figure></integer></string></string></string></p>
+<h3 id="泛型与数组"><a href="#泛型与数组" class="headerlink" title="泛型与数组"></a>泛型与数组</h3><p>数组元素的类型不能包含类型变量或者类型形参，除非是无上限的类型通配符。<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//下面代码编译时有"[unchencked]"</span></div><div class="line">List&lt;String&gt; lsa = <span class="keyword">new</span> ArrayList[<span class="number">10</span>];</div><div class="line">Object[] oa = lsa;</div><div class="line">List&lt;Integer&gt; li = <span class="keyword">new</span> ArrayList&lt;Integer&gt;();</div><div class="line">li.add(<span class="keyword">new</span> Integer(<span class="number">3</span>));</div><div class="line">oa[<span class="number">1</span>] = li;</div><div class="line"><span class="comment">//下面代码引发ClassCastException异常</span></div><div class="line">String s = (String)lsa[<span class="number">1</span>].get(<span class="number">0</span>);</div><div class="line"></div><div class="line"><span class="comment">//Java允许创建无上限通配符泛型数组</span></div><div class="line">List&lt;?&gt; lsa = <span class="keyword">new</span> ArrayList[<span class="number">10</span>];</div><div class="line">Object[] oa = lsa;</div><div class="line">List&lt;Integer&gt; li = <span class="keyword">new</span> ArrayList&lt;Integer&gt;();</div><div class="line">li.add(<span class="keyword">new</span> Integer(<span class="number">3</span>));</div><div class="line">oa[<span class="number">1</span>] = li;</div><div class="line"><span class="comment">//下面代码依旧引发ClassCastException异常</span></div><div class="line">Object target = lsa[<span class="number">1</span>].get(<span class="number">0</span>);</div><div class="line"><span class="comment">//可修改为</span></div><div class="line"><span class="keyword">if</span> (target <span class="keyword">instanceof</span> String) &#123;</div><div class="line">    String s = (String) target;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h2 id="异常处理"><a href="#异常处理" class="headerlink" title="异常处理"></a>异常处理</h2><p>异常机制可以使程序中的异常处理代码和正常的业务代码分离，保证代码优雅和提高程序的健壮性。Java的异常处理主要依赖于try、catch、finally、throw和throws五个关键字。</p>
+<h3 id="Java异常类的继承体系"><a href="#Java异常类的继承体系" class="headerlink" title="Java异常类的继承体系"></a>Java异常类的继承体系</h3><p>Java提供了丰富的异常类，这些异常类有严格的继承关系。Java把所有的非正常情况分为两种：异常(Exception)和错误(Error)，他们都集成Throwable父类。Error错误一般是指与虚拟机相关的问题，如系统崩溃、虚拟机错误、动态链接失败等，这些错误不可捕获和修复，将导致程序终中断。<br>如下图<br><img src="http://opbae2xuz.bkt.clouddn.com/images/bhlin/2017-06-06-01.png" alt=""></p>
+<h3 id="使用try…catch捕获异常"><a href="#使用try…catch捕获异常" class="headerlink" title="使用try…catch捕获异常"></a>使用try…catch捕获异常</h3><p>Java异常处理机制的语法结构:<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">try</span> &#123;</div><div class="line">    <span class="comment">//业务实现代码</span></div><div class="line">    <span class="comment">//....</span></div><div class="line">&#125;<span class="keyword">catch</span> (ExceptionClass e) &#123;</div><div class="line">    <span class="comment">//异常信息处理1</span></div><div class="line">&#125;<span class="keyword">catch</span> (ExceptionClass e) &#123;</div><div class="line">    <span class="comment">//异常信息处理2</span></div><div class="line">&#125;<span class="keyword">finally</span> &#123;</div><div class="line">    <span class="comment">//最终</span></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>进行异常捕获时应该把所有父类异常的catch块排在子类异常的catch块后面，否则将出现编译错误。</p>
+<h3 id="多异常捕获"><a href="#多异常捕获" class="headerlink" title="多异常捕获"></a>多异常捕获</h3><p>Java7开始一个catch可以捕获多种类型的异常。一个catch块捕获多个异常注意：</p>
+<blockquote>
+<ol>
+<li>捕获多种类型的异常，多种异常类型之间用竖线(|)隔开</li>
+<li>捕获多种类型的异常，异常变量有隐式final修饰，因此程序不能对异常变量重新赋值</li>
+</ol>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">try</span> &#123;</div><div class="line">    <span class="keyword">int</span> a = Integer.parseInt(args[<span class="number">0</span>]);</div><div class="line">    <span class="keyword">int</span> b = Integer.parseInt(args[<span class="number">1</span>]);</div><div class="line">    <span class="keyword">int</span> c = a / b;</div><div class="line">&#125;<span class="keyword">catch</span> (IdexOutOfBoundsException | NumberFormatException ie) &#123;</div><div class="line">    <span class="comment">//....</span></div><div class="line">&#125;<span class="keyword">catch</span> (Exception e) &#123;</div><div class="line">    <span class="comment">//....</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="异常对象的常用方法"><a href="#异常对象的常用方法" class="headerlink" title="异常对象的常用方法"></a>异常对象的常用方法</h3><p>异常对象都包含了如下几个常用方法：</p>
+<blockquote>
+<ol>
+<li>getMessage(): 返回该异常的详细描述字符串；</li>
+<li>printStackTrace(): 将异常的跟踪栈信息输出到标准错误输出；</li>
+<li>printStackTrace(PrintStream s): 将该异常的跟踪栈信息输出到指定输出流；</li>
+<li>getStackTrace(): 返回异常的跟踪栈信息；</li>
+</ol>
+</blockquote>
+<h3 id="finally块的作用"><a href="#finally块的作用" class="headerlink" title="finally块的作用"></a>finally块的作用</h3><p>不管try块中的代码是否出现了异常，也不管哪一个catch块被执行，甚至在try块或catch块中执行了return语句，finally块总会被执行。</p>
+<h3 id="自动关闭资源的try语句"><a href="#自动关闭资源的try语句" class="headerlink" title="自动关闭资源的try语句"></a>自动关闭资源的try语句</h3><p>当程序使用finally块关闭资源，程序显得异常臃肿。在Java7增强了try语句的功能-它允许try关键字后面紧跟一对圆括号，圆括号可以声明、初始化一个或多个资源，此处的资源指的是那些必须显示关闭的资源。<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">try</span>(</div><div class="line">    BufferedReader br = <span class="keyword">new</span> BufferedReader(<span class="keyword">new</span> FileReader(<span class="string">"AutoCloseTest.java"</span>));</div><div class="line">    PrintStream ps = <span class="keyword">new</span> PrintStream(<span class="keyword">new</span> FileOutputStream(<span class="string">"a.txt"</span>)))</div><div class="line">&#123;</div><div class="line">    br.readLine();</div><div class="line">    ps.println(<span class="string">"ccccc"</span>);</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h3 id="异常处理的合理嵌套"><a href="#异常处理的合理嵌套" class="headerlink" title="异常处理的合理嵌套"></a>异常处理的合理嵌套</h3><p>在try…catch中再次嵌套try…catch称为异常处理的嵌套。异常处理嵌套的深度没有明确的限制，但通常没有必要使用超过两层的嵌套异常处理，层次太深的嵌套没有太大必要，而且导致程序的可读性降低。</p>
+<h3 id="使用throws声明抛出异常"><a href="#使用throws声明抛出异常" class="headerlink" title="使用throws声明抛出异常"></a>使用throws声明抛出异常</h3><p>当前方法不知道如何处理这种异常，该异常应该由上一级调用者处理；如果main方法也不知道如何处理这种异常，也可以使用throws声明抛出异常，该异常交给JVM处理，JVM处理异常的方法是：将异常的跟踪栈打印并终止程序运行。throws声明抛出异常的语法格式:<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">throws</span> ExceptionClass1, ExceptonClass2...</div></pre></td></tr></table></figure></p>
+<p>一旦使用throws语句抛出该异常，程序就无须使用try…catch块捕获该异常了。但是调用者依旧需要使用try…catch块捕获异常或者再次声明异常抛出</p>
+<h3 id="使用throw抛出异常"><a href="#使用throw抛出异常" class="headerlink" title="使用throw抛出异常"></a>使用throw抛出异常</h3><p>当程序出错时，系统会自动抛出异常，如果需要自行抛出异常，那么就要使用throw语句来完成。当Java接受无论是系统抛出异常还是自行抛出异常，Java运行时环境对于异常的处理没有任何差别。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">try</span> &#123;</div><div class="line">    <span class="keyword">int</span> a = <span class="number">0</span>;</div><div class="line">    <span class="keyword">if</span> (a &gt; <span class="number">0</span>) &#123;</div><div class="line">        <span class="keyword">throw</span> <span class="keyword">new</span> Exception(<span class="string">"a大于0"</span>);</div><div class="line">    &#125;</div><div class="line">&#125;<span class="keyword">catch</span>(Exception e) &#123;</div><div class="line">    <span class="comment">//....</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="自定义异常"><a href="#自定义异常" class="headerlink" title="自定义异常"></a>自定义异常</h3><p>用户自定义异常都应该继承Exception基类，如果自定义Runtime异常，则应该继承RuntimeException基类。<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">AuctionException</span> <span class="keyword">extends</span> <span class="title">Exception</span></span></div><div class="line">&#123;   </div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="title">AuctionException</span><span class="params">()</span> </span>&#123;&#125;</div><div class="line">    </div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="title">AuctionException</span><span class="params">(String msg)</span></span>&#123;</div><div class="line">        <span class="keyword">super</span>(msg);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>前面介绍异常处理方式有如下两种：</p>
+<blockquote>
+<ol>
+<li>在出现异常的方法内捕获并处理异常，该方法的调用者将不能再次捕获该异常</li>
+<li>该方法签名中声明抛出该异常，将该异常完全交给方法调用者处理</li>
+</ol>
+</blockquote>
+<p>在实际应用中，单靠某个方法无法完全处理该异常，必须有几个方法协作才能完全处理。也就是说，在异常出现的当前方法中，程序只对异常进行部分处理，还有些处理要在该方法的调用者中才能完成，所以应该再次抛出异常，让该方法的调用者也能捕获到异常<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">AuctionTest</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">bid</span><span class="params">(String bidPrice)</span><span class="keyword">throws</span> AuctionException </span>&#123;</div><div class="line">        <span class="keyword">double</span> d = <span class="number">0.0</span>;</div><div class="line">        <span class="keyword">try</span> &#123;</div><div class="line">            d = Double.parseDouble(bidPrice);</div><div class="line">        &#125;<span class="keyword">catch</span>(Exception e) &#123;</div><div class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> AuctionException(<span class="string">"抛出"</span>)</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</div><div class="line">    AuctionTest at = <span class="keyword">new</span> AuctionTest();</div><div class="line">    <span class="keyword">try</span> &#123;</div><div class="line">        at.bid(<span class="string">"df"</span>)</div><div class="line">    &#125;<span class="keyword">catch</span> (AuctionException e) &#123;</div><div class="line">        <span class="comment">//...</span></div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h3 id="异常链和异常转译"><a href="#异常链和异常转译" class="headerlink" title="异常链和异常转译"></a>异常链和异常转译</h3><p>将底层的原始异常直接传给用户是一种不负责任的表现，通常做法是先捕获原始异常，然后抛出一个新的业务异常，这种处理方式称为异常转译。<br>这种把捕获一个异常然后接着抛出另一个异常，并把原始异常信息保存下来是一种典型的链式处理，也被称为”异常链”</p>
+<h3 id="异常的处理规则"><a href="#异常的处理规则" class="headerlink" title="异常的处理规则"></a>异常的处理规则</h3><p>成功的异常处理应该先如下4个目标：</p>
+<blockquote>
+<ol>
+<li>使程序代码混乱最小化</li>
+<li>捕获并保留诊断信息</li>
+<li>通知合适的人员</li>
+<li>采用合适的方式结束异常活动</li>
+</ol>
+</blockquote>
+<p>下面介绍达到这种效果的基本准则:</p>
+<blockquote>
+<ol>
+<li>不要过度使用异常: 对于完全已知的错误，应该编写处理错误的代码，增强健壮性；只有对于外部的、未知的运行时错误才使用异常;</li>
+<li>不要使用过于庞大的try块: 同一个try块后紧跟大量的catch块则需要分析他们之间的逻辑关系，增加编程的复杂度。正确做法是，将大块的try分割成多个可能出现异常的程序段落，并把它们放在单独的try块中，从而分别捕获并处理异常;</li>
+<li>避免使用Catch All语句:所谓Catch All语句是指一种异常捕获模块，他可以处理程序发生的所有可能异常；</li>
+<li>不要忽略捕获到的异常</li>
+</ol>
+</blockquote>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Java/" rel="tag"># Java</a>
+          
+        </div>
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/06/02/Java基础-四/" rel="next" title="Java基础(四)">
+                <i class="fa fa-chevron-left"></i> Java基础(四)
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/06/06/Java基础-六/" rel="prev" title="Java基础(六)">
+                Java基础(六) <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div id="cloud-tie-wrapper" class="cloud-tie-wrapper"></div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="http://opbae2xuz.bkt.clouddn.com/images/bhlin/ピカチュウ.jpeg"
+               alt="啖火" />
+          <p class="site-author-name" itemprop="name">啖火</p>
+           
+              <p class="site-description motion-element" itemprop="description"></p>
+           
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">16</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">5</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">7</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#泛型入门"><span class="nav-number">1.</span> <span class="nav-text">泛型入门</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#编译时类型检查的重要性"><span class="nav-number">1.1.</span> <span class="nav-text">编译时类型检查的重要性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用泛型实现编译时进行类型检查"><span class="nav-number">1.2.</span> <span class="nav-text">使用泛型实现编译时进行类型检查</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#定义泛型接口、泛型类"><span class="nav-number">1.3.</span> <span class="nav-text">定义泛型接口、泛型类</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#适用类型通配符"><span class="nav-number">1.4.</span> <span class="nav-text">适用类型通配符</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#设定类型通配符的上限"><span class="nav-number">1.5.</span> <span class="nav-text">设定类型通配符的上限</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#设定类型形参的上限"><span class="nav-number">1.6.</span> <span class="nav-text">设定类型形参的上限</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#设定类型通配符的下限"><span class="nav-number">1.7.</span> <span class="nav-text">设定类型通配符的下限</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#泛型方法与方法重载"><span class="nav-number">1.8.</span> <span class="nav-text">泛型方法与方法重载</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#擦除与转换"><span class="nav-number">1.9.</span> <span class="nav-text">擦除与转换</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#泛型与数组"><span class="nav-number">1.10.</span> <span class="nav-text">泛型与数组</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#异常处理"><span class="nav-number">2.</span> <span class="nav-text">异常处理</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Java异常类的继承体系"><span class="nav-number">2.1.</span> <span class="nav-text">Java异常类的继承体系</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用try…catch捕获异常"><span class="nav-number">2.2.</span> <span class="nav-text">使用try…catch捕获异常</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#多异常捕获"><span class="nav-number">2.3.</span> <span class="nav-text">多异常捕获</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#异常对象的常用方法"><span class="nav-number">2.4.</span> <span class="nav-text">异常对象的常用方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#finally块的作用"><span class="nav-number">2.5.</span> <span class="nav-text">finally块的作用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#自动关闭资源的try语句"><span class="nav-number">2.6.</span> <span class="nav-text">自动关闭资源的try语句</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#异常处理的合理嵌套"><span class="nav-number">2.7.</span> <span class="nav-text">异常处理的合理嵌套</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用throws声明抛出异常"><span class="nav-number">2.8.</span> <span class="nav-text">使用throws声明抛出异常</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用throw抛出异常"><span class="nav-number">2.9.</span> <span class="nav-text">使用throw抛出异常</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#自定义异常"><span class="nav-number">2.10.</span> <span class="nav-text">自定义异常</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#异常链和异常转译"><span class="nav-number">2.11.</span> <span class="nav-text">异常链和异常转译</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#异常的处理规则"><span class="nav-number">2.12.</span> <span class="nav-text">异常的处理规则</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">啖火</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+  
+  <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.1"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.1"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+    
+    <script>
+      var cloudTieConfig = {
+        url: document.location.href, 
+        sourceId: "",
+        productKey: "caf96788347d4118a95af2385c2d6496",
+        target: "cloud-tie-wrapper"
+      };
+    </script>
+    <script src="https://img1.cache.netease.com/f2e/tie/yun/sdk/loader.js"></script>
+  
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

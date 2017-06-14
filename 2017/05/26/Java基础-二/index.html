@@ -1,0 +1,845 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Java," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.1" />
+
+
+
+
+
+
+<meta name="description" content="Java是面向对象的程序语言设计，Java语言提供了定义类、成员变量、方法等基本功能。类可以看做是自定义的一种数据类型，可以使用类定义变量，所有使用类定义的变量都是引用变量。 Java支持面向对象的三大特征：封装、继承和多态，Java提供了Private、protected和public三个访问控制修饰符来实现良好的封装，提供extends关键字可以让子类继承父类，子类继承父类就可以继承父类的成">
+<meta name="keywords" content="Java">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Java基础(二)">
+<meta property="og:url" content="http://yoursite.com/2017/05/26/Java基础-二/index.html">
+<meta property="og:site_name" content="啖火">
+<meta property="og:description" content="Java是面向对象的程序语言设计，Java语言提供了定义类、成员变量、方法等基本功能。类可以看做是自定义的一种数据类型，可以使用类定义变量，所有使用类定义的变量都是引用变量。 Java支持面向对象的三大特征：封装、继承和多态，Java提供了Private、protected和public三个访问控制修饰符来实现良好的封装，提供extends关键字可以让子类继承父类，子类继承父类就可以继承父类的成">
+<meta property="og:image" content="http://opbae2xuz.bkt.clouddn.com/images/bhlin/2017-06-01-14.png">
+<meta property="og:image" content="http://opbae2xuz.bkt.clouddn.com/images/bhlin/2017-06-01-15.png">
+<meta property="og:image" content="http://opbae2xuz.bkt.clouddn.com/images/bhlin/2017-06-01-16.png">
+<meta property="og:updated_time" content="2017-06-01T12:11:06.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Java基础(二)">
+<meta name="twitter:description" content="Java是面向对象的程序语言设计，Java语言提供了定义类、成员变量、方法等基本功能。类可以看做是自定义的一种数据类型，可以使用类定义变量，所有使用类定义的变量都是引用变量。 Java支持面向对象的三大特征：封装、继承和多态，Java提供了Private、protected和public三个访问控制修饰符来实现良好的封装，提供extends关键字可以让子类继承父类，子类继承父类就可以继承父类的成">
+<meta name="twitter:image" content="http://opbae2xuz.bkt.clouddn.com/images/bhlin/2017-06-01-14.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2017/05/26/Java基础-二/"/>
+
+
+
+
+
+  <title>Java基础(二) | 啖火</title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  <div style="display: none;">
+  	<script src="https://s19.cnzz.com/z_stat.php?id=1261967319&web_id=1261967319" language="JavaScript"></script>
+  </div>
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">啖火</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <h1 class="site-subtitle" itemprop="description"></h1>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/05/26/Java基础-二/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="啖火">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://opbae2xuz.bkt.clouddn.com/images/bhlin/ピカチュウ.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="啖火">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+            
+            
+              
+                Java基础(二)
+              
+            
+          </h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-05-26T18:33:35+08:00">
+                2017-05-26
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Java/" itemprop="url" rel="index">
+                    <span itemprop="name">Java</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a class="cloud-tie-join-count" href="/2017/05/26/Java基础-二/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count join-count" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <a id="more"></a>
+<p>Java是面向对象的程序语言设计，Java语言提供了定义类、成员变量、方法等基本功能。类可以看做是自定义的一种数据类型，可以使用类定义变量，所有使用类定义的变量都是引用变量。</p>
+<p>Java支持面向对象的三大特征：封装、继承和多态，Java提供了Private、protected和public三个访问控制修饰符来实现良好的封装，提供extends关键字可以让子类继承父类，子类继承父类就可以继承父类的成员变量和方法，如果访问控制允许，子类就可以直接调用父类的方法。使用继承关系，子类可以直接赋给父类变量，这个变量具有多态性;<br>构造器御用对类实例进行初始化操作，构造器支持重载。Java嗨提供了初始化块，可以在构造器之前被调用。</p>
+<h2 id="面向对象"><a href="#面向对象" class="headerlink" title="面向对象"></a>面向对象</h2><p>面向对象是一种程序设计方法。基本思想是使用类、对象、继承、封装等基本概念进行程序设计。面向对象开发的软件系统，其最小的程序单元是类，这些类可以生成多个对象，这些对象映射客观世界的各种事务。<strong>成员变量(状态数据)+方法(行为) = 类定义</strong> ； 面向对象的程序单位是类，面向过程的程序单位是方法。<br>面向对象方法的三个基本特征：封装、继承和多态。除此之外抽象也是作为面向对象的重要特征。<br>&emsp; 1. &nbsp; 封装：将对象的实现细节隐藏起来，通过一些公用方法来暴露对象的功能；<br>&emsp; 2. &nbsp; 继承：是面向对象实现软件复用的重要手段，当子类继承父类后，子类作为一种特殊的父类，将直接获得父类的属性和方法；<br>&emsp; 3. &nbsp; 多态：指子类对象可以直接赋给父类变量，但运行时依然表现出子类的行为特征，意味着同一个类型的对象在执行同一个方法是，可能表现出多种行为特征。</p>
+<h3 id="Java的面向对象特征"><a href="#Java的面向对象特征" class="headerlink" title="Java的面向对象特征"></a>Java的面向对象特征</h3><p>在Java的世界里，一切皆对象，任何事务都可以当初对象来看待。在Java中，任何具有相同或相似性质的一组对象的抽象就是类，<font color="red">类是一类事务的描述，是抽象的、概念上的定义。它规定了某类对象所共同的行为特征和数据。</font> 对象的抽象化是类，类的具体化是对象。<br>在客观世界中有若干类，这些类之间有一定的结构关系，通常有如下两种主要结构关系。<br>&emsp; 1. &nbsp; “is-a”: Java语言使用extends关键字来表示这种继承关系，Java的子类是一种特殊的父类，可以看做 子类 is a 父类。<br>&emsp; 2. &nbsp; “has-a”: 整体-&gt;部分结构关系，也被成为组装结构，Java语言通过在一个类中保存另一个对象的引用来实现这种组合关系。</p>
+<h2 id="类和对象"><a href="#类和对象" class="headerlink" title="类和对象"></a>类和对象</h2><p>Java语言定义类的简单语法如下:<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">[修饰符] <span class="class"><span class="keyword">class</span> 类名 </span>&#123;</div><div class="line">    <span class="comment">//零到多个构造器定义...</span></div><div class="line">    [修饰符] 构造器名(形参列表)&#123;</div><div class="line">        <span class="comment">//由零到多条可执行性语句组成的方法体</span></div><div class="line">    &#125;</div><div class="line">    <span class="comment">//零到多个成员变量...</span></div><div class="line">    [修饰符] 类型 成员变量名 [=默认值];</div><div class="line">    <span class="comment">//零到多个方法...</span></div><div class="line">    [修饰符] 方法返回值类型 方法名(形参列表) &#123;</div><div class="line">        <span class="comment">//由零到多条可执行性语句组成的方法体</span></div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<ol>
+<li>构造器: 构造器是一个类创建对象的根本途径，最少有一个构造对象，如果程序员没有为类编写构造器，那么系统会提供一个默认构造器。如果程序员提供了构造器，系统就不会提供默认构造器。</li>
+<li>类的修饰符: public、final、abstract或者省略修饰符</li>
+<li>构造器修饰符: 修饰符可以省略, 也可以是public、protected、private其中之一。</li>
+<li>构造器名称: 构造器名称必须与类名相同。 </li>
+<li>成员变量的修饰符: public、protected、private、static、final，public、protected、private最多出现一个，可以与static、final组合</li>
+<li>方法的修饰符: public、protected、private、static、final、abstract，其中public、protected、private最多出现一个；abstract和fianl最多出现一个，可以与static组合</li>
+</ol>
+<p>static修饰的成员变量和方法称为<font color="red">类变量和类方法.</font> 类变量和类方法属于类不属于对象。成员变量和普通方法属于该类的单个实例不属于类。</p>
+<h3 id="package、import和import-static"><a href="#package、import和import-static" class="headerlink" title="package、import和import static"></a>package、import和import static</h3><p>Java里面package的概念：Java里的包用于解决类的命名冲突、类文件管理等问题。可以把Java的包看做是文件夹。为了简化编程可以使用import关键导入指定类或者指定包下的类。<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//导入指定的类</span></div><div class="line"><span class="keyword">import</span> <span class="keyword">package</span>.subPackage...ClassName;</div><div class="line"><span class="comment">//导入指定的包下的所有类, 这里的*指的是当前包下所有的类，并不包含当前包下子包的类</span></div><div class="line"><span class="keyword">import</span> <span class="keyword">package</span>.subPackage...*;</div><div class="line"><span class="comment">//jdk1.5后添加静态导入的语法</span></div><div class="line"><span class="comment">//导入指定包下静态的方法或者变量</span></div><div class="line"><span class="keyword">import</span> <span class="keyword">static</span> <span class="keyword">package</span>.subPackage...ClassName.filedName|methodName;</div><div class="line"><span class="comment">//例如</span></div><div class="line"><span class="keyword">import</span> <span class="keyword">static</span> java.lang.System.*</div><div class="line">out.println(<span class="string">"可以直接调用System类下的out类方法"</span>);</div></pre></td></tr></table></figure></p>
+<h3 id="对象创建和使用"><a href="#对象创建和使用" class="headerlink" title="对象创建和使用"></a>对象创建和使用</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//创建对象</span></div><div class="line">Person p;</div><div class="line">p = <span class="keyword">new</span> Person();</div><div class="line"><span class="comment">//给对象的成员变量命名</span></div><div class="line">p.name = <span class="string">"李刚"</span>;</div><div class="line"><span class="comment">//调用对象的方法</span></div><div class="line">p.say(<span class="string">"hello world"</span>);</div><div class="line"><span class="comment">//调用系统输出对象的名称</span></div><div class="line">System.out.println(p.name);</div></pre></td></tr></table></figure>
+<p>栈内存中的引用变量存储Person对象的指针，堆内存中创建Person对象。下面展示内存中使用Person的引用图：<br><img src="http://opbae2xuz.bkt.clouddn.com/images/bhlin/2017-06-01-14.png" alt=""></p>
+<p>Java提供了this、super关键字。<font color="red">this代表当前对象、super代表父类对象</font>。由于static修饰的变量和方法属于类不属于对象，所以不能在类方法中使用this、super关键字。大部分情况下可以省略this关键字。<br>this作为对象的默认引用有两种情形：<br>&emsp; 1. 构造器中引用该构造器正在初始化对象。<br>&emsp; 2. 在方法中调用该方法的对象。</p>
+<p>在Java语言中，根据定义变量的位置不同可以将变量分成两类：成员变量和局部变量。<br><img src="http://opbae2xuz.bkt.clouddn.com/images/bhlin/2017-06-01-15.png" alt=""></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//类变量引用</span></div><div class="line">类.类变量</div><div class="line"><span class="comment">//成员变量引用</span></div><div class="line">实例.实例变量</div></pre></td></tr></table></figure>
+<p>Java方法的参数传递机制: Java方法的参数传递方式只有一种:值传递，也就是将实际参数复制传入方法内，参数本身不会受到影响。基本数据类型传递不会有迷茫。引用数据类型传递，是将指针复制传递给形参，但是实参和形参指向同一块内存空间，当形参修改堆内存中的数据从外面看实参指向的内存空间也被修改了。<br><img src="http://opbae2xuz.bkt.clouddn.com/images/bhlin/2017-06-01-16.png" alt=""><br>Java形参个数可变的方法:在jdk1.5之后，Java语序定义形参个数可变的参数，只能在最后有一个参数后面添加可变参数。可以将可变参数当做数组参数看待。使用格式(…)<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">test</span><span class="params">(<span class="keyword">int</span> a, string... books)</span> </span>&#123;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h4 id="深入构造器"><a href="#深入构造器" class="headerlink" title="深入构造器"></a>深入构造器</h4><blockquote>
+<p>疑问：构造器是创建Java对象的途径，是不是说构造器完全负责创建Java对象？<br>答：不是！ 构造器是创建Java对象的重要途径，通过new关键字调用构造器是，构造器也确实返回了该类的对象，但这个对象并不是完全由构造器负责创建的。实际上，当程序员调用构造器时，系统会先为该对象分配内存空间，并为这个对象执行默认初始化，这个对象已经产生了——这些操作在狗在其执行之前就执行完成了。也就是说，当系统开始执行构造器的执行体之前，系统已经创建了一个对象，只是这个对象还不能被外部程序访问，只能在构造器中通过this调用。当构造器的执行体执行结束后，这个对象作为构造器的返回值赋给另外一个引用类型的变量，从而让外部程序可以访问对象。</p>
+</blockquote>
+<h4 id="初始化块"><a href="#初始化块" class="headerlink" title="初始化块"></a>初始化块</h4><p>Java使用构造器来对单个对象进行初始化操作，与构造器作用非常类似的是初始化块，他也可以对Java对象进行初始化操作。相同类型的初始化块之间有顺序：前面定的的初始化块先执行，后面定义的后执行。如果一个变量在初始化块前定义，在初始化块中可以修改。如果变量在初始化块后面定义，在初始化快中可以修改但是无效。<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">[修饰符] &#123;</div><div class="line">    <span class="comment">//初始化块的可执行代码</span></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>初始化块有两种:一种是静态初始化块，另一种是动态初始化块。<br>&emsp; 1. 静态初始化块：只有在第一次创建该对象的时候走静态初始化块。<br>&emsp; 2. 初始化块：初始化块在执行构造器之前执行，如果有父类先执行父类的初始化块-&gt;父类的构造方法-&gt;子类的初始化块-&gt;子类的构造方法.</p>
+<h4 id="方法重载"><a href="#方法重载" class="headerlink" title="方法重载"></a>方法重载</h4><p>Java允许同一个类中定义多个同名方法，只要形参不同。如果同一个类中包含了两个或两个以上的方法名相同，但形参列表不同，则被称为方法的重载。</p>
+<h4 id="封装"><a href="#封装" class="headerlink" title="封装"></a>封装</h4><p>封装是面向对象的三大特征之一。它指将对象的状态信息隐藏在对象内部，不允许外部程序直接访问对象的内部信息，而是通过该类所提供的方法来实现对内部信息的操作和访问。对于一个类或对象实现良好的封装，可以实现以下目的：</p>
+<ul>
+<li>隐藏类的实现细节</li>
+<li>限制对成员变量的不合理访问</li>
+<li>可进行数据检查，有利于保证对象信息的完整性</li>
+<li>便于修改，提高代码的可维护性<br>为了实现良好的封装，从两个方面考虑：</li>
+<li>将对象的成员变量和实现细节隐藏起来，不允许外部直接访问</li>
+<li>把方法暴露出来，让方法来控制对成员变量进行安全的访问操作。<br>Java提供了3个访问修饰符控制访问范围的大小，另外还有一个不加任何访问修饰符的访问级别。如图所示：</li>
+<li>private：当前类访问权限，只有单前类能引用</li>
+<li>default：包访问权限，只有在同一个包内可以访问</li>
+<li>protected：子类访问权限，既可以被同一个包内的其他类访问，也可以被不同包下的子类访问</li>
+<li>public：公共访问权限</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>private</th>
+<th>default</th>
+<th>protected</th>
+<th>public</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>同一个类中</td>
+<td>YES</td>
+<td>YES</td>
+<td>YES</td>
+<td>YES</td>
+</tr>
+<tr>
+<td>同一个包中</td>
+<td></td>
+<td>YES</td>
+<td>YES</td>
+<td>YES</td>
+</tr>
+<tr>
+<td>子类中</td>
+<td></td>
+<td></td>
+<td>YES</td>
+<td>YES</td>
+</tr>
+<tr>
+<td>全局范围内</td>
+<td></td>
+<td></td>
+<td></td>
+<td>YES</td>
+</tr>
+</tbody>
+</table>
+<h4 id="类的继承"><a href="#类的继承" class="headerlink" title="类的继承"></a>类的继承</h4><p>继承是面向对象的三大特征之一。也是实现软件复用的重要手段。Java的继承通过extends关键字来实现，实现继承的类被称为子类，被继承的类称为父类。<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">修饰符 <span class="class"><span class="keyword">class</span> <span class="title">subClass</span> <span class="keyword">extends</span> <span class="title">superClass</span> </span>&#123;</div><div class="line">    <span class="comment">//类定义部分</span></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>子类扩展了父类，子类是一个特殊的父类。子类可以以父类为基础，在此之上添加新的成员变量和方法。子类也可以<font color="red">重写</font>父类的方法。</p>
+<h4 id="多态"><a href="#多态" class="headerlink" title="多态"></a>多态</h4><p>多态是面向对象的三大特征之一。Java引用变量有两个类型：一个是编译时类型，一个是运行时类型。编译时类型是有声明该变量是使用的类型决定，运行时类型是由实际赋给该变量的对象决定的。如果编译时类型和运行时类型不一致，就可能出现所谓的多态。<br>instanceof运算符：前面是引用类型的变量，后面是类，用于判断当前变量是否是后面的类，或者其子类、实现类的实例，如果是ture否则flase;<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">Object hello = <span class="string">"he"</span>;</div><div class="line">(hello <span class="keyword">instanceof</span> String) <span class="comment">//true</span></div><div class="line">(hello <span class="keyword">instanceof</span> Math) <span class="comment">// false</span></div><div class="line"><span class="comment">//instanceof运算符前面编译时类型要么与后面类型相同，要么与后面具有父子继承关系，否则会引起编译错误</span></div><div class="line">String str= <span class="string">"ddddd"</span>;</div><div class="line">(str <span class="keyword">instanceof</span> Math)<span class="comment">//编译错误</span></div></pre></td></tr></table></figure></p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Java/" rel="tag"># Java</a>
+          
+        </div>
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/05/25/Java基础-一/" rel="next" title="Java基础(一)">
+                <i class="fa fa-chevron-left"></i> Java基础(一)
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/06/01/Java基础-三/" rel="prev" title="Java基础(三)">
+                Java基础(三) <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div id="cloud-tie-wrapper" class="cloud-tie-wrapper"></div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="http://opbae2xuz.bkt.clouddn.com/images/bhlin/ピカチュウ.jpeg"
+               alt="啖火" />
+          <p class="site-author-name" itemprop="name">啖火</p>
+           
+              <p class="site-description motion-element" itemprop="description"></p>
+           
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">16</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">5</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">7</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#面向对象"><span class="nav-number">1.</span> <span class="nav-text">面向对象</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Java的面向对象特征"><span class="nav-number">1.1.</span> <span class="nav-text">Java的面向对象特征</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#类和对象"><span class="nav-number">2.</span> <span class="nav-text">类和对象</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#package、import和import-static"><span class="nav-number">2.1.</span> <span class="nav-text">package、import和import static</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#对象创建和使用"><span class="nav-number">2.2.</span> <span class="nav-text">对象创建和使用</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#深入构造器"><span class="nav-number">2.2.1.</span> <span class="nav-text">深入构造器</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#初始化块"><span class="nav-number">2.2.2.</span> <span class="nav-text">初始化块</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#方法重载"><span class="nav-number">2.2.3.</span> <span class="nav-text">方法重载</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#封装"><span class="nav-number">2.2.4.</span> <span class="nav-text">封装</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#类的继承"><span class="nav-number">2.2.5.</span> <span class="nav-text">类的继承</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#多态"><span class="nav-number">2.2.6.</span> <span class="nav-text">多态</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">啖火</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+  
+  <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.1"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.1"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+    
+    <script>
+      var cloudTieConfig = {
+        url: document.location.href, 
+        sourceId: "",
+        productKey: "caf96788347d4118a95af2385c2d6496",
+        target: "cloud-tie-wrapper"
+      };
+    </script>
+    <script src="https://img1.cache.netease.com/f2e/tie/yun/sdk/loader.js"></script>
+  
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
