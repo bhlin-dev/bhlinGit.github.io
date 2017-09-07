@@ -94,9 +94,10 @@
 <meta name="keywords" content="Java">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Java基础(六)">
-<meta property="og:url" content="http://yoursite.com/2017/06/06/Java基础-六/index.html">
-<meta property="og:site_name" content="啖火">
+<meta property="og:url" content="http://bhlingit.github.io/2017/06/06/Java基础-六/index.html">
+<meta property="og:site_name" content="啖火日常">
 <meta property="og:description" content="MySQL数据库与JDBC编程通过JDBC，Java程序可以方便操作各种主流数据库。程序使用JDBC API以统一的方式来连接不同的数据库，然后通过Statement对象来执行标准的SQL语句，获得SQL语句访问数据库的结果。因此掌握标准的SQL语句是学习JDBC的基础。  因为数据库系统太多了并且各数据库内部特性不同，所以Sun就定制了一组标准API,他们只是接口，没有提供实现类——这些实现类有">
+<meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://opbae2xuz.bkt.clouddn.com/images/bhlin/2017-06-07-03.png">
 <meta property="og:updated_time" content="2017-06-07T03:23:31.000Z">
 <meta name="twitter:card" content="summary">
@@ -130,13 +131,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2017/06/06/Java基础-六/"/>
+  <link rel="canonical" href="http://bhlingit.github.io/2017/06/06/Java基础-六/"/>
 
 
 
 
 
-  <title>Java基础(六) | 啖火</title>
+  <title>Java基础(六) | 啖火日常</title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -178,7 +179,7 @@
     <div class="custom-logo-site-title">
       <a href="/"  class="brand" rel="start">
         <span class="logo-line-before"><i></i></span>
-        <span class="site-title">啖火</span>
+        <span class="site-title">啖火日常</span>
         <span class="logo-line-after"><i></i></span>
       </a>
     </div>
@@ -244,9 +245,43 @@
       
 
       
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
     </ul>
   
 
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocapitalize="off" autocomplete="off" autocorrect="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
   
 </nav>
 
@@ -271,7 +306,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/06/06/Java基础-六/">
+    <link itemprop="mainEntityOfPage" href="http://bhlingit.github.io/2017/06/06/Java基础-六/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="啖火">
@@ -280,7 +315,7 @@
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="啖火">
+      <meta itemprop="name" content="啖火日常">
     </span>
 
     
@@ -390,10 +425,10 @@
 <blockquote>
 <ol>
 <li><p>DriverManager: 用户管理JDBC驱动的服务类。主要功能获取Connection对象。该类包含方法如下:</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//该方法获得url对应的数据库连接</span></div><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Connection <span class="title">getConnection</span><span class="params">(String url,</span></span></div><div class="line">        java.util.Properties info) <span class="keyword">throws</span> SQLException;</div></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//该方法获得url对应的数据库连接</span></div><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Connection <span class="title">getConnection</span><span class="params">(String url,</span></span></div><div class="line"><span class="function"><span class="params">        java.util.Properties info)</span> <span class="keyword">throws</span> SQLException</span>;</div></pre></td></tr></table></figure>
 </li>
 <li><p>Connection:代表数据库连接对象，每个Connection代表一个物理连接会话。该方法常用方法如下：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//返回一个Statement对象</span></div><div class="line"><span class="function">Statement <span class="title">createStatement</span><span class="params">()</span> <span class="keyword">throws</span> SQLException</span>;</div><div class="line"><span class="comment">//返回预编译的Statement对象，即将SQL语句提交到数据库进行预编译</span></div><div class="line"><span class="function">PreparedStatement <span class="title">prepareStatement</span><span class="params">(String sql)</span></span></div><div class="line">        <span class="keyword">throws</span> SQLException;</div><div class="line"><span class="comment">//返回CallableStatement对象，该对象用于调用存储过程</span></div><div class="line"><span class="function">CallableStatement <span class="title">prepareCall</span><span class="params">(String sql)</span> <span class="keyword">throws</span> SQLException</span>;</div><div class="line"><span class="comment">//上面都是用于执行sql语句返回的Statment对象，CallableStatement、PreparedStatement是Statment的子类</span></div><div class="line"></div><div class="line"><span class="comment">//控制事务的几个方法</span></div><div class="line"><span class="comment">//创建一个保存点</span></div><div class="line"><span class="function">Savepoint <span class="title">setSavepoint</span><span class="params">()</span> <span class="keyword">throws</span> SQLException</span>;</div><div class="line"><span class="comment">//指定名字创建保存点</span></div><div class="line"><span class="function">Savepoint <span class="title">setSavepoint</span><span class="params">(String name)</span> <span class="keyword">throws</span> SQLException</span>;</div><div class="line"><span class="comment">//设置事务的隔离级别</span></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">setTransactionIsolation</span><span class="params">(<span class="keyword">int</span> level)</span> <span class="keyword">throws</span> SQLException</span>;</div><div class="line"><span class="comment">//事务回滚</span></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">rollback</span><span class="params">()</span></span>;</div><div class="line"><span class="comment">//事务回滚到指定保存点</span></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">rollback</span><span class="params">(Savepoint savepoint)</span> <span class="keyword">throws</span> SQLException</span>;</div><div class="line"><span class="comment">//关闭自动提交，打开事务</span></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">setAutoCommit</span><span class="params">(<span class="keyword">boolean</span> autoCommit)</span> <span class="keyword">throws</span> SQLException</span>;</div><div class="line"><span class="comment">//提交事务</span></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">commit</span><span class="params">()</span> <span class="keyword">throws</span> SQLException</span>;</div></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//返回一个Statement对象</span></div><div class="line"><span class="function">Statement <span class="title">createStatement</span><span class="params">()</span> <span class="keyword">throws</span> SQLException</span>;</div><div class="line"><span class="comment">//返回预编译的Statement对象，即将SQL语句提交到数据库进行预编译</span></div><div class="line"><span class="function">PreparedStatement <span class="title">prepareStatement</span><span class="params">(String sql)</span></span></div><div class="line"><span class="function">        <span class="keyword">throws</span> SQLException</span>;</div><div class="line"><span class="comment">//返回CallableStatement对象，该对象用于调用存储过程</span></div><div class="line"><span class="function">CallableStatement <span class="title">prepareCall</span><span class="params">(String sql)</span> <span class="keyword">throws</span> SQLException</span>;</div><div class="line"><span class="comment">//上面都是用于执行sql语句返回的Statment对象，CallableStatement、PreparedStatement是Statment的子类</span></div><div class="line"></div><div class="line"><span class="comment">//控制事务的几个方法</span></div><div class="line"><span class="comment">//创建一个保存点</span></div><div class="line"><span class="function">Savepoint <span class="title">setSavepoint</span><span class="params">()</span> <span class="keyword">throws</span> SQLException</span>;</div><div class="line"><span class="comment">//指定名字创建保存点</span></div><div class="line"><span class="function">Savepoint <span class="title">setSavepoint</span><span class="params">(String name)</span> <span class="keyword">throws</span> SQLException</span>;</div><div class="line"><span class="comment">//设置事务的隔离级别</span></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">setTransactionIsolation</span><span class="params">(<span class="keyword">int</span> level)</span> <span class="keyword">throws</span> SQLException</span>;</div><div class="line"><span class="comment">//事务回滚</span></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">rollback</span><span class="params">()</span></span>;</div><div class="line"><span class="comment">//事务回滚到指定保存点</span></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">rollback</span><span class="params">(Savepoint savepoint)</span> <span class="keyword">throws</span> SQLException</span>;</div><div class="line"><span class="comment">//关闭自动提交，打开事务</span></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">setAutoCommit</span><span class="params">(<span class="keyword">boolean</span> autoCommit)</span> <span class="keyword">throws</span> SQLException</span>;</div><div class="line"><span class="comment">//提交事务</span></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">commit</span><span class="params">()</span> <span class="keyword">throws</span> SQLException</span>;</div></pre></td></tr></table></figure>
 </li>
 <li><p>Statement:用于执行SQL语句的工具接口。该对象可执行DDL、DCL、SQL查询。常用方法如下</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//执行查询语句，并返回对应的ResultSet对象</span></div><div class="line"><span class="function">ResultSet <span class="title">executeQuery</span><span class="params">(String sql)</span> <span class="keyword">throws</span> SQLException</span>;</div><div class="line"><span class="comment">//用于执行DML,并返回受影响的行数；该方法也可执行DDL，执行DDL返回0</span></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">executeUpdate</span><span class="params">(String sql)</span> <span class="keyword">throws</span> SQLException</span>;</div><div class="line"><span class="comment">//执行任何sql语句，如果第一个结果是ResultSet返回true,如果第一个结果是受影响的行数或者没有任何结果返回false</span></div><div class="line"><span class="function"><span class="keyword">boolean</span> <span class="title">execute</span><span class="params">(String sql)</span> <span class="keyword">throws</span> SQLException</span>;</div></pre></td></tr></table></figure>
@@ -433,7 +468,7 @@
 </ol>
 </blockquote>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">PreparedStatementTest</span> </span>&#123;</div><div class="line">    <span class="keyword">private</span> String driver;</div><div class="line">    <span class="keyword">private</span> String url;</div><div class="line">    <span class="keyword">private</span> String user;</div><div class="line">    <span class="keyword">private</span> String pass;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">initParam</span><span class="params">(String paramFile)</span><span class="keyword">throws</span>  Exception </span>&#123;</div><div class="line">        Properties props = <span class="keyword">new</span> Properties();</div><div class="line">        props.load(<span class="keyword">new</span> FileInputStream(paramFile));</div><div class="line">        driver = props.getProperty(<span class="string">"driver"</span>);</div><div class="line">        url = props.getProperty(<span class="string">"url"</span>);</div><div class="line">        user = props.getProperty(<span class="string">"user"</span>);</div><div class="line">        pass = props.getProperty(<span class="string">"pass"</span>);</div><div class="line">        <span class="comment">//加载驱动</span></div><div class="line">        Class.forName(driver);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">insertUsePrepare</span><span class="params">()</span><span class="keyword">throws</span> Exception </span>&#123;</div><div class="line">        <span class="keyword">try</span> (</div><div class="line">                <span class="comment">//获取数据库链接</span></div><div class="line">                Connection conn = DriverManager.getConnection(url, user, pass);</div><div class="line">                <span class="comment">//使用Connection创建PreparedStatement对象</span></div><div class="line">                PreparedStatement pstmt = conn.prepareStatement(<span class="string">"insert into student_table values(null, ?, 1)"</span>)</div><div class="line">            )</div><div class="line">        &#123;</div><div class="line">            <span class="comment">//循环出入100条记录</span></div><div class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">100</span>; i++) &#123;</div><div class="line">                pstmt.setString(<span class="number">1</span>, <span class="string">"姓名"</span> + i);</div><div class="line">                pstmt.executeUpdate();</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h3 id="使用CallableStatement调用存储过程"><a href="#使用CallableStatement调用存储过程" class="headerlink" title="使用CallableStatement调用存储过程"></a>使用CallableStatement调用存储过程</h3><p>下面是SQL语句在MySQL数据库创建的简单的存储过程，其中参数sum用out修饰，是返回数据<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">delimiter <span class="comment">//</span></div><div class="line"><span class="function">create procedure <span class="title">add_pro</span><span class="params">(a <span class="keyword">int</span>, b <span class="keyword">int</span>, out sum <span class="keyword">int</span>)</span></span></div><div class="line">begin</div><div class="line">set sum = a + b;</div><div class="line">end; </div><div class="line"><span class="comment">//</span></div></pre></td></tr></table></figure></p>
+<h3 id="使用CallableStatement调用存储过程"><a href="#使用CallableStatement调用存储过程" class="headerlink" title="使用CallableStatement调用存储过程"></a>使用CallableStatement调用存储过程</h3><p>下面是SQL语句在MySQL数据库创建的简单的存储过程，其中参数sum用out修饰，是返回数据<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">delimiter <span class="comment">//</span></div><div class="line"><span class="function">create procedure <span class="title">add_pro</span><span class="params">(a <span class="keyword">int</span>, b <span class="keyword">int</span>, out sum <span class="keyword">int</span>)</span></span></div><div class="line"><span class="function">begin</span></div><div class="line"><span class="function">set sum </span>= a + b;</div><div class="line">end; </div><div class="line"><span class="comment">//</span></div></pre></td></tr></table></figure></p>
 <p>调用存储过程使用CallableStatement对象，通过Connection的prepareCall()方法创建CallableStatement对象，创建对象需传入调用存储过程的SQL语句，其格式:{call 过程名(?,?,?…)}<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">PreparedStatementTest</span> </span>&#123;</div><div class="line"></div><div class="line">    <span class="keyword">private</span> String driver;</div><div class="line">    <span class="keyword">private</span> String url;</div><div class="line">    <span class="keyword">private</span> String user;</div><div class="line">    <span class="keyword">private</span> String pass;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">initParam</span><span class="params">(String paramFile)</span><span class="keyword">throws</span>  Exception </span>&#123;</div><div class="line">        Properties props = <span class="keyword">new</span> Properties();</div><div class="line">        props.load(<span class="keyword">new</span> FileInputStream(paramFile));</div><div class="line">        driver = props.getProperty(<span class="string">"driver"</span>);</div><div class="line">        url = props.getProperty(<span class="string">"url"</span>);</div><div class="line">        user = props.getProperty(<span class="string">"user"</span>);</div><div class="line">        pass = props.getProperty(<span class="string">"pass"</span>);</div><div class="line"></div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">callProcedure</span><span class="params">()</span><span class="keyword">throws</span> Exception </span>&#123;</div><div class="line">        <span class="comment">//加载驱动</span></div><div class="line">        Class.forName(driver);</div><div class="line">        <span class="keyword">try</span> (</div><div class="line">                <span class="comment">//获取数据库链接</span></div><div class="line">                Connection conn = DriverManager.getConnection(url, user, pass);</div><div class="line">                <span class="comment">//获取输出参宿,使用Connection创建PreparedStatement对象</span></div><div class="line">                CallableStatement cstmt = conn.prepareCall(<span class="string">"&#123;call add_pro(?,?,?)&#125;"</span>)</div><div class="line">            )</div><div class="line">        &#123;</div><div class="line">            cstmt.setInt(<span class="number">1</span>, <span class="number">4</span>);</div><div class="line">            cstmt.setInt(<span class="number">2</span>, <span class="number">5</span>);</div><div class="line">            <span class="comment">//注册CallableStatement的第三个参数是int类型</span></div><div class="line">            cstmt.registerOutParameter(<span class="number">3</span>, Types.INTEGER);</div><div class="line">            <span class="comment">//执行存储过程</span></div><div class="line">            cstmt.execute();</div><div class="line">            <span class="comment">//获取输出参数</span></div><div class="line">            cstmt.getInt(<span class="number">3</span>);</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 <h3 id="使用ResultSetMetaData分析结果集元数据"><a href="#使用ResultSetMetaData分析结果集元数据" class="headerlink" title="使用ResultSetMetaData分析结果集元数据"></a>使用ResultSetMetaData分析结果集元数据</h3><p>ResultSet封装sql查询的结果，通过记录指针取出内容。JDBC还允许ResultSet更新记录，提供ResultSetMetaData获取ResultSet对象的相关信息。<br>在JDK1.4以前，默认打开的结果集是不可滚动的，必须在创建Statement或PreparedStatement传入额外参数，在Java5.0以后默认打开的ResultSet就是可滚动的。但是默认打开的ResultSet是不可更新的，如要要创建可更新的需要出入参数。</p>
 <blockquote>
@@ -442,7 +477,7 @@
 <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//控制记录指针只能往前移动,JDK1.4以前的默认值</span></div><div class="line">ResultSet.TYPE_FORWARD_ONLY</div><div class="line"><span class="comment">//控制记录指针可以自由移动，但底层的改变不会影响ResultSet的内容</span></div><div class="line">ResultSet.TYPE_SCROLL_INSENSITIVE</div><div class="line"><span class="comment">//控制记录指针可以自由移动，而且底层的改变会影响ResultSet的内容</span></div><div class="line">ResultSet.TYPE_SCROLL_SENSITIVE</div></pre></td></tr></table></figure>
 </li>
 <li><p>resultSetConcurrency:控制ResultSet的并发类型，该参数可以接收如下两个值</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//ResultSet是只读的并发模式</span></div><div class="line">ResultSet.CONCUR_READ_ONLY</div><div class="line"><span class="comment">//ResultSet是可更新的并发模式</span></div><div class="line">ResultSet.CONCUR_UPDATABLE</div><div class="line">``` </div><div class="line">&gt; <span class="number">3</span>. 可更新结果集必须满足如下两个条件: 所有数据来自一个表，选出的数据必须包含主键</div><div class="line"></div><div class="line">```<span class="function">java</span></div><div class="line"><span class="title">try</span> <span class="params">(</span></div><div class="line">                //获取数据库链接</div><div class="line">                Connection conn = DriverManager.getConnection(url, user, pass);</div><div class="line">                PreparedStatement pstms = conn.prepareCall(sql, ResultSet.TYPE_SCROLL_INSENSITIVE,</div><div class="line">                        ResultSet.CONCUR_UPDATABLE);</div><div class="line">                ResultSet rs = pstms.executeQuery()</div><div class="line">            )</div><div class="line">        &#123;</div><div class="line">            rs.last();</div><div class="line">            <span class="comment">//修改记录指针指向的记录</span></div><div class="line">            rs.updateString(<span class="number">2</span>, <span class="string">"ddddd"</span>);</div><div class="line">            <span class="comment">//提交修改</span></div><div class="line">            rs.updateRow();</div><div class="line">        &#125;</div></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//ResultSet是只读的并发模式</span></div><div class="line">ResultSet.CONCUR_READ_ONLY</div><div class="line"><span class="comment">//ResultSet是可更新的并发模式</span></div><div class="line">ResultSet.CONCUR_UPDATABLE</div><div class="line">``` </div><div class="line">&gt; <span class="number">3</span>. 可更新结果集必须满足如下两个条件: 所有数据来自一个表，选出的数据必须包含主键</div><div class="line"></div><div class="line">```java</div><div class="line"><span class="keyword">try</span> (</div><div class="line">                <span class="comment">//获取数据库链接</span></div><div class="line">                Connection conn = DriverManager.getConnection(url, user, pass);</div><div class="line">                PreparedStatement pstms = conn.prepareCall(sql, ResultSet.TYPE_SCROLL_INSENSITIVE,</div><div class="line">                        ResultSet.CONCUR_UPDATABLE);</div><div class="line">                ResultSet rs = pstms.executeQuery()</div><div class="line">            )</div><div class="line">        &#123;</div><div class="line">            rs.last();</div><div class="line">            <span class="comment">//修改记录指针指向的记录</span></div><div class="line">            rs.updateString(<span class="number">2</span>, <span class="string">"ddddd"</span>);</div><div class="line">            <span class="comment">//提交修改</span></div><div class="line">            rs.updateRow();</div><div class="line">        &#125;</div></pre></td></tr></table></figure>
 </li>
 </ol>
 </blockquote>
@@ -620,7 +655,7 @@
             
             <div class="site-state-item site-state-categories">
               <a href="/categories/index.html">
-                <span class="site-state-item-count">5</span>
+                <span class="site-state-item-count">6</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -631,7 +666,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">6</span>
+                <span class="site-state-item-count">7</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -846,6 +881,320 @@
 
 
   
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (search_path.endsWith("json")) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      $('#local-search-input').focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
 
 
 

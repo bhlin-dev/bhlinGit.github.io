@@ -94,9 +94,10 @@
 <meta name="keywords" content="Java">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Java基础(一)">
-<meta property="og:url" content="http://yoursite.com/2017/05/25/Java基础-一/index.html">
-<meta property="og:site_name" content="啖火">
+<meta property="og:url" content="http://bhlingit.github.io/2017/05/25/Java基础-一/index.html">
+<meta property="og:site_name" content="啖火日常">
 <meta property="og:description" content="Java概述Java语言是一门纯粹的面向对象的语言，它吸收了C++语言的优点，摒弃了C++里难易理解的多继承、指针等概念，因此Java具有功能强大和简单易用的两个特征。Java主要分成了Java SE、Java ME、Java EE三个版本。&amp;emsp; 1. Java SE:整个Java技术的核心和基础，是ME和EE的编程的基础。&amp;emsp; 2. Java ME:主要用于控制移动设备和信息家">
+<meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://opbae2xuz.bkt.clouddn.com/images/bhlin/2017-06-01-01.png">
 <meta property="og:image" content="http://opbae2xuz.bkt.clouddn.com/images/bhlin/2017-06-01-02.png">
 <meta property="og:image" content="http://opbae2xuz.bkt.clouddn.com/images/bhlin/2017-06-01-03.png">
@@ -141,13 +142,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2017/05/25/Java基础-一/"/>
+  <link rel="canonical" href="http://bhlingit.github.io/2017/05/25/Java基础-一/"/>
 
 
 
 
 
-  <title>Java基础(一) | 啖火</title>
+  <title>Java基础(一) | 啖火日常</title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -189,7 +190,7 @@
     <div class="custom-logo-site-title">
       <a href="/"  class="brand" rel="start">
         <span class="logo-line-before"><i></i></span>
-        <span class="site-title">啖火</span>
+        <span class="site-title">啖火日常</span>
         <span class="logo-line-after"><i></i></span>
       </a>
     </div>
@@ -255,9 +256,43 @@
       
 
       
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
     </ul>
   
 
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocapitalize="off" autocomplete="off" autocorrect="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
   
 </nav>
 
@@ -282,7 +317,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/05/25/Java基础-一/">
+    <link itemprop="mainEntityOfPage" href="http://bhlingit.github.io/2017/05/25/Java基础-一/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="啖火">
@@ -291,7 +326,7 @@
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="啖火">
+      <meta itemprop="name" content="啖火日常">
     </span>
 
     
@@ -546,7 +581,7 @@
 <p>执行第一行代码，定义一个int数组变量这个时候内存中的变化如示意图，栈内存中定义了一个空引用(空引用没有指向任何有效的内存)<br><img src="http://opbae2xuz.bkt.clouddn.com/images/bhlin/2017-06-01-07.png" alt=""><br>当iArr = new int[5];动态初始化的时候，系统将负责为改数组分配内存空间，将分配默认值0。并且栈内存中的引用指向这个数组<br><img src="http://opbae2xuz.bkt.clouddn.com/images/bhlin/2017-06-01-08.png" alt=""><br>下面遍历循环赋值，将数组中的元素值修改<br><img src="http://opbae2xuz.bkt.clouddn.com/images/bhlin/2017-06-01-09.png" alt=""></p>
 <p>下面引用数据类型的数组在内存空间的变化<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">Person[] students;</div><div class="line">students = <span class="keyword">new</span> Person[<span class="number">2</span>];</div><div class="line"></div><div class="line">Person zhang = <span class="keyword">new</span> Person();</div><div class="line">zhang.age = <span class="number">15</span>;</div><div class="line">zhang.height = <span class="number">158</span>;</div><div class="line"></div><div class="line">Person lee = <span class="keyword">new</span> Person();</div><div class="line">lee.age = <span class="number">16</span>;</div><div class="line">lee.height = <span class="number">161</span>;</div><div class="line"></div><div class="line">students[<span class="number">0</span>] = zhang;</div><div class="line">students[<span class="number">1</span>] = lee;</div></pre></td></tr></table></figure></p>
 <p>执行Person[] students;这时将在栈内存中定义一个引用变量，也就是一个指针，指针并未指向任何有效的内存区。<br><img src="http://opbae2xuz.bkt.clouddn.com/images/bhlin/2017-06-01-10.png" alt=""><br>执行students = new Person[2];这时将在堆内存中分配内存空间，并且分配默认值 null。并将指针指向这块内存区域。<br><img src="http://opbae2xuz.bkt.clouddn.com/images/bhlin/2017-06-01-11.png" alt=""><br>紧接着创建两个Person对象，在栈内存中分配两块内存区域存储指针，然后在堆内存中创建两块区域存储Person实例，并且指针指向对应的Person实例。<br><img src="http://opbae2xuz.bkt.clouddn.com/images/bhlin/2017-06-01-12.png" alt=""><br>下面将Person实例赋值到数组中，这是数组中的元素指向对应的Person实例，无论修改zhang变量所指向的Person实例还是修改students[0]所指向的Person实例，所修改的是同一个内存区，所以必然互相影响。<br><img src="http://opbae2xuz.bkt.clouddn.com/images/bhlin/2017-06-01-13.png" alt=""></p>
-<h4 id="工具类：Arrays"><a href="#工具类：Arrays" class="headerlink" title="工具类：Arrays"></a>工具类：Arrays</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//使用二分法查询key元素在a数组中的索引；不包含返回负数。使用该方法要求数组按照升序排序才能得到正确结构</span></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">binarySearch</span><span class="params">(type[] a, type key)</span></span>;</div><div class="line"></div><div class="line"><span class="comment">//使用二分法查询key元素在a数组中fromIndex到toIndex索引的索引；不包含返回负数。使用该方法要求数组按照升序排序才能得到正确结构</span></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">binarySearch</span><span class="params">(type[] a, <span class="keyword">int</span> fromIndex, <span class="keyword">int</span> toIndex, type key)</span></span>;</div><div class="line"><span class="comment">//把original数组复制成一个新的数组，其中length是新数组的长度。如果length小于original数组的长度 则 新数据就是原数组前面的length个元素，如果大于original数组的长度，则新数组前面元素与原数组元素一样，后面为默认值。</span></div><div class="line">type[] copyOf(type[] original, <span class="keyword">int</span> length);</div><div class="line"><span class="comment">//与上面相似，但只能复制原数组from到to索引的元素</span></div><div class="line">type[] copyOf(type[] original, <span class="keyword">int</span> from, <span class="keyword">int</span> to);</div><div class="line"><span class="comment">//如果a与b长度相同，并且数组元素也意义相同，则返回true</span></div><div class="line"><span class="function"><span class="keyword">boolean</span> <span class="title">equals</span><span class="params">(type[] a, type[] b)</span></span>;</div><div class="line"><span class="comment">//该方法将a数组中所有元素都赋值为val</span></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">fill</span><span class="params">(type[] a, type val)</span></span></div><div class="line"><span class="comment">//该方法将a数组中下标从fromIndex到toIndex下标都赋值为val</span></div><div class="line"><span class="keyword">void</span> <span class="title">fill</span><span class="params">(type[] a, <span class="keyword">int</span> fromIndex, <span class="keyword">int</span> toIndex, type val)</span></div><div class="line"><span class="comment">//对该方法a数组进行排序</span></div><div class="line"><span class="keyword">void</span> <span class="title">sort</span><span class="params">(typep[] a)</span>;</div><div class="line"><span class="comment">//对该方法a数组fromIndex到toIndex下标内进行排序</span></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">sort</span><span class="params">(typep[] a, <span class="keyword">int</span> fromIndex, <span class="keyword">int</span> toIndex)</span></span>;</div><div class="line"><span class="comment">//将数组转换成字符串，以英文逗号(,)和空格隔开</span></div><div class="line"><span class="function">String <span class="title">toString</span><span class="params">(type[] a)</span></span>;</div></pre></td></tr></table></figure>
+<h4 id="工具类：Arrays"><a href="#工具类：Arrays" class="headerlink" title="工具类：Arrays"></a>工具类：Arrays</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//使用二分法查询key元素在a数组中的索引；不包含返回负数。使用该方法要求数组按照升序排序才能得到正确结构</span></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">binarySearch</span><span class="params">(type[] a, type key)</span></span>;</div><div class="line"></div><div class="line"><span class="comment">//使用二分法查询key元素在a数组中fromIndex到toIndex索引的索引；不包含返回负数。使用该方法要求数组按照升序排序才能得到正确结构</span></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">binarySearch</span><span class="params">(type[] a, <span class="keyword">int</span> fromIndex, <span class="keyword">int</span> toIndex, type key)</span></span>;</div><div class="line"><span class="comment">//把original数组复制成一个新的数组，其中length是新数组的长度。如果length小于original数组的长度 则 新数据就是原数组前面的length个元素，如果大于original数组的长度，则新数组前面元素与原数组元素一样，后面为默认值。</span></div><div class="line">type[] copyOf(type[] original, <span class="keyword">int</span> length);</div><div class="line"><span class="comment">//与上面相似，但只能复制原数组from到to索引的元素</span></div><div class="line">type[] copyOf(type[] original, <span class="keyword">int</span> from, <span class="keyword">int</span> to);</div><div class="line"><span class="comment">//如果a与b长度相同，并且数组元素也意义相同，则返回true</span></div><div class="line"><span class="function"><span class="keyword">boolean</span> <span class="title">equals</span><span class="params">(type[] a, type[] b)</span></span>;</div><div class="line"><span class="comment">//该方法将a数组中所有元素都赋值为val</span></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">fill</span><span class="params">(type[] a, type val)</span></span></div><div class="line"><span class="function"><span class="comment">//该方法将a数组中下标从fromIndex到toIndex下标都赋值为val</span></span></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">fill</span><span class="params">(type[] a, <span class="keyword">int</span> fromIndex, <span class="keyword">int</span> toIndex, type val)</span></span></div><div class="line"><span class="function"><span class="comment">//对该方法a数组进行排序</span></span></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">sort</span><span class="params">(typep[] a)</span></span>;</div><div class="line"><span class="comment">//对该方法a数组fromIndex到toIndex下标内进行排序</span></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">sort</span><span class="params">(typep[] a, <span class="keyword">int</span> fromIndex, <span class="keyword">int</span> toIndex)</span></span>;</div><div class="line"><span class="comment">//将数组转换成字符串，以英文逗号(,)和空格隔开</span></div><div class="line"><span class="function">String <span class="title">toString</span><span class="params">(type[] a)</span></span>;</div></pre></td></tr></table></figure>
 <p>问题记录：</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//Java使用的Char是Unicode还是Ascll编码？</span></div><div class="line">Unicode</div><div class="line"><span class="comment">//Java的char是否可以保存一个汉字？</span></div><div class="line">可以</div></pre></td></tr></table></figure>
 
@@ -688,7 +723,7 @@
             
             <div class="site-state-item site-state-categories">
               <a href="/categories/index.html">
-                <span class="site-state-item-count">5</span>
+                <span class="site-state-item-count">6</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -699,7 +734,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">6</span>
+                <span class="site-state-item-count">7</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -914,6 +949,320 @@
 
 
   
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (search_path.endsWith("json")) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      $('#local-search-input').focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
 
 
 
