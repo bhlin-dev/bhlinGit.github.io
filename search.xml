@@ -3,6 +3,18 @@
   
     
     <entry>
+      <title><![CDATA[升级Node.js和npm]]></title>
+      <url>/2017/06/29/NodeJs%E5%92%8Cnpm%E5%8D%87%E7%BA%A7/</url>
+      <content type="html"><![CDATA[<h3 id="升级Node-js"><a href="#升级Node-js" class="headerlink" title="升级Node.js"></a>升级Node.js</h3><p>npm中有一个模块“n”,用来管理node.js版本；<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">n                              显示已安装的Node版本</div><div class="line">n latest                       安装最新版本Node</div><div class="line">n stable                       安装最新稳定版Node</div><div class="line">n lts                          安装最新长期维护版(lts)Node</div><div class="line">n &lt;version&gt;                    根据提供的版本号安装Node</div></pre></td></tr></table></figure></p>
+<p>更新命令<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">npm install -g n</div><div class="line">n stable</div></pre></td></tr></table></figure></p>
+<p>最新版本用 <code>n latest</code> 也可以使用具体的版本号：<code>n v6.2.0</code></p>
+<h3 id="升级npm"><a href="#升级npm" class="headerlink" title="升级npm"></a>升级npm</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm install npm -g</div></pre></td></tr></table></figure>
+]]></content>
+      
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[Java基础(十)]]></title>
       <url>/2017/06/14/Java%E5%9F%BA%E7%A1%80-%E5%8D%81/</url>
       <content type="html"><![CDATA[<h2 id="类加载机制与反射"><a href="#类加载机制与反射" class="headerlink" title="类加载机制与反射"></a>类加载机制与反射</h2><p>当程序主动使用某个类时，如果该类还未加载到内存中，系统会通过加载、连接、初始化三个步骤对该类进行初始化，JVM会连续完成这三个步骤，这三个步骤统称类加载或类初始化；</p>
@@ -1988,6 +2000,153 @@
         <tags>
             
             <tag> Java </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[IOS 删除多余的配置证书]]></title>
+      <url>/2017/05/24/IOS%20%E5%88%A0%E9%99%A4%E5%A4%9A%E4%BD%99%E7%9A%84%E9%85%8D%E7%BD%AE%E8%AF%81%E4%B9%A6/</url>
+      <content type="html"><![CDATA[<a id="more"></a>
+<p>在xcode中管理多个项目时，可能有不同的provisioning profile文件，时间长了有些已经过期不用了需要删除，打开命令行进入该目录进行删除多余的配置文件：<br><code>cd ~/Library/MobileDevice/Provisioning\ Profiles/</code></p>
+]]></content>
+      
+        <categories>
+            
+            <category> iOS </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> iOS </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[OC与JS之间的通信]]></title>
+      <url>/2017/05/24/OC%E4%B8%8EJS%E4%B9%8B%E9%97%B4%E7%9A%84%E9%80%9A%E4%BF%A1/</url>
+      <content type="html"><![CDATA[<a id="more"></a>
+<p>####1. oc与js之间的通信可以通过webView的代理进行实现。</p>
+<p><code>-(BOOL)webView:shouldStartLoadWithRequest:navigationType:</code><br>在这个代理中webView发送请求之前，都会先调用这个方法（能拦截所有的请求），所以我们可以在js中设置一定的规则在这个代理中进行解析。</p>
+<ul>
+<li>js调用oc方法：</li>
+</ul>
+<p>在OC中的代码<br><code>-(BOOL)webView:(UIWebView*)webView shouldStartLoadWithRequest:(NSURLRequest*)request navigationType:(UIWebViewNavigationType)navigationType{
+  NSString *url = request.URL.absoluteString;
+  NSRange range = [urlrangeOfString:@&quot;bh://&quot;];
+  NSUInteger loc = range.location;
+  if(loc !=NSNotFound) {
+    NSString*method = [urlsubstringFromIndex:loc + range.length];
+    SEL sel =NSSelectorFromString(method);
+    [selfperformSelector:selwithObject:nil];
+  }
+  return YES;
+}</code></p>
+<p>在JS中的实现以下代码<br><code>function callNativeOne() {
+  window.location.href =&#39;bh://callNativeOne&#39;;
+}</code></p>
+<p>当网页中的按钮点击调用callNativeOne这个js方法时，会在代理中进行拦截，然后去进行判断是否url scheme等于bh，如果等于说明js调用oc中的方法，url scheme后面是方法名。</p>
+<p>####2. js调用oc方法，通过iFrame来让js与oc进行交互</p>
+<p>在oc中实现以下代理方法</p>
+<p><code>-(BOOL)webView:(UIWebView*)webView shouldStartLoadWithRequest:(NSURLRequest*)request navigationType:(UIWebViewNavigationType)navigationType
+{
+  NSURL *url = [request URL];
+  if([[url scheme] isEqualToString:@&quot;bh&quot;]) {//注意url scheme全部被转化成小写
+    NSArray *params = [url.query   componentsSeparatedByString:@&quot;&amp;&quot;];
+    NSMutableDictionary *tempDic = [NSMutableDictionary dictionary];
+    for(NSString *paramStrinparams) {
+      NSArray *dicArr = [paramStr     componentsSeparatedByString:@&quot;=&quot;];
+      if(dicArr.count &gt;1) {
+  NSString *decodeValue = [dicArr[1] stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+         [tempDic setObject:decodeValue forKey:dicArr[0]];
+      }
+    }
+    returnNO;
+  }
+  returnYES;
+}</code></p>
+<p>在js中实现以下代码<br><code>functioncallNativeTwo() {
+var url =&quot;bh://test?title=name&amp;pass=value&quot;;
+var iFrame;
+iFrame = document.createElement(&quot;iframe&quot;);
+iFrame.setAttribute(&quot;src&quot;,url);
+iFrame.setAttribute(&quot;style&quot;,&quot;display:none;&quot;);
+iFrame.setAttribute(&quot;height&quot;,&quot;100px&quot;);
+iFrame.setAttribute(&quot;width&quot;,&quot;100px&quot;);
+iFrame.setAttribute(&quot;frameborder&quot;,&quot;100px&quot;);
+document.body.appendChild(iFrame);
+//发起请求后这个iFrame就没有用了，所以把它从dom上移除掉
+iFrame.parentNode.removeChild(iFrame);
+iFrame =null;
+}</code></p>
+<p>####3. js调用oc方法，通过ios7之后系统新增的JavaScriptCore框架</p>
+<p>首先先引入<br><code>#import &lt;JavaScriptCore/JavaScriptCore.h&gt;</code></p>
+<p>然后在这个加载网页结束的代理中实现以下代码<br><code>-(void)webViewDidFinishLoad:(UIWebView*)webView</code></p>
+<p><code>JSContext *context = [self.webViewvalueForKeyPath:@&quot;documentView.webView.mainFrame.javaScriptContext&quot;];//获取js的上下文
+context[@&quot;callNatives&quot;] = ^() {
+NSArray*args = [JSContextcurrentArguments];
+for(JSValue*jsvalueinargs) {
+NSLog(@&quot;%@&quot;,jsvalue.toString);
+}
+};</code><br>在js中通过以下方式来调用上面的callNative方法</p>
+<p><code>function callNative() {
+callNatives(&#39;测试a&#39;,&#39;测试b&#39;,&#39;测试c&#39;);
+}</code></p>
+<p>OC调用JS方法：<br>1.通过webView的stringByEvaluatingJavaScriptFromString:来进行调用js方法</p>
+<p>比如：<br><code>[self.webView stringByEvaluatingJavaScriptFromString:@&quot;alert(&#39;测试数据&#39;)&quot;];</code></p>
+<p>stringByEvaluatingJavaScriptFromString该方法返回调用js脚本的结果或者0</p>
+<p>2.还是通过JSContext来调用js方法</p>
+<p>比如：<br><code>JSContext*context = [self.webViewvalueForKeyPath:@&quot;documentView.webView.mainFrame.javaScriptContext&quot;];//获取js的上下文
+NSString*textJS =@&quot;alert(&#39;这里是JS中alert弹出的message&#39;)&quot;;
+JSValue*value = [contextevaluateScript:textJS];//存在返回结果</code></p>
+<p>通过js调用oc返回值我暂时没有找到，但是可以通过stringByEvaluatingJavaScriptFromString方法来回调到某个js方法并且把返回值回调回去</p>
+]]></content>
+      
+        <categories>
+            
+            <category> iOS </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> iOS </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[UIViewController简单介绍]]></title>
+      <url>/2017/05/24/2018%E5%B9%B4%E8%AE%A1%E5%88%92/</url>
+      <content type="html"><![CDATA[<a id="more"></a>
+<p>转眼间已经2018年了，2017的计划如约又作废了。日子慢慢久了 自己好像适应了这种日子，上班下班睡觉玩游戏做做白日梦，有时想来简直想抽自己几巴掌，自己怎么又可能真的打呢^v^。好颓废的生活呀，如果继续这样的话慢慢就被社会所淘汰了。 人生的日子还有很久但不可以这样浪费，人生的日子很短要活出自己。2018年 新年新气象给自己下个约束鞭挞自己，给自己定个目标慢慢朝这个方向前进。</p>
+<ol>
+<li>腹中有书气自华，人丑就要多读书(网络小说除外，自己对这种网络小说读起来简直了)。 今天目标48本书籍，读书笔记24篇。</li>
+<li>学历提升。本科多如狗，硕士博士满地走，天 要我这个小小的专科怎么活。人生压力好大/(ㄒoㄒ)/~~ 今年两次考试 8门或者7门考试</li>
+<li>技术提升。OC目前看来是要慢慢被淘汰的，swift学起来。 如果可以的话尽量转向服务器开发。</li>
+<li>身体健康。目前体重108斤，太瘦了 要变得strong。健身房这种药还是不能停的。今天增重20斤，尽可能是肌肉，肥肉的话可能会哭死。</li>
+</ol>
+<p>是时候来一波正能量了，人生数载总要有个目标往前奔，人生是一段接力赛没有人能凭空站在终点。</p>
+<h3 id="每月打卡"><a href="#每月打卡" class="headerlink" title="每月打卡"></a>每月打卡</h3><p>为了让自己坚持下去，每月总结下对计划的执行状态；</p>
+]]></content>
+      
+        <categories>
+            
+            <category> 个人计划 </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> 个人计划 </tag>
             
         </tags>
         
